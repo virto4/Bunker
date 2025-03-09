@@ -8,7 +8,8 @@ vel_pulo			= 7
 apertou_pulo		= false
 posicao_pre_pulo	= 0
 colidiu_porta_aux	= false
-objetos_colidiveis	= [obj_porta, obj_chao, obj_chao_lateral]
+objetos_colidiveis	= [obj_porta, obj_chao, obj_chao_lateral, obj_geladeira, 
+					obj_cama_roger, obj_cama_davi, obj_armario1]
 
 inputs = {
 	esquerda	: ord("A"),
