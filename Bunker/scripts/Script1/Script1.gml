@@ -1,0 +1,1 @@
+global.enlatado=0
