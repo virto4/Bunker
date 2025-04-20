@@ -157,10 +157,4 @@ if room_get_name(room) == "rm_tela_inicial" {
 			room_goto(rm_tela_inicial)
 		}
 	}
-	
-	if mouse_x <= posicoes_estrelas.estrela1_x + 64 and mouse_x >= posicoes_estrelas.estrela1_x - 64 and mouse_y <= posicoes_estrelas.estrela1_y + 64 and mouse_y >= posicoes_estrelas.estrela1_y - 64 {
-		posicoes_estrelas.estrela1 = spr_estrela1_mouse
-	} else {
-		posicoes_estrelas.estrela1 = spr_estrela1
-	}
 }

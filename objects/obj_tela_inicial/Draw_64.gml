@@ -18,6 +18,5 @@ if room_get_name(room) == "rm_tela_inicial" {
 	draw_sprite_ext(spr_fundo_tela_inicial, 0, 0, 0, 1, 1, 0, c_white, alpha_opcoes)
 } else if room_get_name(room) == "rm_conquistas" {
 	draw_sprite_ext(spr_voltar, 0, x_voltar, y_voltar, a_voltar, a_voltar, 0, c_white, 1)
-	draw_sprite_ext(posicoes_estrelas.estrela1, 0, posicoes_estrelas.estrela1_x, posicoes_estrelas.estrela1_y, 1, 1, 0, c_white, 1)
 	draw_sprite_ext(spr_fundo_tela_inicial, 0, 0, 0, 1, 1, 0, c_white, alpha_conquistas)
 }

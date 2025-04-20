@@ -34,7 +34,7 @@ inputs = {
 }
 
 if room_get_name(room) == "rm_casa" {
-	tempo_decorrido = current_time + 25000 //a data atual mais 10 segundos
+	tempo_decorrido = current_time + 1000 //a data atual mais 10 segundos
 	tempo_escrito = tempo_decorrido - current_time
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {

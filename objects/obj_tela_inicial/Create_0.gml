@@ -35,7 +35,10 @@ x_voltar = x2
 y_voltar = y2
 
 posicoes_estrelas = {
-	estrela1 : spr_estrela1,
-	estrela1_x : 300,
-	estrela1_y : 450
+	estrela1		: spr_estrela1,
+	estrela1_x		: 300,
+	estrela1_y		: 450,
+	estrela2		: spr_estrela2,
+	estrela2_x		: 550,
+	estrela2_y		: 200
 }
