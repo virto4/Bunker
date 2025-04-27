@@ -1,6 +1,4 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 ganhou_conquista = false
-sprite = 0
-tempo = 0
-alpha = 0
+lista_ganhos = ds_list_create() //lista com os valores das conquistas pegas que estao sendo exibidas

@@ -2,9 +2,9 @@
 // Você pode escrever seu código neste editor
 velh				= 0
 velv				= 0
-vel					= 5
-vel_diagonal		= 3.5
-vel_pulo			= 7
+vel					= 300 * delta_time / 1000000
+vel_diagonal		= 212 * delta_time / 1000000
+vel_pulo			= 420 * delta_time / 1000000
 apertou_pulo		= false
 posicao_pre_pulo	= 0
 colidiu_porta_aux	= false
@@ -19,6 +19,8 @@ is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
 
+alpha = 1
+
 qtde_itens = {
 	obj_municao		: 0,
 	obj_radio		: 0,
@@ -30,12 +32,15 @@ inputs = {
 	direita		: ord("D"),
 	cima		: ord("W"),
 	baixo		: ord("S"),
-	pulo		: vk_space
+	pulo		: vk_space,
 }
 
+opcoes = false
+
 if room_get_name(room) == "rm_casa" {
-	tempo_decorrido = current_time + 1000 //a data atual mais 10 segundos
-	tempo_escrito = tempo_decorrido - current_time
+	tempo_decorrido = 0 
+	tempo_espera = 20 
+	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {

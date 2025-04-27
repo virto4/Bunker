@@ -9,6 +9,8 @@ height = 256
 a_jogar = 1
 x_jogar = x2 
 y_jogar = y2
+mudar_jogo = false
+tempo = 0
 
 a_opcoes = 1
 x_opcoes = x2
@@ -42,3 +44,5 @@ posicoes_estrelas = {
 	estrela2_x		: 550,
 	estrela2_y		: 200
 }
+
+em_transicao = false

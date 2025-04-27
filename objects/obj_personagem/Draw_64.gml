@@ -1,10 +1,11 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if room_get_name(room) == "rm_casa" {
-	draw_set_font(fnt_principal)
-	draw_text(room_width / 2, 60, tempo_escrito div 1000)//div é o comando para divisap inteira
+if alpha == 0 {
+	if room_get_name(room) == "rm_casa" {
+		draw_set_font(fnt_principal)
+		draw_text(room_width / 2, 60, tempo_escrito div 1 + 1)//div é o comando para divisap inteira
+	}
 }
-
 draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
 
 var _slotx1=768
@@ -45,4 +46,14 @@ if slot4 != noone {
 }
 if slot5 != noone {
 	draw_sprite_ext(object_get_sprite(slot5), 0, _slotx5, 1020, 2, 2, 0, c_white, 1)	
+}
+
+if alpha > 0 {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha)
+	alpha -= 0.05
+}
+
+if opcoes {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 0.4)
+	draw_sprite(spr_tela_opcoes_jogo, 0, 1920 / 2, 1080 / 2)
 }

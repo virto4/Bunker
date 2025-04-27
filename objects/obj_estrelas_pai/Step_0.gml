@@ -7,3 +7,9 @@ if position_meeting(mouse_x, mouse_y, object_index) {
 	sprite_index = sprite_padrao
 	mouse_entrou = false
 }
+
+if conquistada {
+	image_blend = c_white
+} else {
+	image_blend = c_black
+}

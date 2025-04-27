@@ -3,9 +3,9 @@
   "%Name":"spr_conquistas",
   "bboxMode":0,
   "bbox_bottom":260,
-  "bbox_left":16,
-  "bbox_right":527,
-  "bbox_top":5,
+  "bbox_left":3,
+  "bbox_right":524,
+  "bbox_top":9,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -14,8 +14,8 @@
   "frames":[
     {"$GMSpriteFrame":"","%Name":"8a53568b-2b3f-443c-bc61-d60ad325d354","name":"8a53568b-2b3f-443c-bc61-d60ad325d354","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX":0,
-  "gridY":0,
+  "gridX":3,
+  "gridY":3,
   "height":270,
   "HTile":false,
   "layers":[
