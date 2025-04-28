@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+window_set_size(1920, 1080)
 velh				= 0
 velv				= 0
 vel					= 300 * delta_time / 1000000
@@ -20,6 +21,14 @@ obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
 
 alpha = 1
+mudar_volume = false
+volume_x = 960
+clicou_volume = false
+mudar_fov = false
+fov_x = 960
+clicou_fov = false
+view_width_base = camera_get_view_width(view_camera[0]);
+view_height_base = camera_get_view_height(view_camera[0]);
 
 qtde_itens = {
 	obj_municao		: 0,
@@ -39,7 +48,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 20 
+	tempo_espera = 20
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {

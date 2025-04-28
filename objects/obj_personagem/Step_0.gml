@@ -13,7 +13,7 @@ if alpha == 0 and !opcoes {
 	}
 
 	if _pulo and !apertou_pulo {
-		velv = -7
+		velv = -420 * delta_time / 1000000
 		posicao_pre_pulo = y
 		apertou_pulo = true
 	}
@@ -39,10 +39,11 @@ if alpha == 0 and !opcoes {
 		}
 
 	} else {
-		var _gravidade = 0.5
+		var _gravidade = 30 * delta_time / 1000000
 		velv += _gravidade
 		y += velv
-		if posicao_pre_pulo == y {
+		if velv >= 420 * delta_time / 1000000 {
+			y = posicao_pre_pulo
 			apertou_pulo = false
 		}
 	}
@@ -59,6 +60,61 @@ if alpha == 0 and !opcoes {
 		}
 	}
 } else if opcoes {
+	if display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 and display_mouse_get_y() > display_get_height() / 2 - 5 and display_mouse_get_y() < display_get_height() / 2 + 5 {
+		if mouse_check_button(mb_left) and !mudar_fov{
+			mudar_volume = true
+			clicou_volume = true
+		} else  {
+			mudar_volume = false
+		}
+	} else if !clicou_volume {
+		mudar_volume = false
+	}
+	if clicou_volume and !mudar_fov {
+		if mouse_check_button(mb_left) and display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 {
+			mudar_volume = true
+		} else {
+			mudar_volume = false
+			clicou_volume = false
+		}
+	}
+	if mudar_volume {
+		var _posicao = 960 - 128 - display_mouse_get_x() * 1920 / 1366
+		var _volume = _posicao / 256
+		audio_master_gain(_volume)
+	}
+	
+	if display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 and display_mouse_get_y() > 700 * 768 / 1080 - 5 and display_mouse_get_y() < 700 * 768 / 1080 + 5 {
+		if mouse_check_button(mb_left) and !mudar_volume {
+			mudar_fov = true
+			clicou_fov = true
+		} else {
+			mudar_fov = false
+		}
+	} else if !clicou_fov {
+		mudar_fov = false
+	}
+	if clicou_fov and !mudar_volume{
+		if mouse_check_button(mb_left) and display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 {
+			mudar_fov = true
+		} else {
+			mudar_fov = false
+			clicou_fov = false
+		}
+	}
+	if mudar_fov {
+		var _posicao = fov_x - (960 - 128)
+		var _x = 1.5 * _posicao / 256 + 0.7
+		camera_set_view_size(view_camera[0], (view_width_base / _x), (view_height_base / _x))
+		camera_set_view_pos(view_camera[0], x - (view_width_base / _x) * 0.5, y - (view_height_base / _x) * 0.5)
+	}
+	
+	if display_mouse_get_x() > display_get_width() / 2 - 512 + 444 and display_mouse_get_x() < display_get_width() / 2 - 512 + 576 and display_mouse_get_y() > display_get_height() / 2 - 256 + 85 and display_mouse_get_y() < display_get_height() / 2 - 256 + 200 {
+		if mouse_check_button(mb_left) {
+			room_goto(rm_tela_inicial)
+		}
+	}
+	
 	if keyboard_check_pressed(vk_escape) {
 		opcoes = false
 	}
