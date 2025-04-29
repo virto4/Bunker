@@ -57,15 +57,28 @@ if opcoes {
 	cursor_sprite = spr_cursor_padrao
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 0.4)
 	draw_sprite(spr_tela_opcoes_jogo, 0, 1920 / 2, 1080 / 2)
-	draw_rectangle_color(960 - 128, 540 - 5, 960 + 128, 540 + 5, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_color(960 - 160, 540 - 5, 960 + 160, 540 + 5, c_black, c_black, c_black, c_black, false)
+	draw_sprite(spr_sair_tela_inicial, 0, 960, 540 - 150)
 	if mudar_volume {
-		volume_x = display_mouse_get_x() * 1920 / 1366
+		if display_mouse_get_x() * 1920 / 1366 > 960 + 160 {
+			volume_x = 960 + 160
+		} else if display_mouse_get_x() * 1920 / 1366 < 960 - 160 {
+			volume_x = 960 - 160
+		} else {
+			volume_x = display_mouse_get_x() * 1920 / 1366
+		}
 	}
 	draw_circle_color(volume_x, 540, 20, c_black, c_black, false)
 	
-	draw_rectangle_color(960 - 128, 700 - 5, 960 + 128, 700 + 5, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_color(960 - 160, 700 - 5, 960 + 160, 700 + 5, c_black, c_black, c_black, c_black, false)
 	if mudar_fov {
-		fov_x = display_mouse_get_x() * 1920 / 1366
+		if display_mouse_get_x() * 1920 / 1366 > 960 + 160 {
+			fov_x = 960 + 160
+		} else if display_mouse_get_x() * 1920 / 1366 < 960 - 160 {
+			fov_x = 960 - 160
+		} else {
+			fov_x = display_mouse_get_x() * 1920 / 1366
+		}
 	}
 	draw_circle_color(fov_x, 700, 20, c_black, c_black, false)
 }

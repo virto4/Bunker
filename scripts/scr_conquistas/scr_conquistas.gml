@@ -2,5 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para obter mais 
 conquistas = {
 	conquista1 : false,
-	conquista2 : false
+	conquista2 : false,
+	conquista3 : true
 }

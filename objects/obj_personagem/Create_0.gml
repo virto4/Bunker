@@ -1,6 +1,5 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-window_set_size(1920, 1080)
 velh				= 0
 velv				= 0
 vel					= 300 * delta_time / 1000000
