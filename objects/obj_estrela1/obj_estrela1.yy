@@ -2,6 +2,7 @@
   "$GMObject":"",
   "%Name":"obj_estrela1",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
@@ -12,8 +13,8 @@
     "path":"folders/Objetos/conquistas_estrelas.yy",
   },
   "parentObjectId":{
-    "name":"obj_estrelas_pai",
-    "path":"objects/obj_estrelas_pai/obj_estrelas_pai.yy",
+    "name":"obj_conquistas",
+    "path":"objects/obj_conquistas/obj_conquistas.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

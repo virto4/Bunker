@@ -22,7 +22,7 @@ if room_get_name(room) == "rm_tela_inicial" and sair_jogo {
 } else if room_get_name(room) = "rm_tela_inicial" and mudar_jogo {
 	for(var _i = 0; _i <= tempo; _i++) {
 		var _x  = 0
-		var _y = spr_efeito_transicao.sprite_height / 2 * _i
+		var _y = 32 * _i
 		if _i % 2 == 0 {
 			_x = 0
 		} else {

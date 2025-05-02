@@ -2,9 +2,8 @@
 // Você pode escrever seu código neste editor
 velh				= 0
 velv				= 0
-vel					= 300 * delta_time / 1000000
-vel_diagonal		= 212 * delta_time / 1000000
-vel_pulo			= 420 * delta_time / 1000000
+vel					= 300
+vel_diagonal		= 212
 apertou_pulo		= false
 posicao_pre_pulo	= 0
 colidiu_porta_aux	= false

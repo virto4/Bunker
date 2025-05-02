@@ -3,5 +3,17 @@
 conquistas = {
 	conquista1 : false,
 	conquista2 : false,
-	conquista3 : true
+	conquista3 : false,
+	conquista4 : false,
+	conquista5 : false,
+	conquista6 : false,
+	conquista7 : false,
+	conquista8 : false,
+	conquista9 : false,
+	conquista10: false,
+	conquista11: false,
+	conquista12: false,
+	conquista13: false,
+	conquista14: false,
+	conquista15: false
 }

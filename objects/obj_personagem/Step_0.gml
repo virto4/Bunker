@@ -33,13 +33,13 @@ if alpha == 0 and !opcoes {
 		velh = _direita - _esquerda
 	
 		if velh != 0 and velv != 0 {
-			if place_meeting(x + velh * vel_diagonal, y + velv * vel_diagonal, obj_colidivel) {
-				move_and_collide(velh * vel_diagonal * 0.6, velv * vel_diagonal * 0.6, obj_colidivel)
+			if place_meeting(x + velh * vel_diagonal * delta_time / 1000000, y + velv * vel_diagonal * delta_time / 1000000, obj_colidivel) {
+				move_and_collide(velh * vel_diagonal * 0.6 * delta_time / 1000000, velv * vel_diagonal * 0.6 * delta_time / 1000000, obj_colidivel)
 			} else {
-				move_and_collide(velh * vel_diagonal, velv * vel_diagonal, obj_colidivel)
+				move_and_collide(velh * vel_diagonal * delta_time / 1000000, velv * vel_diagonal * delta_time / 1000000, obj_colidivel)
 			}
 		} else {
-			move_and_collide(velh * vel, velv * vel, obj_colidivel)
+			move_and_collide(velh * vel * delta_time / 1000000, velv * vel * delta_time / 1000000, obj_colidivel)
 		}
 
 	} else {

@@ -1,3 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-mouse_entrou = false
+if global.conquistas.conquista1 {
+	image_blend = c_white
+} else {
+	image_blend = c_black
+}
