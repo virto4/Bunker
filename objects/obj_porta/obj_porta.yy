@@ -39,8 +39,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_porta_fechada",
-    "path":"sprites/spr_porta_fechada/spr_porta_fechada.yy",
+    "name":"spr_porta",
+    "path":"sprites/spr_porta/spr_porta.yy",
   },
   "spriteMaskId":null,
   "visible":true,
