@@ -17,7 +17,7 @@ if alpha == 0 and !opcoes {
 	}
 
 	if _pulo and !apertou_pulo {
-		velv = -420 * delta_time / 1000000
+		velv = -7
 		posicao_pre_pulo = y
 		apertou_pulo = true
 	}
@@ -43,12 +43,13 @@ if alpha == 0 and !opcoes {
 		}
 
 	} else {
-		var _gravidade = 30 * delta_time / 1000000
+		var _gravidade = 0.5
 		velv += _gravidade
 		y += velv
-		if velv >= 420 * delta_time / 1000000 {
+		if velv >= 7 {
 			y = posicao_pre_pulo
 			apertou_pulo = false
+			velv = 0
 		}
 	}
 	
