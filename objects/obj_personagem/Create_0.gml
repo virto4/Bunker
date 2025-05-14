@@ -46,7 +46,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 20000
+	tempo_espera = 450
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
