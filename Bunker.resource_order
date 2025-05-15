@@ -149,5 +149,7 @@
     {"name":"spr_tela_opcoes_jogo","order":10,"path":"sprites/spr_tela_opcoes_jogo/spr_tela_opcoes_jogo.yy",},
     {"name":"spr_tileset","order":1,"path":"sprites/spr_tileset/spr_tileset.yy",},
     {"name":"spr_voltar","order":5,"path":"sprites/spr_voltar/spr_voltar.yy",},
+    {"name":"Sprite73","order":8,"path":"sprites/Sprite73/Sprite73.yy",},
+    {"name":"Sprite74","order":9,"path":"sprites/Sprite74/Sprite74.yy",},
   ],
 }

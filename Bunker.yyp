@@ -185,6 +185,8 @@
     {"id":{"name":"spr_tela_opcoes_jogo","path":"sprites/spr_tela_opcoes_jogo/spr_tela_opcoes_jogo.yy",},},
     {"id":{"name":"spr_tileset","path":"sprites/spr_tileset/spr_tileset.yy",},},
     {"id":{"name":"spr_voltar","path":"sprites/spr_voltar/spr_voltar.yy",},},
+    {"id":{"name":"Sprite73","path":"sprites/Sprite73/Sprite73.yy",},},
+    {"id":{"name":"Sprite74","path":"sprites/Sprite74/Sprite74.yy",},},
     {"id":{"name":"ts_casa","path":"tilesets/ts_casa/ts_casa.yy",},},
   ],
   "resourceType":"GMProject",
