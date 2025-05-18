@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"itens",
-    "path":"folders/Sprites/itens.yy",
+    "name":"armas",
+    "path":"folders/Sprites/itens/armas.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
