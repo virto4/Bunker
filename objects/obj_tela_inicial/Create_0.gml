@@ -1,27 +1,28 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 persistent = true
+
+window_set_fullscreen(true)
+cliques_dividir_tela = 0
+
 x2 = 350
 y2 = 150
 width = 512
 height = 256
 
-a_jogar = 1
-x_jogar = x2 
-y_jogar = y2
+l_dividir = 32
+x_dividir = 1860
+y_dividir = 40
+
+x_jogar = 1920 / 2
+y_jogar = 1080 - y2
 mudar_jogo = false
 tempo = 0
-
-a_opcoes = 1
-x_opcoes = x2
-y_opcoes = 1080 - y2
-mudar_opcoes = false
-sair_opcoes = false
-alpha_opcoes = 1
+a_jogar = 1
 
 a_conquistas = 1
-x_conquistas = 1920 - x2
-y_conquistas = y2
+x_conquistas = x2
+y_conquistas = 1080 - y2
 mudar_conquistas = false
 sair_conquistas = false
 alpha_conquistas = 1

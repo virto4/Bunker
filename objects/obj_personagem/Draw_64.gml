@@ -1,6 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 if alpha == 0 {
+	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
 		draw_set_font(fnt_principal)
 		draw_text(room_width / 2, 60, tempo_escrito div 1 + 1)//div é o comando para divisap inteira
