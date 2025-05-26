@@ -6,8 +6,8 @@
   "name":"obj_machado",
   "overriddenProperties":[],
   "parent":{
-    "name":"itens",
-    "path":"folders/Objetos/itens.yy",
+    "name":"armas",
+    "path":"folders/Objetos/itens/armas.yy",
   },
   "parentObjectId":{
     "name":"obj_coletavel",
