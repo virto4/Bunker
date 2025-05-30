@@ -1,5 +1,20 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+humores = ["NEUTRO", "COM NOJO", "HIPERATIVO", "FURIOSO", "DEPRIMIDO", "APAVORADO"]
+
+atributos = {
+	saude: 100,
+	fome: 100,
+	sede: 100,
+	sanidade: 100,
+	humor: humores[1],
+	sagacidade: 57,
+	forca: 88,
+	resistencia: 85,
+	fortuna: 32,
+	fadiga: 12
+}
+
 velh				= 0
 velv				= 0
 vel					= 300
