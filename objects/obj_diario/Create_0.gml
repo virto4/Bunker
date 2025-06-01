@@ -8,20 +8,23 @@ pagina_direita = 0
 pagina_esquerda = 0
 
 paginas = {
-	numero: 0,
-	dia1: "aconteceu",
-	dia2: "ainda estamos aqui",
-	dia3: "ainda aqui",
-	dia4: "não morri",
-	dia5: "aconteceu",
-	dia6: "ainda estamos aqui",
-	dia7: "ainda aqui",
-	dia8: "não morri",
-	dia10: "aconteceu",
-	dia11: "ainda estamos aqui",
-	dia12: "ainda aqui",
-	dia13: "não morri"
+	numero: 200,
+	dia1: "p1",
+	dia2: "ainda estamos aqui p2",
+	dia3: "ainda aqui p3",
+	dia4: "não morri p4",
+	dia5: "aconteceu p5",
+	dia6: "ainda estamos aqui p6",
+	dia7: "ainda aqui p7",
+	dia8: "não morri p8",
+	dia9: "aconteceu p9",
+	dia10: "ainda estamos aqui p10",
+	dia11: "ainda aqui",
+	dia12: "não morri"
 }
 
 tarefas = ds_list_create()
 paginas_escritas = ds_list_create()
+for(i = 0; i <= paginas.numero; i++) {
+	ds_list_add(paginas_escritas, "")
+}

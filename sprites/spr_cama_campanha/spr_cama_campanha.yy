@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
   "%Name":"spr_cama_campanha",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":159,
   "bbox_left":2,
   "bbox_right":75,
-  "bbox_top":0,
+  "bbox_top":28,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,

@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if alpha == 0 and !opcoes {
+if alpha == 0 and !global.tem_tela_aberta {
 	slot_selecionado++
 	if slot_selecionado > 5 {
 		slot_selecionado = 1

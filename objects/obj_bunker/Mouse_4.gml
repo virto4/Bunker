@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if !obj_personagem.opcoes {
+if !global.tem_tela_aberta {
 	if distance_to_object(obj_personagem) < 100 {
 		function mudar_slot_cheio() { //muda para o slot cheio
 			for (var _i = 1; _i <= 5; _i++) {

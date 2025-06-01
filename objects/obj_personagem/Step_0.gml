@@ -4,7 +4,7 @@ if !apertou_pulo {
 	depth = -y
 }
 
-if alpha == 0 and !opcoes {
+if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	var _cima, _baixo, _pulo, _esquerda, _direita
 	_esquerda = keyboard_check(inputs.esquerda)
 	_direita = keyboard_check(inputs.direita)
@@ -12,7 +12,8 @@ if alpha == 0 and !opcoes {
 	_baixo = keyboard_check(inputs.baixo)
 	_pulo = keyboard_check_pressed(inputs.pulo)
 
-	if keyboard_check_pressed(vk_escape) {
+	if !global.tem_tela_aberta and keyboard_check_pressed(vk_escape) {
+		global.tem_tela_aberta = true
 		opcoes = true
 	}
 
@@ -119,5 +120,6 @@ if alpha == 0 and !opcoes {
 	
 	if keyboard_check_pressed(vk_escape) {
 		opcoes = false
+		global.tem_tela_aberta = false
 	}
 }
