@@ -9,6 +9,7 @@ pagina_esquerda = 0
 
 paginas = {
 	numero: 200,
+	atributos: "Meus atributos: ",
 	dia1: "p1",
 	dia2: "ainda estamos aqui p2",
 	dia3: "ainda aqui p3",

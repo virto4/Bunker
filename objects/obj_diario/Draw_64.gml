@@ -50,4 +50,16 @@ if clicou {
 			global.tem_tela_aberta = false
 		}
 	}
+	if pagina == 0 {
+		draw_sprite(spr_sede, 0, 1920 / 2 - 300, 1080 / 2 - 300)
+		draw_sprite(spr_fome, 0, 1920 / 2 - 300, 1080 / 2 - 240)
+		draw_sprite(spr_saude, 0, 1920 / 2 - 300, 1080 / 2 - 180)
+		draw_sprite(spr_sanidade, 0, 1920 / 2 - 300, 1080 / 2 - 120)
+		draw_sprite(spr_sede, 0, 1920 / 2 - 300, 1080 / 2 - 60)
+		draw_sprite(spr_sagacidade, 0, 1920 / 2 - 300, 1080 / 2)
+		draw_sprite(spr_forca, 0, 1920 / 2 - 300, 1080 / 2 + 60)
+		draw_sprite(spr_resistencia, 0, 1920 / 2 - 300, 1080 / 2 + 120)
+		draw_sprite(spr_fortuna, 0, 1920 / 2 - 300, 1080 / 2 + 180)
+		draw_sprite(spr_fadiga, 0, 1920 / 2 - 300, 1080 / 2 + 240)
+	}
 }

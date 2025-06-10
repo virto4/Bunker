@@ -39,7 +39,7 @@ if (mouse_check_button_pressed(mb_left)) {
 
 switch dia {
 	case 1:
-		ds_list_replace(paginas_escritas, 0, obj_personagem.atributos)
+		ds_list_replace(paginas_escritas, 0, paginas.atributos)
 		ds_list_replace(paginas_escritas, 1, paginas.dia1)
 		break
 	case 2:
