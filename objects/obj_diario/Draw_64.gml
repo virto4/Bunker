@@ -51,15 +51,47 @@ if clicou {
 		}
 	}
 	if pagina == 0 {
+		var _sprite_humor
+		switch obj_personagem.atributos.humor {
+			case "COM NOJO":
+				_sprite_humor = spr_nojo
+				break
+			case "HIPERATIVO":
+				_sprite_humor = spr_hiperativo
+				break
+			case "APAVORADO":
+				_sprite_humor = spr_apavorado
+				break
+			case "FURIOSO":
+				_sprite_humor = spr_furioso
+				break
+			case "DEPRIMIDO":
+				_sprite_humor = spr_deprimido
+				break
+			case "NEUTRO":
+				_sprite_humor = spr_neutro
+				break
+		}
 		draw_sprite(spr_sede, 0, 1920 / 2 - 300, 1080 / 2 - 300)
 		draw_sprite(spr_fome, 0, 1920 / 2 - 300, 1080 / 2 - 240)
 		draw_sprite(spr_saude, 0, 1920 / 2 - 300, 1080 / 2 - 180)
 		draw_sprite(spr_sanidade, 0, 1920 / 2 - 300, 1080 / 2 - 120)
-		draw_sprite(spr_sede, 0, 1920 / 2 - 300, 1080 / 2 - 60)
+		draw_sprite(_sprite_humor, 0, 1920 / 2 - 300, 1080 / 2 - 60)
 		draw_sprite(spr_sagacidade, 0, 1920 / 2 - 300, 1080 / 2)
 		draw_sprite(spr_forca, 0, 1920 / 2 - 300, 1080 / 2 + 60)
 		draw_sprite(spr_resistencia, 0, 1920 / 2 - 300, 1080 / 2 + 120)
 		draw_sprite(spr_fortuna, 0, 1920 / 2 - 300, 1080 / 2 + 180)
 		draw_sprite(spr_fadiga, 0, 1920 / 2 - 300, 1080 / 2 + 240)
+		
+		draw_sprite_ext(spr_sede, 0, 1920 / 2 + 300, 1080 / 2 - 300, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_fome, 0, 1920 / 2 + 300, 1080 / 2 - 240, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_saude, 0, 1920 / 2 + 300, 1080 / 2 - 180, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_sanidade, 0, 1920 / 2 + 300, 1080 / 2 - 120, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(_sprite_humor, 0, 1920 / 2 + 300, 1080 / 2 - 60, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_sagacidade, 0, 1920 / 2 + 300, 1080 / 2, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_forca, 0, 1920 / 2 + 300, 1080 / 2 + 60, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_resistencia, 0, 1920 / 2 + 300, 1080 / 2 + 120, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_fortuna, 0, 1920 / 2 + 300, 1080 / 2 + 180, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_fadiga, 0, 1920 / 2 + 300, 1080 / 2 + 240, -1, 1, 0, c_white, 1)
 	}
 }

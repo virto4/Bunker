@@ -40,39 +40,40 @@ if (mouse_check_button_pressed(mb_left)) {
 switch dia {
 	case 1:
 		ds_list_replace(paginas_escritas, 0, paginas.atributos)
-		ds_list_replace(paginas_escritas, 1, paginas.dia1)
+		ds_list_replace(paginas_escritas, 1, paginas.atributos2)
+		ds_list_replace(paginas_escritas, 2, paginas.dia1)
 		break
 	case 2:
-		ds_list_replace(paginas_escritas, 2, paginas.dia2)
+		ds_list_replace(paginas_escritas, 3, paginas.dia2)
 		break
 	case 3:
-		ds_list_replace(paginas_escritas, 3, paginas.dia3)
+		ds_list_replace(paginas_escritas, 4, paginas.dia3)
 		break
 	case 4:
-		ds_list_replace(paginas_escritas, 4, paginas.dia4)
+		ds_list_replace(paginas_escritas, 5, paginas.dia4)
 		break
 	case 5:
-		ds_list_replace(paginas_escritas, 5, paginas.dia5)
+		ds_list_replace(paginas_escritas, 6, paginas.dia5)
 		break
 	case 6:
-		ds_list_replace(paginas_escritas, 6, paginas.dia6)
+		ds_list_replace(paginas_escritas, 7, paginas.dia6)
 		break
 	case 7:
-		ds_list_replace(paginas_escritas, 7, paginas.dia7)
+		ds_list_replace(paginas_escritas, 8, paginas.dia7)
 		break
 	case 8:
-		ds_list_replace(paginas_escritas, 8, paginas.dia8)
+		ds_list_replace(paginas_escritas, 9, paginas.dia8)
 		break
 	case 9:
-		ds_list_replace(paginas_escritas, 9, paginas.dia9)
+		ds_list_replace(paginas_escritas, 10, paginas.dia9)
 		break
 	case 10:
-		ds_list_replace(paginas_escritas, 10, paginas.dia10)
+		ds_list_replace(paginas_escritas, 11, paginas.dia10)
 		break
 	case 11:
-		ds_list_replace(paginas_escritas, 11, paginas.dia11)
+		ds_list_replace(paginas_escritas, 12, paginas.dia11)
 		break
 	case 12:
-		ds_list_replace(paginas_escritas, 12, paginas.dia12)
+		ds_list_replace(paginas_escritas, 13, paginas.dia12)
 		break
 }
