@@ -7,6 +7,9 @@ pagina = 0
 pagina_direita = 0
 pagina_esquerda = 0
 
+image_index = 0
+image_speed = 0
+
 paginas = {
 	numero: 200,
 	atributos: "Meus atributos: ",

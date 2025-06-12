@@ -7,7 +7,7 @@ atributos = {
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
-	humor: humores[1],
+	humor: humores[0],
 	sagacidade: 57,
 	forca: 88,
 	resistencia: 85,

@@ -25,7 +25,7 @@ function quebrar_texto(texto, largura_maxima) {
     return linhas;
 }
 
-if clicou {
+if clicou and image_index == image_number - 1{
 	pagina_esquerda = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina), 375) 
 	pagina_direita = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina + 1), 375) 
 	
@@ -50,6 +50,11 @@ if clicou {
 			global.tem_tela_aberta = false
 		}
 	}
+
+	draw_set_font(fnt_kiwisoda)
+	draw_text(1920 / 2 - 500, 1080 / 2 - 450, pagina * 2)
+	draw_text(1920 / 2 + 500, 1080 / 2 - 450, pagina * 2 + 1)
+	
 	if pagina == 0 {
 		var _sprite_humor
 		switch obj_personagem.atributos.humor {
@@ -72,26 +77,71 @@ if clicou {
 				_sprite_humor = spr_neutro
 				break
 		}
-		draw_sprite(spr_sede, 0, 1920 / 2 - 300, 1080 / 2 - 300)
-		draw_sprite(spr_fome, 0, 1920 / 2 - 300, 1080 / 2 - 240)
-		draw_sprite(spr_saude, 0, 1920 / 2 - 300, 1080 / 2 - 180)
-		draw_sprite(spr_sanidade, 0, 1920 / 2 - 300, 1080 / 2 - 120)
-		draw_sprite(_sprite_humor, 0, 1920 / 2 - 300, 1080 / 2 - 60)
-		draw_sprite(spr_sagacidade, 0, 1920 / 2 - 300, 1080 / 2)
-		draw_sprite(spr_forca, 0, 1920 / 2 - 300, 1080 / 2 + 60)
-		draw_sprite(spr_resistencia, 0, 1920 / 2 - 300, 1080 / 2 + 120)
-		draw_sprite(spr_fortuna, 0, 1920 / 2 - 300, 1080 / 2 + 180)
-		draw_sprite(spr_fadiga, 0, 1920 / 2 - 300, 1080 / 2 + 240)
 		
-		draw_sprite_ext(spr_sede, 0, 1920 / 2 + 300, 1080 / 2 - 300, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_fome, 0, 1920 / 2 + 300, 1080 / 2 - 240, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_saude, 0, 1920 / 2 + 300, 1080 / 2 - 180, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_sanidade, 0, 1920 / 2 + 300, 1080 / 2 - 120, -1, 1, 0, c_white, 1)
+		
+		
+		draw_sprite(spr_sede_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 300)
+		draw_sprite(spr_fome_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 240)
+		draw_sprite(spr_saude_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 180)
+		draw_sprite(spr_sanidade_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 120)
+		draw_sprite(_sprite_humor, 0, 1920 / 2 - 300, 1080 / 2 - 60)
+		draw_sprite(spr_sagacidade_cheio, 0, 1920 / 2 - 300, 1080 / 2)
+		draw_sprite(spr_forca_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 60)
+		draw_sprite(spr_resistencia_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 120)
+		draw_sprite(spr_fortuna_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 180)
+		draw_sprite(spr_fadiga_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 240)
+		
+		draw_sprite_part(spr_sede_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.sede / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 300 - 25)
+		draw_sprite_part(spr_fome_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fome / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 240 - 25)
+		draw_sprite_part(spr_saude_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.saude / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 180 - 25)
+		draw_sprite_part(spr_sanidade_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.sanidade / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 120 - 25)
+		draw_sprite_part(spr_sagacidade_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.sagacidade / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 25)
+		draw_sprite_part(spr_forca_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.forca / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 60 - 25)
+		draw_sprite_part(spr_resistencia_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.resistencia / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 120 - 25)
+		draw_sprite_part(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 180 - 25)
+		draw_sprite_part(spr_fadiga_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fadiga/ 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 240 - 25)
+		
+		
+		switch obj_davi.atributos.humor {
+			case "COM NOJO":
+				_sprite_humor = spr_nojo
+				break
+			case "HIPERATIVO":
+				_sprite_humor = spr_hiperativo
+				break
+			case "APAVORADO":
+				_sprite_humor = spr_apavorado
+				break
+			case "FURIOSO":
+				_sprite_humor = spr_furioso
+				break
+			case "DEPRIMIDO":
+				_sprite_humor = spr_deprimido
+				break
+			case "NEUTRO":
+				_sprite_humor = spr_neutro
+				break
+		}
+		
+		draw_sprite_ext(spr_sede_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 300, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_fome_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 240, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_saude_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 180, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_sanidade_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 120, -1, 1, 0, c_white, 1)
 		draw_sprite_ext(_sprite_humor, 0, 1920 / 2 + 300, 1080 / 2 - 60, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_sagacidade, 0, 1920 / 2 + 300, 1080 / 2, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_forca, 0, 1920 / 2 + 300, 1080 / 2 + 60, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_resistencia, 0, 1920 / 2 + 300, 1080 / 2 + 120, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_fortuna, 0, 1920 / 2 + 300, 1080 / 2 + 180, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_fadiga, 0, 1920 / 2 + 300, 1080 / 2 + 240, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_sagacidade_cheio, 0, 1920 / 2 + 300, 1080 / 2, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_forca_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 60, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_resistencia_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 120, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_fortuna_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 180, -1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_fadiga_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 240, -1, 1, 0, c_white, 1)
+		
+		draw_sprite_part_ext(spr_sede_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.sede / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 300 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_fome_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fome / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 240 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_saude_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.saude / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 180 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_sanidade_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.sanidade / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 120 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_sagacidade_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.sagacidade / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_forca_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.forca / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 60 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_resistencia_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.resistencia / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 120 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 180 - 25, -1, 1, c_white, 1)
+		draw_sprite_part_ext(spr_fadiga_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fadiga/ 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 240 - 25, -1, 1, c_white, 1)
 	}
 }

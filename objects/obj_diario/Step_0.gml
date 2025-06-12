@@ -7,6 +7,23 @@ if keyboard_check_pressed(vk_escape) {
 		global.tem_tela_aberta = false
 	}
 }
+
+if clicou {
+	if image_index <= image_number - 1 {
+		image_speed = 1
+	} else {
+		image_speed = 0
+		image_index = image_number - 1
+	}
+} else {
+	if image_index >= 1 {
+		image_speed = -1
+	} else {
+		image_speed = 0
+		image_index = 0
+	}
+}
+
 draw_set_font(fnt_kiwisoda)
 // draw_gui event
 var txt_voltar = "voltar";
