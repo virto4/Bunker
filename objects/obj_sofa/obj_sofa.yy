@@ -9,7 +9,10 @@
     "name":"moveis",
     "path":"folders/Objetos/moveis.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_colidivel",
+    "path":"objects/obj_colidivel/obj_colidivel.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

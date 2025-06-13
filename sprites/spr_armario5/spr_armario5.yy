@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
   "%Name":"spr_armario5",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":63,
   "bbox_left":0,
   "bbox_right":499,
-  "bbox_top":4,
+  "bbox_top":44,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,

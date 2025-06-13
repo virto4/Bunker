@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_armario5",
+  "%Name":"obj_chuveiro",
   "eventList":[],
   "managed":true,
-  "name":"obj_armario5",
+  "name":"obj_chuveiro",
   "overriddenProperties":[],
   "parent":{
     "name":"moveis",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_armario5",
-    "path":"sprites/spr_armario5/spr_armario5.yy",
+    "name":"spr_chuveiro",
+    "path":"sprites/spr_chuveiro/spr_chuveiro.yy",
   },
   "spriteMaskId":null,
   "visible":true,

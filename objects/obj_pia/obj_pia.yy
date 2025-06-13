@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_armario5",
+  "%Name":"obj_pia",
   "eventList":[],
   "managed":true,
-  "name":"obj_armario5",
+  "name":"obj_pia",
   "overriddenProperties":[],
   "parent":{
     "name":"moveis",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_armario5",
-    "path":"sprites/spr_armario5/spr_armario5.yy",
+    "name":"spr_pia",
+    "path":"sprites/spr_pia/spr_pia.yy",
   },
   "spriteMaskId":null,
   "visible":true,

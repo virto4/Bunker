@@ -1,18 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_armario5",
+  "%Name":"obj_tapete4",
   "eventList":[],
   "managed":true,
-  "name":"obj_armario5",
+  "name":"obj_tapete4",
   "overriddenProperties":[],
   "parent":{
     "name":"moveis",
     "path":"folders/Objetos/moveis.yy",
   },
-  "parentObjectId":{
-    "name":"obj_colidivel",
-    "path":"objects/obj_colidivel/obj_colidivel.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_armario5",
-    "path":"sprites/spr_armario5/spr_armario5.yy",
+    "name":"spr_tapete4",
+    "path":"sprites/spr_tapete4/spr_tapete4.yy",
   },
   "spriteMaskId":null,
   "visible":true,
