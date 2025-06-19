@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_janela1",
+  "%Name":"obj_janela",
   "eventList":[],
   "managed":true,
-  "name":"obj_janela1",
+  "name":"obj_janela",
   "overriddenProperties":[],
   "parent":{
     "name":"moveis",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_janela1",
-    "path":"sprites/spr_janela1/spr_janela1.yy",
+    "name":"spr_janela",
+    "path":"sprites/spr_janela/spr_janela.yy",
   },
   "spriteMaskId":null,
   "visible":true,
