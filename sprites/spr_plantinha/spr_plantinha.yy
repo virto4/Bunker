@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"alimentos",
-    "path":"folders/Sprites/itens/alimentos.yy",
+    "name":"itens",
+    "path":"folders/Sprites/itens.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
