@@ -23,7 +23,7 @@
   ],
   "name":"spr_pia",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"moveis",
     "path":"folders/Sprites/moveis.yy",
@@ -78,7 +78,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":48,
-    "yorigin":96,
+    "yorigin":32,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

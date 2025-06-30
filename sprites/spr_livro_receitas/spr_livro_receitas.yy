@@ -3,7 +3,7 @@
   "%Name":"spr_livro_receitas",
   "bboxMode":0,
   "bbox_bottom":31,
-  "bbox_left":2,
+  "bbox_left":0,
   "bbox_right":31,
   "bbox_top":0,
   "collisionKind":1,
@@ -14,8 +14,8 @@
   "frames":[
     {"$GMSpriteFrame":"","%Name":"c6cd6e33-87e0-44a7-b9d8-5148ab5abafa","name":"c6cd6e33-87e0-44a7-b9d8-5148ab5abafa","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX":0,
-  "gridY":0,
+  "gridX":2,
+  "gridY":2,
   "height":32,
   "HTile":false,
   "layers":[

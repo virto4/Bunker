@@ -23,7 +23,7 @@
   ],
   "name":"spr_armario5",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"moveis",
     "path":"folders/Sprites/moveis.yy",
@@ -78,7 +78,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":250,
-    "yorigin":32,
+    "yorigin":5,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

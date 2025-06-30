@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
   "%Name":"spr_sofa_bunker",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":95,
   "bbox_left":6,
   "bbox_right":261,
-  "bbox_top":2,
+  "bbox_top":58,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
