@@ -91,7 +91,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 400
+	tempo_espera = 60
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
@@ -203,34 +203,6 @@ if room_get_name(room) == "rm_casa" {
 				break
 			case obj_tv:
 				mudar_fase(obj_tv)
-				break
-		}
-	}
-}
-
-function desenhar_selecionado(_slot) { //desenha uma camada acima do sprite para identificar a psoiçao que ele ocupa no mapa
-	if room_get_name(room) == "rm_casa" {
-		switch(_slot) {
-			case obj_pilha:
-				obj_anterior = instance_create_layer(global.casa.pilha_x, global.casa.pilha_y, "Selecionados", obj_pilha_selecionado, {})
-				break
-			case obj_radio:
-				obj_anterior = instance_create_layer(global.casa.radio_x, global.casa.radio_y, "Selecionados", obj_radio_selecionado, {})
-				break
-			case obj_municao:
-				obj_anterior = instance_create_layer(global.casa.municao_x, global.casa.municao_y, "Selecionados", obj_municao_selecionado, {})
-				break
-		}
-	} else if room_get_name(room) == "rm_bunker" {
-		switch(_slot) {
-			case obj_radio:
-				obj_anterior = instance_create_layer(global.posicoes.radio_x, global.posicoes.radio_y, "Selecionados", obj_radio_selecionado, {})
-				break
-			case obj_pilha:
-				obj_anterior = instance_create_layer(global.posicoes.pilha_x, global.posicoes.pilha_y, "Selecionados", obj_pilha_selecionado, {})
-				break
-			case obj_municao:
-				obj_anterior = instance_create_layer(global.posicoes.municao_x, global.posicoes.municao_y, "Selecionados", obj_municao_selecionado, {})
 				break
 		}
 	}

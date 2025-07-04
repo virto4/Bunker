@@ -50,32 +50,4 @@ if !global.tem_tela_aberta {
 		instance_destroy(obj_personagem.obj_anterior)
 		obj_personagem.obj_anterior = noone
 	}
-
-	switch obj_personagem.slot_selecionado {
-		case 1:
-			if obj_personagem.slot1 != noone {
-				obj_personagem.desenhar_selecionado(obj_personagem.slot1)
-			}
-			break
-		case 2:
-			if obj_personagem.slot2 != noone {
-				obj_personagem.desenhar_selecionado(obj_personagem.slot2)
-			}
-			break
-		case 3:
-			if obj_personagem.slot3 != noone {
-				obj_personagem.desenhar_selecionado(obj_personagem.slot3)
-			}
-			break
-		case 4:
-			if obj_personagem.slot4 != noone {
-				obj_personagem.desenhar_selecionado(obj_personagem.slot4)
-			}
-			break
-		case 5:
-			if obj_personagem.slot5 != noone {
-				obj_personagem.desenhar_selecionado(obj_personagem.slot5)
-			}
-			break
-	}
 }

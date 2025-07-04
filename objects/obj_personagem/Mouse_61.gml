@@ -11,32 +11,4 @@ if alpha == 0 and !global.tem_tela_aberta {
 		instance_destroy(obj_anterior)
 		obj_anterior = noone
 	}
-
-	switch slot_selecionado {
-		case 1:
-			if slot1 != noone {
-				desenhar_selecionado(slot1)
-			}
-			break
-		case 2:
-			if slot2 != noone {
-				desenhar_selecionado(slot2)
-			}
-			break
-		case 3:
-			if slot3 != noone {
-				desenhar_selecionado(slot3)
-			}
-			break
-		case 4:
-			if slot4 != noone {
-				desenhar_selecionado(slot4)
-			}
-			break
-		case 5:
-			if slot5 != noone {
-				desenhar_selecionado(slot5)
-			}
-			break
-	}
 }
