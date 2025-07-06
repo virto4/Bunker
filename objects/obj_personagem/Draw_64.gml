@@ -7,6 +7,10 @@ if alpha == 0 {
 		draw_text(room_width / 2, 60, tempo_escrito div 1 + 1)//div é o comando para divisap inteira
 	}
 }
+
+draw_text(30, 30, ds_list_size(global.itens_pegos))
+
+
 draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
 
 var _slotx1=768

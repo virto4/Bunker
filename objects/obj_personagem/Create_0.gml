@@ -43,41 +43,42 @@ clicou_fov = false
 view_width_base = camera_get_view_width(view_camera[0]);
 view_height_base = camera_get_view_height(view_camera[0]);
 
-qtde_itens = {
-	obj_acucar: 0,
-	obj_agua: 0,
-	obj_alface: 0,
-	obj_arroz: 0,
-	obj_batata: 0,
-	obj_cerveja: 0,
-	obj_chocolate: 0,
-	obj_farinha: 0,
-	obj_frango: 0,
-	obj_ovo: 0,
-	obj_repolho: 0,
-	obj_bola_basquete: 0,
-	obj_embalagem_bala: 0,
-	obj_gato_empalhado: 0,
-	obj_ursinho: 0,
-	obj_arma_biologica: 0,
-	obj_frigideira: 0,
-	obj_machado: 0,
-	obj_metralhadora: 0,
-	obj_municao: 0,
-	obj_panela_pressao: 0,
-	obj_picareta: 0,
-	obj_pistola: 0,
-	obj_analgesico: 0,
-	obj_ansiolitico: 0,
-	obj_antibiotico: 0,
-	obj_aspirina: 0,
-	obj_curativo: 0,
-	obj_baralho: 0,
-	obj_contador_geiger: 0,
-	obj_domino: 0,
-	obj_saco_lixo: 0,
-	obj_tv: 0
+qtde_itens1 = {
+    "obj_acucar": 0,
+    "obj_agua": 0,
+    "obj_alface": 0,
+    "obj_arroz": 0,
+    "obj_batata": 0,
+    "obj_cerveja": 0,
+    "obj_chocolate": 0,
+    "obj_farinha": 0,
+    "obj_frango": 0,
+    "obj_ovo": 0,
+    "obj_repolho": 0,
+    "obj_bola_basquete": 0,
+    "obj_embalagem_bala": 0,
+    "obj_gato_empalhado": 0,
+    "obj_ursinho": 0,
+    "obj_arma_biologica": 0,
+    "obj_frigideira": 0,
+    "obj_machado": 0,
+    "obj_metralhadora": 0,
+    "obj_municao": 0,
+    "obj_panela_pressao": 0,
+    "obj_picareta": 0,
+    "obj_pistola": 0,
+    "obj_analgesico": 0,
+    "obj_ansiolitico": 0,
+    "obj_antibiotico": 0,
+    "obj_aspirina": 0,
+    "obj_curativo": 0,
+    "obj_baralho": 0,
+    "obj_contador_geiger": 0,
+    "obj_domino": 0,
+    "obj_saco_lixo": 0,
+    "obj_tv": 0
 }
+
 
 inputs = {
 	esquerda	: ord("A"),
@@ -96,123 +97,128 @@ if room_get_name(room) == "rm_casa" {
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {
-			case obj_municao: //se o jogador pegou municao, instancia a municao no bunker
-				mudar_fase(obj_municao)
-				break
+			case obj_municao:
+				mudar_fase("obj_municao", obj_municao);
+				break;
 			case obj_radio:
-				mudar_fase(obj_radio)
-				break
+				mudar_fase("obj_radio", obj_radio);
+				break;
 			case obj_pilha:
-				mudar_fase(obj_pilha)
-				break
+				mudar_fase("obj_pilha", obj_pilha);
+				break;
 			case obj_acucar:
-				mudar_fase(obj_acucar)
-				break
+				mudar_fase("obj_acucar", obj_acucar);
+				break;
 			case obj_agua:
-				mudar_fase(obj_agua)
-				break
+				mudar_fase("obj_agua", obj_agua);
+				break;
 			case obj_alface:
-				mudar_fase(obj_alface)
-				break
+				mudar_fase("obj_alface", obj_alface);
+				break;
 			case obj_arroz:
-				mudar_fase(obj_arroz)
-				break
+				mudar_fase("obj_arroz", obj_arroz);
+				break;
 			case obj_arroz_frango:
-				mudar_fase(obj_arroz_frango)
-				break
+				mudar_fase("obj_arroz_frango", obj_arroz_frango);
+				break;
 			case obj_batata:
-				mudar_fase(obj_batata)
-				break
+				mudar_fase("obj_batata", obj_batata);
+				break;
 			case obj_cerveja:
-				mudar_fase(obj_cerveja)
-				break
+				mudar_fase("obj_cerveja", obj_cerveja);
+				break;
 			case obj_chocolate:
-				mudar_fase(obj_chocolate)
-				break
+				mudar_fase("obj_chocolate", obj_chocolate);
+				break;
 			case obj_farinha:
-				mudar_fase(obj_farinha)
-				break
+				mudar_fase("obj_farinha", obj_farinha);
+				break;
 			case obj_frango:
-				mudar_fase(obj_frango)
-				break
+				mudar_fase("obj_frango", obj_frango);
+				break;
 			case obj_ovo:
-				mudar_fase(obj_ovo)
-				break
+				mudar_fase("obj_ovo", obj_ovo);
+				break;
 			case obj_repolho:
-				mudar_fase(obj_repolho)
-				break
+				mudar_fase("obj_repolho", obj_repolho);
+				break;
 			case obj_bola_basquete:
-				mudar_fase(obj_bola_basquete)
-				break
+				mudar_fase("obj_bola_basquete", obj_bola_basquete);
+				break;
 			case obj_embalagem_bala:
-				mudar_fase(obj_embalagem_bala)
-				break
+				mudar_fase("obj_embalagem_bala", obj_embalagem_bala);
+				break;
 			case obj_gato_empalhado:
-				mudar_fase(obj_gato_empalhado)
-				break
+				mudar_fase("obj_gato_empalhado", obj_gato_empalhado);
+				break;
 			case obj_ursinho:
-				mudar_fase(obj_ursinho)
-				break
+				mudar_fase("obj_ursinho", obj_ursinho);
+				break;
 			case obj_arma_biologica:
-				mudar_fase(obj_arma_biologica)
-				break
+				mudar_fase("obj_arma_biologica", obj_arma_biologica);
+				break;
 			case obj_frigideira:
-				mudar_fase(obj_frigideira)
-				break
+				mudar_fase("obj_frigideira", obj_frigideira);
+				break;
 			case obj_panela_pressao:
-				mudar_fase(obj_panela_pressao)
-				break
+				mudar_fase("obj_panela_pressao", obj_panela_pressao);
+				break;
 			case obj_machado:
-				mudar_fase(obj_machado)
-				break
+				mudar_fase("obj_machado", obj_machado);
+				break;
 			case obj_metralhadora:
-				mudar_fase(obj_metralhadora)
-				break
+				mudar_fase("obj_metralhadora", obj_metralhadora);
+				break;
 			case obj_picareta:
-				mudar_fase(obj_picareta)
-				break
+				mudar_fase("obj_picareta", obj_picareta);
+				break;
 			case obj_pistola:
-				mudar_fase(obj_pistola)
-				break
+				mudar_fase("obj_pistola", obj_pistola);
+				break;
 			case obj_analgesico:
-				mudar_fase(obj_analgesico)
-				break
+				mudar_fase("obj_analgesico", obj_analgesico);
+				break;
 			case obj_ansiolitico:
-				mudar_fase(obj_ansiolitico)
-				break
+				mudar_fase("obj_ansiolitico", obj_ansiolitico);
+				break;
 			case obj_antibiotico:
-				mudar_fase(obj_antibiotico)
-				break
+				mudar_fase("obj_antibiotico", obj_antibiotico);
+				break;
 			case obj_aspirina:
-				mudar_fase(obj_aspirina)
-				break
+				mudar_fase("obj_aspirina", obj_aspirina);
+				break;
 			case obj_curativo:
-				mudar_fase(obj_curativo)
-				break
+				mudar_fase("obj_curativo", obj_curativo);
+				break;
 			case obj_baralho:
-				mudar_fase(obj_baralho)
-				break
+				mudar_fase("obj_baralho", obj_baralho);
+				break;
 			case obj_contador_geiger:
-				mudar_fase(obj_contador_geiger)
-				break
+				mudar_fase("obj_contador_geiger", obj_contador_geiger);
+				break;
 			case obj_domino:
-				mudar_fase(obj_domino)
-				break
+				mudar_fase("obj_domino", obj_domino);
+				break;
 			case obj_saco_lixo:
-				mudar_fase(obj_saco_lixo)
-				break
+				mudar_fase("obj_saco_lixo", obj_saco_lixo);
+				break;
 			case obj_tv:
-				mudar_fase(obj_tv)
-				break
+				mudar_fase("obj_tv", obj_tv);
+				break;
+		}
+
+	}
+
+	function mudar_fase(nome_obj, index_obj) {
+		if variable_struct_get(qtde_itens1, nome_obj) == 0 { //pega o valor de tde_itens chamado obj
+			var pos = variable_struct_get(global.posicoes, nome_obj)
+			var ax = variable_struct_get(pos, "x")
+			var ay = variable_struct_get(pos, "y")
+			inst = instance_create_layer(ax, ay, layer_get_id("Instances"), index_obj, {})
+			variable_struct_set(qtde_itens1, nome_obj, variable_struct_get(qtde_itens1, nome_obj) + 1)
+		} else { //se pegou mais de uma municao, no obj_municao estara dizendo quantas ela tem
+			//variable_instance_set(obj, "qtde_itens", variable_instance_get(obj, "qtde_itens") + 1)
+			variable_instance_set(inst, "qtde_itens", variable_instance_get(inst, "qtde_itens"))
 		}
 	}
-}
-
-function mudar_fase(obj) {
-	if qtde_itens.obj == 0 {
-		instance_create_layer(global.posicoes.obj, global.posicoes.obj, layer_get_id("Instances"), obj, {})
-		qtde_itens.obj++
-		} else { //se pegou mais de uma municao, no obj_municao estara dizendo quantas ela tem
-			obj.qtde_itens++
-		}
 }
