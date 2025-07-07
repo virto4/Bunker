@@ -3,9 +3,9 @@
 itens_pegos = ds_list_create()
 
 posicoes = {
-	"obj_municao": {"x": 960, "y": 180},
-	"obj_radio": {"x": 860, "y": 410},
-	"obj_pilha": {"x": 1020, "y": 180},
+	"obj_municao": {"x": 274, "y": 210},
+	"obj_radio": {"x": 500, "y": 482},
+	"obj_pilha": {"x": 250, "y": 213},
 	"obj_bola_basquete": {"x": 256, "y": 247},
 	"obj_embalagem_bala": {"x": 1034, "y": 170},
 	"obj_gato_empalhado": {"x": 1033, "y": 245},
@@ -40,40 +40,21 @@ posicoes = {
 	"obj_repolho": {"x": 361, "y": 638}
 }
 
-casa = {
-	obj_municao: {x: 675, y: 693},
-	obj_radio: {x:622, y:675},
-	obj_pilha: {x:308, y:657},
-	obj_bola_basquete: {x:576,y:171},
-	obj_embalagem_bala: {x:629,y:987},
-	obj_gato_empalhado: {x:415,y:982},
-	obj_ursinho: {x:356.5, y:684},
-	obj_arma_biologica: {x:1437,y:537},
-	obj_frigideira: {},
-	obj_machado: {},
-	obj_metralhadora: {},
-	obj_panela_pressao: {},
-	obj_picareta: {},
-	obj_pistola: {},
-	obj_analgesico: {},
-	obj_ansiolitico: {},
-	obj_antibiotico: {},
-	obj_aspirina: {},
-	obj_curativo: {},
-	obj_baralho: {},
-	obj_contador_geiger: {},
-	obj_domino: {},
-	obj_saco_lixo: {},
-	obj_tv: {},
-	obj_acucar: {},
-	obj_agua: {},
-	obj_alface: {},
-	obj_arroz: {},
-	obj_batata: {},
-	obj_cerveja: {},
-	obj_chocolate: {},
-	obj_farinha: {},
-	obj_frango: {},
-	obj_ovo: {},
-	obj_repolho: {}
-}
+casa = [
+    ["obj_radio", 622, 675],
+    ["obj_bola_basquete", 576, 171],
+    ["obj_embalagem_bala", 629, 987],
+    ["obj_gato_empalhado", 415, 982],
+    ["obj_ursinho", 356.5, 684],
+    ["obj_arma_biologica", 1437, 537],
+    ["obj_frigideira", 1824, 474.5],
+    ["obj_machado", 1494, 785],
+    ["obj_metralhadora", 308.5, 720],
+    ["obj_panela_pressao", 1816, 528],
+    ["obj_picareta", 464, 975.6163],
+    ["obj_pistola", 613, 703.5],
+    ["obj_baralho", 936, 692],
+    ["obj_contador_geiger", 929, 855],
+    ["obj_domino", 945, 804],
+    ["obj_tv", 1265, 944]
+]

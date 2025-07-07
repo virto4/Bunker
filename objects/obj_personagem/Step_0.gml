@@ -115,6 +115,7 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	if display_mouse_get_x() > (display_get_width() / 2 - 65 * 1366 / 1920) and display_mouse_get_x() < (display_get_width() / 2 + 65 * 1366 / 1920) and display_mouse_get_y() > (display_get_height() / 2 - 185 * 768 / 1080) and display_mouse_get_y() < (display_get_height() / 2 - 115 * 768 / 1080) {
 		if mouse_check_button_pressed(mb_left) {
 			room_goto(rm_tela_inicial)
+			ds_list_clear(global.itens_pegos)
 		}
 	}
 	

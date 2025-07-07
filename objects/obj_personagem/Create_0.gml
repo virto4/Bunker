@@ -22,13 +22,17 @@ vel_diagonal		= 212
 apertou_pulo		= false
 posicao_pre_pulo	= 0
 colidiu_porta_aux	= false
-slot_selecionado	= 1
+slot_selecionado	= 5
 slot1=noone
 slot2=noone
 slot3=noone
 slot4=noone
 slot5=noone
-itens_nao_consumiveis = [obj_radio]
+global.tem_tela_aberta = false
+
+itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_gato_empalhado, obj_ursinho,
+						obj_arma_biologica, obj_frigideira, obj_machado, obj_metralhadora, obj_pistola,
+						obj_panela_pressao, obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho]
 is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
@@ -76,7 +80,9 @@ qtde_itens1 = {
     "obj_contador_geiger": 0,
     "obj_domino": 0,
     "obj_saco_lixo": 0,
-    "obj_tv": 0
+    "obj_tv": 0,
+	"obj_radio": 0,
+	"obj_pilha": 0
 }
 
 
@@ -92,7 +98,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 60
+	tempo_espera = 90
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
@@ -206,7 +212,6 @@ if room_get_name(room) == "rm_casa" {
 				mudar_fase("obj_tv", obj_tv);
 				break;
 		}
-
 	}
 
 	function mudar_fase(nome_obj, index_obj) {
@@ -218,7 +223,7 @@ if room_get_name(room) == "rm_casa" {
 			variable_struct_set(qtde_itens1, nome_obj, variable_struct_get(qtde_itens1, nome_obj) + 1)
 		} else { //se pegou mais de uma municao, no obj_municao estara dizendo quantas ela tem
 			//variable_instance_set(obj, "qtde_itens", variable_instance_get(obj, "qtde_itens") + 1)
-			variable_instance_set(inst, "qtde_itens", variable_instance_get(inst, "qtde_itens"))
+			variable_instance_set(instance_find(index_obj, 0), "qtde_itens", variable_instance_get(instance_find(index_obj, 0), "qtde_itens") + 1)
 		}
 	}
 }

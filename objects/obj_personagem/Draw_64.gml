@@ -7,10 +7,6 @@ if alpha == 0 {
 		draw_text(room_width / 2, 60, tempo_escrito div 1 + 1)//div é o comando para divisap inteira
 	}
 }
-
-draw_text(30, 30, ds_list_size(global.itens_pegos))
-
-
 draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
 
 var _slotx1=768
@@ -38,19 +34,49 @@ switch (slot_selecionado) {
 }
 
 if slot1 != noone {
-	draw_sprite_ext(object_get_sprite(slot1), 0, _slotx1, 1020, 2, 2, 0, c_white, 1)
+	var width = sprite_get_width(object_get_sprite(slot1))
+	var heigth = sprite_get_height(object_get_sprite(slot1))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	draw_sprite_ext(object_get_sprite(slot1), 0, _slotx1, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
 }
 if slot2 != noone {
-	draw_sprite_ext(object_get_sprite(slot2), 0, _slotx2, 1020, 2, 2, 0, c_white, 1)
+	var width = sprite_get_width(object_get_sprite(slot2))
+	var heigth = sprite_get_height(object_get_sprite(slot2))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	draw_sprite_ext(object_get_sprite(slot2), 0, _slotx2, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
 }
 if slot3 != noone {
-	draw_sprite_ext(object_get_sprite(slot3), 0, _slotx3, 1020, 2, 2, 0, c_white, 1)
+	var width = sprite_get_width(object_get_sprite(slot3))
+	var heigth = sprite_get_height(object_get_sprite(slot3))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	draw_sprite_ext(object_get_sprite(slot3), 0, _slotx3, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
 }
 if slot4 != noone {
-	draw_sprite_ext(object_get_sprite(slot4), 0, _slotx4, 1020, 2, 2, 0, c_white, 1)	
+	var width = sprite_get_width(object_get_sprite(slot4))
+	var heigth = sprite_get_height(object_get_sprite(slot4))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	draw_sprite_ext(object_get_sprite(slot4), 0, _slotx4, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
 }
 if slot5 != noone {
-	draw_sprite_ext(object_get_sprite(slot5), 0, _slotx5, 1020, 2, 2, 0, c_white, 1)	
+	var width = sprite_get_width(object_get_sprite(slot5))
+	var heigth = sprite_get_height(object_get_sprite(slot5))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	draw_sprite_ext(object_get_sprite(slot5), 0, _slotx5, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
 }
 
 if alpha > 0 {

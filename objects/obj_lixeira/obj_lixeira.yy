@@ -1,17 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_tv",
-  "eventList":[],
+  "%Name":"obj_lixeira",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_tv",
+  "name":"obj_lixeira",
   "overriddenProperties":[],
   "parent":{
-    "name":"itens",
-    "path":"folders/Objetos/itens.yy",
+    "name":"moveis",
+    "path":"folders/Objetos/moveis.yy",
   },
   "parentObjectId":{
-    "name":"obj_coletavel",
-    "path":"objects/obj_coletavel/obj_coletavel.yy",
+    "name":"obj_colidivel",
+    "path":"objects/obj_colidivel/obj_colidivel.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -31,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_tv",
-    "path":"sprites/spr_tv/spr_tv.yy",
+    "name":"spr_lixeira",
+    "path":"sprites/spr_lixeira/spr_lixeira.yy",
   },
   "spriteMaskId":null,
   "visible":true,

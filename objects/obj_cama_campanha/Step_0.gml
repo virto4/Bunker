@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+depth = -y
 var mx = device_mouse_x_to_gui(0)
 var my = device_mouse_y_to_gui(0)
 var tx_sim = 1920 / 2 - 450
