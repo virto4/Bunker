@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_tv",
+  "%Name":"obj_particulas",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_tv",
+  "name":"obj_particulas",
   "overriddenProperties":[],
   "parent":{
-    "name":"itens",
-    "path":"folders/Objetos/itens.yy",
+    "name":"outros",
+    "path":"folders/Objetos/outros.yy",
   },
-  "parentObjectId":{
-    "name":"obj_coletavel",
-    "path":"objects/obj_coletavel/obj_coletavel.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_tv",
-    "path":"sprites/spr_tv/spr_tv.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

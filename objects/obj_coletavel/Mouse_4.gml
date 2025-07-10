@@ -37,14 +37,6 @@ if !obj_personagem.opcoes {
 	}
 
 	if point_distance(obj_personagem.x, obj_personagem.y, x, y) < 100 { //se o personagem estiver proximo do coletavel
-		if room_get_name(room) == "rm_bunker" { //para saber se o item clicado é consumivel ou nao
-			for (var _j = 0; _j < array_length(obj_personagem.itens_nao_consumiveis); _j++) {
-				if object_index == obj_personagem.itens_nao_consumiveis[_j] {
-					obj_personagem.is_consumivel = false
-					break
-				}
-			}
-		}
 		if obj_personagem.is_consumivel {
 			if !obj_personagem.item_devolvido { //se o clique sobre o coletavel nao foi feito para devolvê-lo
 				switch obj_personagem.slot_selecionado { //verificando se o slot_selecionado esta ocupado na hora do clique

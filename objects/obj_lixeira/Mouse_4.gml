@@ -1,5 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
 switch obj_personagem.slot_selecionado {
 	case 1:
 		if obj_personagem.slot1 != noone {
