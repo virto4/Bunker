@@ -62,6 +62,22 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 			room_goto(rm_bunker)
 		}
 	}
+	
+	if desenhar {
+		if tempo == false {
+			tempo2 = current_time
+			tempo = true
+			item_segurado.image_alpha = 0
+			show_debug_message("IOuhou")
+		}
+		if item_segurado.image_alpha == 1 {
+			desenhar = false
+			tempo = false
+		} else if current_time == tempo2 + 2 * delta_time / 100000 {
+			item_segurado.image_alpha += 0.5
+		}
+	}
+	
 } else if opcoes {
 	if display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 and display_mouse_get_y() > display_get_height() / 2 - 5 and display_mouse_get_y() < display_get_height() / 2 + 5 {
 		if mouse_check_button_pressed(mb_left) and !mudar_fov{

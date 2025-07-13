@@ -6,4 +6,4 @@ pode_abrir = true
 pode_abrir2 = true
 image_index = 0
 image_speed = 0
-instance_create_layer(x, y + 56, "Instancias", obj_chao_1, {})
+instance_create_layer(x, y + 56, "Instances", obj_chao_1, {})

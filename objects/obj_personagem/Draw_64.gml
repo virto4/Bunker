@@ -1,5 +1,3 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
 if alpha == 0 {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
