@@ -54,28 +54,43 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		}
 	}
 	
-	//passando de cena
-	if room_get_name(room) == "rm_casa" {
-		tempo_decorrido += delta_time / 1000000
-		tempo_escrito = tempo_espera - tempo_decorrido
-		if tempo_espera <= tempo_decorrido {
-			room_goto(rm_bunker)
-		}
-	}
-	
 	if desenhar {
 		if tempo == false {
 			tempo2 = current_time
 			tempo = true
 			item_segurado.image_alpha = 0
-			show_debug_message("IOuhou")
 		}
 		if item_segurado.image_alpha == 1 {
 			desenhar = false
 			tempo = false
-		} else if current_time == tempo2 + 2 * delta_time / 100000 {
-			item_segurado.image_alpha += 0.5
+		} else {
+			if current_time > tempo2 + 1 * delta_time / 1000000 {
+				item_segurado.image_alpha += 0.05
+				tempo2 = current_time
+			}
 		}
+	} else if desenhar2 {
+		if tempo == false {
+			tempo2 = current_time
+			tempo = true
+			item_segurado.image_alpha = 0
+		}
+		if item_segurado.image_alpha == 1 and !segunda_vez {
+			segunda_vez = true
+			item_segurado.image_alpha = 0
+		} else if item_segurado.image_alpha == 1 and segunda_vez {
+			tempo = false
+			desenhar2 = false
+			segunda_vez = false
+		} else if current_time > tempo2 + 1 * delta_time / 1000000 {
+				item_segurado.image_alpha += 0.1
+				tempo2 = current_time
+		}
+	}
+	
+	if room == rm_casa {
+		tempo_decorrido += delta_time / 1000000
+		tempo_escrito = tempo_espera - tempo_decorrido
 	}
 	
 } else if opcoes {
@@ -140,3 +155,16 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		global.tem_tela_aberta = false
 	}
 }
+
+//passando de cena
+	if room == rm_casa {
+		if alpha2 == 1 {
+			room_goto(rm_bunker)
+		}
+		if tempo_espera <= tempo_decorrido {
+			mudar_bunker = true
+			global.tem_tela_aberta = true
+		}
+	} else if room == rm_bunker and alpha2 == 0 {
+		mudar_bunker = false
+	}

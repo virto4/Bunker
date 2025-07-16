@@ -17,3 +17,5 @@ conquistas = {
 	conquista14: false,
 	conquista15: false
 }
+
+lista_ganhos = ds_list_create()

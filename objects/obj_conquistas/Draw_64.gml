@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
 function quebrar_texto(texto, largura_maxima) {
     var linhas = [];
     var palavras = string_split(texto, " ");
@@ -25,7 +26,6 @@ function quebrar_texto(texto, largura_maxima) {
     return linhas;
 }
 
-
 if room_get_name(room) = "rm_conquistas" {
 	if position_meeting(mouse_x, mouse_y, obj_conquistas) {
 		var _filho = instance_position(mouse_x, mouse_y, obj_conquistas)
@@ -45,17 +45,17 @@ if room_get_name(room) = "rm_conquistas" {
 	}
 } else {
 	if ganhou_conquista {
-		if ds_list_size(lista_ganhos) > 0 {
-			for (var _i = 0; _i < ds_list_size(lista_ganhos); _i++) {
-				draw_sprite_ext(ds_list_find_value(lista_ganhos, _i).sprite, 0, 1550, 900 - 120 * _i, 1, 1, 0, c_white, ds_list_find_value(lista_ganhos, _i).alpha)
-				if ds_list_find_value(lista_ganhos, _i).alpha < 1 and ds_list_find_value(lista_ganhos, _i).tempo == 0 {
-					ds_list_find_value(lista_ganhos, _i).alpha += 0.05
-				} else if ds_list_find_value(lista_ganhos, _i).tempo < 200 {
-					ds_list_find_value(lista_ganhos, _i).tempo  += 1
-				} else if ds_list_find_value(lista_ganhos, _i).alpha > 0 {
-					ds_list_find_value(lista_ganhos, _i).alpha -= 0.05
+		if ds_list_size(global.lista_ganhos) > 0 {
+			for (var _i = 0; _i < ds_list_size(global.lista_ganhos); _i++) {
+				draw_sprite_ext(ds_list_find_value(global.lista_ganhos, _i).sprite, 0, 1550, 900 - 120 * _i, 1, 1, 0, c_white, ds_list_find_value(global.lista_ganhos, _i).alpha)
+				if ds_list_find_value(global.lista_ganhos, _i).alpha < 1 and ds_list_find_value(global.lista_ganhos, _i).tempo == 0 {
+					ds_list_find_value(global.lista_ganhos, _i).alpha += 0.05
+				} else if ds_list_find_value(global.lista_ganhos, _i).tempo < 200 {
+					ds_list_find_value(global.lista_ganhos, _i).tempo  += 1
+				} else if ds_list_find_value(global.lista_ganhos, _i).alpha > 0 {
+					ds_list_find_value(global.lista_ganhos, _i).alpha -= 0.05
 				} else {
-					ds_list_delete(lista_ganhos, _i)
+					ds_list_delete(global.lista_ganhos, _i)
 					break
 				}
 			} 

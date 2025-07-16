@@ -5,14 +5,31 @@ persistent = true
 window_set_fullscreen(true)
 cliques_dividir_tela = 0
 
+n_alpha = 1
+
+x_nuvem1 = 200
+y_nuvem1 = 200
+
+x_nuvem2 = 1900
+y_nuvem2 = 800
+
+x_nuvem3 = 1500
+y_nuvem3 = 500
+
+x_nuvem4 = 900
+y_nuvem4 = 700
+
+x_logo = 1920 / 2
+y_logo = 1080 / 2 - 100
+
 x2 = 350
 y2 = 150
 width = 512
 height = 256
 
-l_dividir = 32
-x_dividir = 1860
-y_dividir = 40
+l_dividir = 36
+x_dividir = 1840
+y_dividir = 80
 
 x_jogar = 1920 / 2
 y_jogar = 1080 - y2
@@ -47,3 +64,5 @@ posicoes_estrelas = {
 }
 
 em_transicao = false
+
+tempo = 0

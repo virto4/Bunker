@@ -9,6 +9,7 @@ if room_get_name(room) == "rm_tela_inicial" {
 			if mouse_check_button_pressed(mb_left) {
 				em_transicao = true
 				mudar_jogo = true
+				tempo = current_time
 			}
 		} else {
 			if a_jogar > 1 {
@@ -23,6 +24,7 @@ if room_get_name(room) == "rm_tela_inicial" {
 			if mouse_check_button_pressed(mb_left) {
 				mudar_conquistas = true
 				em_transicao = true
+				tempo = current_time
 			}
 		} else {
 			if a_conquistas > 1 {
@@ -48,6 +50,7 @@ if room_get_name(room) == "rm_tela_inicial" {
 			if mouse_check_button_pressed(mb_left) {
 				sair_jogo = true
 				em_transicao = true
+				tempo = current_time
 			}
 		} else {
 			if a_sair > 1 {
@@ -56,30 +59,65 @@ if room_get_name(room) == "rm_tela_inicial" {
 		}
 	} 
 	
+	x_nuvem1 += 5 * delta_time / 1000000
+	x_nuvem2 -= 9 * delta_time / 1000000
+	x_nuvem3 -= 5 * delta_time / 1000000
+	x_nuvem4 += 3 * delta_time / 1000000
+	if x_nuvem1 > 1920 + sprite_get_width(spr_nuvem1) / 2 {
+		x_nuvem1 -= display_get_width()
+	}
+	if x_nuvem2 > 1920 + sprite_get_width(spr_nuvem1) / 2 {
+		x_nuvem2 -= 1920
+	}
+	if x_nuvem3 > 1920 + sprite_get_width(spr_nuvem2) / 2 {
+		x_nuvem3 -= 1920
+	}
+	if x_nuvem4 > 1920 + sprite_get_width(spr_nuvem3) / 2 {
+		x_nuvem4 -= 1920
+	}
+
 	if sair_jogo {
 		if y_sair + height / 2 >= 0 {
-			y_conquistas -= 30
-			y_jogar -= 30
-			y_dividir -= 30
-			y_sair -= 30
+			if current_time >= tempo + 1 * delta_time / 1000000 {
+				y_conquistas -= 30 
+				y_jogar -= 30
+				y_dividir -= 30
+				y_sair -= 30
+				y_logo -= 30
+				y_nuvem1 -= 30
+				y_nuvem2 -= 30
+				y_nuvem3 -= 30
+				y_nuvem4 -= 30
+				tempo = current_time
+			}
 		} else {
 			game_end() //fecha o jogo
 		}
 	} else if mudar_conquistas {
 		if x_conquistas <= x2 + 1920 {
-			x_conquistas += 30
-			x_jogar += 30
-			x_sair += 30
-			x_dividir += 30
+			if current_time >= tempo + 1 *delta_time / 1000000 {
+				x_conquistas += 30
+				x_jogar += 30
+				x_sair += 30
+				x_dividir += 30
+				x_logo += 30
+				n_alpha -= 0.05
+				tempo = current_time
+			}
 		} else {
 			room_goto(rm_conquistas)
 		}
 	} else if sair_conquistas {
 		if x_conquistas >= x2 {
-			x_conquistas -= 30
-			x_jogar -= 30
-			x_sair -= 30
-			x_dividir -= 30
+			if current_time >= tempo + 1 * delta_time / 1000000 {
+				x_conquistas -= 30
+				x_jogar -= 30
+				x_sair -= 30
+				x_dividir -= 30
+				x_logo -= 30
+				n_alpha += 0.05
+				tempo = current_time
+			}
 		} else {
 			sair_conquistas = false
 			em_transicao = false

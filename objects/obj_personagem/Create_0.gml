@@ -15,13 +15,31 @@ atributos = {
 	fadiga: 12
 }
 
+d = 1
+
+itens_iguais = ds_list_create()
+
+mudar_bunker = 0
+alpha2 = 0
+if room == rm_bunker {
+	mudar_bunker = true
+	alpha2 = 1
+} else if room == rm_casa {
+	mudar_bunker = false
+	alpha2 = 0
+}
+
 desenhar = false
+desenhar2 = false
+segunda_vez = false
 px = 0
 py = 0
 item_segurado = 0
 
 tempo = false
 tempo2 = 0
+aux_item = 0
+
 velh				= 0
 velv				= 0
 vel					= 300
@@ -35,6 +53,18 @@ slot2=noone
 slot3=noone
 slot4=noone
 slot5=noone
+slot1_novo = false
+slot2_novo = false
+slot3_novo = false
+slot4_novo = false
+slot5_novo = false
+slot1_n = 0
+slot2_n = 0
+slot3_n = 0
+slot4_n = 0
+slot5_n = 0
+numero_n = 1
+
 global.tem_tela_aberta = false
 
 itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_gato_empalhado, obj_ursinho,
@@ -43,6 +73,10 @@ itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_g
 is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
+
+//isso aqui é para o obj_coletavel, que, como não tem instancia dele na room, não é executado o create
+slots_disponiveis = false
+tempo_slot = false
 
 alpha = 1
 mudar_volume = false
@@ -105,9 +139,9 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 70
+	tempo_espera = 60
 	tempo_escrito = tempo_espera - tempo_decorrido
-} else if room_get_name(room) == "rm_bunker" if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
+} else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {
 			case obj_municao:

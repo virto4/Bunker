@@ -1,7 +1,7 @@
 if alpha == 0 {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
-		draw_set_font(fnt_principal)
+		draw_set_font(fnt_alagard)
 		draw_text(room_width / 2, 60, tempo_escrito div 1 + 1)//div é o comando para divisap inteira
 	}
 }
@@ -12,6 +12,20 @@ var _slotx2=864
 var _slotx3=960
 var _slotx4=1056
 var _slotx5=1152
+
+function desenhar_hotbar(slot, slot_novo, slotx) {
+	var width = sprite_get_width(object_get_sprite(slot))
+	var heigth = sprite_get_height(object_get_sprite(slot))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	if !slot_novo {
+		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	} else {
+		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_black, 1)
+	}
+}
 
 switch (slot_selecionado) {
 	case 1:
@@ -32,54 +46,35 @@ switch (slot_selecionado) {
 }
 
 if slot1 != noone {
-	var width = sprite_get_width(object_get_sprite(slot1))
-	var heigth = sprite_get_height(object_get_sprite(slot1))
-	var maior = width
-	if width < heigth {
-		maior = heigth
-	}
-	draw_sprite_ext(object_get_sprite(slot1), 0, _slotx1, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	desenhar_hotbar(slot1, slot1_novo, _slotx1)
 }
 if slot2 != noone {
-	var width = sprite_get_width(object_get_sprite(slot2))
-	var heigth = sprite_get_height(object_get_sprite(slot2))
-	var maior = width
-	if width < heigth {
-		maior = heigth
-	}
-	draw_sprite_ext(object_get_sprite(slot2), 0, _slotx2, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	desenhar_hotbar(slot2, slot2_novo, _slotx2)
 }
 if slot3 != noone {
-	var width = sprite_get_width(object_get_sprite(slot3))
-	var heigth = sprite_get_height(object_get_sprite(slot3))
-	var maior = width
-	if width < heigth {
-		maior = heigth
-	}
-	draw_sprite_ext(object_get_sprite(slot3), 0, _slotx3, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	desenhar_hotbar(slot3, slot3_novo, _slotx3)
 }
 if slot4 != noone {
-	var width = sprite_get_width(object_get_sprite(slot4))
-	var heigth = sprite_get_height(object_get_sprite(slot4))
-	var maior = width
-	if width < heigth {
-		maior = heigth
-	}
-	draw_sprite_ext(object_get_sprite(slot4), 0, _slotx4, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	desenhar_hotbar(slot4, slot4_novo, _slotx4)
 }
 if slot5 != noone {
-	var width = sprite_get_width(object_get_sprite(slot5))
-	var heigth = sprite_get_height(object_get_sprite(slot5))
-	var maior = width
-	if width < heigth {
-		maior = heigth
-	}
-	draw_sprite_ext(object_get_sprite(slot5), 0, _slotx5, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	desenhar_hotbar(slot5, slot5_novo, _slotx5)
 }
 
 if alpha > 0 {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha)
 	alpha -= 0.05
+} 
+
+if mudar_bunker and room == rm_casa{
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha2)
+	alpha2 += 0.1 
+} else if mudar_bunker and room == rm_bunker {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha2)
+	alpha2 -= 0.1 
+} else if mudar_bunker and room == rm_bunker and alpha2 == 0 {
+	mudar_bunker = false
+	global.tem_tela_aberta = false
 }
 
 if opcoes {
