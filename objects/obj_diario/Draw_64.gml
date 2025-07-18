@@ -31,19 +31,19 @@ if clicou and image_index == image_number - 1{
 	
 	var _largura_x = 85
 	draw_sprite(spr_interface_diario, 0, 1920 / 2, 1080 / 2)
-	draw_sprite(spr_x, 0, 1800, 120)
+	draw_sprite(spr_voltar, 0, 1800, 50)
 	draw_set_color(c_black)
-	draw_set_font(fnt_venice_classic)
+	draw_set_font(fnt_descricoes)
 	for (var _i = 0; _i < array_length(pagina_esquerda); _i++) {
 	    draw_text(1920 / 2 - 450, 1080 / 2 - 350 + _i * string_height("A"), pagina_esquerda[_i]);
 	}
 	for (var _i = 0; _i < array_length(pagina_direita); _i++) {
 	    draw_text(1920 / 2 + 25, 1080 / 2 - 350 + _i * string_height("A"), pagina_direita[_i]);
 	}
-	draw_set_font(fnt_kiwisoda)
-	draw_text(1920 / 2 - 450, 1080 / 2 + 350, "voltar")
-	draw_text(1920 / 2 + 400, 1080 / 2 + 350, "avançar")
-	draw_text(1920 / 2 - 300, 1080 / 2 + 350, "primeira página")
+	draw_set_font(fnt_alagard)
+	draw_sprite(spr_voltar_diario, 0, 200, 1080 - 50)
+	draw_sprite(spr_avancar_diario, 0, 1920 - 200, 1080 - 50)
+	draw_sprite(spr_primeira_diario, 0, 1920 / 2 - 300, 1080 - 50)
 	if display_mouse_get_x() * 1920 / 1366 > 1800 - _largura_x / 2 and display_mouse_get_x() * 1920 / 1366 < 1800 + _largura_x / 2 and display_mouse_get_y() * 1080 / 768 > 120 - _largura_x / 2 and display_mouse_get_y() *  1080 / 768 < 120 + _largura_x / 2 {
 		if mouse_check_button_pressed(mb_left) {
 			clicou = false	
@@ -51,9 +51,17 @@ if clicou and image_index == image_number - 1{
 		}
 	}
 
-	draw_set_font(fnt_kiwisoda)
-	draw_text(1920 / 2 - 500, 1080 / 2 - 450, pagina * 2)
-	draw_text(1920 / 2 + 500, 1080 / 2 - 450, pagina * 2 + 1)
+	var x1 = (1920 - 1700) + sprite_get_width(spr_pagina_diario) / 2 - string_width(pagina * 2) / 2
+	var x2 = 1550 + sprite_get_width(spr_pagina_diario) / 2 - string_width(pagina * 2 + 1) / 2
+	var y1 = 50 - 36 + sprite_get_height(spr_pagina_diario) / 2 - string_height(pagina  * 2) / 2
+	var y2 = 50 - 36 + sprite_get_height(spr_pagina_diario) / 2 - string_height(pagina * 2 + 1) / 2
+	
+	draw_set_font(fnt_alagard)
+	draw_sprite(spr_pagina_diario, 0, 1920 - 1700, 50 - 36)
+	draw_sprite(spr_pagina_diario, 0, 1550, 50 - 36)
+	draw_set_color(c_black)
+	draw_text(x1, y1, pagina * 2)
+	draw_text(x2, y2, pagina * 2 + 1)
 	
 	if pagina == 0 {
 		var _sprite_humor
