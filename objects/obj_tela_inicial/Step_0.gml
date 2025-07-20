@@ -59,21 +59,21 @@ if room_get_name(room) == "rm_tela_inicial" {
 		}
 	} 
 	
-	x_nuvem1 += 5 * delta_time / 1000000
-	x_nuvem2 -= 9 * delta_time / 1000000
+	x_nuvem1 += 50 * delta_time / 1000000
+	x_nuvem2 -= 90 * delta_time / 1000000
 	x_nuvem3 -= 50 * delta_time / 1000000
-	x_nuvem4 += 3 * delta_time / 1000000
-	if x_nuvem1 > 1920 + 3 * sprite_get_width(spr_nuvem1) / 2 {
+	x_nuvem4 += 30 * delta_time / 1000000
+	if x_nuvem1 >= 1920 + 3 * sprite_get_width(spr_nuvem1) / 2 {
 		x_nuvem1 -= 1920 + 3 * sprite_get_width(spr_nuvem1)
 	}
-	if x_nuvem2 > 1920 + 3 * sprite_get_width(spr_nuvem1) / 2 {
-		x_nuvem2 -= 1920 + 3 * sprite_get_width(spr_nuvem1)
+	if x_nuvem2 <= -3 * sprite_get_width(spr_nuvem2) / 2 {
+		x_nuvem2 += 1920 + 3 * sprite_get_width(spr_nuvem2)
 	}
-	if x_nuvem3 > 1920 + 3 * sprite_get_width(spr_nuvem2) / 2 {
-		x_nuvem3 -= 1920 + 3 * sprite_get_width(spr_nuvem2)
+	if x_nuvem3 <= -3 * sprite_get_width(spr_nuvem3) / 2 {
+		x_nuvem3 += 1920 + 3 * sprite_get_width(spr_nuvem3)
 	}
-	if x_nuvem4 > 1920 + 3 * sprite_get_width(spr_nuvem3) / 2 {
-		x_nuvem4 -= 1920 + 3 * sprite_get_width(spr_nuvem3)
+	if x_nuvem4 >= 1920 + 3 * sprite_get_width(spr_nuvem1) / 2 {
+		x_nuvem4 -= 1920 + 3 * sprite_get_width(spr_nuvem1)
 	}
 
 	if sair_jogo {

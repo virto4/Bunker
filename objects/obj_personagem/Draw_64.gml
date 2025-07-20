@@ -1,3 +1,4 @@
+
 if alpha == 0 {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {

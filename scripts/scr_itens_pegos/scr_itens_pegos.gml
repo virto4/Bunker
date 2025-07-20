@@ -96,3 +96,5 @@ qtde_slots = {
 	"obj_ovo": 1,
 	"obj_repolho": 1
 }
+
+alimentos = [obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]

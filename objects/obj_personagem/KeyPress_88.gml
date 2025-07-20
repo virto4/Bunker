@@ -1,6 +1,5 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-
 function casa(slot, slot_novo, slot_n) {
 	if slot != noone {
 		var is_consumivel = false
@@ -54,10 +53,19 @@ function casa(slot, slot_novo, slot_n) {
 			} else if room == rm_bunker {
 				slot.qtde_itens++
 			}
-			if !desenhar2 {
-				desenhar2 = true
+			var is_alimento = false;
+			for (var i = 0; i < array_length(global.alimentos); i++) {
+				if slot == global.alimentos[i] {
+					is_alimento = true
+					break
+				}
 			}
-			item_segurado = slot
+			if !is_alimento {
+				if !desenhar2 {
+					desenhar2 = true
+				}
+				item_segurado = slot
+			}
 		}
 		if slot1_n == slot_n {
 			slot1 = noone

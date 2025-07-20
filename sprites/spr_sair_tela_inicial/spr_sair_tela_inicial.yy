@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"jogo",
-    "path":"folders/Sprites/jogo.yy",
+    "name":"tela_inicial",
+    "path":"folders/Sprites/tela_inicial.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

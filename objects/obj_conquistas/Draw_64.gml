@@ -29,17 +29,17 @@ function quebrar_texto(texto, largura_maxima) {
 if room_get_name(room) = "rm_conquistas" {
 	if position_meeting(mouse_x, mouse_y, obj_conquistas) {
 		var _filho = instance_position(mouse_x, mouse_y, obj_conquistas)
-		draw_sprite(spr_descricao, 0, mouse_x + 60, mouse_y + 60)
+		draw_sprite(spr_descricao, 0, mouse_x + sprite_get_width(spr_cursor_padrao), mouse_y + sprite_get_height(spr_cursor_padrao))
 		draw_set_font(fnt_descricoes)
 		draw_set_color(c_black)
 		if _filho != noone {
 			var _titulo = quebrar_texto(_filho.titulo + "", 280)
 			var _descricao = quebrar_texto(_filho.descricao + "", 280)
 			for (var _i = 0; _i < array_length(_titulo); _i++) {
-			    draw_text(mouse_x + 70, mouse_y + 80 + _i * string_height("A"), _titulo[_i]);
+			    draw_text(mouse_x + sprite_get_width(spr_cursor_padrao) + 30, mouse_y + sprite_get_height(spr_cursor_padrao) + 30 + _i * string_height("A"), _titulo[_i]);
 			}
 			for (var _i = 0; _i < array_length(_descricao); _i++) {
-			    draw_text(mouse_x + 70, mouse_y + 150 + _i * string_height("A"), _descricao[_i]);
+			    draw_text(mouse_x + sprite_get_width(spr_cursor_padrao) + 30, mouse_y + sprite_get_height(spr_cursor_padrao) + 85 + _i * string_height("A"), _descricao[_i]);
 			}
 		}
 	}

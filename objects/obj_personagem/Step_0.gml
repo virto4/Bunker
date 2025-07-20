@@ -3,6 +3,12 @@
 if !apertou_pulo {
 	depth = -y
 }
+if room == rm_casa {
+	if global.tem_tela_aberta and obj_geladeira.desenhar {
+		tempo_decorrido += delta_time / 1000000
+		tempo_escrito = tempo_espera - tempo_decorrido
+	}
+}
 
 if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	var _cima, _baixo, _pulo, _esquerda, _direita
