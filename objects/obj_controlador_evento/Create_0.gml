@@ -15,6 +15,16 @@ function embaralhar(vetor) {
 }
 
 evento_hoje = 0 //irei trabalhar com todos os eventos no inicio para fins de teste
+evento_baratas = {
+	b1: 0,
+	b2: 0,
+	b3: 0,
+	b4: 0,
+	b5: 0
+}
+dia_baratas = 0
+dia_baratas_aux = false
+morreu_inseticida = 0
 
 eventos_inicio = [
 	"baratas",

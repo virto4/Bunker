@@ -50,9 +50,18 @@ if !global.tem_tela_aberta and morreu {
 		alpha -= 0.05
 		tempo = current_time
 	}
-	
-	part_emitter_region(sistema, emissor, x - 18, x + 18, y - 25, y +25, ps_shape_ellipse, ps_distr_linear)
-	part_emitter_burst(sistema, emissor, particula, 3)
+	if !morreu_esmagada {
+		part_emitter_region(sistema, emissor, x - 18, x + 18, y - 25, y +25, ps_shape_ellipse, ps_distr_linear)
+		part_emitter_burst(sistema, emissor, particula, 3)
+	} else {
+	//	part_emitter_region(sistema, emissor, x - 3, x + 3, y - 3, y + 3, ps_shape_ellipse, ps_distr_gaussian)
+	//	part_emitter_burst(sistema, emissor, particula2, 10)
+		//repeat(30) {
+		    var px = x + random_range(-8, 8);
+		    var py = y + random_range(-8, 8);
+		    part_particles_create(sistema, px, py, particula2, 1);
+		//}
+	}
 	
 	if alpha == 0 {
 		instance_destroy()

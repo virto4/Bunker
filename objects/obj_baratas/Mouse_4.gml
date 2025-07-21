@@ -3,8 +3,10 @@
 
 function matar(slot) {
 	if slot == obj_inseticida {
-		morreu = true
+		obj_controlador_evento.morreu_inseticida++
+		morreu_esmagada = false
 	}
+	morreu = true
 }
 
 tempo = current_time
