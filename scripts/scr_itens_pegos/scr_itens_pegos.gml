@@ -37,7 +37,8 @@ posicoes = {
 	"obj_farinha": {"x": 410, "y": 645},
 	"obj_frango": {"x": 523, "y": 672},
 	"obj_ovo": {"x": 381, "y": 668},
-	"obj_repolho": {"x": 361, "y": 638}
+	"obj_repolho": {"x": 361, "y": 638},
+	"obj_inseticida": {"x":273, "y":293}
 }
 
 casa = [
@@ -94,7 +95,8 @@ qtde_slots = {
 	"obj_farinha": 1,
 	"obj_frango": 1,
 	"obj_ovo": 1,
-	"obj_repolho": 1
+	"obj_repolho": 1,
+	"obj_inseticida": 1
 }
 
 alimentos = [obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]

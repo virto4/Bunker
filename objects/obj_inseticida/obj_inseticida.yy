@@ -1,19 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_baratas",
+  "%Name":"obj_inseticida",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_baratas",
+  "name":"obj_inseticida",
   "overriddenProperties":[],
   "parent":{
-    "name":"eventos",
-    "path":"folders/Objetos/eventos.yy",
+    "name":"itens",
+    "path":"folders/Objetos/itens.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_coletavel",
+    "path":"objects/obj_coletavel/obj_coletavel.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_baratas",
-    "path":"sprites/spr_baratas/spr_baratas.yy",
+    "name":"spr_inseticida",
+    "path":"sprites/spr_inseticida/spr_inseticida.yy",
   },
   "spriteMaskId":null,
   "visible":true,

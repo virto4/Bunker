@@ -123,7 +123,8 @@ qtde_itens1 = {
     "obj_saco_lixo": 0,
     "obj_tv": 0,
 	"obj_radio": 0,
-	"obj_pilha": 0
+	"obj_pilha": 0,
+	"obj_inseticida": 0
 }
 
 
@@ -251,6 +252,9 @@ if room_get_name(room) == "rm_casa" {
 				break;
 			case obj_tv:
 				mudar_fase("obj_tv", obj_tv);
+				break;
+			case obj_inseticida:
+				mudar_fase("obj_inseticida", obj_inseticida);
 				break;
 		}
 	}
