@@ -38,7 +38,8 @@ posicoes = {
 	"obj_frango": {"x": 523, "y": 672},
 	"obj_ovo": {"x": 381, "y": 668},
 	"obj_repolho": {"x": 361, "y": 638},
-	"obj_inseticida": {"x":273, "y":293}
+	"obj_inseticida": {"x":273, "y":293},
+	"obj_ferramentas": {"x":247, "y":339}
 }
 
 casa = [
@@ -57,7 +58,8 @@ casa = [
     ["obj_baralho", 936, 692],
     ["obj_contador_geiger", 929, 855],
     ["obj_domino", 945, 804],
-    ["obj_tv", 1265, 944]
+    ["obj_tv", 1265, 944],
+	["obj_ferramentas", 653, 719]
 ]
 
 qtde_slots = {
@@ -96,7 +98,8 @@ qtde_slots = {
 	"obj_frango": 1,
 	"obj_ovo": 1,
 	"obj_repolho": 1,
-	"obj_inseticida": 1
+	"obj_inseticida": 1,
+	"obj_ferramentas": 4
 }
 
 alimentos = [obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]

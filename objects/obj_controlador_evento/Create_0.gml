@@ -1,7 +1,5 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-instanciou_baratas = false
-
 function embaralhar(vetor) {
 	var i = array_length(vetor) - 1
 	while i >= 0 {
@@ -15,16 +13,15 @@ function embaralhar(vetor) {
 }
 
 evento_hoje = 0 //irei trabalhar com todos os eventos no inicio para fins de teste
-evento_baratas = {
-	b1: 0,
-	b2: 0,
-	b3: 0,
-	b4: 0,
-	b5: 0
-}
+
+instanciou_baratas = false
 dia_baratas = 0
 dia_baratas_aux = false
-morreu_inseticida = 0
+morreu_inseticida = 0 //conta quantas baratas morreram para o inseticida. devem ser 5 para o evento passar
+evento_baratas = false //fala se o evento de baratas está acontecendo
+
+evento_rachaduras = false
+instanciou_rachaduras = false
 
 eventos_inicio = [
 	"baratas",
@@ -40,7 +37,7 @@ eventos_inicio = [
 
 inicio_data = {
 	dia1: eventos_inicio[0],
-	dia2: eventos_inicio[1],
+	dia2: eventos_inicio[2],
 	dia3: eventos_inicio[2],
 	dia4: eventos_inicio[3],
 	dia5: eventos_inicio[4],
