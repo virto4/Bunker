@@ -27,17 +27,6 @@ posicoes = {
 	"obj_domino": {"x": 854, "y": 642},
 	"obj_saco_lixo": {"x": 811, "y": 657},
 	"obj_tv": {"x": 864, "y": 544},
-	"obj_acucar": {"x": 635, "y": 640},
-	"obj_agua": {"x": 631, "y": 670},
-	"obj_alface": {"x": 596, "y": 636},
-	"obj_arroz": {"x": 604, "y": 671},
-	"obj_batata": {"x": 571, "y": 667},
-	"obj_cerveja": {"x": 460, "y": 632},
-	"obj_chocolate": {"x": 451, "y": 664},
-	"obj_farinha": {"x": 410, "y": 645},
-	"obj_frango": {"x": 523, "y": 672},
-	"obj_ovo": {"x": 381, "y": 668},
-	"obj_repolho": {"x": 361, "y": 638},
 	"obj_inseticida": {"x":273, "y":293},
 	"obj_ferramentas": {"x":247, "y":339}
 }
@@ -63,6 +52,14 @@ casa = [
 ]
 
 qtde_slots = {
+	"obj_arroz_frango": 1, 
+	"obj_bolo_chocolate": 1,
+	"obj_bolo_quatro_quartos": 1, 
+	"obj_chucrute": 1,
+	"obj_escondidinho": 1,
+	"obj_ovo_mexido": 1,
+	"obj_salada": 1,
+	"obj_cookie": 1,
 	"obj_municao": 1,
 	"obj_radio": 1,
 	"obj_pilha": 1,
@@ -102,4 +99,7 @@ qtde_slots = {
 	"obj_ferramentas": 4
 }
 
-alimentos = [obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]
+alimentos = [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_chocolate, obj_chucrute, obj_escondidinho, obj_salada, obj_ovo_mexido,
+			obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]
+
+alimentos_pegos = ds_list_create()

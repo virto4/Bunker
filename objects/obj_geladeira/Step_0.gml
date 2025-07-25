@@ -35,58 +35,58 @@ if image_speed > 0 {
 				switch obj_personagem.slot_selecionado { //verificando se o slot_selecionado esta ocupado na hora do clique
 					case 1:
 						if obj_personagem.slot1 != noone {
-							mudar_slot_vazio()
+							global.mudar_slot_vazio()
 						}
 						break
 					case 2:
 						if obj_personagem.slot2 != noone {
-							mudar_slot_vazio()
+							global.mudar_slot_vazio()
 						}
 						break
 					case 3:
 						if obj_personagem.slot3 != noone {
-							mudar_slot_vazio()
+							global.mudar_slot_vazio()
 						}
 						break
 					case 4:
 						if obj_personagem.slot4 != noone {
-							mudar_slot_vazio()
+							global.mudar_slot_vazio()
 						}
 						break
 					case 5:
 						if obj_personagem.slot5 != noone {
-							mudar_slot_vazio()
+							global.mudar_slot_vazio()
 						}
 						break
 				}
 				switch (obj_personagem.slot_selecionado) { //se o slot_selecionado esta vazio
 					case 1: 
 						if obj_personagem.slot1 == noone {
-							obj_personagem.slot1 = coletar_destruir(posicoes[i][0], obj_personagem.slot1)
+							obj_personagem.slot1 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot1)
 						}
 						break
 					case 2: 
 						if obj_personagem.slot2 == noone {
-							obj_personagem.slot2 = coletar_destruir(posicoes[i][0], obj_personagem.slot2)
+							obj_personagem.slot2 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot2)
 						}
 						break
 					case 3: 
 						if obj_personagem.slot3 == noone {
-							obj_personagem.slot3 = coletar_destruir(posicoes[i][0], obj_personagem.slot3)
+							obj_personagem.slot3 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot3)
 						}
 						break
 					case 4: 
 						if obj_personagem.slot4 == noone {
-							obj_personagem.slot4 = coletar_destruir(posicoes[i][0], obj_personagem.slot4)
+							obj_personagem.slot4 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot4)
 						}
 						break
 					case 5: 
 						if obj_personagem.slot5 == noone {
-							obj_personagem.slot5 = coletar_destruir(posicoes[i][0], obj_personagem.slot5)
+							obj_personagem.slot5 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot5)
 						}
 						break
 				}
-				mudar_slot_vazio()
+				global.mudar_slot_vazio()
 			}
 		}
 	}

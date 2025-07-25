@@ -9,6 +9,13 @@ function casa(slot, slot_novo, slot_n) {
 				break
 			}
 		}
+		var is_alimento = false;
+		for (var i = 0; i < array_length(global.alimentos); i++) {
+			if slot == global.alimentos[i] {
+				is_alimento = true
+				break
+			}
+		}
 		if is_consumivel {
 			if room == rm_bunker {
 				var posicoes = variable_struct_get_names(global.posicoes)
@@ -51,13 +58,15 @@ function casa(slot, slot_novo, slot_n) {
 					}
 				}
 			} else if room == rm_bunker {
-				slot.qtde_itens++
-			}
-			var is_alimento = false;
-			for (var i = 0; i < array_length(global.alimentos); i++) {
-				if slot == global.alimentos[i] {
-					is_alimento = true
-					break
+				if is_alimento {
+					for (var i = 0; i < array_length(obj_freezer.quantidades); i++) {
+						if obj_freezer.quantidades[i][0] = slot {
+							obj_freezer.quantidades[i][1]++
+							break
+						}
+					}
+				} else {
+					slot.qtde_itens++
 				}
 			}
 			if !is_alimento {

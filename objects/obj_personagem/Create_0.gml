@@ -126,7 +126,15 @@ qtde_itens1 = {
 	"obj_radio": 0,
 	"obj_pilha": 0,
 	"obj_inseticida": 0,
-	"obj_ferramentas": 0
+	"obj_ferramentas": 0,
+	"obj_arroz_frango": 0, 
+	"obj_bolo_chocolate": 0,
+	"obj_bolo_quatro_quartos": 0, 
+	"obj_chucrute": 0,
+	"obj_escondidinho": 0,
+	"obj_ovo_mexido": 0,
+	"obj_salada": 0,
+	"obj_cookie": 0,
 }
 
 
@@ -142,7 +150,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 10
+	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
@@ -157,40 +165,31 @@ if room_get_name(room) == "rm_casa" {
 				mudar_fase("obj_pilha", obj_pilha);
 				break;
 			case obj_acucar:
-				mudar_fase("obj_acucar", obj_acucar);
-				break;
-			case obj_agua:
-				mudar_fase("obj_agua", obj_agua);
+				ds_list_add(global.alimentos_pegos, obj_acucar)
 				break;
 			case obj_alface:
-				mudar_fase("obj_alface", obj_alface);
+				ds_list_add(global.alimentos_pegos, obj_alface)
 				break;
 			case obj_arroz:
-				mudar_fase("obj_arroz", obj_arroz);
-				break;
-			case obj_arroz_frango:
-				mudar_fase("obj_arroz_frango", obj_arroz_frango);
+				ds_list_add(global.alimentos_pegos, obj_arroz)
 				break;
 			case obj_batata:
-				mudar_fase("obj_batata", obj_batata);
-				break;
-			case obj_cerveja:
-				mudar_fase("obj_cerveja", obj_cerveja);
+				ds_list_add(global.alimentos_pegos, obj_batata)
 				break;
 			case obj_chocolate:
-				mudar_fase("obj_chocolate", obj_chocolate);
+				ds_list_add(global.alimentos_pegos, obj_chocolate)
 				break;
 			case obj_farinha:
-				mudar_fase("obj_farinha", obj_farinha);
+				ds_list_add(global.alimentos_pegos, obj_farinha)
 				break;
 			case obj_frango:
-				mudar_fase("obj_frango", obj_frango);
+				ds_list_add(global.alimentos_pegos, obj_frango)
 				break;
 			case obj_ovo:
-				mudar_fase("obj_ovo", obj_ovo);
+				ds_list_add(global.alimentos_pegos, obj_ovo)
 				break;
 			case obj_repolho:
-				mudar_fase("obj_repolho", obj_repolho);
+				ds_list_add(global.alimentos_pegos, obj_repolho)
 				break;
 			case obj_bola_basquete:
 				mudar_fase("obj_bola_basquete", obj_bola_basquete);
