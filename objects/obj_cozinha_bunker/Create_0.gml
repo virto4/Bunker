@@ -17,4 +17,4 @@ ovo_mexido = false
 chucrute = false
 escondidinho = false
 arroz_frango = false
-salada = true
+salada = false

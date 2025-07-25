@@ -16,7 +16,7 @@ function casa(slot, slot_novo, slot_n) {
 				break
 			}
 		}
-		if is_consumivel {
+		if is_consumivel { //se NAO for consumivel, aqui eu me confundi na nomenclatura da variavel
 			if room == rm_bunker {
 				var posicoes = variable_struct_get_names(global.posicoes)
 				for (var i = 0; i < array_length(posicoes); i++) {
@@ -46,7 +46,14 @@ function casa(slot, slot_novo, slot_n) {
 				item_segurado = slot
 			}
 		} else {
-			if !instance_exists(slot) and room == rm_bunker {
+			if is_alimento and room == rm_bunker {
+				for (var i = 0; i < array_length(obj_freezer.quantidades); i++) {
+					if obj_freezer.quantidades[i][0] = slot {
+						obj_freezer.quantidades[i][1] += 1
+						break
+					}
+				}
+			} else if !instance_exists(slot) and room == rm_bunker {
 				var posicoes = variable_struct_get_names(global.posicoes)
 				for (var i = 0; i < array_length(posicoes); i++) {
 					if asset_get_index(posicoes[i]) == slot {
@@ -58,16 +65,7 @@ function casa(slot, slot_novo, slot_n) {
 					}
 				}
 			} else if room == rm_bunker {
-				if is_alimento {
-					for (var i = 0; i < array_length(obj_freezer.quantidades); i++) {
-						if obj_freezer.quantidades[i][0] = slot {
-							obj_freezer.quantidades[i][1]++
-							break
-						}
-					}
-				} else {
-					slot.qtde_itens++
-				}
+				slot.qtde_itens++
 			}
 			if !is_alimento {
 				if !desenhar2 {
