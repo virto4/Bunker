@@ -25,32 +25,23 @@ posicoes = [
 ]
 
 quantidades = [
-	[obj_acucar, 2],
-	[obj_agua, 1],
-	[obj_alface, 3],
-	[obj_arroz, 4],
-	[obj_arroz_frango, 5],
-	[obj_batata, 5],
-	[obj_bolo_chocolate, 1],
-	[obj_bolo_quatro_quartos, 3],
-	[obj_cerveja, 3],
-	[obj_chocolate, 1],
-	[obj_chucrute, 1],
-	[obj_cookie, 1],
-	[obj_escondidinho, 1],
-	[obj_farinha, 1],
-	[obj_frango, 1],
-	[obj_ovo, 1],
-	[obj_ovo_mexido, 1],
-	[obj_repolho, 1],
-	[obj_salada, 1]
+	[obj_acucar, 0],
+	[obj_agua, 0],
+	[obj_alface, 0],
+	[obj_arroz, 0],
+	[obj_arroz_frango, 0],
+	[obj_batata, 0],
+	[obj_bolo_chocolate, 0],
+	[obj_bolo_quatro_quartos, 0],
+	[obj_cerveja, 0],
+	[obj_chocolate, 0],
+	[obj_chucrute, 0],
+	[obj_cookie, 0],
+	[obj_escondidinho, 0],
+	[obj_farinha, 0],
+	[obj_frango, 0],
+	[obj_ovo, 0],
+	[obj_ovo_mexido, 0],
+	[obj_repolho, 0],
+	[obj_salada, 0]
 ]
-
-for (var i = 0; i < ds_list_size(global.alimentos_pegos); i++) {
-	for (var j = 0; j < array_length(quantidades); j++) {
-		if ds_list_find_value(global.alimentos_pegos, i) == quantidades[j][0] {
-			quantidades[j][1]++
-			break
-		}
-	}
-}

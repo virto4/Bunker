@@ -101,5 +101,3 @@ qtde_slots = {
 
 alimentos = [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_chocolate, obj_chucrute, obj_escondidinho, obj_salada, obj_ovo_mexido,
 			obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]
-
-alimentos_pegos = ds_list_create()

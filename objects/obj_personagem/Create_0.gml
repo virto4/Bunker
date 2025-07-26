@@ -150,7 +150,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 0
+	tempo_espera = 10
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
@@ -158,6 +158,14 @@ if room_get_name(room) == "rm_casa" {
 			case obj_municao:
 				mudar_fase("obj_municao", obj_municao);
 				break;
+			case obj_cerveja:
+				mudar_fase("obj_cerveja", obj_cerveja)
+				obj_freezer.quantidades[8][1] += 1
+				break
+			case obj_agua:
+				mudar_fase("obj_agua", obj_agua)
+				obj_freezer.quantidades[1][1] += 1
+				break
 			case obj_radio:
 				mudar_fase("obj_radio", obj_radio);
 				break;
@@ -165,31 +173,40 @@ if room_get_name(room) == "rm_casa" {
 				mudar_fase("obj_pilha", obj_pilha);
 				break;
 			case obj_acucar:
-				ds_list_add(global.alimentos_pegos, obj_acucar)
+				mudar_fase("obj_acucar", obj_acucar);
+				obj_freezer.quantidades[0][1] += 1
 				break;
 			case obj_alface:
-				ds_list_add(global.alimentos_pegos, obj_alface)
+				mudar_fase("obj_alface", obj_alface);
+				obj_freezer.quantidades[2][1] += 1
 				break;
 			case obj_arroz:
-				ds_list_add(global.alimentos_pegos, obj_arroz)
+				mudar_fase("obj_arroz", obj_arroz);
+				obj_freezer.quantidades[3][1] += 1
 				break;
 			case obj_batata:
-				ds_list_add(global.alimentos_pegos, obj_batata)
+				mudar_fase("obj_batata", obj_batata);
+				obj_freezer.quantidades[5][1] += 1
 				break;
 			case obj_chocolate:
-				ds_list_add(global.alimentos_pegos, obj_chocolate)
+				mudar_fase("obj_chocolate", obj_chocolate);
+				obj_freezer.quantidades[9][1] += 1
 				break;
 			case obj_farinha:
-				ds_list_add(global.alimentos_pegos, obj_farinha)
+				mudar_fase("obj_farinha", obj_farinha);
+				obj_freezer.quantidades[13][1] += 1
 				break;
 			case obj_frango:
-				ds_list_add(global.alimentos_pegos, obj_frango)
+				mudar_fase("obj_frango", obj_frango);
+				obj_freezer.quantidades[14][1] += 1
 				break;
 			case obj_ovo:
-				ds_list_add(global.alimentos_pegos, obj_ovo)
+				mudar_fase("obj_ovo", obj_ovo);
+				obj_freezer.quantidades[15][1] += 1
 				break;
 			case obj_repolho:
-				ds_list_add(global.alimentos_pegos, obj_repolho)
+				mudar_fase("obj_repolho", obj_repolho);
+				obj_freezer.quantidades[17][1] += 1
 				break;
 			case obj_bola_basquete:
 				mudar_fase("obj_bola_basquete", obj_bola_basquete);
@@ -264,15 +281,26 @@ if room_get_name(room) == "rm_casa" {
 	}
 
 	function mudar_fase(nome_obj, index_obj) {
-		if variable_struct_get(qtde_itens1, nome_obj) == 0 { //pega o valor de tde_itens chamado obj
-			var pos = variable_struct_get(global.posicoes, nome_obj)
-			var ax = variable_struct_get(pos, "x")
-			var ay = variable_struct_get(pos, "y")
-			inst = instance_create_layer(ax, ay, layer_get_id("Instances"), index_obj, {})
+		var is_alimento = false
+		for (var i = 0; i < array_length(global.alimentos); i++) {
+			if index_obj = global.alimentos[i] {
+				is_alimento = true
+				break
+			}
+		}
+		if is_alimento {
 			variable_struct_set(qtde_itens1, nome_obj, variable_struct_get(qtde_itens1, nome_obj) + 1)
-		} else { //se pegou mais de uma municao, no obj_municao estara dizendo quantas ela tem
-			//variable_instance_set(obj, "qtde_itens", variable_instance_get(obj, "qtde_itens") + 1)
-			variable_instance_set(instance_find(index_obj, 0), "qtde_itens", variable_instance_get(instance_find(index_obj, 0), "qtde_itens") + 1)
+		} else {
+			if variable_struct_get(qtde_itens1, nome_obj) == 0 { //pega o valor de tde_itens chamado obj
+				var pos = variable_struct_get(global.posicoes, nome_obj)
+				var ax = variable_struct_get(pos, "x")
+				var ay = variable_struct_get(pos, "y")
+				inst = instance_create_layer(ax, ay, layer_get_id("Instances"), index_obj, {})
+				variable_struct_set(qtde_itens1, nome_obj, variable_struct_get(qtde_itens1, nome_obj) + 1)
+			} else { //se pegou mais de uma municao, no obj_municao estara dizendo quantas ela tem
+				//variable_instance_set(obj, "qtde_itens", variable_instance_get(obj, "qtde_itens") + 1)
+				variable_instance_set(instance_find(index_obj, 0), "qtde_itens", variable_instance_get(instance_find(index_obj, 0), "qtde_itens") + 1)
+			}
 		}
 	}
 }
