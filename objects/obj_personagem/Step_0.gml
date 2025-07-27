@@ -1,5 +1,19 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+for (var i = 0; i < 5; i++) {
+	if slot_selecionado == 1 {
+		item_selecionado = slot1
+	} else if slot_selecionado == 2 {
+		item_selecionado = slot2
+	} else if slot_selecionado == 3 {
+		item_selecionado = slot3
+	} else if slot_selecionado == 4 {
+		item_selecionado = slot4
+	} else {
+		item_selecionado = slot5
+	}
+}
+
 if !apertou_pulo {
 	depth = -y
 }

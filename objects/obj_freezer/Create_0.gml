@@ -3,25 +3,25 @@
 clicou = false
 
 posicoes = [
-	[obj_acucar, 290, 804], //1
-	[obj_agua, 500, 810], //2
-	[obj_alface, 620, 620], //3
-	[obj_arroz, 400, 450], //4
-	[obj_arroz_frango, 1110, 620], //5
-	[obj_batata, 800, 615], // 6
-	[obj_bolo_chocolate, 1600, 450], //7
-	[obj_bolo_quatro_quartos, 1500, 615], //8
-	[obj_cerveja, 680, 804], //9
-	[obj_chocolate, 1120, 802], //10
-	[obj_chucrute, 810, 460], //11
-	[obj_cookie, 500, 620],//12
-	[obj_escondidinho, 289, 450], //13
-	[obj_farinha, 1450, 440], //14
-	[obj_frango, 670, 438], //15
-	[obj_ovo, 1600, 620],//16
-	[obj_ovo_mexido, 1000, 320], //17
-	[obj_repolho, 1600, 804],//18
-	[obj_salada, 980, 800]//19
+	[obj_acucar, 290, 804], //0
+	[obj_agua, 500, 810], //1
+	[obj_alface, 620, 620], //2
+	[obj_arroz, 400, 450], //3
+	[obj_arroz_frango, 1110, 620], //4
+	[obj_batata, 800, 615], // 5
+	[obj_bolo_chocolate, 1600, 450], //6
+	[obj_bolo_quatro_quartos, 1500, 615], //7
+	[obj_cerveja, 680, 804], //8
+	[obj_chocolate, 1120, 802], //9
+	[obj_chucrute, 810, 460], //10
+	[obj_cookie, 500, 620],//11
+	[obj_escondidinho, 289, 450], //12
+	[obj_farinha, 1450, 440], //13
+	[obj_frango, 670, 438], //14
+	[obj_ovo, 1600, 620],//15
+	[obj_ovo_mexido, 1000, 320], //16
+	[obj_repolho, 1600, 804],//17
+	[obj_salada, 980, 800]//18
 ]
 
 quantidades = [

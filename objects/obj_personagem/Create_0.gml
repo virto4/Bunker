@@ -35,6 +35,7 @@ segunda_vez = false
 px = 0
 py = 0
 item_segurado = 0
+item_selecionado = noone
 
 tempo = false
 tempo2 = 0
@@ -150,7 +151,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 10
+	tempo_espera = 40
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
