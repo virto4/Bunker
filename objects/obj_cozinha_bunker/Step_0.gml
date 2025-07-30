@@ -61,7 +61,7 @@ if clicou {
 			variable_struct_set(obj_personagem.qtde_itens1, "obj_farinha", variable_struct_get(obj_personagem.qtde_itens1, "obj_farinha") - 1)
 			destruir_slot([["obj_ovo", 15], ["obj_acucar", 0], ["obj_farinha", 13]])
 		}
-		if mx < posicoes[2][0] + 64 and mx > posicoes[2][0] - 64 and my < posicoes[2][1] + 64 and my > posicoes[2][1] - 64 and coookie {
+		if mx < posicoes[2][0] + 64 and mx > posicoes[2][0] - 64 and my < posicoes[2][1] + 64 and my > posicoes[2][1] - 64 and cookie {
 			obj_freezer.quantidades[11][1] += 1
 			variable_struct_set(obj_personagem.qtde_itens1, "obj_cookie", variable_struct_get(obj_personagem.qtde_itens1, "obj_cookie") + 1)
 			variable_struct_set(obj_personagem.qtde_itens1, "obj_ovo", variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") - 1)

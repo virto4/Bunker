@@ -1,8 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+clicou = true
 function is_ferramentas(slot) {
-	if slot == obj_ferramentas {
-		clicou = true
+	if object_get_name(slot) == object_get_name(obj_argamassa) {
 		cliques++
 		largura = 36 * cliques / total
 		clicou2 = true
@@ -13,7 +13,6 @@ function is_ferramentas(slot) {
 	}
 }
 
-
 switch (obj_personagem.slot_selecionado) {
 	case 1:
 		is_ferramentas(obj_personagem.slot1)
@@ -22,12 +21,12 @@ switch (obj_personagem.slot_selecionado) {
 		is_ferramentas(obj_personagem.slot2)
 		break
 	case 3:
-		is_ferramentas(obj_personagem.slot2)
+		is_ferramentas(obj_personagem.slot3)
 		break
 	case 4:
-		is_ferramentas(obj_personagem.slot2)
+		is_ferramentas(obj_personagem.slot4)
 		break
 	case 5:
-		is_ferramentas(obj_personagem.slot2)
+		is_ferramentas(obj_personagem.slot5)
 		break
 }

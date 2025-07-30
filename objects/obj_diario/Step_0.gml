@@ -84,6 +84,7 @@ switch dia {
 		break
 	case 3:
 		ds_list_replace(paginas_escritas, 4, paginas.dia3)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia3
 		break
 	case 4:
 		ds_list_replace(paginas_escritas, 5, paginas.dia4)

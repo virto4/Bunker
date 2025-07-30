@@ -16,6 +16,13 @@ function casa(slot, slot_novo, slot_n) {
 				break
 			}
 		}
+		var is_ferramenta = false
+		for (var i = 0; i < array_length(global.ferramentas); i++) {
+			if slot == global.ferramentas[i] {
+				is_ferramenta = true
+				break
+			}
+		}
 		if is_consumivel { //se NAO for consumivel, aqui eu me confundi na nomenclatura da variavel
 			if room == rm_bunker {
 				var posicoes = variable_struct_get_names(global.posicoes)
@@ -53,6 +60,20 @@ function casa(slot, slot_novo, slot_n) {
 						break
 					}
 				}
+			} else if is_ferramenta and room == rm_bunker {
+				if item_selecionado == obj_martelo {
+					obj_ferramentas.martelo = false
+					obj_ferramentas.martelo_cor = c_white
+				} else if item_selecionado == obj_fita_isolante {
+					obj_ferramentas.fita = false
+					obj_ferramentas.fita_cor = c_white
+				} else if item_selecionado == obj_chave_fenda {
+					obj_ferramentas.chave = false
+					obj_ferramentas.chave_cor = c_white
+				} else {
+					obj_ferramentas.argamassa = false
+					obj_ferramentas.argamassa_cor = c_white
+				}
 			} else if !instance_exists(slot) and room == rm_bunker {
 				var posicoes = variable_struct_get_names(global.posicoes)
 				for (var i = 0; i < array_length(posicoes); i++) {
@@ -67,7 +88,7 @@ function casa(slot, slot_novo, slot_n) {
 			} else if room == rm_bunker {
 				slot.qtde_itens++
 			}
-			if !is_alimento {
+			if !is_alimento and !is_ferramenta {
 				if !desenhar2 {
 					desenhar2 = true
 				}

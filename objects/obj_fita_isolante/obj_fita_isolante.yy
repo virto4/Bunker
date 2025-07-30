@@ -1,20 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_arma_biologica",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_fita_isolante",
+  "eventList":[],
   "managed":true,
-  "name":"obj_arma_biologica",
+  "name":"obj_fita_isolante",
   "overriddenProperties":[],
   "parent":{
-    "name":"armas",
-    "path":"folders/Objetos/itens/armas.yy",
+    "name":"ferramentas",
+    "path":"folders/Objetos/itens/ferramentas.yy",
   },
-  "parentObjectId":{
-    "name":"obj_coletavel",
-    "path":"objects/obj_coletavel/obj_coletavel.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_arma_biologica",
-    "path":"sprites/spr_arma_biologica/spr_arma_biologica.yy",
+    "name":"spr_fita_isolante",
+    "path":"sprites/spr_fita_isolante/spr_fita_isolante.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -2,25 +2,27 @@
 // Você pode escrever seu código neste editor
 if obj_diario.dia < 30 {
 	switch evento_hoje {
-		case "baratas":
+		case "baratas": //inseticida
 			evento_baratas = true
 			break
-		case "canos":
+		case "canos": //tem que trazer agua da casa
+			evento_canos = true
 			break
-		case "rachaduras":
+		case "rachaduras": //argamassa
 			evento_rachaduras =  true
 			break
-		case "infiltracao":
+		case "infiltracao": //martelo (quebrar o piso), fita isolante (consertar vazamento), argamassa (fechar buraco)
+			evento_infiltracao = true
 			break
-		case "termostato":
+		case "termostato": //
 			break
-		case "chuva acida":
+		case "chuva acida": //nao pode sair do bunker
 			break
-		case "ventilacao":
+		case "ventilacao": //chave de fenda (abrir dutos), fita isolante
 			break
-		case "mofo":
+		case "mofo": // agua sanitaria
 			break
-		case "radiacao":
+		case "radiacao": //contador geiger para indicar o local do vazamento, argamassa para cobrir
 			break
 	}
 } 
@@ -53,5 +55,22 @@ if evento_rachaduras {
 	}
 	if !instance_exists(obj_rachadura) {
 		evento_rachaduras = false
+	}
+}
+
+if evento_canos {
+	
+}
+
+if evento_infiltracao {
+	if !instanciou_infiltracoes {
+		var posicoes = [[424, 525], [526, 268], [1201, 355]]
+		instance_create_layer(posicoes[0][0], posicoes[0][1], "Instances", obj_poca, {})
+		instance_create_layer(posicoes[1][0], posicoes[1][1], "Instances", obj_poca, {})
+		instance_create_layer(posicoes[2][0], posicoes[2][1], "Instances", obj_poca, {})
+		instanciou_infiltracoes = true
+	}
+	if !instance_exists(obj_poca) {
+		evento_infiltracao = false
 	}
 }

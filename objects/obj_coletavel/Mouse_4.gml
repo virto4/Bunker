@@ -1,6 +1,19 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if !global.tem_tela_aberta {
+
+/*if room == rm_bunker and !pressionou and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 {
+	pressionou = true
+	global.tem_tela_aberta = true
+}*/
+var nao = false
+if instance_exists(obj_ferramentas) {
+	if object_index == obj_ferramentas and room == rm_bunker and !obj_ferramentas.pressionou and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 {
+		nao = true
+		obj_ferramentas.pressionou = true
+		global.tem_tela_aberta = true
+	}
+}
+if !global.tem_tela_aberta and !nao {
 	function mudar_slot_vazio() { //muda para o slot vazio
 		for (var _i = 1; _i <= 5; _i++) {
 			obj_personagem.slot_selecionado--

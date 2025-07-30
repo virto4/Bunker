@@ -27,3 +27,5 @@ part_type_orientation(tipo, 0, 90, -2, 0, 0)
 part_type_speed(tipo, 0.4, 0.7, 0, 0)
 part_type_direction(tipo, 0, 360, 0, 0)
 part_type_gravity(tipo, 0.1, 270)
+
+ferramentas = spr_argamassa

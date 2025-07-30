@@ -1,5 +1,14 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+/*
+sem amuletos; armas fazem o papel deles: aumentando a força e outros atrivutos
+atributos são: força (regula o dano causado), resistência (regula o dano sofrida), fortuna (regula os drops),
+sagacidade (regula a chance dde crítico ou de errar o golpe)
+humor: extasiado (+força +resistencia -sagaz - fortuna), 
+	deprimido (- força - fortuna + resistencia +sagaz)
+	apavorado (- todos), 
+	colérico (+ força +fortuna - sagaz - resistencia)
+*/
 humores = ["NEUTRO", "COM NOJO", "HIPERATIVO", "FURIOSO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
@@ -69,7 +78,7 @@ numero_n = 1
 global.tem_tela_aberta = false
 
 itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_gato_empalhado, obj_ursinho,
-						obj_arma_biologica, obj_frigideira, obj_machado, obj_metralhadora, obj_pistola,
+						obj_frigideira, obj_machado, obj_metralhadora, obj_pistola,
 						obj_panela_pressao, obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho,
 						obj_inseticida, obj_ferramentas]
 is_consumivel = true //variavel auxiliar para obj_coletavel
@@ -106,7 +115,6 @@ qtde_itens1 = {
     "obj_embalagem_bala": 0,
     "obj_gato_empalhado": 0,
     "obj_ursinho": 0,
-    "obj_arma_biologica": 0,
     "obj_frigideira": 0,
     "obj_machado": 0,
     "obj_metralhadora": 0,
@@ -136,6 +144,7 @@ qtde_itens1 = {
 	"obj_ovo_mexido": 0,
 	"obj_salada": 0,
 	"obj_cookie": 0,
+	"obj_agua_sanitaria": 0
 }
 
 
@@ -221,9 +230,6 @@ if room_get_name(room) == "rm_casa" {
 			case obj_ursinho:
 				mudar_fase("obj_ursinho", obj_ursinho);
 				break;
-			case obj_arma_biologica:
-				mudar_fase("obj_arma_biologica", obj_arma_biologica);
-				break;
 			case obj_frigideira:
 				mudar_fase("obj_frigideira", obj_frigideira);
 				break;
@@ -278,6 +284,9 @@ if room_get_name(room) == "rm_casa" {
 			case obj_ferramentas:
 				mudar_fase("obj_ferramentas", obj_ferramentas);
 				break;
+			case obj_agua_sanitaria:
+			mudar_fase("obj_agua_sanitaria", obj_agua_sanitaria)
+				break
 		}
 	}
 

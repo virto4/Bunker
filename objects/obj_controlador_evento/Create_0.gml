@@ -12,6 +12,11 @@ function embaralhar(vetor) {
 	return vetor
 }
 
+evento_infiltracao = false
+instanciou_infiltracoes = false
+
+evento_canos = false
+
 evento_hoje = 0 //irei trabalhar com todos os eventos no inicio para fins de teste
 
 instanciou_baratas = false
@@ -27,7 +32,7 @@ eventos_inicio = [
 	"baratas",
 	"canos",
 	"rachaduras",
-	"infiltração",
+	"infiltracao",
 	"termostato",
 	"chuva acida",
 	"ventilacao",
@@ -38,8 +43,8 @@ eventos_inicio = [
 inicio_data = {
 	dia1: eventos_inicio[0],
 	dia2: eventos_inicio[2],
-	dia3: eventos_inicio[2],
-	dia4: eventos_inicio[3],
+	dia3: eventos_inicio[3],
+	dia4: eventos_inicio[1],
 	dia5: eventos_inicio[4],
 	dia6: eventos_inicio[5],
 	dia7: eventos_inicio[6],

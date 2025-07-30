@@ -12,10 +12,3 @@ if cliques == total {
 		instance_destroy()
 	}
 }
-if clicou2 {
-	part_emitter_region(sistema, emissor, mouse_x - 10, mouse_x + 10, mouse_y - 10, mouse_y + 10, ps_shape_ellipse, ps_distr_gaussian)
-	part_emitter_burst(sistema, emissor, tipo, 1)
-	if current_time >= tempo + 20 {
-		clicou2 = false
-	}
-}

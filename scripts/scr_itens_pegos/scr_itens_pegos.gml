@@ -10,7 +10,6 @@ posicoes = {
 	"obj_embalagem_bala": {"x": 1034, "y": 170},
 	"obj_gato_empalhado": {"x": 1033, "y": 245},
 	"obj_ursinho": {"x": 1097, "y": 241},
-	"obj_arma_biologica": {"x": 1203, "y": 205},
 	"obj_frigideira": {"x": 1081, "y": 202},
 	"obj_machado": {"x": 1160, "y": 242},
 	"obj_metralhadora": {"x": 1039, "y": 279},
@@ -28,7 +27,8 @@ posicoes = {
 	"obj_saco_lixo": {"x": 811, "y": 657},
 	"obj_tv": {"x": 864, "y": 544},
 	"obj_inseticida": {"x":273, "y":293},
-	"obj_ferramentas": {"x":247, "y":339}
+	"obj_ferramentas": {"x":247, "y":339},
+	"obj_agua_sanitaria": {"x":330,"y":255}
 }
 
 casa = [
@@ -37,7 +37,6 @@ casa = [
     ["obj_embalagem_bala", 629, 987],
     ["obj_gato_empalhado", 415, 982],
     ["obj_ursinho", 356.5, 684],
-    ["obj_arma_biologica", 1437, 537],
     ["obj_frigideira", 1824, 474.5],
     ["obj_machado", 1494, 785],
     ["obj_metralhadora", 308.5, 720],
@@ -48,7 +47,7 @@ casa = [
     ["obj_contador_geiger", 929, 855],
     ["obj_domino", 945, 804],
     ["obj_tv", 1265, 944],
-	["obj_ferramentas", 653, 719]
+	["obj_ferramentas", 378, 216]
 ]
 
 qtde_slots = {
@@ -67,7 +66,6 @@ qtde_slots = {
 	"obj_embalagem_bala": 1,
 	"obj_gato_empalhado": 1,
 	"obj_ursinho": 1,
-	"obj_arma_biologica": 1,
 	"obj_frigideira": 2,
 	"obj_machado": 1,
 	"obj_metralhadora": 2,
@@ -96,8 +94,15 @@ qtde_slots = {
 	"obj_ovo": 1,
 	"obj_repolho": 1,
 	"obj_inseticida": 1,
-	"obj_ferramentas": 4
+	"obj_ferramentas": 4,
+	"obj_agua_sanitaria": 1,
+	"obj_argamassa": 1,
+	"obj_martelo": 1,
+	"obj_chave_fenda": 1,
+	"obj_fita_isolante": 1
 }
 
 alimentos = [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_chocolate, obj_chucrute, obj_escondidinho, obj_salada, obj_ovo_mexido,
 			obj_acucar, obj_agua, obj_alface, obj_arroz, obj_batata, obj_cerveja, obj_chocolate, obj_farinha, obj_frango, obj_ovo, obj_repolho]
+			
+ferramentas = [obj_chave_fenda, obj_argamassa, obj_martelo, obj_fita_isolante]
