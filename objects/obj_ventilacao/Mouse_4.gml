@@ -2,14 +2,26 @@
 // Você pode escrever seu código neste editor
 clicou = true
 function is_ferramentas(slot) {
-	if object_get_name(slot) == object_get_name(obj_argamassa) {
+	if object_get_name(slot) == object_get_name(obj_chave_fenda) and !chave and !fita {
 		cliques++
-		largura = 36 * cliques / total
-		clicou2 = true
+		largura = 36 * cliques / total_chave
 		tempo = current_time
+		clicou2 = true
+		if cliques == total_chave {
+			cliques = 0
+			largura = 0
+			ferramentas = spr_fita_isolante
+		}
 	}
-	if cliques == total {
-		tempo_alpha = current_time
+	if object_get_name(slot) == object_get_name(obj_fita_isolante) and chave and !fita {
+		cliques++
+		largura= 36 * cliques / total_fita
+		tempo = current_time
+		clicou2 = true
+		if cliques == total_fita {
+			tempo_alpha = current_time
+			
+		}
 	}
 }
 

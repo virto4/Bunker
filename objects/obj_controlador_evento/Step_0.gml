@@ -19,6 +19,7 @@ if obj_diario.dia < 30 {
 		case "chuva acida": //nao pode sair do bunker
 			break
 		case "ventilacao": //chave de fenda (abrir dutos), fita isolante
+			evento_ventilacao = true
 			break
 		case "mofo": // agua sanitaria
 			break

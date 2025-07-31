@@ -12,6 +12,9 @@ function embaralhar(vetor) {
 	return vetor
 }
 
+evento_ventilacao = false
+
+
 evento_infiltracao = false
 instanciou_infiltracoes = false
 

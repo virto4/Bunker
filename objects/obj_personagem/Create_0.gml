@@ -8,6 +8,12 @@ humor: extasiado (+força +resistencia -sagaz - fortuna),
 	deprimido (- força - fortuna + resistencia +sagaz)
 	apavorado (- todos), 
 	colérico (+ força +fortuna - sagaz - resistencia)
+	
+	
+outra coisa: CORES DOS DIÁLOGOS
+personagens ou inimigos: azul (16637F)
+itens: amarelo (B29711)
+atrivbutos e humores: roxo (7F1434)
 */
 humores = ["NEUTRO", "COM NOJO", "HIPERATIVO", "FURIOSO", "DEPRIMIDO", "APAVORADO"]
 
@@ -160,7 +166,7 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 40
+	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
@@ -314,3 +320,20 @@ if room_get_name(room) == "rm_casa" {
 		}
 	}
 }
+
+alimento = false
+alimento_scale = 0
+alpha_sim = 0
+alpha_nao = 0
+mouse_sim = false
+mouse_nao = false
+draw_set_font(fnt_dialogos)
+largura_sim = string_width("Sim")
+altura_sim = string_height("Sim")
+largura_nao = string_width("Não")
+altura_nao = string_height("Não")
+sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
+nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
+alimentou = false
+y_alimentou = y - sprite_height / 2 + 20
+aumento_fome = 0

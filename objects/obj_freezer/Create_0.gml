@@ -32,7 +32,7 @@ quantidades = [
 	[obj_arroz_frango, 0],
 	[obj_batata, 0],
 	[obj_bolo_chocolate, 0],
-	[obj_bolo_quatro_quartos, 0],
+	[obj_bolo_quatro_quartos, 2],
 	[obj_cerveja, 0],
 	[obj_chocolate, 0],
 	[obj_chucrute, 0],
