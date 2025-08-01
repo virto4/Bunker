@@ -86,7 +86,7 @@ global.tem_tela_aberta = false
 itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_gato_empalhado, obj_ursinho,
 						obj_frigideira, obj_machado, obj_metralhadora, obj_pistola,
 						obj_panela_pressao, obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho,
-						obj_inseticida, obj_ferramentas]
+						obj_inseticida, obj_ferramentas, obj_espanador]
 is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
@@ -150,7 +150,8 @@ qtde_itens1 = {
 	"obj_ovo_mexido": 0,
 	"obj_salada": 0,
 	"obj_cookie": 0,
-	"obj_agua_sanitaria": 0
+	"obj_agua_sanitaria": 0,
+	"obj_espanador": 0
 }
 
 
@@ -171,6 +172,8 @@ if room_get_name(room) == "rm_casa" {
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {
+			case obj_espanador:
+				mudar_fase("obj_espanador", obj_espanador)
 			case obj_municao:
 				mudar_fase("obj_municao", obj_municao);
 				break;

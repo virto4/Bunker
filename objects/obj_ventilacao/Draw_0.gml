@@ -1,7 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 draw_self()
-if !clicou {
+if !terminou and comecar and !clicou {
 	draw_sprite(spr_exclamacao, 0, eixox, eixoy)
 	if xvoltando {
 		eixox += 2 * delta_time / 1000000
@@ -14,11 +14,6 @@ if !clicou {
 	if eixox >= x + 20 {
 		xvoltando = false
 	}
-} else {
-	draw_circle(x, y - 5, 20, false)
-	draw_sprite(ferramentas, 0, x, y - 5)
-	draw_rectangle_color(x - 20, y - 5 + 25, x + 20, y + 5 + 25, c_black, c_black, c_black, c_black, false)
-	draw_rectangle_color(x -  20 + 2, y - 5 + 25 + 2, x + largura - 20 + 2, y + 5 + 25 - 2, #487F7D, #487F7D, #487F7D, #487F7D, false)
 }
 part_system_drawit(sistema)
 if clicou2 {

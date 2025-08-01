@@ -28,7 +28,8 @@ posicoes = {
 	"obj_tv": {"x": 864, "y": 544},
 	"obj_inseticida": {"x":273, "y":293},
 	"obj_ferramentas": {"x":247, "y":339},
-	"obj_agua_sanitaria": {"x":330,"y":255}
+	"obj_agua_sanitaria": {"x":330,"y":255},
+	"obj_espanador": {"x":350, "y":247}
 }
 
 casa = [
@@ -47,7 +48,8 @@ casa = [
     ["obj_contador_geiger", 929, 855],
     ["obj_domino", 945, 804],
     ["obj_tv", 1265, 944],
-	["obj_ferramentas", 378, 216]
+	["obj_ferramentas", 378, 216],
+	["obj_espanador", 468, 454]
 ]
 
 qtde_slots = {
@@ -99,7 +101,8 @@ qtde_slots = {
 	"obj_argamassa": 1,
 	"obj_martelo": 1,
 	"obj_chave_fenda": 1,
-	"obj_fita_isolante": 1
+	"obj_fita_isolante": 1,
+	"obj_espanador": 1
 }
 
 alimentos = [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_chocolate, obj_chucrute, obj_escondidinho, obj_salada, obj_ovo_mexido,
@@ -156,7 +159,8 @@ nomes = {
 	"obj_argamassa": "Argamassa",
 	"obj_martelo": "Martelo",
 	"obj_chave_fenda": "Chave de Fenda",
-	"obj_fita_isolante": "Fita Isolante"
+	"obj_fita_isolante": "Fita Isolante",
+	"obj_espanador": "Espanador"
 }
 
 fome = {

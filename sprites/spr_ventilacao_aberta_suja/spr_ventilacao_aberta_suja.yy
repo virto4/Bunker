@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
-  "%Name":"spr_ventilacao",
+  "%Name":"spr_ventilacao_aberta_suja",
   "bboxMode":0,
-  "bbox_bottom":53,
-  "bbox_left":12,
-  "bbox_right":107,
-  "bbox_top":6,
+  "bbox_bottom":59,
+  "bbox_left":0,
+  "bbox_right":119,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -21,9 +21,9 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"29f9fccb-cf2a-44ea-9f21-c80d6597f8f4","blendMode":0,"displayName":"default","isLocked":false,"name":"29f9fccb-cf2a-44ea-9f21-c80d6597f8f4","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_ventilacao",
+  "name":"spr_ventilacao_aberta_suja",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"eventos",
     "path":"folders/Sprites/eventos.yy",
@@ -33,7 +33,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_ventilacao",
+    "%Name":"spr_ventilacao_aberta_suja",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -57,7 +57,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_ventilacao",
+    "name":"spr_ventilacao_aberta_suja",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -71,14 +71,14 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"088f8bf1-3925-4adb-a079-4e20d1710cf6","path":"sprites/spr_ventilacao/spr_ventilacao.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"088f8bf1-3925-4adb-a079-4e20d1710cf6","path":"sprites/spr_ventilacao_aberta_suja/spr_ventilacao_aberta_suja.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"7227befb-b81d-4708-918e-d61638fbd848","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
     "volume":1.0,
     "xorigin":60,
-    "yorigin":8,
+    "yorigin":30,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

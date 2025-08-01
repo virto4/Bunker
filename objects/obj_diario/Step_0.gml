@@ -88,12 +88,15 @@ switch dia {
 		break
 	case 4:
 		ds_list_replace(paginas_escritas, 5, paginas.dia4)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia4
 		break
 	case 5:
 		ds_list_replace(paginas_escritas, 6, paginas.dia5)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia5
 		break
 	case 6:
 		ds_list_replace(paginas_escritas, 7, paginas.dia6)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia6
 		break
 	case 7:
 		ds_list_replace(paginas_escritas, 8, paginas.dia7)

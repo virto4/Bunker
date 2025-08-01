@@ -75,3 +75,9 @@ if evento_infiltracao {
 		evento_infiltracao = false
 	}
 }
+
+if evento_ventilacao and !coisou_ventilacao {
+	var instancias = irandom_range(0, 2)
+	instance_find(obj_ventilacao, instancias).comecar = true
+	coisou_ventilacao = true
+}

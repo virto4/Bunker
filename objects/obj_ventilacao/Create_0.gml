@@ -1,18 +1,16 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-numero = irandom_range(0, 1)
 eixox = x
 xvoltando = false
-eixoy = y + 25
+eixoy = y - 10
 yvoltando = false
 clicou = false
-largura = 0
-cliques = 0
 tempo = 0
 clicou2 = false
-alpha = 1
-tempo_alpha = 0
 total = 20 //quantos cliques até quebrar o objeto
+terminou = false
+comecar = false
+
 
 sistema = part_system_create()
 emissor = part_emitter_create(sistema)
@@ -29,7 +27,47 @@ part_type_direction(tipo, 0, 360, 0, 0)
 part_type_gravity(tipo, 0.1, 270)
 
 ferramentas = spr_chave_fenda
-total_chave = 30
-chave = false
-total_fita = 60
-fita = false
+todas_chaves = false
+chave1 = false
+largura1 = 0
+cliques1 = 0
+chave2 = false
+largura2 = 0
+cliques2 = 0
+chave3 = false
+largura3 = 0
+cliques3 = 0
+chave4 = false
+largura4 = 0
+cliques4 = 0
+total_chave = 8
+
+todos_espanador = false
+largura11 = 0
+cliques11 = 0
+espanador1 = false
+largura22 = 0
+cliques22 = 0
+espanador2 = false
+largura33 = 0
+cliques33 = 0
+espanador3 = false
+total_espanador = 35
+
+x11 = 1920 / 2 - 225
+y11 = 1080 / 2 - 330
+
+x22 = 1920 /2 + 385
+y22 = 1080 / 2 - 130
+
+x33 = 1920 / 2 - 225
+y33 = 1080 / 2 + 70
+mancha1 = [[1920 / 2 - 450, 1080 / 2 - 300], [1920 / 2 + 100, 1080 / 2 - 170]]
+mancha2 = [[1920 / 2 + 270, 1080 / 2 - 100], [1920 / 2 + 500, 1080 / 2 + 100]]
+mancha3 = [[1920 / 2 - 350, 1080 / 2 + 100], [1920 / 2 - 200, 1080 / 2 + 350]]
+
+x1 = 1920 / 2 - 595
+y1 = 1080 / 2 - 295
+	
+x2 = 1920 / 2 + 595
+y2 = 1080 / 2 + 295

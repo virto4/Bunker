@@ -28,9 +28,9 @@ if alimento {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
-			atributos.fome += variable_struct_get(global.fome, obj_personagem.item_selecionado)
+			atributos.fome += variable_struct_get(global.fome, object_get_name(obj_personagem.item_selecionado))
 			if atributos.fome > 100 {
-				aumento_fome = variable_struct_get(global.fome, obj_personagem.item_selecionado) - (atributos.fome - 100)
+				aumento_fome = variable_struct_get(global.fome, object_get_name(obj_personagem.item_selecionado)) - (atributos.fome - 100)
 				atributos.fome = 100
 			} else {
 				aumento_fome = variable_struct_get(global.fome, obj_personagem.item_selecionado)

@@ -13,7 +13,7 @@ function embaralhar(vetor) {
 }
 
 evento_ventilacao = false
-
+coisou_ventilacao = false
 
 evento_infiltracao = false
 instanciou_infiltracoes = false
@@ -44,10 +44,10 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	dia1: eventos_inicio[0],
+	dia1: eventos_inicio[6],
 	dia2: eventos_inicio[2],
 	dia3: eventos_inicio[3],
-	dia4: eventos_inicio[1],
+	dia4: eventos_inicio[0],
 	dia5: eventos_inicio[4],
 	dia6: eventos_inicio[5],
 	dia7: eventos_inicio[6],
