@@ -11,6 +11,7 @@ if instance_exists(obj_ferramentas) {
 		nao = true
 		obj_ferramentas.pressionou = true
 		global.tem_tela_aberta = true
+		global.tela_hotbar = true
 	}
 }
 if !global.tem_tela_aberta and !nao {

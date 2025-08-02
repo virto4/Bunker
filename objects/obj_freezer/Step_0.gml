@@ -10,6 +10,7 @@ if clicou {
 		var y_sair = 50
 		if mx < x_sair + width and mx > x_sair - width and my < y_sair + height and my > y_sair - height {
 			clicou = false
+			global.tela_hotbar = false
 			global.tem_tela_aberta = false
 		}
 		for (var i = 0; i < array_length(posicoes); i++) {

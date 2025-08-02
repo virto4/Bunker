@@ -52,7 +52,7 @@ espanador2 = false
 largura33 = 0
 cliques33 = 0
 espanador3 = false
-total_espanador = 35
+total_espanador = 5
 
 x11 = 1920 / 2 - 225
 y11 = 1080 / 2 - 330
@@ -71,3 +71,6 @@ y1 = 1080 / 2 - 295
 	
 x2 = 1920 / 2 + 595
 y2 = 1080 / 2 + 295
+
+tempo_finalizacao = 0
+todas_chave_2 = false

@@ -211,7 +211,7 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta) {
     }
 }
 
-if alimento {
+if alimento and room == rm_bunker {
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {

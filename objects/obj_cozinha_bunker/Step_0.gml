@@ -43,6 +43,7 @@ if clicou {
 		if mx < x_sair + width and mx > x_sair - width and my < y_sair + height and my > y_sair - height {
 			clicou = false
 			global.tem_tela_aberta = false
+			global.tela_hotbar = false
 		}
 		if mx < posicoes[0][0] + 64 and mx > posicoes[0][0] - 64 and my < posicoes[0][1] + 64 and my > posicoes[0][1] - 64 and bolo_chocolate {
 			obj_freezer.quantidades[6][1] += 1

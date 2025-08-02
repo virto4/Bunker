@@ -25,6 +25,7 @@ if image_speed > 0 {
 			desenhar = false
 			image_speed = -1
 			global.tem_tela_aberta = false
+			global.tela_hotbar = false
 		}
 		for (var i = 0; i < array_length(posicoes); i++) {
 			var x_item = posicoes[i][1]

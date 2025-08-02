@@ -45,6 +45,7 @@ if pressionou {
 		my > ty_sair - height_sair && my < ty_sair + height_sair {
 			pressionou = false
 			global.tem_tela_aberta = false
+			global.tela_hotbar = false
 		}
 		if mx < posicoes[0][0] + 64 and mx > posicoes[0][0] - 64 and my < posicoes[0][1] + 64 and my > posicoes[0][1] - 64 and !martelo {
 			martelo = true

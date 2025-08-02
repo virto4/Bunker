@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if alpha == 0 and !global.tem_tela_aberta{
+if alpha == 0 and (!global.tem_tela_aberta or global.tem_tela_aberta and global.tela_hotbar) {
 	slot_selecionado--
 	if slot_selecionado < 1 {
 		slot_selecionado = 5

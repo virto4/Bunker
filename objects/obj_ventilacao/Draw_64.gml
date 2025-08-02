@@ -36,7 +36,7 @@ if clicou and comecar {
 		} else {
 			draw_sprite_ext(spr_concluido, 0, x2, y2 - 70, 3, 3, 0, c_white, 1)
 		}
-	} else {
+	} else if !todas_chave_2 {
 		if !todos_espanador {
 			draw_sprite_ext(spr_ventilacao_aberta_suja, 0, 1920 / 2, 1080 / 2, 10, 10, 0, c_white, 1)
 			if !espanador1 {
@@ -63,8 +63,29 @@ if clicou and comecar {
 			} else {
 				draw_sprite_part_ext(spr_ventilacao_aberta_limpa, 0, 0, 40, 40, 20, 360, 640, 10, 10, c_white, 1)
 			}
-		} else {
+		} else if !todas_chave_2 {
 			draw_sprite_ext(spr_ventilacao_aberta_limpa, 0, 1920 / 2, 1080 / 2, 10, 10, 0, c_white, 1)
+			if tempo_finalizacao == 0 {
+				tempo_finalizacao = current_time
+			} else if current_time <= tempo_finalizacao + 2000 { //vendo se passou 2 segundos, ja que current time é em milissegundo
+				draw_sprite_ext(spr_concluido, 0, 1920 / 2, 300, 3, 3, 0, c_white, 1)
+			} else if !todas_chave_2 {
+				todas_chaves = false
+				chave1 = false
+				chave2 = false
+				chave3 = false
+				chave4 = false
+				ferramentas = spr_chave_fenda
+				largura1 = 0
+				largura2 = 0
+				largura3 = 0
+				largura4 = 0
+				cliques1 = 0
+				cliques2 = 0
+				cliques3 = 0
+				cliques4 = 0
+				todas_chave_2 = true
+			}
 		}
 	}
 }

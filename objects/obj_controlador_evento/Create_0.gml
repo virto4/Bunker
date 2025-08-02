@@ -32,15 +32,15 @@ evento_rachaduras = false
 instanciou_rachaduras = false
 
 eventos_inicio = [
-	"baratas",
-	"canos",
-	"rachaduras",
-	"infiltracao",
-	"termostato",
-	"chuva acida",
-	"ventilacao",
-	"mofo",
-	"radiacao",
+	"baratas", //ok
+	"canos", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
+	"rachaduras",//ok
+	"infiltracao", //ok
+	"termostato", //
+	"chuva acida", //aparece no radio a previsao de chuva acida; se o personagem sair, ele morre ou leva escoriações
+	"ventilacao", //ok
+	"mofo",//desenhar mofo e falar da agua sanitaria 
+	"radiacao", //voce tem que pegar o contador geiger todos os dias e passear pelo bunker para ver se tem vazamentos de radiação. se tiver, você tem que revestir a região com placas de chumbo
 ]
 
 inicio_data = {

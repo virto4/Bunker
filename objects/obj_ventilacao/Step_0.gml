@@ -17,7 +17,7 @@ if comecar and clicou {
 		}
 	}
 	
-	if obj_personagem.item_selecionado == obj_chave_fenda and !todas_chaves and !todos_espanador {
+	if obj_personagem.item_selecionado == obj_chave_fenda and !todas_chaves {
 		if !chave1 {
 			if point_in_rectangle(mx, my, x1 - 15, y1 - 15, x1 + 15, y1 + 15) {
 				if mouse_check_button_pressed(mb_left) {
@@ -75,8 +75,15 @@ if comecar and clicou {
 		}
 	
 		if chave1 and chave2 and chave3 and chave4 {
-			todas_chaves = true
-			ferramentas = spr_espanador
+			if !todas_chave_2 {
+				todas_chaves = true
+				ferramentas = spr_espanador
+			} else {
+				clicou = false
+				global.tela_hotbar = false
+				global.tem_tela_aberta = false
+				comecar = false
+			}
 		}
 	} else if obj_personagem.item_selecionado == obj_espanador and todas_chaves and !todos_espanador {
 		if mouse_check_button_pressed(mb_left) {
@@ -108,7 +115,6 @@ if comecar and clicou {
 				}
 			}
 		}
-		
 		if espanador1 and espanador2 and espanador3 {
 			todos_espanador = true
 		}
