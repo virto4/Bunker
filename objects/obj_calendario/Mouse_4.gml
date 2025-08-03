@@ -1,0 +1,6 @@
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
+if !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100{
+	clicou = true
+	global.tem_tela_aberta = true
+}

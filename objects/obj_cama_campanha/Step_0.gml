@@ -16,6 +16,7 @@ if clicou {
 			obj_diario.dia += 1
 			clicou = false
 			global.tem_tela_aberta = false
+			obj_calendario.mudou_dia = true
 		}
 	} else if (mx > tx_nao && mx < tx_nao + string_width("Não") && my > ty_nao && my < ty_nao + string_height("Não")) {
 		cor_nao = #999999
