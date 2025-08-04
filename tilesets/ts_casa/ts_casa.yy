@@ -19,8 +19,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"spr_tileset",
-    "path":"sprites/spr_tileset/spr_tileset.yy",
+    "name":"spr_tileset_casa",
+    "path":"sprites/spr_tileset_casa/spr_tileset_casa.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{

@@ -4,6 +4,7 @@
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_porta",
@@ -12,10 +13,7 @@
     "name":"moveis",
     "path":"folders/Objetos/moveis.yy",
   },
-  "parentObjectId":{
-    "name":"obj_colidivel",
-    "path":"objects/obj_colidivel/obj_colidivel.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -39,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_porta_fechada",
-    "path":"sprites/spr_porta_fechada/spr_porta_fechada.yy",
+    "name":"spr_porta",
+    "path":"sprites/spr_porta/spr_porta.yy",
   },
   "spriteMaskId":null,
   "visible":true,
