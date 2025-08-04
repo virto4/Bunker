@@ -12,7 +12,7 @@ function escrever(_x, _y, _texto, _cores) { //cores é um vetro de struct assim:
 	}
 }
 
-if alimento {
+if alimento or remedio {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
 	if alimento_scale < 5 {
 		alimento_scale += 0.5

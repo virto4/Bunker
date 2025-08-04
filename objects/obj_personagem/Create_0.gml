@@ -86,7 +86,7 @@ global.tem_tela_aberta = false
 itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_gato_empalhado, obj_ursinho,
 						obj_frigideira, obj_machado, obj_metralhadora, obj_pistola,
 						obj_panela_pressao, obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho,
-						obj_inseticida, obj_ferramentas, obj_espanador]
+						obj_inseticida, obj_ferramentas, obj_espanador, obj_meredith, obj_davi]
 is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
@@ -151,7 +151,9 @@ qtde_itens1 = {
 	"obj_salada": 0,
 	"obj_cookie": 0,
 	"obj_agua_sanitaria": 0,
-	"obj_espanador": 0
+	"obj_espanador": 0,
+	"obj_meredith": 0,
+	"obj_davi": 0
 }
 
 
@@ -167,13 +169,17 @@ opcoes = false
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 0
+	tempo_espera = 20
 	tempo_escrito = tempo_espera - tempo_decorrido
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {
 			case obj_espanador:
 				mudar_fase("obj_espanador", obj_espanador)
+				break
+			case obj_davi:
+				mudar_fase("obj_davi", obj_davi)
+				break
 			case obj_municao:
 				mudar_fase("obj_municao", obj_municao);
 				break;
@@ -296,6 +302,8 @@ if room_get_name(room) == "rm_casa" {
 			case obj_agua_sanitaria:
 			mudar_fase("obj_agua_sanitaria", obj_agua_sanitaria)
 				break
+			case obj_meredith:
+				mudar_fase("obj_meredith", obj_meredith)
 		}
 	}
 
@@ -340,3 +348,7 @@ nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
 alimentou = false
 y_alimentou = y - sprite_height / 2 + 20
 aumento_fome = 0
+
+remedio = false
+tomou_remedio = false
+aumento_saude = 0

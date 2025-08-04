@@ -14,6 +14,10 @@ if instance_exists(obj_ferramentas) {
 		global.tela_hotbar = true
 	}
 }
+
+if room == rm_bunker and (object_index == obj_meredith or object_index == obj_davi) {
+	nao = true
+}
 if !global.tem_tela_aberta and !nao {
 	function mudar_slot_vazio() { //muda para o slot vazio
 		for (var _i = 1; _i <= 5; _i++) {

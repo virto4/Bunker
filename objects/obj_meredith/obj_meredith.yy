@@ -1,13 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Davi_casa",
-  "eventList":[],
+  "%Name":"obj_meredith",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_Davi_casa",
+  "name":"obj_meredith",
   "overriddenProperties":[],
   "parent":{
-    "name":"itens",
-    "path":"folders/Objetos/itens.yy",
+    "name":"inimigos_e_personagens",
+    "path":"folders/Objetos/inimigos_e_personagens.yy",
   },
   "parentObjectId":{
     "name":"obj_coletavel",
@@ -31,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_davi",
-    "path":"sprites/spr_davi/spr_davi.yy",
+    "name":"spr_meredith_down",
+    "path":"sprites/spr_meredith_down/spr_meredith_down.yy",
   },
   "spriteMaskId":null,
   "visible":true,

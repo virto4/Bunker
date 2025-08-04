@@ -29,7 +29,9 @@ posicoes = {
 	"obj_inseticida": {"x":273, "y":293},
 	"obj_ferramentas": {"x":247, "y":339},
 	"obj_agua_sanitaria": {"x":330,"y":255},
-	"obj_espanador": {"x":350, "y":247}
+	"obj_espanador": {"x":350, "y":247},
+	"obj_meredith": {"x":775, "y":530},
+	"obj_davi": {"x":1121, "y":354},
 }
 
 casa = [
@@ -49,10 +51,14 @@ casa = [
     ["obj_domino", 945, 804],
     ["obj_tv", 1265, 944],
 	["obj_ferramentas", 378, 216],
-	["obj_espanador", 468, 454]
+	["obj_espanador", 468, 454],
+	["obj_meredith", 1542, 438],
+	["obj_davi",281,221]
 ]
 
 qtde_slots = {
+	"obj_davi": 5,
+	"obj_meredith": 1,
 	"obj_arroz_frango": 1, 
 	"obj_bolo_chocolate": 1,
 	"obj_bolo_quatro_quartos": 1, 
@@ -160,7 +166,9 @@ nomes = {
 	"obj_martelo": "Martelo",
 	"obj_chave_fenda": "Chave de Fenda",
 	"obj_fita_isolante": "Fita Isolante",
-	"obj_espanador": "Espanador"
+	"obj_espanador": "Espanador",
+	"obj_meredith": "Meredith",
+	"obj_davi": "Davi"
 }
 
 fome = {
@@ -183,3 +191,5 @@ fome = {
 alimentos_consumiveis =  [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_chocolate, 
 						obj_chucrute, obj_escondidinho, obj_salada, obj_ovo_mexido,
 						obj_alface, obj_batata, obj_chocolate, obj_frango, obj_ovo, obj_repolho]
+						
+remedios = [obj_analgesico, obj_curativo, obj_ansiolitico, obj_aspirina, obj_antibiotico]

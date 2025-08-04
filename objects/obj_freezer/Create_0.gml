@@ -10,7 +10,7 @@ posicoes = [
 	[obj_arroz_frango, 1110, 620], //4
 	[obj_batata, 800, 615], // 5
 	[obj_bolo_chocolate, 1600, 450], //6
-	[obj_bolo_quatro_quartos, 1500, 615], //7
+	[obj_bolo_quatro_quartos, 1600, 700], //7
 	[obj_cerveja, 680, 804], //8
 	[obj_chocolate, 1120, 802], //9
 	[obj_chucrute, 810, 460], //10

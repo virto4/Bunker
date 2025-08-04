@@ -1,7 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 if clicou {
-	draw_sprite_ext(spr_interface_geladeira, 0, 1920 / 2, 1080 / 2, 6, 6, 0, c_white, 1)
+	draw_sprite_ext(spr_interface_freezer, 0, 1920 / 2, (1080 / 2) + 40, 2.4, 2.4, 0, c_white, 1)
 	draw_sprite(spr_voltar, 0, 1920 - 300, 50)
 	for (var i = 0; i < array_length(quantidades); i++) {
 		if quantidades[i][1] > 0 {

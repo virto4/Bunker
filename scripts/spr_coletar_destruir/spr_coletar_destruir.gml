@@ -36,13 +36,13 @@ function coletar_destruir(slot, personagem) {
 		if room_get_name(room) == "rm_casa" {
 			for (var _j = 0; _j < array_length(obj_personagem.itens_nao_consumiveis); _j++) {
 				if slot == obj_personagem.itens_nao_consumiveis[_j] {
-					instance_destroy()
+					instance_destroy(slot)
 				}
 			}
 		} else if !obj_freezer.clicou  and !obj_ferramentas.pressionou {
 			slot.qtde_itens-- //vai diminuindo a contagem de itens conforme o jogador os pega
 			if slot.qtde_itens == 0 {
-				instance_destroy()
+				instance_destroy(slot)
 			}
 		} else {
 			for (var i = 0; i < array_length(obj_freezer.quantidades); i++) {

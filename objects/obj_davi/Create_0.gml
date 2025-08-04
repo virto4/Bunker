@@ -31,3 +31,7 @@ nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
 alimentou = false
 y_alimentou = y - sprite_height / 2 + 20
 aumento_fome = 0
+
+remedio = false
+tomou_remedio = false
+aumento_saude = 0
