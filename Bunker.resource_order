@@ -294,6 +294,7 @@
     {"name":"spr_meredith_down","order":3,"path":"sprites/spr_meredith_down/spr_meredith_down.yy",},
     {"name":"spr_meredith_idle","order":2,"path":"sprites/spr_meredith_idle/spr_meredith_idle.yy",},
     {"name":"spr_meredith_right","order":5,"path":"sprites/spr_meredith_right/spr_meredith_right.yy",},
+    {"name":"spr_meredith_sleep","order":6,"path":"sprites/spr_meredith_sleep/spr_meredith_sleep.yy",},
     {"name":"spr_meredith_up","order":4,"path":"sprites/spr_meredith_up/spr_meredith_up.yy",},
     {"name":"spr_mesa_metal","order":39,"path":"sprites/spr_mesa_metal/spr_mesa_metal.yy",},
     {"name":"spr_mesa1","order":14,"path":"sprites/spr_mesa1/spr_mesa1.yy",},

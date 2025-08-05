@@ -6,12 +6,13 @@ lambendo = true
 andando = false
 tempo2 = current_time / 1000 + 5
 voltando = true
-
+comecou_dia = false
 
 if room == rm_bunker {
 	terminou = 0
 	ipsilon = 0
 	frames = 0
+	dia_bunker = obj_diario.dia
 } else if room == rm_casa {
-	sprite_index = spr_meredith_idle
+	sprite_index = spr_meredith_sleep
 }

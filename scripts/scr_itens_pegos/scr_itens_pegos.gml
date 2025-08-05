@@ -193,3 +193,5 @@ alimentos_consumiveis =  [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos,
 						obj_alface, obj_batata, obj_chocolate, obj_frango, obj_ovo, obj_repolho]
 						
 remedios = [obj_analgesico, obj_curativo, obj_ansiolitico, obj_aspirina, obj_antibiotico]
+
+pulou_dia = false

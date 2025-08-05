@@ -336,6 +336,7 @@
     {"id":{"name":"spr_meredith_down","path":"sprites/spr_meredith_down/spr_meredith_down.yy",},},
     {"id":{"name":"spr_meredith_idle","path":"sprites/spr_meredith_idle/spr_meredith_idle.yy",},},
     {"id":{"name":"spr_meredith_right","path":"sprites/spr_meredith_right/spr_meredith_right.yy",},},
+    {"id":{"name":"spr_meredith_sleep","path":"sprites/spr_meredith_sleep/spr_meredith_sleep.yy",},},
     {"id":{"name":"spr_meredith_up","path":"sprites/spr_meredith_up/spr_meredith_up.yy",},},
     {"id":{"name":"spr_mesa_metal","path":"sprites/spr_mesa_metal/spr_mesa_metal.yy",},},
     {"id":{"name":"spr_mesa1","path":"sprites/spr_mesa1/spr_mesa1.yy",},},
