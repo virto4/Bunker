@@ -15,9 +15,14 @@ if instance_exists(obj_ferramentas) {
 	}
 }
 
-if room == rm_bunker and (object_index == obj_meredith or object_index == obj_davi) {
+if room == rm_bunker and (object_index == obj_meredith or object_index == obj_davi or object_index == obj_radio) {
 	nao = true
 }
+
+if object_index == obj_radio {
+	obj_radio.clicou = true
+}
+
 if !global.tem_tela_aberta and !nao {
 	function mudar_slot_vazio() { //muda para o slot vazio
 		for (var _i = 1; _i <= 5; _i++) {

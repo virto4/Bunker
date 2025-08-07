@@ -35,3 +35,10 @@ aumento_fome = 0
 remedio = false
 tomou_remedio = false
 aumento_saude = 0
+
+comecou_dia = false
+dia_bunker = 0
+terminou = 0
+frames = 0
+ipsilon = 0
+tempo = 0

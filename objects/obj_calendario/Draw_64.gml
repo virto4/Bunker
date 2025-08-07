@@ -60,7 +60,7 @@ if clicou {
 	draw_text(260 + (1400 - string_width(mes_escrito)) / 2, 50 + (140 - string_height(mes_escrito)) / 2, mes_escrito)
 	var x_dia = 0
 	var y_dia = 0
-	var dia_semana = dia_primeiro
+	dia_semana = dia_primeiro
 	for (var i = 1; i <= 31; i++) {
 		if i == 31 and mes_atual == 9 or mes_atual == 11 {
 			break

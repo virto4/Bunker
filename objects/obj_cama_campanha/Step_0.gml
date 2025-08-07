@@ -10,22 +10,24 @@ var ty_nao = 800
 draw_set_font(fnt_alagard)
 
 if clicou {
-	if (mx > tx_sim && mx < tx_sim + string_width("Sim") && my > ty_sim && my < ty_sim + string_height("Sim")) {
-		cor_sim = #999999
+	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
 			obj_diario.dia += 1
 			clicou = false
 			global.tem_tela_aberta = false
 			obj_calendario.mudou_dia = true
 		}
-	} else if (mx > tx_nao && mx < tx_nao + string_width("Não") && my > ty_nao && my < ty_nao + string_height("Não")) {
-		cor_nao = #999999
+	} else {
+		mouse_sim = false
+	}
+	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+		mouse_nao = true
 		if mouse_check_button_pressed(mb_left) {
 			clicou = false
 			global.tem_tela_aberta = false
 		}
 	} else {
-		cor_sim = #555555 
-		cor_nao = #555555
+		mouse_nao = false
 	}
 }

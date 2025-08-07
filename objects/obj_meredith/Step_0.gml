@@ -74,7 +74,7 @@ if !global.tem_tela_aberta {
 					terminou = 2
 				}
 			} else if terminou == 2 {
-				andar("esquerda")
+				andar("direita")
 				if frames == 0 {
 					ipsilon = x
 					frames = 1
