@@ -39,11 +39,15 @@ function quebrar_texto(texto, largura_maxima) {
     return linhas;
 }
 
-programacao = []
-
+dia_atual = 16
+programacao = noone
+mensagem_atual = ""
+entrou = true
 qtde_itens = 1
 clicou = false
 
+dia_semana = 0
+dia_semana1 = 0
 j = 0
 indice_atual = 0
 tempo = 0
@@ -65,8 +69,11 @@ box_height = 150;
 box_x = room_width/2 - box_width/2;
 box_y = room_height - box_height - 20;
 
+noticias_id = 0
 noticias = [
-	[],
+	["Bom dia telespectadores. Cá estamos para discutir as noticias mais relevantes da semana.", 
+	"Primeiramente, é de cunho comunitário a informação de que ocorreu, em 16/07, a explosão nuclear que danificou a atmosfera terrestre.",
+	"Tal explosão é apontada como resultado de um teste por parte dos nazistas na guerra. Teóricos da geopolítica apontam suas motivações a seguir:"],
 	[],
 	[],
 	[],
@@ -82,8 +89,9 @@ noticias = [
 	[],
 ]
 
+cozinha_id = 0
 cozinha = [
-	[],
+	["Cozinha", "Cozinha", "Cozinha"],
 	[],
 	[],
 	[],
@@ -99,8 +107,9 @@ cozinha = [
 	[],
 ]
 
+sobrevivencia_id = 0
 sobrevivencia = [
-	[],
+	["sobrevivencia"],
 	[],
 	[],
 	[],
@@ -116,8 +125,10 @@ sobrevivencia = [
 	[],
 ]
 
+jesus_id = 0
 jesus = [
-	[],
+	["'O Senhor é meu pastor e nada me faltará': assim diz a Bíblia e assim deve ser.",
+	"Que o senhor os proteja e guarde. Amém."],
 	[],
 	[],
 	[],
@@ -133,7 +144,9 @@ jesus = [
 	[],
 ]
 
+resenha_id = 0
 resenha = [
+	["discussao e amizade"],
 	[],
 	[],
 	[],
@@ -147,9 +160,4 @@ resenha = [
 	[],
 	[],
 	[],
-	[],
-]
-
-musica = [
-
 ]

@@ -1,9 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+draw_text(30, 30, dia_semana1)
 if clicou {
-		texto_atual = mensagens[indice_atual]
+	if programacao == noone {
+		clicou = false
+	} else {
 		if current_time > tempo {
-			escrever(mensagens[indice_atual])
+			escrever(programacao[indice_atual])
 			tempo = current_time + type_speed
 		}
 		draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
@@ -14,3 +17,4 @@ if clicou {
 			draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
 		}
 	}
+}

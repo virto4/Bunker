@@ -5,3 +5,5 @@ dia_atual = 16
 mes_atual = 7
 mudou_dia = false
 dia_semana = 1
+
+dia_semana1 = 0

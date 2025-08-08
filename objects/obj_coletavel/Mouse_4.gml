@@ -19,7 +19,7 @@ if room == rm_bunker and (object_index == obj_meredith or object_index == obj_da
 	nao = true
 }
 
-if object_index == obj_radio {
+if object_index == obj_radio and obj_radio.programacao != noone{
 	obj_radio.clicou = true
 }
 

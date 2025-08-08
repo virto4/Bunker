@@ -105,13 +105,12 @@ if clicou {
 				x_dia = 1480
 				break
 		}
-		
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		draw_text(x_dia, y_dia, i)
-		
 		if dia_atual == i {
 			draw_circle(x_dia + 80, y_dia + 56, 100, true)
+			dia_semana1 = dia_semana
 		}
 		
 		dia_semana++
