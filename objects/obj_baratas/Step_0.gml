@@ -3,7 +3,7 @@
 depth = -y + 64
 
 if !global.tem_tela_aberta and !morreu {
-	if place_meeting(x, y, all) and !place_meeting(x, y, obj_personagem) and !place_meeting(x, y, obj_cursor) {
+	if place_meeting(x, y, obj_colidivel) {
 		var aux = numero
 		while aux == numero {
 			numero = irandom_range(1, 4)

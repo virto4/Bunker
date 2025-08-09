@@ -39,6 +39,7 @@ function quebrar_texto(texto, largura_maxima) {
     return linhas;
 }
 
+programa = ""
 dia_atual = 16
 programacao = noone
 mensagem_atual = ""

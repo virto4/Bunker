@@ -30,24 +30,29 @@ if entrou and instance_exists(obj_calendario) {
 	dia_semana1  = ((dia_semana + dia_atual - 2) mod 7);
     // Define programação baseada no dia da semana
     if (dia_semana1 == 1) { // Domingo
-        programacao = jesus[jseus_id];
+        programacao = jesus[jesus_id];
 		jesus_id++
+		programa = "Rádio Jesus"
     }
     else if (dia_semana1 == 2) { // Segunda
         programacao = sobrevivencia[sobrevivencia_id];
 		sobrevivencia_id++
+		programa = "Guia de Sobrevivência Pós-Apocalíptica"
     }
     else if (dia_semana1 == 4) { // Quarta
         programacao = cozinha[cozinha_id];
 		cozinha_id++
+		programa = "Cozinha Improvisada"
     }
     else if (dia_semana1 == 5) { // Quinta
         programacao = noticias[noticias_id];
 		noticias_id++
+		programa = "Notícias Urgentes"
     }
     else if (dia_semana1 == 6) { // Sexta
         programacao = resenha[resenha_id];
 		resenha_id++
+		programa = "Semanário do Sobrevivente"
     }
 	entrou = false
 }
