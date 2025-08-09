@@ -46,6 +46,9 @@ entrou = true
 qtde_itens = 1
 clicou = false
 
+dia_atual = 16
+mes_atual = 7
+
 dia_semana = 0
 dia_semana1 = 0
 j = 0

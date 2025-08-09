@@ -2,62 +2,53 @@
 // Você pode escrever seu código neste editor
 depth = -y
 if entrou and instance_exists(obj_calendario) {
-	switch obj_calendario.mes_atual {
-		//d - 1; s - 2; t - 3; q - 4; q - 5; s - 6; s - 7
-		case 7:
-			dia_semana = 1 //domingo
-			break
-		case 8:
-			dia_semana = 4 //quarta
-			break
-		case 9:
-			dia_semana = 7 //sabado
-			break
-		case 10:
-			dia_semana = 2 //segunda
-			break
-		case 11:
-			dia_semana = 5
-			break
-		case 12:
-			dia_semana = 7
-			break
-	}
-	for (var i = 1; i <= 31; i++) {
-		if i == 31 and obj_calendario.mes_atual == 9 or obj_calendario.mes_atual == 11 {
-			break
-		}
-		if obj_calendario.dia_atual == i {
-			dia_semana1 = dia_semana
-			break
-		}
-		
-		dia_semana++
-		if dia_semana > 7 {
-			dia_semana = 1
+    // Reinicia variáveis de controle
+    dia_semana1 = -1;
+    dia_atual++
+	if mes_atual == 7 or mes_atual == 8 or mes_atual == 10 or mes_atual == 12 {
+		if dia_atual > 31 {
+			dia_atual = 1
+			mes_atual++
 		}
 	}
-	if dia_semana1 == 1 {
-		//jesus
-		programacao = jesus[jesus_id]
+	if mes_atual == 9 or mes_atual == 11 {
+		if dia_atual > 30 {
+			dia_atual = 1
+			mes_atual++
+		}
+	}
+    // Calcula dia base do mês
+    switch (mes_atual) {
+        case 7: dia_semana = 1; break; // domingo
+        case 8: dia_semana = 4; break; // quarta
+        case 9: dia_semana = 7; break; // sábado
+        case 10: dia_semana = 2; break; // segunda
+        case 11: dia_semana = 5; break; // quinta
+        case 12: dia_semana = 7; break; // sábado
+        default: dia_semana = 1; break; // padrão domingo
+    }
+	dia_semana1  = ((dia_semana + dia_atual - 2) mod 7);
+    // Define programação baseada no dia da semana
+    if (dia_semana1 == 1) { // Domingo
+        programacao = jesus[jseus_id];
 		jesus_id++
-	} else if dia_semana1 == 2 {
-		//sobrevivencia
-		programacao = sobrevivencia[sobrevivencia_id]
+    }
+    else if (dia_semana1 == 2) { // Segunda
+        programacao = sobrevivencia[sobrevivencia_id];
 		sobrevivencia_id++
-	} else if dia_semana1 == 4 {
-		//cozinha
-		programacao = cozinha[cozinha_id]
+    }
+    else if (dia_semana1 == 4) { // Quarta
+        programacao = cozinha[cozinha_id];
 		cozinha_id++
-	} else if dia_semana1 == 6 {
-		//resenha
-		programacao = resenha[resenha_id]
-		resenha_id++
-	} else if dia_semana1 == 5 {
-		//noticias
-		programacao = noticias[noticias_id]
+    }
+    else if (dia_semana1 == 5) { // Quinta
+        programacao = noticias[noticias_id];
 		noticias_id++
-	}
+    }
+    else if (dia_semana1 == 6) { // Sexta
+        programacao = resenha[resenha_id];
+		resenha_id++
+    }
 	entrou = false
 }
 if clicou {
