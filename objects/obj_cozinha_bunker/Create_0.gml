@@ -2,7 +2,6 @@
 // Você pode escrever seu código neste editor
 clicou = false
 receitas = ds_list_create()
-ds_list_add(receitas, obj_salada, obj_escondidinho, obj_ovo_mexido)
 receitas_totais = ds_list_create()
 ds_list_add(receitas_totais, obj_arroz_frango, obj_bolo_chocolate, obj_bolo_quatro_quartos, obj_chucrute, obj_cookie, obj_escondidinho, obj_ovo_mexido, obj_salada)
 

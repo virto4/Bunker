@@ -19,7 +19,9 @@ if alimento or remedio {
 	} else if alimento_scale >= 5 {
 		var nome = variable_struct_get(global.nomes, object_get_name(obj_personagem.item_selecionado))
 		var largura = string_length(nome)
-		escrever(220, 800, "Você deseja dar a Davi " + nome + " ?", [{pos: 0, cor: c_black}, {pos: 18, cor: #16637F}, {pos:23, cor: #B29711}, {pos: 24 + largura, cor: c_black}])
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text(220, 800, "Você deseja dar a Davi " + nome + " ?")
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		if mouse_sim {

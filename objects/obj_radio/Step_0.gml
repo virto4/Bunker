@@ -43,6 +43,26 @@ if entrou and instance_exists(obj_calendario) {
         programacao = cozinha[cozinha_id];
 		cozinha_id++
 		programa = "Cozinha Improvisada"
+		if cozinha_id % 4 == 0 {
+			ovo_mexido = true
+		} else {
+			ovo_mexido = false
+		}
+		if cozinha_id % 4 == 1 {
+			salada = true
+		} else {
+			salada = false
+		}
+		if cozinha_id % 4 == 2 {
+			bolo_chocolate = true
+		} else {
+			bolo_chocolate = false
+		}
+		if cozinha_id % 4 == 3 {
+			bolo_quatro_quartos = true
+		} else {
+			bolo_quatro_quartos = false
+		}
     }
     else if (dia_semana1 == 5) { // Quinta
         programacao = noticias[noticias_id];
@@ -53,10 +73,13 @@ if entrou and instance_exists(obj_calendario) {
         programacao = resenha[resenha_id];
 		resenha_id++
 		programa = "Semanário do Sobrevivente"
-    }
+    } else {
+		programacao = sem_programa
+	}
 	entrou = false
 }
 if clicou {
+	global.tem_tela_aberta = true
 	tempo = current_time + type_speed
 	j = 0
 	
@@ -64,6 +87,18 @@ if clicou {
 		if !clicou_radio { //ele clicava no radio 
 			clicou_radio = true
 		} else {
+			if ovo_mexido {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_ovo_mexido )
+			}
+			if bolo_chocolate {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_bolo_chocolate )
+			}
+			if bolo_quatro_quartos {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_bolo_quatro_quartos )
+			}
+			if salada {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_salada )
+			}
 			if char_index < string_length(programacao[indice_atual]) {
 				current_text = programacao[indice_atual]
 				char_index = string_length(programacao[indice_atual])
@@ -73,6 +108,7 @@ if clicou {
 					char_index = 0
 					clicou_radio = false
 					indice_atual = 0
+					global.tem_tela_aberta = false
 				} else {
 					char_index = 0
 					indice_atual++
