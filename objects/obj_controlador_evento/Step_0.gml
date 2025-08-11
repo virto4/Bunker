@@ -25,8 +25,19 @@ if obj_diario.dia < 30 {
 			break
 		case "radiacao": //contador geiger para indicar o local do vazamento, argamassa para cobrir
 			break
+		case "inimigo":
+			evento_inimigo = true
+			break
 	}
 } 
+
+if evento_inimigo {
+	if derrotou_inimigo {
+		derrotou_inimigo = false
+		evento_inimigo = false
+	}
+}
+
 if evento_baratas {
 	if !instanciou_baratas {
 		instance_create_layer(553, 590, "Instances", obj_baratas, {})

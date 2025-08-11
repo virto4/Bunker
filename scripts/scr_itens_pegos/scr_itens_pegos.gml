@@ -195,3 +195,5 @@ alimentos_consumiveis =  [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos,
 remedios = [obj_analgesico, obj_curativo, obj_ansiolitico, obj_aspirina, obj_antibiotico]
 
 pulou_dia = false
+
+armas = [obj_machado, obj_picareta, obj_pistola, obj_metralhadora, obj_frigideira, obj_panela_pressao]

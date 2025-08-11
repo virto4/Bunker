@@ -156,6 +156,22 @@ qtde_itens1 = {
 	"obj_davi": 0
 }
 
+habilidades = [
+	["Sniper", "Armas de fogo dão mais dano."],
+	["Ferramenteiro", "Obtém mais eficiência em armas brancas."],
+	["Golpe da morte", "Dá 2 ataques no lugar de um só; 1 por batalha."],
+	["Estoicismo", "Remove suas emoções."],
+	["Pensamentos intrusivos", "Fica deprimido."],
+	["Pensamentos intrusivos 2", "Fica coolérico."],
+	["Curandeiro aprendiz", "Cura 1/3 de toda a saúde do personagem"],
+	["Curandeiro mestre", "Cura toda a saúde de um personagem"],
+	["Parque de diversões", "Fica extasiado"],
+	["Concentração", "Resistência e força são melhoradas um pouco."],
+	["Ataque", "Um ataque padrão. Nada de mais"],
+	[""]
+]
+
+habilidades_adquiridas = habilidades //provisorio, futuramente as habilidades serão conquistadas ao longo do tempo
 
 inputs = {
 	esquerda	: ord("A"),
@@ -166,6 +182,8 @@ inputs = {
 }
 
 opcoes = false
+
+armas_pegas = [obj_panela_pressao, obj_metralhadora, obj_picareta, obj_machado, obj_pistola, obj_frigideira]
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
@@ -246,21 +264,27 @@ if room_get_name(room) == "rm_casa" {
 				mudar_fase("obj_ursinho", obj_ursinho);
 				break;
 			case obj_frigideira:
+				array_push(armas_pegas, obj_frigideira)
 				mudar_fase("obj_frigideira", obj_frigideira);
 				break;
 			case obj_panela_pressao:
+				array_push(armas_pegas, obj_panela_pressao)
 				mudar_fase("obj_panela_pressao", obj_panela_pressao);
 				break;
 			case obj_machado:
+				array_push(armas_pegas, obj_machado)
 				mudar_fase("obj_machado", obj_machado);
 				break;
 			case obj_metralhadora:
+				array_push(armas_pegas, obj_metralhadora)
 				mudar_fase("obj_metralhadora", obj_metralhadora);
 				break;
 			case obj_picareta:
+				array_push(armas_pegas, obj_picareta)
 				mudar_fase("obj_picareta", obj_picareta);
 				break;
 			case obj_pistola:
+				array_push(armas_pegas, obj_pistola)
 				mudar_fase("obj_pistola", obj_pistola);
 				break;
 			case obj_analgesico:

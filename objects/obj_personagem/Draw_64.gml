@@ -7,8 +7,6 @@ if alpha == 0 {
 	}
 }
 
-draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
-
 var _slotx1=768
 var _slotx2=864
 var _slotx3=960
@@ -28,41 +26,47 @@ function desenhar_hotbar(slot, slot_novo, slotx) {
 		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_black, 1)
 	}
 }
-
-switch (slot_selecionado) {
-	case 1:
-		draw_sprite_ext(spr_slot_selecionado, 0, _slotx1, 1020, 3, 3, 0, c_white, 1)	
-		break
-	case 2:
-		draw_sprite_ext(spr_slot_selecionado, 0, _slotx2, 1020, 3, 3, 0, c_white, 1)
-		break
-	case 3:
-		draw_sprite_ext(spr_slot_selecionado, 0, _slotx3, 1020, 3, 3, 0, c_white, 1)
-		break
-	case 4:
-		draw_sprite_ext(spr_slot_selecionado, 0, _slotx4, 1020, 3, 3, 0, c_white, 1)
-		break
-	case 5:
-		draw_sprite_ext(spr_slot_selecionado, 0, _slotx5, 1020, 3, 3, 0, c_white, 1)
-		break
+var desenha = true
+if room == rm_bunker {
+	if obj_escada.clicou {
+		desenha = false
+	}
 }
-
-if slot1 != noone {
-	desenhar_hotbar(slot1, slot1_novo, _slotx1)
+if desenha {
+	draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
+	switch (slot_selecionado) {
+		case 1:
+			draw_sprite_ext(spr_slot_selecionado, 0, _slotx1, 1020, 3, 3, 0, c_white, 1)	
+			break
+		case 2:
+			draw_sprite_ext(spr_slot_selecionado, 0, _slotx2, 1020, 3, 3, 0, c_white, 1)
+			break
+		case 3:
+			draw_sprite_ext(spr_slot_selecionado, 0, _slotx3, 1020, 3, 3, 0, c_white, 1)
+			break
+		case 4:
+			draw_sprite_ext(spr_slot_selecionado, 0, _slotx4, 1020, 3, 3, 0, c_white, 1)
+			break
+		case 5:
+			draw_sprite_ext(spr_slot_selecionado, 0, _slotx5, 1020, 3, 3, 0, c_white, 1)
+			break
+	}
+	if slot1 != noone {
+		desenhar_hotbar(slot1, slot1_novo, _slotx1)
+	}
+	if slot2 != noone {
+		desenhar_hotbar(slot2, slot2_novo, _slotx2)
+	}
+	if slot3 != noone {
+		desenhar_hotbar(slot3, slot3_novo, _slotx3)
+	}
+	if slot4 != noone {
+		desenhar_hotbar(slot4, slot4_novo, _slotx4)
+	}
+	if slot5 != noone {
+		desenhar_hotbar(slot5, slot5_novo, _slotx5)
+	}
 }
-if slot2 != noone {
-	desenhar_hotbar(slot2, slot2_novo, _slotx2)
-}
-if slot3 != noone {
-	desenhar_hotbar(slot3, slot3_novo, _slotx3)
-}
-if slot4 != noone {
-	desenhar_hotbar(slot4, slot4_novo, _slotx4)
-}
-if slot5 != noone {
-	desenhar_hotbar(slot5, slot5_novo, _slotx5)
-}
-
 if alpha > 0 {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha)
 	alpha -= 0.05

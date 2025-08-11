@@ -373,6 +373,8 @@
     {"id":{"name":"spr_resistencia_cheio","path":"sprites/spr_resistencia_cheio/spr_resistencia_cheio.yy",},},
     {"id":{"name":"spr_resistencia_var","path":"sprites/spr_resistencia_var/spr_resistencia_var.yy",},},
     {"id":{"name":"spr_retornar_item","path":"sprites/spr_retornar_item/spr_retornar_item.yy",},},
+    {"id":{"name":"spr_retrato","path":"sprites/spr_retrato/spr_retrato.yy",},},
+    {"id":{"name":"spr_retrato2","path":"sprites/spr_retrato2/spr_retrato2.yy",},},
     {"id":{"name":"spr_saco_lixo","path":"sprites/spr_saco_lixo/spr_saco_lixo.yy",},},
     {"id":{"name":"spr_sagacidade_cheio","path":"sprites/spr_sagacidade_cheio/spr_sagacidade_cheio.yy",},},
     {"id":{"name":"spr_sagacidade_var","path":"sprites/spr_sagacidade_var/spr_sagacidade_var.yy",},},

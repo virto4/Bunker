@@ -329,6 +329,8 @@
     {"name":"spr_resistencia_cheio","order":56,"path":"sprites/spr_resistencia_cheio/spr_resistencia_cheio.yy",},
     {"name":"spr_resistencia_var","order":25,"path":"sprites/spr_resistencia_var/spr_resistencia_var.yy",},
     {"name":"spr_retornar_item","order":54,"path":"sprites/spr_retornar_item/spr_retornar_item.yy",},
+    {"name":"spr_retrato","order":11,"path":"sprites/spr_retrato/spr_retrato.yy",},
+    {"name":"spr_retrato2","order":12,"path":"sprites/spr_retrato2/spr_retrato2.yy",},
     {"name":"spr_saco_lixo","order":12,"path":"sprites/spr_saco_lixo/spr_saco_lixo.yy",},
     {"name":"spr_sagacidade_cheio","order":20,"path":"sprites/spr_sagacidade_cheio/spr_sagacidade_cheio.yy",},
     {"name":"spr_sagacidade_var","order":57,"path":"sprites/spr_sagacidade_var/spr_sagacidade_var.yy",},

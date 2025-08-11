@@ -12,6 +12,9 @@ function embaralhar(vetor) {
 	return vetor
 }
 
+evento_inimigo = false
+derrotou_inimigo = false
+
 evento_ventilacao = false
 coisou_ventilacao = false
 
@@ -32,6 +35,7 @@ evento_rachaduras = false
 instanciou_rachaduras = false
 
 eventos_inicio = [
+	"inimigo",
 	"baratas", //ok
 	"canos", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
 	"rachaduras",//ok
@@ -44,7 +48,7 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	dia1: eventos_inicio[6],
+	dia1: eventos_inicio[0],
 	dia2: eventos_inicio[2],
 	dia3: eventos_inicio[3],
 	dia4: eventos_inicio[0],
