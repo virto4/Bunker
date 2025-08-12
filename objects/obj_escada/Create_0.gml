@@ -14,3 +14,45 @@ arma_roger = noone
 arma_davi = noone
 arma_x_davi = 1
 arma_x_roger = 1
+cor_hab  = #43717F
+cor_hab_1 = #43717F
+hab_roger = false
+hab_davi = false
+cor_unidade = #43717F
+habilidade_roger = ""
+habilidade_davi = ""
+mensagem = false
+codigo = ""
+tempo = 0
+tempo_turno = 0
+batalha = false
+sua_vez = 0
+executar = false
+
+obj = noone
+dano = 0
+
+x_inimigo = 960
+y_inimigo = 540
+
+x_roger = 172
+y_roger = 894
+
+x_davi = 1742
+y_davi = 894 
+
+inimigo = {
+	vida: 100,
+	forca: 55,
+	resistencia: 30,
+	sagacidade: 80
+}
+
+armas = {
+	"obj_metralhadora": 90,
+	"obj_pistola": 80,
+	"obj_machado": 75,
+	"obj_picareta": 70,
+	"obj_frigideira": 40,
+	"obj_panela_pressao": 35
+}

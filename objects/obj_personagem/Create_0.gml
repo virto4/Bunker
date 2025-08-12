@@ -15,7 +15,7 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
-humores = ["NEUTRO", "COM NOJO", "HIPERATIVO", "FURIOSO", "DEPRIMIDO", "APAVORADO"]
+humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
 	saude: 100,
@@ -168,7 +168,6 @@ habilidades = [
 	["Parque de diversões", "Fica extasiado"],
 	["Concentração", "Resistência e força são melhoradas um pouco."],
 	["Ataque", "Um ataque padrão. Nada de mais"],
-	[""]
 ]
 
 habilidades_adquiridas = habilidades //provisorio, futuramente as habilidades serão conquistadas ao longo do tempo
