@@ -7,7 +7,7 @@ if clicou {
 	draw_set_color(c_black)
 	
 	draw_rectangle_color(x_inimigo - 128, y_inimigo - 256 - 30, x_inimigo + 128, y_inimigo - 256 - 10, c_black, c_black, c_black, c_black, false)
-	draw_rectangle_color(x_inimigo - 128 + 5, y_inimigo - 256 - 25, x_inimigo + 128 - 5, y_inimigo - 256 - 15, c_red, c_red, c_red, c_red, false)
+	draw_rectangle_color(x_inimigo - 128 + 5, y_inimigo - 256 - 25, x_inimigo - 128 + 5 + largura_inimigo, y_inimigo - 256 - 15, c_red, c_red, c_red, c_red, false)
 	draw_sprite_ext(spr_retrato2, 0, 960, 540, 1, 1, 0, c_white, 1)
 	draw_text(960 - string_width(nome_inimigo) / 2, 540 + 256 + 10, nome_inimigo)
 	
@@ -17,7 +17,7 @@ if clicou {
 	var humor = obj_personagem.atributos.humor
 	draw_text(x_roger - string_width("Roger") / 2, y_roger + 128 + 10, "Roger")
 	draw_rectangle_color(x_roger - 128, y_roger - 128 - 30, x_roger + 128, y_roger - 128 - 10, c_black, c_black, c_black, c_black, false)
-	draw_rectangle_color(x_roger - 128 + 5, y_roger - 128 - 25, x_roger + 128 - 5, y_roger - 128 - 15, c_red, c_red, c_red, c_red, false)
+	draw_rectangle_color(x_roger - 128 + 5, y_roger - 128 - 25,x_roger - 128 + 5 + largura_roger, y_roger - 128 - 15, c_red, c_red, c_red, c_red, false)
 	draw_sprite_ext(spr_retrato, 0, 172, 894, 1, 1, 0, c_white, 1)
 	draw_circle_color(390, 894, 40, c_black, c_black, false)
 	draw_circle_color(390, 894, 38, cor_circulo2, cor_circulo2, false)
@@ -99,7 +99,7 @@ if clicou {
 	if instance_exists(obj_davi) {
 		var humor_davi = obj_davi.atributos.humor
 		draw_rectangle_color(x_davi - 128, y_davi - 128 - 30, x_davi + 128, y_davi - 128 - 10, c_black, c_black, c_black, c_black, false)
-		draw_rectangle_color(x_davi - 128 + 5, y_davi - 128 - 25, x_davi + 128 - 5, y_davi - 128 - 15, c_red, c_red, c_red, c_red, false)
+		draw_rectangle_color(x_davi - 128 + 5, y_davi - 128 - 25, x_davi - 128 + 5 +largura_davi, y_davi - 128 - 15, c_red, c_red, c_red, c_red, false)
 		draw_sprite_ext(spr_retrato, 0, 1742, 894, 1, 1, 0, c_white, 1)
 		draw_text(1742 - string_width("Davi") / 2, 894 + 128 + 10, "Davi")
 		draw_circle_color(1524, 894, 40, c_black, c_black, false)
@@ -200,28 +200,18 @@ if clicou {
 		if personagem == "Roger" {
 			_x = x_roger 
 			_y = y_roger
-			if numero > 0 {
-				draw_set_color(#088C2F)
-				draw_text(_x, _y, "+" + string(numero))
-			} else {
-				draw_set_color(#9E0B0F)
-				draw_text(_x, _y, "-" + string(numero))
-			}
+			draw_set_color(#9E0B0F)
+			draw_text(_x, _y, string(numero))
 		} else if personagem == "Davi" {
 			_x = x_davi 
 			_y = y_davi
-			if numero > 0 {
-				draw_set_color(#088C2F)
-				draw_text(_x, _y, "+" + string(numero))
-			} else {
-				draw_set_color(#9E0B0F)
-				draw_text(_x, _y, "-" + string(numero))
-			}
+			draw_set_color(#9E0B0F)
+			draw_text(_x, _y, string(numero))
 		} else {
 			_x = x_inimigo
 			_y = y_inimigo
 			draw_set_color(#9E0B0F)
-			draw_text(_x, _y, "-" + string(numero))
+			draw_text(_x, _y, string(numero))
 		}
 	}
 	
@@ -232,7 +222,7 @@ if clicou {
 			if executar {
 				if sua_vez == 0 {
 					sua_vez = 1
-					ataque = obj_personagem.atributos.forca * variable_struct_get(armas, object_get_name(arma_roger))
+					ataque = sqrt(obj_personagem.atributos.forca * variable_struct_get(armas, object_get_name(arma_roger))) //média geometrica 
 					switch habilidade_roger {
 						case "Sniper":
 							if arma_roger == obj_metralhadora or arma_roger == obj_pistola {
@@ -296,16 +286,16 @@ if clicou {
 					if errou {
 						ataque_final = 0
 					} else if critico {
-						ataque_final = ataque * 1.5 / inimigo.resistencia
+						ataque_final = ataque * 1.6 - irandom(inimigo.resistencia)
 					} else {
-						ataque_final = ataque / inimigo.resistencia
+						ataque_final = ataque - irandom(inimigo.resistencia)
 					}
-					inimigo.vida -= ataque_final
+					inimigo.vida -= round(random_range(0.95, 1.05) * ataque_final)
 					obj = "inimigo"
-					dano = -ataque_final
+					dano = ataque_final
 				} else if sua_vez == 1 {
 					sua_vez = 2
-					ataque = obj_davi.atributos.forca * variable_struct_get(armas, object_get_name(arma_davi))
+					ataque = sqrt(obj_davi.atributos.forca * variable_struct_get(armas, object_get_name(arma_davi)))
 					switch habilidade_roger {
 						case "Sniper":
 							if arma_davi == obj_metralhadora or arma_davi == obj_pistola {
@@ -365,39 +355,85 @@ if clicou {
 							errou = true
 						}
 					}
-					var ataque_final
+					var ataque_final = 0
 					if errou {
 						ataque_final = 0
 					} else if critico {
-						ataque_final = ataque * 1.5 / inimigo.resistencia
+						ataque_final = ataque * 1.6 - irandom(inimigo.resistencia)
 					} else {
-						ataque_final = ataque / inimigo.resistencia
+						ataque_final = ataque - irandom(inimigo.resistencia)
 					}
-					inimigo.vida -= ataque_final
+					inimigo.vida -= round(random_range(0.95, 1.05) * ataque_final)
 					obj = "inimigo"
-					dano = -ataque_final
+					dano = ataque_final
 				} else {
-					sua_vez = 0
-					var ataque = 0
+					ataque = 0
 					//vez do inimigo
+					var critico = false
+					var errou = false
+					if inimigo.sagacidade > 85 {
+						if irandom_range(0, 6) == 0 {
+							critico = true
+						}
+					} else if inimigo.sagacidade > 50 {
+						if irandom_range(0, 12) == 0 {
+							critico = true
+						}
+					} else if inimigo.sagacidade > 30 {
+						if irandom_range(0, 14) == 0 {
+							errou = true
+						}
+					} else {
+						if irandom_range(0, 8) {
+							errou = true
+						}
+					}
+					var ataque_final = 0
+					if errou {
+						ataque_final = 0
+					} else if critico {
+						ataque_final = round(inimigo.forca / obj_personagem.atributos.resistencia) * 1.6 - irandom(inimigo.resistencia)
+					} else {
+						ataque_final = round(inimigo.forca / obj_personagem.atributos.resistencia) - irandom(inimigo.resistencia)
+					}
 					if irandom_range(0, 1) == 1 {
 						obj = "Roger"
-						ataque = inimigo.forca / obj_personagem.atributos.resistencia 
-						obj_personagem.atributos.saude -= ataque
+						obj_personagem.atributos.saude -= ataque_final
 					} else {
 						obj = "Davi"
-						ataque = inimigo.forca / obj_davi.atributos.resistencia
-						obj_davi.atributos.saude -= ataque
-					}
-					dano = -ataque
+						obj_davi.atributos.saude -= ataque_final
+					}		
+					dano = ataque_final
+					ataque_inimigo = true
 				}
 			}
-			if current_time / 1000 > tempo_turno {
-				executar = true
-				tempo_turno = current_time / 1000 + 3 
-			} else {
+			executar = false
+			if current_time / 1000 < tempo_turno {
 				vida(obj, dano)
+			} else {
+				tempo_turno = current_time / 1000 + 3
+				executar = true
+				if ataque_inimigo {
+					ataque_inimigo = false
+					batalha = false
+				}
 			}
+			largura_inimigo = ( 246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
+			largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
+			largura_roger = (246 * obj_personagem.atributos.saude / 100 < 0) ? 0 : 246 * obj_personagem.atributos.saude / 100
+		} else {
+			mensagem = true
+			codigo = "É seu turno!"
+			tempo = current_time / 1000 + 3
+		}
+	} else {
+		mensagem = true
+		codigo = "Batalha concluída"
+		tempo = current_time / 1000 + 3
+		if mouse_check_button_pressed(mb_left) {
+			batalha = false
+			clicou = false
+			global.tem_tela_aberta = false
 		}
 	}
 }

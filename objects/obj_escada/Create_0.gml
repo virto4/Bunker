@@ -28,21 +28,26 @@ tempo_turno = 0
 batalha = false
 sua_vez = 0
 executar = false
+ataque_inimigo = false
 
 obj = noone
 dano = 0
 
 x_inimigo = 960
 y_inimigo = 540
+largura_inimigo = 246
 
 x_roger = 172
 y_roger = 894
+largura_roger = 246
 
 x_davi = 1742
 y_davi = 894 
+largura_davi = 246
 
 inimigo = {
-	vida: 100,
+	total_vida: 500,
+	vida: 500,
 	forca: 55,
 	resistencia: 30,
 	sagacidade: 80
