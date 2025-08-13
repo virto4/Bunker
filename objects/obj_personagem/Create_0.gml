@@ -24,7 +24,7 @@ atributos = {
 	sanidade: 100,
 	humor: humores[0],
 	sagacidade: 57,
-	forca: 88,
+	forca: 67,
 	resistencia: 85,
 	fortuna: 32,
 	fadiga: 12

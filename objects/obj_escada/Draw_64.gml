@@ -191,26 +191,26 @@ if clicou {
 			draw_text((1920 - string_width(codigo)) / 2, 100, codigo)
 		} else {
 			mensagem = false
+			mensagem_turno = true
 		}
 	}
 	
 	function vida(personagem, numero) {
 		var _x = 0
-		var _y = 0
 		if personagem == "Roger" {
-			_x = x_roger 
+			_x = x_roger - 128 + (256 - string_width(numero)) / 2
 			_y = y_roger
 			draw_set_color(#9E0B0F)
 			draw_text(_x, _y, string(numero))
 		} else if personagem == "Davi" {
-			_x = x_davi 
-			_y = y_davi
+			_x = x_davi - 128 + (256 - string_width(numero)) / 2
 			draw_set_color(#9E0B0F)
+			_y = y_davi
 			draw_text(_x, _y, string(numero))
 		} else {
-			_x = x_inimigo
-			_y = y_inimigo
+			_x = x_inimigo - 128 + (256 - string_width(numero)) / 2
 			draw_set_color(#9E0B0F)
+			_y = y_inimigo
 			draw_text(_x, _y, string(numero))
 		}
 	}
@@ -219,155 +219,269 @@ if clicou {
 		if batalha {
 			var ataque = 1
 			var defesa = 1
+			var atacou = true
 			if executar {
 				if sua_vez == 0 {
 					sua_vez = 1
+					_y = y_roger
 					ataque = sqrt(obj_personagem.atributos.forca * variable_struct_get(armas, object_get_name(arma_roger))) //média geometrica 
 					switch habilidade_roger {
 						case "Sniper":
 							if arma_roger == obj_metralhadora or arma_roger == obj_pistola {
 								ataque *= 1.3
+								mensagem = true
+								tempo = current_time / 1000 + 3
+								codigo = "Roger fuzila " + string(inimigo.nome) 
 							}
 							break
 						case "Ferramenteiro":
 							if arma_roger == obj_machado or arma_roger == obj_picareta {
 								ataque *= 1.3
 							}
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger corta " + string(inimigo.nome) 
 							break
 						case "Golpe da morte":
-							sua_vez = 0
+							if golpe_duplo {
+								sua_vez = 1
+								golpe_duplo = false
+								mensagem = true
+								tempo = current_time / 1000 + 3
+								codigo = "Roger ataca novamente" 
+							} else {
+								golpe_duplo = true
+								sua_vez = 0
+								mensagem = true
+								tempo = current_time / 1000 + 3
+								codigo = "Roger ataca " + string(inimigo.nome) 
+							}
 							break
 						case "Estoicismo":
 							obj_personagem.atributos.humor = obj_personagem.humores[0]
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger fica NEUTRO"
+							atacou = false
 							break
 						case "Pensamentos intrusivos":
 							obj_personagem.atributos.humor = obj_personagem.humores[3]
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger fica DEPRIMIDO"
+							atacou = false
 							break
 						case "Pensamentos intrusivos 2":
 							obj_personagem.atributos.humor = obj_personagem.humores[2]
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger fica COLÉRICO"
+							atacou = false
 							break
 						case "Curandeiro aprendiz":
-							obj_personagem.saude *= 1.33
-							if obj_personagem.saude > 100 {
-								obj_personagem.saude = 100
+							obj_personagem.atributos.saude *= 1.33
+							if obj_personagem.atributos.saude > 100 {
+								obj_personagem.atributos.saude = 100
 							}
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger se cura parcialmente"
+							atacou = false
 							break
 						case "Curandeiro mestre":
-							obj_personagem.saude = 100
+							obj_personagem.atributos.saude = 100
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger se cura totalmente"
+							atacou = false
 							break
 						case "Parque de diversões":
 							obj_personagem.atributos.humor = obj_personagem.humores[1]
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger fica EXTASIADO"
+							atacou = false
 							break
 						case "Concentração":
 							ataque *= 1.1
 							defesa *= 1.1
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Roger foca para melhorar sua performance"
+							break
+						case "Ataque":
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi ataca " + string(inimigo.nome)
 							break
 					}
-					var critico = false
-					var errou = false
-					if obj_personagem.atributos.sagacidade > 85 {
-						if irandom_range(0, 6) == 0 {
-							critico = true
+					if atacou {
+						var critico = false
+						var errou = false
+						if obj_personagem.atributos.sagacidade > 85 {
+							if irandom_range(0, 6) == 0 {
+								critico = true
+							}
+						} else if obj_personagem.atributos.sagacidade > 50 {
+							if irandom_range(0, 12) == 0 {
+								critico = true
+							}
+						} else if obj_personagem.atributos.sagacidade > 30 {
+							if irandom_range(0, 14) == 0 {
+								errou = true
+							}
+						} else {
+							if irandom_range(0, 8) {
+								errou = true
+							}
 						}
-					} else if obj_personagem.atributos.sagacidade > 50 {
-						if irandom_range(0, 12) == 0 {
-							critico = true
+						var ataque_final
+						if errou {
+							ataque_final = 0
+						} else if critico {
+							ataque_final = round(random_range(0.90, 1.1) * ataque * 1.6 - irandom(inimigo.resistencia))
+						} else {
+							ataque_final = round(random_range(0.90, 1.1) * ataque - irandom(inimigo.resistencia))
 						}
-					} else if obj_personagem.atributos.sagacidade > 30 {
-						if irandom_range(0, 14) == 0 {
-							errou = true
+						if ataque_final < 2 {
+							ataque_final = 2
 						}
-					} else {
-						if irandom_range(0, 8) {
-							errou = true
-						}
+						inimigo.vida -= ataque_final
+						obj = "inimigo"
+						dano = ataque_final
 					}
-					var ataque_final
-					if errou {
-						ataque_final = 0
-					} else if critico {
-						ataque_final = ataque * 1.6 - irandom(inimigo.resistencia)
-					} else {
-						ataque_final = ataque - irandom(inimigo.resistencia)
-					}
-					inimigo.vida -= round(random_range(0.95, 1.05) * ataque_final)
-					obj = "inimigo"
-					dano = ataque_final
 				} else if sua_vez == 1 {
 					sua_vez = 2
+					_y = y_davi
 					ataque = sqrt(obj_davi.atributos.forca * variable_struct_get(armas, object_get_name(arma_davi)))
-					switch habilidade_roger {
+					switch habilidade_davi {
 						case "Sniper":
 							if arma_davi == obj_metralhadora or arma_davi == obj_pistola {
 								ataque *= 1.3
 							}
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi fuzila " + string(inimigo.nome)
 							break
 						case "Ferramenteiro":
 							if arma_davi == obj_machado or arma_davi == obj_picareta {
 								ataque *= 1.3
 							}
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi corta " + string(inimigo.nome)
 							break
 						case "Golpe da morte":
-							sua_vez = 1
+							if golpe_duplo {
+								sua_vez = 2
+								golpe_duplo = false
+								mensagem = true
+								tempo = current_time / 1000 + 3
+								codigo = "Davi ataca novamente" 
+							} else {
+								golpe_duplo = true
+								sua_vez = 1
+								mensagem = true
+								tempo = current_time / 1000 + 3
+								codigo = "Davi ataca " + string(inimigo.nome) 
+							}
 							break
 						case "Estoicismo":
 							obj_davi.atributos.humor = obj_davi.humores[0]
+							atacou = false
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi fica NEUTRO"
 							break
 						case "Pensamentos intrusivos":
 							obj_davi.atributos.humor = objobj_davi_personagem.humores[3]
+							atacou = false
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi fica DEPRIMIDO"
 							break
 						case "Pensamentos intrusivos 2":
 							obj_davi.atributos.humor = obj_davi.humores[2]
+							atacou = false
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi fica COLÉRICO"
 							break
 						case "Curandeiro aprendiz":
-							obj_davi.saude *= 1.33
-							if obj_davi.saude > 100 {
-								obj_davi.saude = 100
+							obj_davi.atributos.saude *= 1.33
+							if obj_davi.atributos.saude > 100 {
+								obj_davi.atributos.saude = 100
 							}
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi se cura parcialmente"
+							atacou = false
 							break
 						case "Curandeiro mestre":
-							obj_davi.saude = 100
+							obj_davi.atributos.saude = 100
+							atacou = false
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi se cura totalmente"
 							break
 						case "Parque de diversões":
 							obj_davi.atributos.humor = obj_davi.humores[1]
+							atacou = false
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi fica EXTASIADO"
 							break
 						case "Concentração":
 							ataque *= 1.1
 							defesa *= 1.1
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi foca para melhorar suas habilidades"
+							break
+						case "Ataque":
+							mensagem = true
+							tempo = current_time / 1000 + 3
+							codigo = "Davi ataca " + string(inimigo.nome)
 							break
 					}
-					var critico = false
-					var errou = false
-					if obj_davi.atributos.sagacidade > 85 {
-						if irandom_range(0, 6) == 0 {
-							critico = true
+					if atacou {
+						var critico = false
+						var errou = false
+						if obj_davi.atributos.sagacidade > 85 {
+							if irandom_range(0, 6) == 0 {
+								critico = true
+							}
+						} else if obj_davi.atributos.sagacidade > 50 {
+							if irandom_range(0, 12) == 0 {
+								critico = true
+							}
+						} else if obj_davi.atributos.sagacidade > 30 {
+							if irandom_range(0, 14) == 0 {
+								errou = true
+							}
+						} else {
+							if irandom_range(0, 8) {
+								errou = true
+							}
 						}
-					} else if obj_davi.atributos.sagacidade > 50 {
-						if irandom_range(0, 12) == 0 {
-							critico = true
+						var ataque_final = 0
+						if errou {
+							ataque_final = 0
+						} else if critico {
+							ataque_final = round(random_range(0.9, 1.1) * ataque * 1.6 - irandom(inimigo.resistencia))
+						} else {
+							ataque_final = round(random_range(0.9, 1.1) * ataque - irandom(inimigo.resistencia))
 						}
-					} else if obj_davi.atributos.sagacidade > 30 {
-						if irandom_range(0, 14) == 0 {
-							errou = true
+						if ataque_final < 2 {
+							ataque_final = 2
 						}
-					} else {
-						if irandom_range(0, 8) {
-							errou = true
-						}
+						inimigo.vida -= ataque_final
+						obj = "inimigo"
+						dano = ataque_final
 					}
-					var ataque_final = 0
-					if errou {
-						ataque_final = 0
-					} else if critico {
-						ataque_final = ataque * 1.6 - irandom(inimigo.resistencia)
-					} else {
-						ataque_final = ataque - irandom(inimigo.resistencia)
-					}
-					inimigo.vida -= round(random_range(0.95, 1.05) * ataque_final)
-					obj = "inimigo"
-					dano = ataque_final
 				} else {
 					ataque = 0
+					_y = y_inimigo
 					//vez do inimigo
 					var critico = false
 					var errou = false
@@ -389,18 +503,33 @@ if clicou {
 						}
 					}
 					var ataque_final = 0
-					if errou {
-						ataque_final = 0
-					} else if critico {
-						ataque_final = round(inimigo.forca / obj_personagem.atributos.resistencia) * 1.6 - irandom(inimigo.resistencia)
-					} else {
-						ataque_final = round(inimigo.forca / obj_personagem.atributos.resistencia) - irandom(inimigo.resistencia)
-					}
+		
 					if irandom_range(0, 1) == 1 {
 						obj = "Roger"
+						if errou {
+							ataque_final = 0
+						} else if critico {
+							ataque_final = round(inimigo.forca * 1.6 - irandom(obj_personagem.atributos.resistencia))
+						} else {
+							ataque_final = round(inimigo.forca - irandom(obj_personagem.atributos.resistencia))
+						}
+						if ataque_final < 2 {
+							ataque_final = 2
+						}
 						obj_personagem.atributos.saude -= ataque_final
 					} else {
 						obj = "Davi"
+						if errou {
+							ataque_final = 0
+						} else if critico {
+							ataque_final = round(inimigo.forca * 1.6 - irandom(obj_davi.atributos.resistencia))
+						} else {
+							ataque_final = round(inimigo.forca - irandom(obj_davi.atributos.resistencia))
+						}
+						ataque_final = round(ataque_final * random_range(0.9, 1.1))
+						if ataque_final < 2 {
+							ataque_final = 2
+						}
 						obj_davi.atributos.saude -= ataque_final
 					}		
 					dano = ataque_final
@@ -418,10 +547,10 @@ if clicou {
 					batalha = false
 				}
 			}
-			largura_inimigo = ( 246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
+			largura_inimigo = (246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
 			largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
 			largura_roger = (246 * obj_personagem.atributos.saude / 100 < 0) ? 0 : 246 * obj_personagem.atributos.saude / 100
-		} else {
+		} else if mensagem_turno {
 			mensagem = true
 			codigo = "É seu turno!"
 			tempo = current_time / 1000 + 3

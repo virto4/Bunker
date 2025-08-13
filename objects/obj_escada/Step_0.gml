@@ -67,6 +67,7 @@ if clicou {
 			mensagem = true
 			codigo = "selecione uma arma e uma habilidade para cada personagem"
 			tempo = current_time / 1000 + 3 
+			mensagem_turno = false
 		} else if !batalha {
 			batalha = true
 			tempo_turno = current_time / 1000 + 3

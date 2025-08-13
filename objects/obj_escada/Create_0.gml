@@ -29,6 +29,10 @@ batalha = false
 sua_vez = 0
 executar = false
 ataque_inimigo = false
+_y = 0
+alpha = 0
+golpe_duplo = false
+mensagem_turno = true
 
 obj = noone
 dano = 0
@@ -46,9 +50,10 @@ y_davi = 894
 largura_davi = 246
 
 inimigo = {
+	nome: "inimigo",
 	total_vida: 500,
 	vida: 500,
-	forca: 55,
+	forca: 40,
 	resistencia: 30,
 	sagacidade: 80
 }
