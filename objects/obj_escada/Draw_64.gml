@@ -1,7 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if clicou {
-	
+if clicou and !derrotou {
 	draw_rectangle_color(0, 0, 1920, 1080, #15404C, #002733, #00332E, #1A664F, false)
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
@@ -58,6 +57,10 @@ if clicou {
 					habilidade_roger = nome
 					hab_roger = false
 				}
+			} else if !aux {
+				if mouse_check_button_pressed(mb_left) {
+					hab_roger = false
+				}
 			}
 		}
 	}
@@ -73,15 +76,24 @@ if clicou {
 			if width < heigth {
 				maior = heigth
 			}
-			draw_circle_color(390 + arma_x_roger * 80, 894,30, #2E7F0E, #2E7F0E, false)
-			draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 390 + arma_x_roger* 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
 			if point_in_circle(mx, my, 390 + arma_x_roger * 80, 894, 40) { //davi
 				if mouse_check_button_pressed(mb_left) {
 					arma_roger = obj_personagem.armas_pegas[i]
 					selecionar_arma_roger = false
 					break
 				}
-			} 
+			} else if !aux {
+				if mouse_check_button_pressed(mb_left) {
+					selecionar_arma_roger = false
+				}
+			}
+			if point_in_circle(mx, my, 390 + arma_x_roger * 80, 894, 40) {
+				cor_circulo = #649910
+			} else {
+				cor_circulo = #2E7F0E
+			}
+			draw_circle_color(390 + arma_x_roger * 80, 894,30, cor_circulo, cor_circulo, false)
+			draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 390 + arma_x_roger* 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
 			arma_x_roger++
 		}
 		arma_x_roger = 1
@@ -128,15 +140,24 @@ if clicou {
 				if width < heigth {
 					maior = heigth
 				}
-				draw_circle_color(1524 - arma_x_davi * 80, 894,30, #2E7F0E, #2E7F0E, false)
-				draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 1524 - arma_x_davi * 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
 				if point_in_circle(mx, my, 1524 - arma_x_davi * 80, 894, 40) { //davi
 					if mouse_check_button_pressed(mb_left) {
 						arma_davi = obj_personagem.armas_pegas[i]
 						selecionar_arma_davi = false
 						break
 					}
-				} 
+				} else if !aux {
+					if mouse_check_button_pressed(mb_left) {
+						selecionar_arma_davi = false
+					}
+				}
+				if point_in_circle(mx, my, 1524 - arma_x_davi * 80, 894, 40) {
+					cor_circulo = #649910
+				} else {
+					cor_circulo = #2E7F0E
+				}
+				draw_circle_color(1524 - arma_x_davi * 80, 894,30, cor_circulo, cor_circulo, false)
+				draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 1524 - arma_x_davi * 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
 				arma_x_davi++
 			}
 			arma_x_davi = 1
@@ -155,10 +176,21 @@ if clicou {
 			for (var i = 0; i < array_length(obj_personagem.habilidades_adquiridas); i++) {
 				var nome = obj_personagem.habilidades_adquiridas[i][0]
 				var descricao = obj_personagem.habilidades_adquiridas[i][1]
-				if point_in_rectangle(mx, my, x_davi + 128 - 40 - string_width(nome) - 5, novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45 + 5) { 
-					cor_unidade = #335A66
-				} else {
-					cor_unidade = #43717F
+				var b = false
+				if nome == "Curandeiro mestre" and mestre_tempo2 {
+					b = true
+					cor_unidade = #26434C
+				} 
+				if nome == "Golpe da morte" and golpe_morte_tempo2 {
+					b = true
+					cor_unidade = #26434C
+				}
+				if !b {
+					if point_in_rectangle(mx, my, x_davi + 128 - 40 - string_width(nome) - 5, novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45 + 5) { 
+						cor_unidade = #335A66
+					} else {
+						cor_unidade = #43717F
+					}
 				}
 				draw_rectangle_color(x_davi + 128 - 40 - string_width(nome) - 5, novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45 + 5, c_black, c_black, c_black, c_black, false )
 				draw_rectangle_color(x_davi + 128 - 40 - string_width(nome), novo_y - 180 - 40 - i * 45, x_davi + 123, novo_y - 180 - i * 45, cor_unidade, cor_unidade, cor_unidade, cor_unidade, false )
@@ -167,8 +199,12 @@ if clicou {
 					draw_rectangle_color(mx - 30 - string_width(descricao) - 5, my, mx - 20, my + string_height(descricao) + 10 + 5, c_black, c_black, c_black, c_black, false)
 					draw_rectangle_color(mx - 30 - string_width(descricao) - 5, my - 5, mx - 15, my + string_height(descricao) + 10, #B28435, #B28435, #B28435, #B28435, false)
 					draw_text(mx - 30 - string_width(descricao), my + 5, descricao)
-					if mouse_check_button_pressed(mb_left) {
+					if mouse_check_button_pressed(mb_left) and !b {
 						habilidade_davi = nome
+						hab_davi = false
+					} 
+				} else if !aux and !b {
+					if mouse_check_button_pressed(mb_left) {
 						hab_davi = false
 					}
 				}
@@ -184,6 +220,30 @@ if clicou {
 	draw_rectangle_color(960 - 128, 963, 960 + 128, 1043, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(960 - 128 + 5, 963 + 5, 960 + 128 - 5, 1043 - 5, cor_correr, cor_correr, cor_correr, cor_correr, false)
 	draw_text(960 - 128 + (256 - string_width("Correr")) / 2, 963 + (80 - string_height("Correr")) / 2, "Correr")
+	
+	if critico2 {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(#990A0E)
+		if receptor == obj_davi {
+			draw_text(x_davi - 128 + (256 - string_width("CRITICO")) / 2, y_davi + 50, "CRÍTICO")
+		} else if receptor == obj_personagem {
+			draw_text(x_roger - 128 + (256 - string_width("CRITICO")) / 2, y_roger + 50, "CRÍTICO")
+		} else {
+			draw_text(x_inimigo - 128 + (256 - string_width("CRITICO")) / 2, y_inimigo + 50, "CRÍTICO")
+		}
+	}
+	
+	if errou2 {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(#990A0E)
+		if receptor == obj_davi {
+			draw_text(x_davi - 128 + (256 - string_width("ERROU")) / 2, y_davi + 50, "ERROU")
+		} else if receptor == obj_personagem {
+			draw_text(x_roger - 128 + (256 - string_width("ERROU")) / 2, y_roger + 50, "ERROU")
+		} else {
+			draw_text(x_inimigo - 128 + (256 - string_width("ERROU")) / 2, y_inimigo + 50, "ERROU")
+		}
+	}
 	
 	if mensagem {
 		if current_time / 1000 <= tempo {
@@ -224,6 +284,7 @@ if clicou {
 				if sua_vez == 0 {
 					sua_vez = 1
 					_y = y_roger
+					receptor = inimigo
 					ataque = sqrt(obj_personagem.atributos.forca * variable_struct_get(armas, object_get_name(arma_roger))) //média geometrica 
 					switch habilidade_roger {
 						case "Sniper":
@@ -249,6 +310,7 @@ if clicou {
 								mensagem = true
 								tempo = current_time / 1000 + 3
 								codigo = "Roger ataca novamente" 
+								golpe_morte_tempo1 = true
 							} else {
 								golpe_duplo = true
 								sua_vez = 0
@@ -263,6 +325,7 @@ if clicou {
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica NEUTRO"
 							atacou = false
+							obj_personagem.mudou_humor = true
 							break
 						case "Pensamentos intrusivos":
 							obj_personagem.atributos.humor = obj_personagem.humores[3]
@@ -270,6 +333,7 @@ if clicou {
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica DEPRIMIDO"
 							atacou = false
+							obj_personagem.mudou_humor = true
 							break
 						case "Pensamentos intrusivos 2":
 							obj_personagem.atributos.humor = obj_personagem.humores[2]
@@ -277,6 +341,7 @@ if clicou {
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica COLÉRICO"
 							atacou = false
+							obj_personagem.mudou_humor = true
 							break
 						case "Curandeiro aprendiz":
 							obj_personagem.atributos.saude *= 1.33
@@ -294,12 +359,14 @@ if clicou {
 							tempo = current_time / 1000 + 3
 							codigo = "Roger se cura totalmente"
 							atacou = false
+							mestre_tempo1 = true
 							break
 						case "Parque de diversões":
 							obj_personagem.atributos.humor = obj_personagem.humores[1]
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica EXTASIADO"
+							obj_personagem.mudou_humor = true
 							atacou = false
 							break
 						case "Concentração":
@@ -312,7 +379,7 @@ if clicou {
 						case "Ataque":
 							mensagem = true
 							tempo = current_time / 1000 + 3
-							codigo = "Davi ataca " + string(inimigo.nome)
+							codigo = "Roger ataca " + string(inimigo.nome)
 							break
 					}
 					if atacou {
@@ -338,13 +405,12 @@ if clicou {
 						var ataque_final
 						if errou {
 							ataque_final = 0
+							errou2 = true
 						} else if critico {
-							ataque_final = round(random_range(0.90, 1.1) * ataque * 1.6 - irandom(inimigo.resistencia))
+							critico2 = true
+							ataque_final = round(random_range(0.9, 1.1) * ataque * 1.6 * (1 - inimigo.resistencia / 100))
 						} else {
-							ataque_final = round(random_range(0.90, 1.1) * ataque - irandom(inimigo.resistencia))
-						}
-						if ataque_final < 2 {
-							ataque_final = 2
+							ataque_final = round(random_range(0.9, 1.1) * ataque * (1 - inimigo.resistencia / 100))
 						}
 						inimigo.vida -= ataque_final
 						obj = "inimigo"
@@ -353,6 +419,7 @@ if clicou {
 				} else if sua_vez == 1 {
 					sua_vez = 2
 					_y = y_davi
+					receptor = inimigo
 					ataque = sqrt(obj_davi.atributos.forca * variable_struct_get(armas, object_get_name(arma_davi)))
 					switch habilidade_davi {
 						case "Sniper":
@@ -378,6 +445,7 @@ if clicou {
 								mensagem = true
 								tempo = current_time / 1000 + 3
 								codigo = "Davi ataca novamente" 
+								golpe_morte_tempo2 = true
 							} else {
 								golpe_duplo = true
 								sua_vez = 1
@@ -392,6 +460,7 @@ if clicou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica NEUTRO"
+							obj_davi.mudou_humor = true
 							break
 						case "Pensamentos intrusivos":
 							obj_davi.atributos.humor = objobj_davi_personagem.humores[3]
@@ -399,6 +468,7 @@ if clicou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica DEPRIMIDO"
+							obj_davi.mudou_humor = true
 							break
 						case "Pensamentos intrusivos 2":
 							obj_davi.atributos.humor = obj_davi.humores[2]
@@ -406,6 +476,7 @@ if clicou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica COLÉRICO"
+							obj_davi.mudou_humor = true
 							break
 						case "Curandeiro aprendiz":
 							obj_davi.atributos.saude *= 1.33
@@ -423,6 +494,7 @@ if clicou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Davi se cura totalmente"
+							mestre_tempo2 = true
 							break
 						case "Parque de diversões":
 							obj_davi.atributos.humor = obj_davi.humores[1]
@@ -430,6 +502,7 @@ if clicou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica EXTASIADO"
+							obj_davi.mudou_humor = true
 							break
 						case "Concentração":
 							ataque *= 1.1
@@ -466,14 +539,13 @@ if clicou {
 						}
 						var ataque_final = 0
 						if errou {
+							errou2 = true
 							ataque_final = 0
 						} else if critico {
-							ataque_final = round(random_range(0.9, 1.1) * ataque * 1.6 - irandom(inimigo.resistencia))
+							critico2 = true
+							ataque_final = round(random_range(0.9, 1.1) * ataque * 1.6 * (1 - inimigo.resistencia / 100))
 						} else {
-							ataque_final = round(random_range(0.9, 1.1) * ataque - irandom(inimigo.resistencia))
-						}
-						if ataque_final < 2 {
-							ataque_final = 2
+							ataque_final = round(random_range(0.9, 1.1) * ataque * (1 - inimigo.resistencia / 100))
 						}
 						inimigo.vida -= ataque_final
 						obj = "inimigo"
@@ -503,34 +575,39 @@ if clicou {
 						}
 					}
 					var ataque_final = 0
-		
 					if irandom_range(0, 1) == 1 {
 						obj = "Roger"
+						receptor = obj_personagem
 						if errou {
+							errou2 = true
 							ataque_final = 0
 						} else if critico {
-							ataque_final = round(inimigo.forca * 1.6 - irandom(obj_personagem.atributos.resistencia))
+							critico2 = true
+							ataque_final = round(inimigo.forca * 1.6 * (1 - obj_personagem.atributos.resistencia / 100))
 						} else {
-							ataque_final = round(inimigo.forca - irandom(obj_personagem.atributos.resistencia))
-						}
-						if ataque_final < 2 {
-							ataque_final = 2
+							ataque_final = round(inimigo.forca * (1 - obj_personagem.atributos.resistencia / 100))
 						}
 						obj_personagem.atributos.saude -= ataque_final
+						mensagem = true
+						codigo = string(inimigo.nome) + " ataca Roger"
+						tempo = current_time / 1000 + 3
 					} else {
 						obj = "Davi"
+						receptor = obj_davi
 						if errou {
+							errou2 = true
 							ataque_final = 0
 						} else if critico {
-							ataque_final = round(inimigo.forca * 1.6 - irandom(obj_davi.atributos.resistencia))
+							critico2 = true
+							ataque_final = round(inimigo.forca * 1.6 * (1 - obj_davi.atributos.resistencia / 100))
 						} else {
-							ataque_final = round(inimigo.forca - irandom(obj_davi.atributos.resistencia))
+							ataque_final = round(inimigo.forca * (1 - obj_davi.atributos.resistencia / 100))
 						}
 						ataque_final = round(ataque_final * random_range(0.9, 1.1))
-						if ataque_final < 2 {
-							ataque_final = 2
-						}
 						obj_davi.atributos.saude -= ataque_final
+						mensagem = true
+						codigo = string(inimigo.nome) + " ataca Davi"
+						tempo = current_time / 1000 + 3
 					}		
 					dano = ataque_final
 					ataque_inimigo = true
@@ -538,14 +615,17 @@ if clicou {
 			}
 			executar = false
 			if current_time / 1000 < tempo_turno {
-				vida(obj, dano)
+				if atacou {
+					vida(obj, dano)
+				} else {
+					obj = noone
+					dano = ""
+				}
 			} else {
 				tempo_turno = current_time / 1000 + 3
 				executar = true
-				if ataque_inimigo {
-					ataque_inimigo = false
-					batalha = false
-				}
+				errou2 = false
+				critico2 = false
 			}
 			largura_inimigo = (246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
 			largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
@@ -554,6 +634,33 @@ if clicou {
 			mensagem = true
 			codigo = "É seu turno!"
 			tempo = current_time / 1000 + 3
+			if golpe_morte_tempo1 {
+				golpe_morte_numero1++
+				if golpe_morte_numero1 > 5 {
+					golpe_morte_numero1 = 1
+					golpe_morte_tempo1 = false
+				}
+			}
+			if mestre_tempo2 {
+				mestre_numero2++
+				if mestre_numero2 > 5 {
+					mestre_numero2 = 1
+					mestre_tempo2 = false
+				}
+			if golpe_morte_tempo2 {
+				golpe_morte_numero2++
+				if golpe_morte_numero2 > 5 {
+					golpe_morte_numero2 = 1
+					golpe_morte_tempo2 = false
+				}
+			}
+			if mestre_tempo2 {
+				mestre_numero2++
+				if mestre_numero2 > 5 {
+					mestre_numero2 = 1
+					mestre_tempo2 = false
+				}
+			}
 		}
 	} else {
 		mensagem = true
@@ -562,6 +669,7 @@ if clicou {
 		if mouse_check_button_pressed(mb_left) {
 			batalha = false
 			clicou = false
+			derrotou = true
 			global.tem_tela_aberta = false
 		}
 	}

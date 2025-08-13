@@ -1,5 +1,45 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if mudou_humor {
+	if atributos.humor == "NEUTRO" {
+		atributos.forca = forca_padrao
+		atributos.sagacidade = sagacidade_padrao
+		atributos.fortuna = fortuna_padrao
+		atributos.resistencia = resistencia_padrao
+	}
+	if atributos.humor == "COLÉRICO" {
+		atributos.forca += 20  
+		atributos.resistencia -= 20
+		atributos.sagacidade -= 20
+		atributos.fortuna -= 20
+	} else if atributos.humor == "APAVORADO" {
+		atributos.forca += 20
+		atributos.resistencia -= 20
+		atributos.sagacidade += 20
+		atributos.fortuna -= 20
+	} else if atributos.humor == "DEPRIMIDO" {
+		atributos.forca -= 20
+		atributos.resistencia += 20
+		atributos.sagacidade -= 20
+		atributos.fortuna -= 20 
+	} else if atributos.humor == "EXTASIADO" {
+		atributos.forca += 20
+		atributos.resistencia += 20
+		atributos.sagacidade -= 20
+		atributos.fortuna += 20
+	} 
+	atributos.forca = (atributos.forca > 100) ? 100 : atributos.forca
+	atributos.resistencia = (atributos.resistencia > 100) ? 100 : atributos.resistencia 
+	atributos.fortuna = (atributos.fortuna > 100) ? 100 : atributos.fortuna
+	atributos.sagacidade = (atributos.sagacidade > 100) ? 100 : atributos.sagacidade
+
+	atributos.forca = (atributos.forca < 0) ? 0 : atributos.forca
+	atributos.resistencia = (atributos.resistencia < 0) ? 0 : atributos.resistencia
+	atributos.fortuna = (atributos.fortuna < 0) ? 0 : atributos.fortuna
+	atributos.sagacidade = (atributos.sagacidade < 0) ? 0 : atributos.sagacidade
+	
+	mudou_humor = false
+}
 for (var i = 0; i < 5; i++) {
 	if slot_selecionado == 1 {
 		item_selecionado = slot1

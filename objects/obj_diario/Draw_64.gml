@@ -66,16 +66,13 @@ if clicou and image_index == image_number - 1{
 	if pagina == 0 {
 		var _sprite_humor
 		switch obj_personagem.atributos.humor {
-			case "COM NOJO":
-				_sprite_humor = spr_nojo
-				break
-			case "HIPERATIVO":
+			case "EXTASIADO":
 				_sprite_humor = spr_hiperativo
 				break
 			case "APAVORADO":
 				_sprite_humor = spr_apavorado
 				break
-			case "FURIOSO":
+			case "COLÉRICO":
 				_sprite_humor = spr_furioso
 				break
 			case "DEPRIMIDO":
@@ -86,8 +83,6 @@ if clicou and image_index == image_number - 1{
 				break
 		}
 		
-		
-		
 		draw_sprite(spr_sede_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 300)
 		draw_sprite(spr_fome_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 240)
 		draw_sprite(spr_saude_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 180)
@@ -97,7 +92,6 @@ if clicou and image_index == image_number - 1{
 		draw_sprite(spr_forca_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 60)
 		draw_sprite(spr_resistencia_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 120)
 		draw_sprite(spr_fortuna_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 180)
-		draw_sprite(spr_fadiga_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 240)
 		
 		draw_sprite_part(spr_sede_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.sede / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 300 - 25)
 		draw_sprite_part(spr_fome_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fome / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 - 240 - 25)
@@ -107,20 +101,16 @@ if clicou and image_index == image_number - 1{
 		draw_sprite_part(spr_forca_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.forca / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 60 - 25)
 		draw_sprite_part(spr_resistencia_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.resistencia / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 120 - 25)
 		draw_sprite_part(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 180 - 25)
-		draw_sprite_part(spr_fadiga_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fadiga/ 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 240 - 25)
 		
 		
 		switch obj_davi.atributos.humor {
-			case "COM NOJO":
-				_sprite_humor = spr_nojo
-				break
-			case "HIPERATIVO":
+			case "EXTASIADO":
 				_sprite_humor = spr_hiperativo
 				break
 			case "APAVORADO":
 				_sprite_humor = spr_apavorado
 				break
-			case "FURIOSO":
+			case "COLÉRICO":
 				_sprite_humor = spr_furioso
 				break
 			case "DEPRIMIDO":
@@ -140,7 +130,6 @@ if clicou and image_index == image_number - 1{
 		draw_sprite_ext(spr_forca_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 60, -1, 1, 0, c_white, 1)
 		draw_sprite_ext(spr_resistencia_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 120, -1, 1, 0, c_white, 1)
 		draw_sprite_ext(spr_fortuna_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 180, -1, 1, 0, c_white, 1)
-		draw_sprite_ext(spr_fadiga_cheio, 0, 1920 / 2 + 300, 1080 / 2 + 240, -1, 1, 0, c_white, 1)
 		
 		draw_sprite_part_ext(spr_sede_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.sede / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 300 - 25, -1, 1, c_white, 1)
 		draw_sprite_part_ext(spr_fome_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fome / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 - 240 - 25, -1, 1, c_white, 1)
@@ -150,6 +139,5 @@ if clicou and image_index == image_number - 1{
 		draw_sprite_part_ext(spr_forca_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.forca / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 60 - 25, -1, 1, c_white, 1)
 		draw_sprite_part_ext(spr_resistencia_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.resistencia / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 120 - 25, -1, 1, c_white, 1)
 		draw_sprite_part_ext(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 180 - 25, -1, 1, c_white, 1)
-		draw_sprite_part_ext(spr_fadiga_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fadiga/ 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 240 - 25, -1, 1, c_white, 1)
-	}
+		}
 }

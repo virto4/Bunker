@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"amuletos",
-    "path":"folders/Sprites/itens/amuletos.yy",
+    "name":"itens",
+    "path":"folders/Sprites/itens.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -4,9 +4,9 @@
 sem amuletos; armas fazem o papel deles: aumentando a força e outros atrivutos
 atributos são: força (regula o dano causado), resistência (regula o dano sofrida), fortuna (regula os drops),
 sagacidade (regula a chance dde crítico ou de errar o golpe)
-humor: extasiado (+força +resistencia -sagaz - fortuna), 
-	deprimido (- força - fortuna + resistencia +sagaz)
-	apavorado (- todos), 
+humor: extasiado (+força +resistencia -sagaz + fortuna), 
+	deprimido (- força - fortuna + resisteia +sagaz)
+	apavorado (+ forca + sagaz - todos), 
 	colérico (+ força +fortuna - sagaz - resistencia)
 	
 	
@@ -23,12 +23,18 @@ atributos = {
 	sede: 100,
 	sanidade: 100,
 	humor: humores[0],
-	sagacidade: 57,
-	forca: 67,
-	resistencia: 85,
+	sagacidade: 40,
+	forca: 30,
+	resistencia: 30,
 	fortuna: 32,
-	fadiga: 12
 }
+
+forca_padrao = atributos.forca
+fortuna_padrao = atributos.fortuna
+resistencia_padrao = atributos.resistencia
+sagacidade_padrao = atributos.sagacidade
+
+mudou_humor = false
 
 d = 1
 
@@ -83,9 +89,8 @@ numero_n = 1
 
 global.tem_tela_aberta = false
 
-itens_nao_consumiveis = [obj_radio, obj_bola_basquete, obj_embalagem_bala, obj_gato_empalhado, obj_ursinho,
-						obj_frigideira, obj_machado, obj_metralhadora, obj_pistola,
-						obj_panela_pressao, obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho,
+itens_nao_consumiveis = [obj_radio, obj_machado, obj_metralhadora, obj_pistola,
+						obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho,
 						obj_inseticida, obj_ferramentas, obj_espanador, obj_meredith, obj_davi]
 is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
@@ -117,15 +122,9 @@ qtde_itens1 = {
     "obj_frango": 0,
     "obj_ovo": 0,
     "obj_repolho": 0,
-    "obj_bola_basquete": 0,
-    "obj_embalagem_bala": 0,
-    "obj_gato_empalhado": 0,
-    "obj_ursinho": 0,
-    "obj_frigideira": 0,
     "obj_machado": 0,
     "obj_metralhadora": 0,
     "obj_municao": 0,
-    "obj_panela_pressao": 0,
     "obj_picareta": 0,
     "obj_pistola": 0,
     "obj_analgesico": 0,
@@ -159,7 +158,7 @@ qtde_itens1 = {
 habilidades = [
 	["Sniper", "Armas de fogo dão mais dano."],
 	["Ferramenteiro", "Obtém mais eficiência em armas brancas."],
-	["Golpe da morte", "Dá 2 ataques no lugar de um só; 1 por batalha."],
+	["Golpe da morte", "Dá 2 ataques pelo preço de um"],
 	["Estoicismo", "Remove suas emoções."],
 	["Pensamentos intrusivos", "Fica deprimido."],
 	["Pensamentos intrusivos 2", "Fica coolérico."],
@@ -182,7 +181,7 @@ inputs = {
 
 opcoes = false
 
-armas_pegas = [obj_panela_pressao, obj_metralhadora, obj_picareta, obj_machado, obj_pistola, obj_frigideira]
+armas_pegas = [obj_metralhadora, obj_picareta, obj_machado, obj_pistola]
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
@@ -249,26 +248,6 @@ if room_get_name(room) == "rm_casa" {
 			case obj_repolho:
 				mudar_fase("obj_repolho", obj_repolho);
 				obj_freezer.quantidades[17][1] += 1
-				break;
-			case obj_bola_basquete:
-				mudar_fase("obj_bola_basquete", obj_bola_basquete);
-				break;
-			case obj_embalagem_bala:
-				mudar_fase("obj_embalagem_bala", obj_embalagem_bala);
-				break;
-			case obj_gato_empalhado:
-				mudar_fase("obj_gato_empalhado", obj_gato_empalhado);
-				break;
-			case obj_ursinho:
-				mudar_fase("obj_ursinho", obj_ursinho);
-				break;
-			case obj_frigideira:
-				array_push(armas_pegas, obj_frigideira)
-				mudar_fase("obj_frigideira", obj_frigideira);
-				break;
-			case obj_panela_pressao:
-				array_push(armas_pegas, obj_panela_pressao)
-				mudar_fase("obj_panela_pressao", obj_panela_pressao);
 				break;
 			case obj_machado:
 				array_push(armas_pegas, obj_machado)

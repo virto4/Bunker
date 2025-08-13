@@ -33,6 +33,25 @@ _y = 0
 alpha = 0
 golpe_duplo = false
 mensagem_turno = true
+aux = false
+tempo_aux = 0
+derrotou = false
+cor_circulo = #2E7F0E
+
+golpe_morte_tempo1 = false
+golpe_morte_numero1 = 1
+mestre_tempo1 = false
+mestre_numero1 = 1
+
+golpe_morte_tempo2 = false
+golpe_morte_numero2 = 1
+mestre_tempo2 = false
+mestre_numero2 = 1
+
+critico2 = false
+errou2 = false
+receptor = noone
+
 
 obj = noone
 dano = 0
@@ -51,11 +70,12 @@ largura_davi = 246
 
 inimigo = {
 	nome: "inimigo",
-	total_vida: 500,
-	vida: 500,
+	total_vida: 200,
+	vida: 200,
 	forca: 40,
 	resistencia: 30,
-	sagacidade: 80
+	sagacidade: 80,
+	fugir: true
 }
 
 armas = {

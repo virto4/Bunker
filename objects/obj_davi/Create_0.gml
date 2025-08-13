@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-humores = ["NEUTRO", "COM NOJO", "HIPERATIVO", "FURIOSO", "DEPRIMIDO", "APAVORADO"]
+humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
 	saude: 100,
@@ -8,12 +8,13 @@ atributos = {
 	sede: 100,
 	sanidade: 100,
 	humor: humores[0],
-	sagacidade: 89,
-	forca: 84,
-	resistencia: 90,
+	sagacidade: 60,
+	forca: 40,
+	resistencia: 35,
 	fortuna: 45,
-	fadiga: 10
 }
+
+mudou_humor = false
 
 alimento = false
 alimento_scale = 0
