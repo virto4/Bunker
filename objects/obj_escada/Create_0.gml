@@ -47,6 +47,7 @@ golpe_morte_tempo2 = false
 golpe_morte_numero2 = 1
 mestre_tempo2 = false
 mestre_numero2 = 1
+contagem = false
 
 critico2 = false
 errou2 = false

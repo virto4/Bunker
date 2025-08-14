@@ -84,7 +84,36 @@ if clicou and !derrotou {
 		cor_circulo2 = #2E7F0E
 	}
 	
+	var pode_batalhar = true
+	
 	if point_in_rectangle(mx, my, 960 - 128, 863, 960 + 128, 943) and mouse_check_button_pressed(mb_left) and !batalha{
+		if habilidade_davi == "Curandeiro mestre" and mestre_tempo2 {
+			mensagem = true
+			codigo = "Davi ainda não pode usar esta habilidade"
+			tempo = current_time / 1000 + 3 
+			mensagem_turno = false
+			pode_batalhar = false
+		} else if habilidade_davi == "Golpe da morte" and golpe_morte_tempo2 {
+			mensagem = true
+			codigo = "Davi ainda não pode usar esta habilidade"
+			tempo = current_time / 1000 + 3 
+			mensagem_turno = false
+			pode_batalhar = false
+		}
+		if habilidade_roger == "Curandeiro mestre" and mestre_tempo1 {
+			mensagem = true
+			codigo = "Roger ainda não pode usar esta habilidade"
+			tempo = current_time / 1000 + 3 
+			mensagem_turno = false
+			pode_batalhar = false
+		} else if habilidade_roger == "Golpe da morte" and golpe_morte_tempo1 {
+			mensagem = true
+			codigo = "Roger ainda não pode usar esta habilidade"
+			tempo = current_time / 1000 + 3 
+			mensagem_turno = false
+			pode_batalhar = false
+		}
+		
 		if habilidade_davi == "Sniper" and arma_davi != obj_metralhadora and arma_davi != obj_pistola or 
 		habilidade_roger== "Sniper" and arma_roger != obj_metralhadora and arma_roger != obj_pistola {
 			mensagem = true
@@ -102,7 +131,7 @@ if clicou and !derrotou {
 			codigo = "Selecione uma arma e uma habilidade para cada personagem"
 			tempo = current_time / 1000 + 3 
 			mensagem_turno = false
-		} else if !batalha {
+		} else if !batalha and pode_batalhar {
 			batalha = true
 			tempo_turno = current_time / 1000 + 3
 			executar = true

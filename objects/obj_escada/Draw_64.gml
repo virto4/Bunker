@@ -41,10 +41,22 @@ if clicou and !derrotou {
 		for (var i = 0; i < array_length(obj_personagem.habilidades_adquiridas); i++) {
 			var nome = obj_personagem.habilidades_adquiridas[i][0]
 			var descricao = obj_personagem.habilidades_adquiridas[i][1]
-			if point_in_rectangle(mx, my, x_roger - 128 - 5, novo_y_roger - 180 - 40 - i * 45 - 5, x_roger + 10 + string_width(nome) + 4, novo_y_roger - 180 - i * 45 + 5) { 
-				cor_unidade = #335A66
-			} else {
-				cor_unidade = #43717F
+			var c = false
+			if nome == "Curandeiro mestre" and mestre_tempo1 {
+				c = true
+				cor_unidade = #26434C
+			} 
+			if nome == "Golpe da morte" and golpe_morte_tempo1 {
+				c = true
+				cor_unidade = #26434C
+			}
+			
+			if !c {
+				if point_in_rectangle(mx, my, x_roger - 128 - 5, novo_y_roger - 180 - 40 - i * 45 - 5, x_roger + 10 + string_width(nome) + 4, novo_y_roger - 180 - i * 45 + 5) { 
+					cor_unidade = #335A66
+				} else {
+					cor_unidade = #43717F
+				}
 			}
 			draw_rectangle_color(x_roger - 128 - 5, novo_y_roger - 180 - 40 - i * 45 - 5, x_roger + 10 + string_width(nome) + 4, novo_y_roger - 180 - i * 45 + 5, c_black, c_black, c_black, c_black, false )
 			draw_rectangle_color(x_roger - 128, novo_y_roger - 180 - 40 - i * 45, x_roger + 10 + string_width(nome), novo_y_roger - 180 - i * 45, cor_unidade, cor_unidade, cor_unidade, cor_unidade, false )
@@ -53,7 +65,7 @@ if clicou and !derrotou {
 				draw_rectangle_color(mx + 50, my, mx + 60 + string_width(descricao) + 5, my + string_height(descricao) + 10 + 5, c_black, c_black, c_black, c_black, false)
 				draw_rectangle_color(mx + 50, my - 5, mx + 60 + string_width(descricao), my + string_height(descricao) + 10, #B28435, #B28435, #B28435, #B28435, false)
 				draw_text(mx + 60, my + 5, descricao)
-				if mouse_check_button_pressed(mb_left) {
+				if mouse_check_button_pressed(mb_left) and !c {
 					habilidade_roger = nome
 					hab_roger = false
 				}
@@ -178,8 +190,8 @@ if clicou and !derrotou {
 				var descricao = obj_personagem.habilidades_adquiridas[i][1]
 				var b = false
 				if nome == "Curandeiro mestre" and mestre_tempo2 {
-					b = true
 					cor_unidade = #26434C
+					b = true
 				} 
 				if nome == "Golpe da morte" and golpe_morte_tempo2 {
 					b = true
@@ -203,7 +215,7 @@ if clicou and !derrotou {
 						habilidade_davi = nome
 						hab_davi = false
 					} 
-				} else if !aux and !b {
+				} else if !aux {
 					if mouse_check_button_pressed(mb_left) {
 						hab_davi = false
 					}
@@ -622,43 +634,57 @@ if clicou and !derrotou {
 					dano = ""
 				}
 			} else {
-				tempo_turno = current_time / 1000 + 3
-				executar = true
+				if ataque_inimigo {
+					executar = false
+					batalha = false
+					sua_vez = 0
+					ataque_inimigo = false
+					contagem = true
+				} else {
+					tempo_turno = current_time / 1000 + 3
+					executar = true
+				}
 				errou2 = false
 				critico2 = false
 			}
 			largura_inimigo = (246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
 			largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
 			largura_roger = (246 * obj_personagem.atributos.saude / 100 < 0) ? 0 : 246 * obj_personagem.atributos.saude / 100
-		} else if mensagem_turno {
-			mensagem = true
-			codigo = "É seu turno!"
-			tempo = current_time / 1000 + 3
-			if golpe_morte_tempo1 {
-				golpe_morte_numero1++
-				if golpe_morte_numero1 > 5 {
-					golpe_morte_numero1 = 1
-					golpe_morte_tempo1 = false
-				}
+		} else {
+			if mensagem_turno {
+				mensagem = true
+				codigo = "É seu turno!"
+				tempo = current_time / 1000 + 3
 			}
-			if mestre_tempo2 {
-				mestre_numero2++
-				if mestre_numero2 > 5 {
-					mestre_numero2 = 1
-					mestre_tempo2 = false
+			if contagem {
+				contagem = false
+				if golpe_morte_tempo1 {
+					golpe_morte_numero1++
+					if golpe_morte_numero1 > 5 {
+						golpe_morte_numero1 = 1
+						golpe_morte_tempo1 = false
+					}
 				}
-			if golpe_morte_tempo2 {
-				golpe_morte_numero2++
-				if golpe_morte_numero2 > 5 {
-					golpe_morte_numero2 = 1
-					golpe_morte_tempo2 = false
+				if mestre_tempo1 {
+					mestre_numero1++
+					if mestre_numero1 > 3 {
+						mestre_numero1 = 1
+						mestre_tempo1 = false
+					}
 				}
-			}
-			if mestre_tempo2 {
-				mestre_numero2++
-				if mestre_numero2 > 5 {
-					mestre_numero2 = 1
-					mestre_tempo2 = false
+				if golpe_morte_tempo2 {
+					golpe_morte_numero2++
+					if golpe_morte_numero2 > 5 {
+						golpe_morte_numero2 = 1
+						golpe_morte_tempo2 = false
+					}
+				}
+				if mestre_tempo2 {
+					mestre_numero2++
+					if mestre_numero2 > 3 {
+						mestre_numero2 = 1
+						mestre_tempo2 = false
+					}
 				}
 			}
 		}
