@@ -8,25 +8,25 @@ if mudou_humor {
 		atributos.resistencia = resistencia_padrao
 	}
 	if atributos.humor == "COLÉRICO" {
-		atributos.forca += 20  
-		atributos.resistencia -= 20
-		atributos.sagacidade -= 20
-		atributos.fortuna -= 20
+		atributos.forca = forca_padrao + 20  
+		atributos.resistencia = resistencia_padrao - 20
+		atributos.sagacidade = sagacidade_padrao - 20
+		atributos.fortuna = fortuna_padrao - 20
 	} else if atributos.humor == "APAVORADO" {
-		atributos.forca += 20
-		atributos.resistencia -= 20
-		atributos.sagacidade += 20
-		atributos.fortuna -= 20
+		atributos.forca = forca_padrao + 20
+		atributos.resistencia = resistencia_padrao - 20
+		atributos.sagacidade = sagacidade_padrao + 20
+		atributos.fortuna = fortuna_padrao - 20
 	} else if atributos.humor == "DEPRIMIDO" {
-		atributos.forca -= 20
-		atributos.resistencia += 20
-		atributos.sagacidade -= 20
-		atributos.fortuna -= 20 
+		atributos.forca = forca_padrao - 20
+		atributos.resistencia = resistencia_padrao + 20
+		atributos.sagacidade = sagacidade_padrao - 20
+		atributos.fortuna = fortuna_padrao - 20 
 	} else if atributos.humor == "EXTASIADO" {
-		atributos.forca += 20
-		atributos.resistencia += 20
-		atributos.sagacidade -= 20
-		atributos.fortuna += 20
+		atributos.forca = forca_padrao + 20
+		atributos.resistencia = resistencia_padrao + 20
+		atributos.sagacidade = sagacidade_padrao - 20
+		atributos.fortuna = fortuna_padrao + 20
 	} 
 	atributos.forca = (atributos.forca > 100) ? 100 : atributos.forca
 	atributos.resistencia = (atributos.resistencia > 100) ? 100 : atributos.resistencia 

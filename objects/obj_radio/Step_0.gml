@@ -68,11 +68,6 @@ if entrou and instance_exists(obj_calendario) {
         programacao = noticias[noticias_id];
 		noticias_id++
 		programa = "Notícias Urgentes"
-    }
-    else if (dia_semana1 == 6) { // Sexta
-        programacao = resenha[resenha_id];
-		resenha_id++
-		programa = "Semanário do Sobrevivente"
     } else {
 		programacao = sem_programa
 	}

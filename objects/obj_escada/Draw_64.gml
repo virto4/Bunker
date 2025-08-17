@@ -8,7 +8,7 @@ if clicou and !derrotou {
 	draw_rectangle_color(x_inimigo - 128, y_inimigo - 256 - 30, x_inimigo + 128, y_inimigo - 256 - 10, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(x_inimigo - 128 + 5, y_inimigo - 256 - 25, x_inimigo - 128 + 5 + largura_inimigo, y_inimigo - 256 - 15, c_red, c_red, c_red, c_red, false)
 	draw_sprite_ext(spr_retrato2, 0, 960, 540, 1, 1, 0, c_white, 1)
-	draw_text(960 - string_width(nome_inimigo) / 2, 540 + 256 + 10, nome_inimigo)
+	draw_text(960 - string_width(inimigo.nome) / 2, 540 + 256 + 10, inimigo.nome)
 	
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
@@ -382,8 +382,8 @@ if clicou and !derrotou {
 							atacou = false
 							break
 						case "Concentração":
-							ataque *= 1.1
-							defesa *= 1.1
+							ataque *= 1.2
+							obj_personagem.atributos.resistencia *= 1.2
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Roger foca para melhorar sua performance"
@@ -406,11 +406,11 @@ if clicou and !derrotou {
 								critico = true
 							}
 						} else if obj_personagem.atributos.sagacidade > 30 {
-							if irandom_range(0, 14) == 0 {
+							if irandom_range(0, 25) == 0 {
 								errou = true
 							}
 						} else {
-							if irandom_range(0, 8) {
+							if irandom_range(0, 15) == 0 {
 								errou = true
 							}
 						}
@@ -427,6 +427,9 @@ if clicou and !derrotou {
 						inimigo.vida -= ataque_final
 						obj = "inimigo"
 						dano = ataque_final
+						if habilidade_roger == "Concentração" {
+							obj_personagem.atributos.resistencia /= 1.2
+						}
 					}
 				} else if sua_vez == 1 {
 					sua_vez = 2
@@ -517,8 +520,8 @@ if clicou and !derrotou {
 							obj_davi.mudou_humor = true
 							break
 						case "Concentração":
-							ataque *= 1.1
-							defesa *= 1.1
+							ataque *= 1.2
+							obj_davi.atributos.resistencia *= 1.2
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Davi foca para melhorar suas habilidades"
@@ -541,11 +544,11 @@ if clicou and !derrotou {
 								critico = true
 							}
 						} else if obj_davi.atributos.sagacidade > 30 {
-							if irandom_range(0, 14) == 0 {
+							if irandom_range(0, 25) == 0 {
 								errou = true
 							}
 						} else {
-							if irandom_range(0, 8) {
+							if irandom_range(0, 15) == 0 {
 								errou = true
 							}
 						}
@@ -562,6 +565,9 @@ if clicou and !derrotou {
 						inimigo.vida -= ataque_final
 						obj = "inimigo"
 						dano = ataque_final
+						if habilidade_davi == "Concentracao" {
+							obj_davi.atributos.resistencia /= 1.2
+						}
 					}
 				} else {
 					ataque = 0
@@ -578,11 +584,11 @@ if clicou and !derrotou {
 							critico = true
 						}
 					} else if inimigo.sagacidade > 30 {
-						if irandom_range(0, 14) == 0 {
+						if irandom_range(0, 25) == 0 {
 							errou = true
 						}
 					} else {
-						if irandom_range(0, 8) {
+						if irandom_range(0, 15) {
 							errou = true
 						}
 					}
@@ -697,6 +703,19 @@ if clicou and !derrotou {
 			clicou = false
 			derrotou = true
 			global.tem_tela_aberta = false
+			if !seguir {
+				obj_personagem.atributos.forca = round(obj_personagem.atributos.forca * 1.09)
+				obj_personagem.atributos.resistencia = round(obj_personagem.atributos.resistencia * 1.09)
+				obj_personagem.atributos.sagacidade = round(obj_personagem.atributos.sagacidade * 1.09)
+				obj_personagem.atributos.fortuna = round(obj_personagem.atributos.fortuna * 1.09)
+			
+				obj_davi.atributos.forca = round(obj_davi.atributos.forca * 1.09)
+				obj_davi.atributos.resistencia = round(obj_davi.atributos.resistencia * 1.09)
+				obj_davi.atributos.sagacidade = round(obj_davi.atributos.sagacidade * 1.09)
+				obj_davi.atributos.fortuna = round(obj_davi.atributos.fortuna * 1.09)
+				
+				seguir = true
+			}
 		}
 	}
 }

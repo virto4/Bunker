@@ -19,6 +19,7 @@ if clicou and !derrotou {
 			} else {
 				derrotou = true
 				global.tem_tela_aberta = false
+				clicou = false
 			}
 		}
 	} else {

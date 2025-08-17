@@ -23,10 +23,10 @@ atributos = {
 	sede: 100,
 	sanidade: 100,
 	humor: humores[0],
-	sagacidade: 40,
+	sagacidade: 30,
 	forca: 30,
 	resistencia: 30,
-	fortuna: 32,
+	fortuna: 30,
 }
 
 forca_padrao = atributos.forca

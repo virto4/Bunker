@@ -38,6 +38,8 @@ tempo_aux = 0
 derrotou = false
 cor_circulo = #2E7F0E
 
+seguir = false
+
 golpe_morte_tempo1 = false
 golpe_morte_numero1 = 1
 mestre_tempo1 = false

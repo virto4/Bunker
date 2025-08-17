@@ -189,21 +189,3 @@ jesus = [
 	["'Perdoai setenta vezes sete' (Mateus 18:22) – O perdão liberta. Deixe o ódio e viva em paz."],
 	["'Quem crê em Mim terá a vida eterna' (João 3:16) – Jesus é o caminho. Creia e seja salvo!"],
 ]
-
-resenha_id = 0
-resenha = [
-	[""],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-	[],
-]

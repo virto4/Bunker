@@ -8,8 +8,8 @@ atributos = {
 	sede: 100,
 	sanidade: 100,
 	humor: humores[0],
-	sagacidade: 60,
-	forca: 40,
+	sagacidade: 50,
+	forca: 25,
 	resistencia: 35,
 	fortuna: 45,
 }

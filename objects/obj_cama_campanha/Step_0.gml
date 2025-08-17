@@ -17,8 +17,10 @@ if clicou {
 			clicou = false
 			global.tem_tela_aberta = false
 			obj_calendario.mudou_dia = true
-			obj_radio.entrou = true
-			obj_radio.programacao = noone
+			if instance_exists(obj_radio) {
+				obj_radio.entrou = true
+				obj_radio.programacao = noone
+			}
 		}
 	} else {
 		mouse_sim = false

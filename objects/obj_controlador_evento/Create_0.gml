@@ -34,8 +34,44 @@ evento_baratas = false //fala se o evento de baratas está acontecendo
 evento_rachaduras = false
 instanciou_rachaduras = false
 
+barata = false
+capivara = false
+delinquentes = false
+cardume = false
+sequestro = false
+saque = false
+emma = false
+maniaco = false
+kkk = false
+alcoolatra = false
+mib = false
+fredie = false
+
+barata_aux = true
+capivara_aux = true
+delinquentes_aux = true
+cardume_aux = true
+sequestro_aux = true
+saque_aux = true
+emma_aux = true
+maniaco_aux = true
+kkk_aux = true
+alcoolatra_aux = true
+mib_aux = true
+fredie_aux = true
+
 eventos_inicio = [
-	"inimigo",
+	"barata",
+	"capivara",
+	"delinquentes",
+	"cardume",
+	"sequestro",
+	"saque",
+	"emma",
+	"maniaco",
+	"kkk",
+	"alcoolatra",
+	"mib",
 	"baratas", //ok
 	"canos", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
 	"rachaduras",//ok
@@ -49,14 +85,18 @@ eventos_inicio = [
 
 inicio_data = {
 	dia1: eventos_inicio[0],
-	dia2: eventos_inicio[2],
-	dia3: eventos_inicio[3],
-	dia4: eventos_inicio[0],
+	dia2: eventos_inicio[1],
+	dia3: eventos_inicio[2],
+	dia4: eventos_inicio[3],
 	dia5: eventos_inicio[4],
 	dia6: eventos_inicio[5],
 	dia7: eventos_inicio[6],
 	dia8: eventos_inicio[7],
-	dia9: eventos_inicio[8]
+	dia9: eventos_inicio[8],
+	dia9: eventos_inicio[9],
+	dia9: eventos_inicio[10],
+	dia9: eventos_inicio[11],
+	dia9: eventos_inicio[12],
 }
 /*
 eventos_meio = embaralhar ([

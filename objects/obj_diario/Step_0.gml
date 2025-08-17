@@ -100,20 +100,28 @@ switch dia {
 		break
 	case 7:
 		ds_list_replace(paginas_escritas, 8, paginas.dia7)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia7
 		break
 	case 8:
 		ds_list_replace(paginas_escritas, 9, paginas.dia8)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia8
 		break
 	case 9:
 		ds_list_replace(paginas_escritas, 10, paginas.dia9)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia9
 		break
 	case 10:
 		ds_list_replace(paginas_escritas, 11, paginas.dia10)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia10
 		break
 	case 11:
 		ds_list_replace(paginas_escritas, 12, paginas.dia11)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia11
 		break
 	case 12:
 		ds_list_replace(paginas_escritas, 13, paginas.dia12)
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia12
 		break
+	case 13:
+		ds_list_replace(paginas_escritas, 14, paginas.dia13)
 }
