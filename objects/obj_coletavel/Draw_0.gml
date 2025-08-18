@@ -9,7 +9,7 @@ for (var i = 0; i < array_length(obj_personagem.itens_nao_consumiveis); i++) {
 }
 draw_self()
 if room == rm_bunker and !is_consumivel {
-	draw_set_font(fnt_alagard_2)
-	draw_set_color(c_white)
-	draw_text(x + sprite_get_width(sprite_index) / 2 - 10, y + sprite_get_height(sprite_index) / 2 - 10, qtde_itens)
+	draw_set_font(fnt_dialogos_menor)
+	draw_set_color(c_black)
+	draw_text(x, y - 5, qtde_itens)
 }

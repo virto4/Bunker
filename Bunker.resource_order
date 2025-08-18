@@ -43,6 +43,7 @@
     {"name":"fnt_alagard_2","order":8,"path":"fonts/fnt_alagard_2/fnt_alagard_2.yy",},
     {"name":"fnt_alagard","order":2,"path":"fonts/fnt_alagard/fnt_alagard.yy",},
     {"name":"fnt_descricoes","order":1,"path":"fonts/fnt_descricoes/fnt_descricoes.yy",},
+    {"name":"fnt_dialogos_menor","order":11,"path":"fonts/fnt_dialogos_menor/fnt_dialogos_menor.yy",},
     {"name":"fnt_dialogos","order":10,"path":"fonts/fnt_dialogos/fnt_dialogos.yy",},
     {"name":"fnt_terror","order":4,"path":"fonts/fnt_terror/fnt_terror.yy",},
     {"name":"obj_agua_sanitaria","order":15,"path":"objects/obj_agua_sanitaria/obj_agua_sanitaria.yy",},

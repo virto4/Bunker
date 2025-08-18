@@ -63,6 +63,7 @@
     {"id":{"name":"fnt_alagard_2","path":"fonts/fnt_alagard_2/fnt_alagard_2.yy",},},
     {"id":{"name":"fnt_alagard","path":"fonts/fnt_alagard/fnt_alagard.yy",},},
     {"id":{"name":"fnt_descricoes","path":"fonts/fnt_descricoes/fnt_descricoes.yy",},},
+    {"id":{"name":"fnt_dialogos_menor","path":"fonts/fnt_dialogos_menor/fnt_dialogos_menor.yy",},},
     {"id":{"name":"fnt_dialogos","path":"fonts/fnt_dialogos/fnt_dialogos.yy",},},
     {"id":{"name":"fnt_terror","path":"fonts/fnt_terror/fnt_terror.yy",},},
     {"id":{"name":"obj_acucar","path":"objects/obj_acucar/obj_acucar.yy",},},

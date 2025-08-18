@@ -127,7 +127,7 @@ if clicou and !derrotou {
 			codigo = "A habilidade ferramenteiro só pode ser usada com armas de corte"
 			tempo = current_time / 1000 + 3 
 			mensagem_turno = false
-		}else if habilidade_davi == "" or habilidade_roger == "" or arma_davi = noone or arma_roger == noone {
+		}    else if habilidade_davi == "" or habilidade_roger == "" or arma_davi = noone or arma_roger == noone {
 			mensagem = true
 			codigo = "Selecione uma arma e uma habilidade para cada personagem"
 			tempo = current_time / 1000 + 3 

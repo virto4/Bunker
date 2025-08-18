@@ -39,6 +39,8 @@ derrotou = false
 cor_circulo = #2E7F0E
 
 seguir = false
+loots = []
+final = false
 
 golpe_morte_tempo1 = false
 golpe_morte_numero1 = 1
@@ -88,4 +90,30 @@ armas = {
 	"obj_picareta": 70,
 	"obj_frigideira": 40,
 	"obj_panela_pressao": 35
+}
+
+
+function quebrar_texto(texto, largura_maxima) {
+    var linhas = [];
+    var palavras = string_split(texto, " ");
+    var linha_atual = "";
+    var i;
+
+    for (i = 0; i < array_length(palavras); i++) {
+        var palavra = palavras[i];
+        var linha_teste = linha_atual + palavra + " ";
+
+        if (string_width(linha_teste) > largura_maxima) {
+            array_push(linhas, string_trim(linha_atual));
+            linha_atual = palavra + " ";
+        } else {
+            linha_atual = linha_teste;
+        }
+    }
+
+    if (linha_atual != "") {
+        array_push(linhas, string_trim(linha_atual));
+    }
+
+    return linhas;
 }

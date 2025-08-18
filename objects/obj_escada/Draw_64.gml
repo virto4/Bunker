@@ -701,7 +701,8 @@ if clicou and !derrotou {
 		if mouse_check_button_pressed(mb_left) {
 			batalha = false
 			clicou = false
-			derrotou = true
+			derrotou = true 
+			final = true 
 			global.tem_tela_aberta = false
 			if !seguir {
 				obj_personagem.atributos.forca = round(obj_personagem.atributos.forca * 1.09)
@@ -715,7 +716,70 @@ if clicou and !derrotou {
 				obj_davi.atributos.fortuna = round(obj_davi.atributos.fortuna * 1.09)
 				
 				seguir = true
+				
+				loots = []
+				var sorte = sqrt(obj_davi.atributos.fortuna * obj_personagem.atributos.fortuna)
+				var probabilidades = {
+					"obj_municao": 0.2 + (sorte div 10) / 20,
+					"obj_pilha": 0.1 + (sorte div 10) / 20,
+					"obj_batata": 0.08 + (sorte div 10) / 20,
+					"obj_cookie": 0.08 + (sorte div 10) / 20,
+					"obj_arroz": 0.08 + (sorte div 10) / 20,
+					"obj_frango": 0.1 + (sorte div 10) / 20,
+					"obj_repolho": 0.05 + (sorte div 10) / 20,
+					"obj_agua": 0.2 + (sorte div 10) / 20,
+					"obj_curativo": 0.1 + (sorte div 10) / 20
+				}
+				for (var i = 0; i < array_length(struct_get_names(probabilidades)); i++) {
+					if random(1) < variable_struct_get(probabilidades, struct_get_names(probabilidades)[i]) {
+						array_push(loots, struct_get_names(probabilidades)[i])
+						var is_alimento = false
+						for (var j = 0; j < array_length(global.alimentos); j++) {
+							if object_get_name(global.alimentos[j]) == struct_get_names(probabilidades)[i] {
+								is_alimento = true
+							}
+						}
+						if is_alimento {
+							for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
+								if object_get_name(obj_freezer.quantidades[j][0]) == struct_get_names(probabilidades)[i] {
+									obj_freezer.quantidades[j][1]++
+								}
+							}
+						} else {
+							var object = asset_get_index(struct_get_names(probabilidades)[i]);
+							if !instance_exists(object) {
+								var pos = variable_struct_get(global.posicoes, object_get_name(object))
+								var ax = variable_struct_get(pos, "x")
+								var ay = variable_struct_get(pos, "y")
+								instance_create_layer(ax, ay, layer_get_id("Instances"), object, {})
+							} else {
+								object.qtde_itens += 1	
+							}
+						}
+						variable_struct_set(obj_personagem.qtde_itens1, struct_get_names(probabilidades)[i], variable_struct_get(obj_personagem.qtde_itens1, struct_get_names(probabilidades)[i]) + 1)
+					}
+				}
 			}
 		}
+	}
+} else if final {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_black)
+	var texto = ""
+	if array_length(loots) > 0 {
+		texto = "Enquanto seu inimigo jazia morto no chão, você coletou dele: "
+		for (var i = 0; i < array_length(loots); i++) {
+			texto += variable_struct_get(global.nomes, loots[i]) + "; "
+		}
+	} else {
+		texto = "Você não conseguiu coletar nada"
+	}
+	var linhas = quebrar_texto(texto, 1520)
+	for (var i = 0; i < array_length(linhas); i++) {
+		draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
+	}
+	if mouse_check_button_pressed(mb_left) {
+		final = false
 	}
 }

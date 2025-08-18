@@ -66,8 +66,8 @@ if barata and barata_aux {
 	obj_escada.inimigo.forca = 40
 	obj_escada.inimigo.nome = "Barata do fim do mundo"
 	obj_escada.inimigo.resistencia = 20
-	obj_escada.inimigo.total_vida = 200
-	obj_escada.inimigo.vida = 200
+	obj_escada.inimigo.total_vida = 10
+	obj_escada.inimigo.vida = 10
 	obj_escada.inimigo.sagacidade = 35
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
