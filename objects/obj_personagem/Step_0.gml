@@ -54,6 +54,8 @@ for (var i = 0; i < 5; i++) {
 	}
 }
 
+sprite_index = spr_roger_idle_down
+
 if !apertou_pulo {
 	depth = -y
 }
@@ -75,6 +77,26 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	if !global.tem_tela_aberta and keyboard_check_pressed(vk_escape) {
 		global.tem_tela_aberta = true
 		opcoes = true
+	}
+	
+	if _esquerda {
+		sprite_index = spr_roger_right
+		image_xscale = -1
+	} else if _direita {
+		if image_xscale == -1 {
+			image_xscale = 1
+		}
+		sprite_index = spr_roger_right
+	} else if _baixo {
+		if image_xscale == -1 {
+			image_xscale = 1
+		}
+		sprite_index = spr_roger_down
+	} else if _cima {
+		if image_xscale == -1 {
+			image_xscale = 1
+		}
+		sprite_index = spr_roger_up
 	}
 
 	if _pulo and !apertou_pulo {

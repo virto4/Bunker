@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_davi",
-    "path":"sprites/spr_davi/spr_davi.yy",
+    "name":"spr_davi_idle_down",
+    "path":"sprites/spr_davi_idle_down/spr_davi_idle_down.yy",
   },
   "spriteMaskId":null,
   "visible":true,

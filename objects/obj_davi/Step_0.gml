@@ -41,22 +41,26 @@ depth = -y
 function andar(direcao) {
 	switch direcao {
 		case "cima":
+			sprite_index = spr_davi_down
 			y -= 30 * delta_time / 1000000
 			if image_xscale == -1 {
 				image_xscale = 1
 			}
 			break
 		case "baixo":
+			sprite_index = spr_davi_down
 			y += 30 * delta_time / 1000000
 			if image_xscale == -1 {
 				image_xscale = 1
 			}
 			break
 		case "esquerda":
+			sprite_index = spr_davi_right
 			x -= 30 * delta_time / 1000000
 			image_xscale = -1
 			break
 		case "direita":
+			sprite_index = spr_davi_right
 			x += 30 * delta_time / 1000000
 			if image_xscale == -1 {
 				image_xscale = 1
@@ -84,6 +88,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				y = 354
 			}
 			if terminou == 0 {
+				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 30
@@ -103,6 +108,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 2
 				}
 			} else if terminou == 2 {
+				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 30
@@ -130,6 +136,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				y = 270
 			}
 			if terminou == 0 {
+				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 20
@@ -149,6 +156,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 2
 				}
 			} else if terminou == 2 {
+				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 20
@@ -168,6 +176,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 4
 				}
 			} else if terminou == 4 {
+				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 20
@@ -310,6 +319,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 2
 				}
 			} else if terminou == 2 {
+				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 20
@@ -339,6 +349,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 5
 				}
 			} else if terminou == 5 {
+				sprite_index = spr_davi_idle_down
 				//fica parado ou dorme
 			}
 	}

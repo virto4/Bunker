@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_personagem",
-    "path":"sprites/spr_personagem/spr_personagem.yy",
+    "name":"spr_roger_down",
+    "path":"sprites/spr_roger_down/spr_roger_down.yy",
   },
   "spriteMaskId":null,
   "visible":true,
