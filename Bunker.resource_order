@@ -274,6 +274,7 @@
     {"name":"spr_interface_ferramentas","order":22,"path":"sprites/spr_interface_ferramentas/spr_interface_ferramentas.yy",},
     {"name":"spr_interface_freezer","order":25,"path":"sprites/spr_interface_freezer/spr_interface_freezer.yy",},
     {"name":"spr_interface_geladeira","order":20,"path":"sprites/spr_interface_geladeira/spr_interface_geladeira.yy",},
+    {"name":"spr_interface_mesa","order":26,"path":"sprites/spr_interface_mesa/spr_interface_mesa.yy",},
     {"name":"spr_janela","order":27,"path":"sprites/spr_janela/spr_janela.yy",},
     {"name":"spr_livro_biblia","order":18,"path":"sprites/spr_livro_biblia/spr_livro_biblia.yy",},
     {"name":"spr_livro_receitas","order":17,"path":"sprites/spr_livro_receitas/spr_livro_receitas.yy",},

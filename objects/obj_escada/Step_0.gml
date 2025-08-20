@@ -114,7 +114,24 @@ if clicou and !derrotou {
 			mensagem_turno = false
 			pode_batalhar = false
 		}
-		
+		if ((arma_davi == obj_pistola or arma_roger == obj_pistola) and tiros_pistola <= 0)
+			or ((arma_davi == obj_metralhadora or arma_roger == obj_metralhadora) and tiros_metra <= 0) {
+			mensagem = true
+			codigo = "Sua arma não pode ser utilizada"
+			tempo = current_time / 1000 + 3 
+			mensagem_turno = false
+			pode_batalhar = false
+		}
+		if (arma_davi == obj_pistola and tiros_pistola <= 1 and habilidade_davi == "Golpe da morte") or
+			(arma_roger == obj_pistola and tiros_pistola <= 1 and habilidade_roger == "Golpe da morte") or 
+			(arma_roger == obj_metralhadora and tiros_metra <= 1 and habilidade_roger == "Golpe da morte") or
+			(arma_davi == obj_metralhadora and tiros_metra <= 1 and habilidade_davi == "Golpe da morte") {
+				mensagem = true
+				codigo = "Sua arma não tem balas o suficiente para um ataque duplo"
+				tempo = current_time / 1000 + 3 
+				mensagem_turno = false
+				pode_batalhar = false
+			}			
 		if habilidade_davi == "Sniper" and arma_davi != obj_metralhadora and arma_davi != obj_pistola or 
 		habilidade_roger== "Sniper" and arma_roger != obj_metralhadora and arma_roger != obj_pistola {
 			mensagem = true

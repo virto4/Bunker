@@ -117,3 +117,9 @@ function quebrar_texto(texto, largura_maxima) {
 
     return linhas;
 }
+
+largura_pistola = 0
+largura_metra = 0
+tiros_pistola = 10
+tiros_metra = 8
+atirou = false

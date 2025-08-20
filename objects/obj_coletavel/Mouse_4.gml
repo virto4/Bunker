@@ -23,6 +23,13 @@ if object_index == obj_radio and obj_radio.programacao != noone{
 	obj_radio.clicou = true
 }
 
+if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta {
+	nao = true	
+	obj_domino.clicou = true
+	global.tem_tela_aberta = true
+	obj_domino.comecou = true
+}
+
 if !global.tem_tela_aberta and !nao {
 	function mudar_slot_vazio() { //muda para o slot vazio
 		for (var _i = 1; _i <= 5; _i++) {

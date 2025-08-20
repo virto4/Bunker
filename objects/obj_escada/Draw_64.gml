@@ -1,5 +1,63 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+function recarrega(obj, arma) {
+	var mx = device_mouse_x_to_gui(0)
+	var my = device_mouse_y_to_gui(0)
+	
+	var text = "Sua arma precisa ser recarregada; clique nela para fazer isso"
+	var text2 = "Você está sem munições"
+	var recarregar = false
+	if obj_personagem.qtde_itens1.obj_municao > 0 {
+		recarregar = true
+	}
+	
+	var xis = 0
+	
+	if obj == obj_personagem {
+		xis = 390
+	} else if obj == obj_davi {
+		xis = 1524
+	}
+	if recarregar {
+		if arma == obj_pistola {
+			tiros_pistola = 10
+		} else if arma == obj_metralhadora {
+			tiros_metra = 8
+		}
+		if point_in_circle(mx, my, xis, 894, 38) {
+			draw_rectangle_color(mx + 50, my, mx + 60 + string_width(text) + 5, my + string_height(text) + 10 + 5, c_black, c_black, c_black, c_black, false)
+			draw_rectangle_color(mx + 50, my - 5, mx + 60 + string_width(text), my + string_height(text) + 10, #B28435, #B28435, #B28435, #B28435, false)
+			draw_text(mx + 60, my + 5, text)
+			if mouse_check_button_pressed(mb_left) {
+				if instance_exists(obj_municao) {
+					obj_municao.qtde_itens--
+					if obj_municao.qtde_itens <= 0 {
+						instance_destroy(obj_municao)
+					}
+				} else {
+					if obj_personagem.slot1 == obj_municao {
+						obj_personagem.slot1 = noone
+					} else if obj_personagem.slot2 == obj_municao {
+						obj_personagem.slot2 = noone
+					} else if obj_personagem.slot3 == obj_municao {
+						obj_personagem.slot3 = noone
+					} else if obj_personagem.slot4 == obj_municao {
+						obj_personagem.slot4 = noone
+					} else {
+						obj_personagem.slot5 = noone
+					}
+				}
+			}
+		}
+	} else {
+		if point_in_circle(mx, my, xis, 894, 38) {
+			draw_rectangle_color(mx + 50, my, mx + 60 + string_width(text2) + 5, my + string_height(text2) + 10 + 5, c_black, c_black, c_black, c_black, false)
+			draw_rectangle_color(mx + 50, my - 5, mx + 60 + string_width(text2), my + string_height(text2) + 10, #B28435, #B28435, #B28435, #B28435, false)
+			draw_text(mx + 60, my + 5, text2)
+		}
+	}
+}
+
 if clicou and !derrotou {
 	draw_rectangle_color(0, 0, 1920, 1080, #15404C, #002733, #00332E, #1A664F, false)
 	draw_set_font(fnt_dialogos)
@@ -75,6 +133,39 @@ if clicou and !derrotou {
 				}
 			}
 		}
+	}
+	
+	largura_pistola = 70 * tiros_pistola / 10
+	largura_metra = 70 * tiros_metra / 8
+	
+		
+	if arma_roger == obj_pistola {
+		draw_rectangle_color(390 - 40, 894 + 40, 390 + 40, 894 + 65, c_black, c_black, c_black, c_black, false )
+		draw_rectangle_color(390 - 40 + 5, 894 + 45, 390 - 35 + largura_pistola, 894 + 60, #2E7F0E, #2E7F0E, #2E7F0E, #2E7F0E, false )
+		if tiros_pistola == 0 {
+			recarrega(obj_personagem, obj_pistola)
+		}
+	}
+	if arma_davi == obj_pistola {
+		draw_rectangle_color(1524 - 40, 894 + 40, 1524 + 40, 894 + 65, c_black, c_black, c_black, c_black, false )
+		draw_rectangle_color(1524 - 40 + 5, 894 + 45, 1524 - 35 + largura_pistola, 894 + 60, #2E7F0E, #2E7F0E, #2E7F0E, #2E7F0E, false )
+		if tiros_pistola == 0 {
+			recarrega(obj_davi, obj_pistola)
+		}
+	}
+	if arma_roger == obj_metralhadora {
+		draw_rectangle_color(390 - 40, 894 + 40, 390 + 40, 894 + 65, c_black, c_black, c_black, c_black, false )
+		draw_rectangle_color(390 - 40 + 5, 894 + 45, 390 - 35 + largura_metra, 894 + 60, #2E7F0E, #2E7F0E, #2E7F0E, #2E7F0E, false )
+		if tiros_metra == 0 {
+			recarrega(obj_personagem, obj_metralhadora)
+		}
+	}
+	if arma_davi == obj_metralhadora {
+		draw_rectangle_color(1524 - 40, 894 + 40, 1524 + 40, 894 + 65, c_black, c_black, c_black, c_black, false )
+		draw_rectangle_color(1524 - 40 + 5, 894 + 45, 1524 - 35 + largura_metra, 894 + 60, #2E7F0E, #2E7F0E, #2E7F0E, #2E7F0E, false )
+		if tiros_metra == 0 {
+			recarrega(obj_davi, obj_metralhadora)
+		}	
 	}
 	
 	if selecionar_arma_roger and !batalha {
@@ -293,6 +384,7 @@ if clicou and !derrotou {
 			var defesa = 1
 			var atacou = true
 			if executar {
+				atirou = true
 				if sua_vez == 0 {
 					sua_vez = 1
 					_y = y_roger
@@ -395,6 +487,13 @@ if clicou and !derrotou {
 							break
 					}
 					if atacou {
+						
+						if arma_roger == obj_metralhadora {
+							tiros_metra--
+						} else if arma_roger == obj_pistola {
+							tiros_pistola--
+						}
+						
 						var critico = false
 						var errou = false
 						if obj_personagem.atributos.sagacidade > 85 {
@@ -533,6 +632,12 @@ if clicou and !derrotou {
 							break
 					}
 					if atacou {
+						if arma_davi == obj_metralhadora {
+							tiros_metra--
+						} else if arma_davi == obj_pistola {
+							tiros_pistola--
+						}
+						
 						var critico = false
 						var errou = false
 						if obj_davi.atributos.sagacidade > 85 {

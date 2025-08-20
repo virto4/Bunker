@@ -313,6 +313,7 @@
     {"id":{"name":"spr_interface_ferramentas","path":"sprites/spr_interface_ferramentas/spr_interface_ferramentas.yy",},},
     {"id":{"name":"spr_interface_freezer","path":"sprites/spr_interface_freezer/spr_interface_freezer.yy",},},
     {"id":{"name":"spr_interface_geladeira","path":"sprites/spr_interface_geladeira/spr_interface_geladeira.yy",},},
+    {"id":{"name":"spr_interface_mesa","path":"sprites/spr_interface_mesa/spr_interface_mesa.yy",},},
     {"id":{"name":"spr_janela","path":"sprites/spr_janela/spr_janela.yy",},},
     {"id":{"name":"spr_jogar","path":"sprites/spr_jogar/spr_jogar.yy",},},
     {"id":{"name":"spr_lateral","path":"sprites/spr_lateral/spr_lateral.yy",},},
