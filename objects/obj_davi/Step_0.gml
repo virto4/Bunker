@@ -233,9 +233,10 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				}
 				if y <= ipsilon - 100 {
 					frames = 0
-					terminou = 4
+					terminou = 10
 				}
 			} else if terminou == 10 {
+				sprite_index = spr_davi_idle_down
 				//fica parado o resto
 			}
 			break

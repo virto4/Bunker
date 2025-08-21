@@ -1,11 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if y - sprite_height / 2 < obj_personagem.y { 
-    depth = obj_personagem.depth + 1
-} else if y - sprite_height / 2 < obj_davi.y {
-	depth = obj_davi.depth + 1
-} else {
-    depth = -y 
+depth = -y
+if y < obj_personagem.y + 86 and y > obj_personagem.y - 5 {
+	depth = obj_personagem.depth + 1
+} else if instance_exists(obj_davi) {
+	if y < obj_davi.y + 86 and y > obj_davi.y - 5 {
+		depth = obj_personagem.depth + 1
+	}
 }
 if clicou {
 	var width_sair = sprite_get_width(spr_voltar) / 2
