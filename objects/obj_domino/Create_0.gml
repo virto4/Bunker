@@ -5,10 +5,15 @@ clicou = false
 pecas = []
 pecas_jogador = []
 pecas_adversario = []
+pecas_tela = []
+index = 0
 comecou = false
 monte = []
+pecas_mesa = []
+largura = 0
+cor_peca = #CCCCCC
 for (var i = 0; i < 7; i++) {
-	for (var j = 0; j < 7; j++) {
+	for (var j = i; j < 7; j++) {
 		array_push(pecas, [i, j])
 	}
 }

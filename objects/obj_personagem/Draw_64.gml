@@ -30,6 +30,11 @@ if room == rm_bunker {
 	if obj_escada.clicou {
 		desenha = false
 	}
+	if instance_exists(obj_domino) {
+		if obj_domino.clicou {
+			desenha = false
+		}
+	}
 }
 if desenha {
 	draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
