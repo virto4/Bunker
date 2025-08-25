@@ -11,7 +11,12 @@ comecou = false
 monte = []
 pecas_mesa = []
 largura = 0
+vez_davi = false
+calculo_davi = false
+tempo = 0
 cor_peca = #CCCCCC
+prim = 0
+ult = 0
 for (var i = 0; i < 7; i++) {
 	for (var j = i; j < 7; j++) {
 		array_push(pecas, [i, j])

@@ -4,16 +4,18 @@ function maior() {
 	var encontrou = false
 	for (var k = 6; k >= 0 and !encontrou; k--) {
 		for (var l = 6; l >= 0 and !encontrou; l--) {
-			for (var i = 0; i < array_length(pecas_jogador); i++) {
-				for (var j = 0; j < array_length(pecas_adversario); j++) {
+			for (var i = 0; i < array_length(pecas_jogador) and !encontrou; i++) {
+				for (var j = 0; j < array_length(pecas_adversario) and !encontrou; j++) {
 					if array_equals(pecas_jogador[i], [k, l]) {
 						encontrou = true
-						array_delete(pecas_jogador, i, 1)
 						array_push(pecas_mesa, [k, l])
+						array_delete(pecas_jogador, i, 1)
+						break
 					} else if array_equals(pecas_adversario[j], [k, l]) {
 						encontrou = true
 						array_push(pecas_mesa, [k, l])
 						array_delete(pecas_adversario, j, 1)
+						break
 					}
 				}
 			}
@@ -69,5 +71,26 @@ if clicou {
 		array_copy(pecas_tela, 0, pecas_jogador, index, 14)
 	} else {
 		pecas_tela = pecas_jogador
+	}
+}
+
+if vez_davi {
+	if current_time / 1000 > tempo {
+		calculo_davi = true
+	}
+	if calculo_davi {
+		vez_davi = false
+		calculo_davi = false
+		for (var i = 0; i < array_length(pecas_adversario); i++) {
+			if pecas_adversario[i][0] == prim or pecas_adversario[i][1] == prim {
+				array_insert(pecas_mesa, 0, pecas_adversario[i])
+				array_delete(pecas_adversario, i, 1)
+				break
+			} else if pecas_adversario[i][0] == ult or pecas_adversario[i][1] == ult {
+				array_push(pecas_mesa, pecas_adversario[i])
+				array_delete(pecas_adversario, i, 1)
+				break
+			}
+		}
 	}
 }

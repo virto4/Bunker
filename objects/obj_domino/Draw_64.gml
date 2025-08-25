@@ -43,15 +43,18 @@ if clicou {
 	draw_sprite_ext(spr_interface_mesa, 0, 960, 540, 4, 4, 0, c_white, 1)
 	draw_sprite(spr_voltar, 0, 1800, 50)
 	var xis = (1920 - 70 * array_length(pecas_tela)) / 2
+	var xis2 = (1920 - 70 * array_length(pecas_adversario)) / 2
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
+	for (var i = 0; i < array_length(pecas_adversario); i++) {
+		draw_rectangle_color(xis2 + 70 * i, 150, xis2 + 50 + 70 * i, 50, c_black, c_black, c_black, c_black, false)
+		draw_rectangle_color(xis2 + 70 * i + 5, 55, xis2 + 45 + 70 * i, 97, #CCCCCC, #CCCCCC, #CCCCCC, #CCCCCC, false)
+		draw_rectangle_color(xis2 + 70 * i + 5, 102, xis2 + 45 + 70 * i, 145, #CCCCCC, #CCCCCC, #CCCCCC, #CCCCCC, false)
+	}
 	for (var i = 0; i < array_length(pecas_tela); i++) {
 		draw_rectangle_color(xis + 70 * i, 930, xis + 50 + 70 * i, 1030, c_black, c_black, c_black, c_black, false)
 		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) {
 			cor_peca = #999999
-			if mouse_check_button_pressed(mb_left) {
-				
-			}
 		} else {
 			cor_peca = #CCCCCC
 		}
@@ -59,6 +62,21 @@ if clicou {
 		draw_rectangle_color(xis + 70 * i + 5, 983, xis + 45 + 70 * i, 1025, cor_peca, cor_peca, cor_peca, cor_peca, false)
 		pontos(pecas_tela[i][0], xis + 70 * i + 25, 956)
 		pontos(pecas_tela[i][1], xis + 70 * i + 25, 1006)
+		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) and !vez_davi{
+			if mouse_check_button_pressed(mb_left) {
+				if prim == pecas_tela[i][0] or prim == pecas_tela[i][1] {
+					array_insert(pecas_mesa, 0, pecas_tela[i])
+					array_delete(pecas_tela, i, 1)
+					vez_davi = true
+					tempo = current_time / 1000 + 3
+				} else if ult == pecas_tela[i][0] or ult == pecas_tela[i][1] {
+					array_push(pecas_mesa, pecas_tela[i])
+					array_delete(pecas_tela, i, 1)
+					vez_davi = true
+					tempo = current_time / 1000 + 3
+				}
+			}
+		}
 	}
 	if array_length(pecas_jogador) > 14 {
 		if pecas_jogador[0] != pecas_tela[0] {
@@ -81,12 +99,14 @@ if clicou {
 			}
 		}
 	}
-	var xmesa = 1920 - (1920 - largura) / 2
+	var xmesa = (1920 - largura) / 2
 	var n_pecas = 0
+	largura = 0
 	var ultima = 0
 	for (var i = 0; i < array_length(pecas_mesa); i++) { 
 		if pecas_mesa[i][0] == pecas_mesa[i][1] {
 			n_pecas += 50
+			largura += 50
 			draw_set_color(c_black)	
 			draw_rectangle(xmesa + n_pecas - 50, 540 - 50, xmesa + n_pecas, 540 + 50, false)
 			draw_set_color(#CCCCCC)
@@ -95,8 +115,9 @@ if clicou {
 			pontos(pecas_mesa[i][0], xmesa + n_pecas - 25, 515)
 			pontos(pecas_mesa[i][1], xmesa + n_pecas - 25, 565)
 			ultima = pecas_mesa[i][0]
-		} else {
+		} else if i > 0 {
 			n_pecas += 100
+			largura += 100
 			draw_set_color(c_black)
 			draw_rectangle(xmesa + n_pecas - 100, 540 - 25, xmesa + n_pecas, 540 + 25, false)
 			draw_set_color(#CCCCCC)
@@ -110,6 +131,28 @@ if clicou {
 			pontos(pecas_mesa[i][0], xmesa + n_pecas - 75, 540)
 			pontos(pecas_mesa[i][1], xmesa + n_pecas - 25, 540)
 			ultima = pecas_mesa[i][1]
+		} else if i == 0 and array_length(pecas_mesa) > 1 {
+			n_pecas += 100
+			largura += 100
+			draw_set_color(c_black)
+			draw_rectangle(xmesa + n_pecas - 100, 540 - 25, xmesa + n_pecas, 540 + 25, false)
+			draw_set_color(#CCCCCC)
+			draw_rectangle(xmesa + n_pecas - 95, 520, xmesa + n_pecas - 53, 560, false)
+			draw_rectangle(xmesa + n_pecas - 48, 520, xmesa + n_pecas - 5, 560, false)
+			if pecas_mesa[i][0] == pecas_mesa[i + 1][0] {
+				var aux = pecas_mesa[i][1]
+				pecas_mesa[i][1] = pecas_mesa[i][0]
+				pecas_mesa[i][0] = aux
+			}
+			pontos(pecas_mesa[i][0], xmesa + n_pecas - 75, 540)
+			pontos(pecas_mesa[i][1], xmesa + n_pecas - 25, 540)
+			ultima = pecas_mesa[i][1]
+		}
+		if i == 0 {
+			prim = pecas_mesa[i][0]
+		}
+		if i == array_length(pecas_mesa) - 1 {
+			ult = pecas_mesa[i][1]
 		}
 	}
 }
