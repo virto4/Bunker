@@ -59,8 +59,8 @@ sprite_index = spr_roger_idle_down
 if !apertou_pulo {
 	depth = -y
 }
-if room == rm_casa {
-	if global.tem_tela_aberta and obj_geladeira.desenhar {
+if room == rm_casa and !tutorial_ask and !tutorial {
+	if global.tem_tela_aberta and (obj_geladeira.desenhar or direita_coletavel) {
 		tempo_decorrido += delta_time / 1000000
 		tempo_escrito = tempo_espera - tempo_decorrido
 	}
@@ -170,7 +170,7 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		}
 	}
 	
-	if room == rm_casa {
+	if room == rm_casa and !tutorial and !tutorial_ask {
 		tempo_decorrido += delta_time / 1000000
 		tempo_escrito = tempo_espera - tempo_decorrido
 	}
@@ -325,6 +325,30 @@ if alimento and room == rm_bunker {
 	}
 }
 
+if tutorial_ask {
+	var mx = device_mouse_x_to_gui(0)
+	var my = device_mouse_y_to_gui(0)
+	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+		mouse_sim = true
+		if mouse_check_button_pressed(mb_left) {
+			tutorial = true
+			tutorial_ask = false
+			global.tem_tela_aberta = false
+		}
+	} else {
+		mouse_sim = false
+	}
+	
+	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+		mouse_nao = true
+		if mouse_check_button_pressed(mb_left) {
+			tutorial_ask = false
+			global.tem_tela_aberta = false
+		}
+	} else {
+		mouse_nao = false
+	}
+}
 
 if remedio and room == rm_bunker {
 	var mx = device_mouse_x_to_gui(0)

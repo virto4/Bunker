@@ -352,6 +352,7 @@
     {"name":"spr_tela_opcoes_jogo","order":10,"path":"sprites/spr_tela_opcoes_jogo/spr_tela_opcoes_jogo.yy",},
     {"name":"spr_tileset_bunker","order":2,"path":"sprites/spr_tileset_bunker/spr_tileset_bunker.yy",},
     {"name":"spr_tileset_casa","order":1,"path":"sprites/spr_tileset_casa/spr_tileset_casa.yy",},
+    {"name":"spr_tutorial","order":27,"path":"sprites/spr_tutorial/spr_tutorial.yy",},
     {"name":"spr_tv","order":8,"path":"sprites/spr_tv/spr_tv.yy",},
     {"name":"spr_ventilacao_aberta_limpa","order":7,"path":"sprites/spr_ventilacao_aberta_limpa/spr_ventilacao_aberta_limpa.yy",},
     {"name":"spr_ventilacao_aberta_suja","order":10,"path":"sprites/spr_ventilacao_aberta_suja/spr_ventilacao_aberta_suja.yy",},

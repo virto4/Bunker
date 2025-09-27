@@ -1,9 +1,52 @@
-if alpha == 0 {
+if alpha == 0 and !tutorial {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
 		draw_set_font(fnt_alagard)
 		draw_text(room_width / 2, 60, tempo_escrito div 1 + 1)//div é o comando para divisap inteira
 	}
+}
+
+if tutorial and room == rm_casa {
+	draw_sprite(spr_tutorial, 0, 128, 250)
+	if !coleta {
+		tut_mensagem = "Clique com o botão esquerdo do mouse em algum item para coletá-lo."
+	} else if !informacao {
+		tut_mensagem = "Clique com o botão direito do mouse em algum item para descobrir suas informações."
+	} else if !rolar_hotbar {
+		tut_mensagem = "Utilize a rodinha do mouse para percorrer a hotbar."
+	} else if !porta {
+		tut_mensagem = "Clique com o botão esquerdo do mouse nas portas para abri-las"
+	} else if !geladeira {
+		tut_mensagem = "Clique com o botão esquerdo na geladeira (na parte superior direita da casa) para coletar comidas."
+	}else if !deposito {
+		tut_mensagem = "Clique com o botão esquerdo do mouse no bunker (estrutura cinza na parte de cima da casa) enquanto segura um item para enviá-lo ao bunker."
+	} else {
+		tut_mensagem = "Perfeito, seu tutorial foi conluido! Agora pode utilizar esse modo para construir sua estratégia mais facilmente e, quando estiver pronto, volte a tela inicial clicando em 'ESC' e hogue o modo normal."
+	}
+	draw_set_font(fnt_dialogos)
+	draw_set_color(#7FFFF8)
+	var linhas = obj_conquistas.quebrar_texto(tut_mensagem, 1500)
+	for (var i = 0; i < array_length(linhas); i++) {
+		draw_text(370, 50 + 50 * i, linhas[i])
+	}
+}
+
+if tutorial_ask {
+	draw_sprite(spr_mudar_casa, 0, 0, 0)
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_black)
+	draw_text(220, 800, "Você gostaria de jogar o tutorial?")
+	if mouse_sim {
+		draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+	}
+	draw_text(300, 940, "Sim")
+	if mouse_nao {
+		draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+	}
+	draw_text(1620, 940, "Não")
 }
 
 var _slotx1=768
@@ -35,6 +78,9 @@ if room == rm_bunker {
 			desenha = false
 		}
 	}
+}
+if tutorial_ask {
+	desenha = false
 }
 if desenha {
 	draw_sprite_ext(spr_hotbar, 0, 960, 1020, 3, 3, 0, c_white, 1)
@@ -71,7 +117,7 @@ if desenha {
 		desenhar_hotbar(slot5, slot5_novo, _slotx5)
 	}
 }
-if alpha > 0 {
+if alpha > 0 and !tutorial_ask {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha)
 	alpha -= 0.05
 } 

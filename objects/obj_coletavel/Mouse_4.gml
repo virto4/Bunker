@@ -31,6 +31,9 @@ if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta 
 }
 
 if !global.tem_tela_aberta and !nao {
+	if !obj_personagem.coleta and obj_personagem.tutorial {
+		obj_personagem.coleta = true
+	}
 	function mudar_slot_vazio() { //muda para o slot vazio
 		for (var _i = 1; _i <= 5; _i++) {
 			obj_personagem.slot_selecionado--

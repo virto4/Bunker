@@ -51,6 +51,7 @@ if clicou {
 		draw_rectangle_color(xis2 + 70 * i + 5, 55, xis2 + 45 + 70 * i, 97, #CCCCCC, #CCCCCC, #CCCCCC, #CCCCCC, false)
 		draw_rectangle_color(xis2 + 70 * i + 5, 102, xis2 + 45 + 70 * i, 145, #CCCCCC, #CCCCCC, #CCCCCC, #CCCCCC, false)
 	}
+	var pode_jogar = false
 	for (var i = 0; i < array_length(pecas_tela); i++) {
 		draw_rectangle_color(xis + 70 * i, 930, xis + 50 + 70 * i, 1030, c_black, c_black, c_black, c_black, false)
 		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) {
@@ -69,14 +70,19 @@ if clicou {
 					array_delete(pecas_tela, i, 1)
 					vez_davi = true
 					tempo = current_time / 1000 + 3
+					pode_jogar = true
 				} else if ult == pecas_tela[i][0] or ult == pecas_tela[i][1] {
 					array_push(pecas_mesa, pecas_tela[i])
 					array_delete(pecas_tela, i, 1)
 					vez_davi = true
 					tempo = current_time / 1000 + 3
+					pode_jogar = true
 				}
 			}
 		}
+	}
+	if pode_jogar {
+		
 	}
 	if array_length(pecas_jogador) > 14 {
 		if pecas_jogador[0] != pecas_tela[0] {

@@ -181,12 +181,27 @@ inputs = {
 
 opcoes = false
 
-armas_pegas = [obj_metralhadora, obj_picareta, obj_machado, obj_pistola]
+armas_pegas = []
+
+tutorial_ask = false
+tutorial = false
+coleta = false
+informacao = false
+rolar_hotbar = false
+porta = false
+deposito = false
+geladeira = false
+tut_mensagem = ""
+
+direita_coletavel = false
+objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0 
-	tempo_espera = 0
+	tempo_espera = 100
 	tempo_escrito = tempo_espera - tempo_decorrido
+	tutorial_ask = true
+	global.tem_tela_aberta = true
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {
