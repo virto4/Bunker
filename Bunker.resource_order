@@ -228,7 +228,7 @@
     {"name":"spr_deprimido","order":1,"path":"sprites/spr_deprimido/spr_deprimido.yy",},
     {"name":"spr_descricao","order":17,"path":"sprites/spr_descricao/spr_descricao.yy",},
     {"name":"spr_dialogo","order":23,"path":"sprites/spr_dialogo/spr_dialogo.yy",},
-    {"name":"spr_diario","order":4,"path":"sprites/spr_diario/spr_diario.yy",},
+    {"name":"spr_diario","order":5,"path":"sprites/spr_diario/spr_diario.yy",},
     {"name":"spr_domino","order":10,"path":"sprites/spr_domino/spr_domino.yy",},
     {"name":"spr_efeito_transicao","order":6,"path":"sprites/spr_efeito_transicao/spr_efeito_transicao.yy",},
     {"name":"spr_escada","order":15,"path":"sprites/spr_escada/spr_escada.yy",},

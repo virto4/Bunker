@@ -6,6 +6,8 @@ if alpha == 0 and (!global.tem_tela_aberta or global.tem_tela_aberta and global.
 		slot_selecionado = 1
 	}
 
+	rolar_hotbar = true
+
 	if obj_anterior != noone { //esse aqui é o ultimo obj que foi instaciado, aquele que estava no slot selecionado por ultimo e foi trocado agora
 		//quando rolar o mouse e trocar o selecionado, o ultimo objeto deve ser destruido
 		instance_destroy(obj_anterior)

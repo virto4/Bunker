@@ -79,7 +79,14 @@ if room == rm_bunker {
 		}
 	}
 }
-if tutorial_ask {
+
+if instance_exists(obj_diario) {
+	if obj_diario.clicou {
+		desenha = false
+	}
+}
+
+if tutorial_ask or direita_coletavel {
 	desenha = false
 }
 if desenha {

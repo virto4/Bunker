@@ -60,28 +60,22 @@ alcoolatra_aux = true
 mib_aux = true
 fredie_aux = true
 
-eventos_inicio = [
-	"barata",
+eventos_inicio = embaralhar([
+	"gripe",
+	"enxaqueca",
+	"baratas",
+	"baratas",
+	"baratas",
+	"canos",
+	"idoso",
+	"coleta",
+	"desidratacao",
+	"mala",
 	"capivara",
-	"delinquentes",
-	"cardume",
-	"sequestro",
-	"saque",
-	"emma",
-	"maniaco",
-	"kkk",
-	"alcoolatra",
-	"mib",
-	"baratas", //ok
-	"canos", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
-	"rachaduras",//ok
-	"infiltracao", //ok
-	"termostato", //
-	"chuva acida", //aparece no radio a previsao de chuva acida; se o personagem sair, ele morre ou leva escoriações
-	"ventilacao", //ok
-	"mofo",//desenhar mofo e falar da agua sanitaria 
-	"radiacao", //voce tem que pegar o contador geiger todos os dias e passear pelo bunker para ver se tem vazamentos de radiação. se tiver, você tem que revestir a região com placas de chumbo
-]
+	"barata", //ok
+	"leptospirose", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
+	"freddie",//ok
+])
 
 inicio_data = {
 	dia1: eventos_inicio[0],
@@ -98,7 +92,7 @@ inicio_data = {
 	dia9: eventos_inicio[11],
 	dia9: eventos_inicio[12],
 }
-/*
+
 eventos_meio = embaralhar ([
 	"baratas",
 	"rachaduras",
