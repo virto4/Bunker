@@ -117,18 +117,18 @@ eventos_inicio = embaralhar([
 ])
 
 inicio_data = {
-	dia1: eventos_inicio[0],
-	dia2: eventos_inicio[1],
-	dia3: eventos_inicio[2],
-	dia4: eventos_inicio[3],
-	dia5: eventos_inicio[4],
-	dia6: eventos_inicio[5],
-	dia7: eventos_inicio[6],
-	dia8: eventos_inicio[7],
-	dia9: eventos_inicio[8],
-	dia9: eventos_inicio[9],
-	dia9: eventos_inicio[10],
-	dia9: eventos_inicio[11],
+	dia3: eventos_inicio[0],
+	dia6: eventos_inicio[1],
+	dia8: eventos_inicio[2],
+	dia10: eventos_inicio[3],
+	dia13: eventos_inicio[4],
+	dia15: eventos_inicio[5],
+	dia18: eventos_inicio[6],
+	dia21: eventos_inicio[7],
+	dia23: eventos_inicio[8],
+	dia26: eventos_inicio[9],
+	dia28: eventos_inicio[10],
+	dia30: eventos_inicio[11],
 }
 
 eventos_meio = embaralhar ([
@@ -143,20 +143,22 @@ eventos_meio = embaralhar ([
 	"cardume",
 	"saque",
 	"emma",
-	"comerciante"
+	"comerciante",
+	"baratas"
 ])
 meio_data = {
-	dia31: eventos_meio[0],
-	dia34: eventos_meio[1],
-	dia36: eventos_meio[2],
-	dia37: eventos_meio[3],
-	dia38: eventos_meio[4],
-	dia40: eventos_meio[5],
-	dia42: eventos_meio[6],
-	dia44: eventos_meio[8],
-	dia46: eventos_meio[9],
-	dia49: eventos_meio[10],
-	dia51: eventos_meio[11],
+	dia33: eventos_meio[0],
+	dia36: eventos_meio[1],
+	dia38: eventos_meio[2],
+	dia41: eventos_meio[3],
+	dia43: eventos_meio[4],
+	dia45: eventos_meio[5],
+	dia48: eventos_meio[6],
+	dia50: eventos_meio[8],
+	dia53: eventos_meio[9],
+	dia56: eventos_meio[10],
+	dia58: eventos_meio[11],
+	dia62: eventos_meio[12]
 }
 
 eventos_fim = embaralhar([
@@ -176,9 +178,17 @@ eventos_fim = embaralhar([
 ])
 
 fim_data = {
-	dia70: eventos_fim[0],
-	dia72: eventos_fim[1],
-	dia74: eventos_fim[2],
+	dia66: eventos_fim[0],
+	dia70: eventos_fim[1],
+	dia73: eventos_fim[2],
 	dia76: eventos_fim[3],
-	dia78: eventos_fim[4]
+	dia77: eventos_fim[4],
+	dia79: eventos_fim[5],
+	dia82: eventos_fim[6],
+	dia84: eventos_fim[7],
+	dia86: eventos_fim[8],
+	dia88: eventos_fim[9],
+	dia92: eventos_fim[10],
+	dia94: eventos_fim[11],
+	dia96: eventos_fim[12],
 }

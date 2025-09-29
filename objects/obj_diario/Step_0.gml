@@ -73,42 +73,122 @@ if mouse_check_button_pressed(mb_left) {
 
 switch dia {
 	case 1:
-		ds_list_replace(paginas_escritas, 0, paginas.atributos)
-		ds_list_replace(paginas_escritas, 1, paginas.atributos2)
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia1
-		break
-	case 2:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia2
+		ds_list_replace(obj_diario.paginas_escritas, 0, obj_diario.paginas.atributos)
+		ds_list_replace(obj_diario.paginas_escritas, 1, obj_diario.paginas.atributos2)
 		break
 	case 3:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia3
 		break
-	case 4:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia4
-		break
-	case 5:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia5
-		break
 	case 6:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia6
-		break
-	case 7:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia7
 		break
 	case 8:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia8
 		break
-	case 9:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia9
-		break
 	case 10:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia10
 		break
-	case 11:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia11
-		break
-	case 12:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia12
-		break
 	case 13:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia13
+		break
+	case 15:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia15
+		break
+	case 18:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia18
+		break
+	case 21:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia21
+		break
+	case 23:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia23
+		break
+	case 26:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia26
+		break
+	case 28:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia28
+		break
+	case 30:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia30
+		break
+	case 33:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia33
+		break
+	case 36:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia36
+		break
+	case 38:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia38
+		break
+	case 41:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia41
+		break
+	case 43:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia43
+		break
+	case 45:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia45
+		break
+	case 48:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia48
+		break
+	case 50:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia50
+		break
+	case 53:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia53
+		break
+	case 56:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia56
+		break
+	case 58:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia58
+		break
+	case 62:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia62
+		break
+	case 66:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia66
+		break
+	case 70:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia70
+		break
+	case 73:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia73
+		break
+	case 76:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia76
+		break
+	case 77:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia77
+		break
+	case 79:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia79
+		break
+	case 82:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia82
+		break
+	case 84:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia84
+		break
+	case 86:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia86
+		break
+	case 88:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia88
+		break
+	case 92:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia92
+		break
+	case 94:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia94
+		break
+	case 96:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia96
+		break
+	default:
+		if pagina < dia {
+			ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, "Nada de mais hoje.")
+		}
 }

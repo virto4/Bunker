@@ -6,12 +6,16 @@ dia = 1
 pagina = 0
 pagina_direita = 0
 pagina_esquerda = 0
+ultima_pag = 0
+paginas_datas = ds_list_create()
+dia2 = 16
+mes = 7
 
 image_index = 0
 image_speed = 0
 
 paginas = {
-	numero: 200,
+	numero: 120,
 	atributos: "Meus atributos: ",
 	atributos2: "Atributos de Davi: ",
 	gripe: "Hoje amanheci meio gripado. É esse tempo esfriando, só pode ser. Meus pulmões não são mais como antigamente... Se tiver uma aspirina aí vai ajudar.",
@@ -50,6 +54,24 @@ paginas = {
 
 tarefas = ds_list_create()
 paginas_escritas = ds_list_create()
-for(i = 0; i <= paginas.numero; i++) {
+for(var i = 0; i <= paginas.numero; i++) {
 	ds_list_add(paginas_escritas, "")
+}
+
+ds_list_add(paginas_datas, "")
+ds_list_add(paginas_datas, "")
+for (var i = 0; i < paginas.numero; i++) {
+	ds_list_add(paginas_datas, string(dia2) + "/" + string(mes))
+	dia2++
+	if mes == 7 or mes == 8 or mes == 10 or mes == 12 {
+		if dia2 > 31 {
+			dia2 = 1
+			mes++
+		}
+	} else {
+		if dia2 > 30 {
+			dia2 = 1
+			mes++
+		}
+	}
 }

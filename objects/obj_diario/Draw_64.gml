@@ -26,14 +26,17 @@ function quebrar_texto(texto, largura_maxima) {
 }
 
 if clicou and image_index == image_number - 1{
-	pagina_esquerda = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina), 1140) 
-	pagina_direita = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina + 1), 1240) 
+	pagina_esquerda = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina), 1170) 
+	pagina_direita = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina + 1), 1170) 
+	
+	draw_set_color(c_black)
+	draw_set_font(fnt_dialogos)
 	
 	var _largura_x = 85
 	draw_sprite(spr_interface_diario, 0, 1920 / 2, 1080 / 2)
 	draw_sprite(spr_voltar, 0, 1800, 50)
-	draw_set_color(c_black)
-	draw_set_font(fnt_dialogos)
+	draw_text(380, 540 - 350 - 50, ds_list_find_value(paginas_datas, 2 * pagina))
+	draw_text(980, 540 - 350 - 50, ds_list_find_value(paginas_datas, 2 * pagina + 1))
 	for (var _i = 0; _i < array_length(pagina_esquerda); _i++) {
 	    draw_text(380, 1080 / 2 - 350 + _i * string_height("A"), pagina_esquerda[_i]);
 	}
