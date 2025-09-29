@@ -26,8 +26,8 @@ function quebrar_texto(texto, largura_maxima) {
 }
 
 if clicou and image_index == image_number - 1{
-	pagina_esquerda = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina), 375) 
-	pagina_direita = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina + 1), 375) 
+	pagina_esquerda = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina), 1140) 
+	pagina_direita = quebrar_texto(ds_list_find_value(paginas_escritas, 2 * pagina + 1), 1240) 
 	
 	var _largura_x = 85
 	draw_sprite(spr_interface_diario, 0, 1920 / 2, 1080 / 2)
@@ -35,10 +35,10 @@ if clicou and image_index == image_number - 1{
 	draw_set_color(c_black)
 	draw_set_font(fnt_dialogos)
 	for (var _i = 0; _i < array_length(pagina_esquerda); _i++) {
-	    draw_text(1920 / 2 - 450, 1080 / 2 - 350 + _i * string_height("A"), pagina_esquerda[_i]);
+	    draw_text(380, 1080 / 2 - 350 + _i * string_height("A"), pagina_esquerda[_i]);
 	}
 	for (var _i = 0; _i < array_length(pagina_direita); _i++) {
-	    draw_text(1920 / 2 + 25, 1080 / 2 - 350 + _i * string_height("A"), pagina_direita[_i]);
+	    draw_text(980, 1080 / 2 - 350 + _i * string_height("A"), pagina_direita[_i]);
 	}
 	draw_set_font(fnt_alagard)
 	draw_sprite(spr_voltar_diario, 0, 200, 1080 - 50)

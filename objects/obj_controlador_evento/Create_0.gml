@@ -47,6 +47,16 @@ alcoolatra = false
 mib = false
 fredie = false
 
+gripe = false
+enxaqueca = false
+desidratacao = false
+leptospirose = false
+doenca_gata = false
+disenteria = false
+escorbuto = false
+depressao = false
+cogumelos = false
+
 barata_aux = true
 capivara_aux = true
 delinquentes_aux = true
@@ -60,11 +70,40 @@ alcoolatra_aux = true
 mib_aux = true
 fredie_aux = true
 
+gripe_aux = true
+enxaqueca_aux = true
+desidratacao_aux = true
+leptospirose_aux = true
+doenca_gata_aux = true
+disenteria_aux = true
+escorbuto_aux = true
+depressao_aux = true
+cogumelos_aux = true
+
+idoso = false
+idoso_aux = true
+coleta = false
+coleta_aux = true
+mala = false
+mala_aux = true
+eletricidade = false
+eletricidade_aux = true
+termostato = false
+termostato_aux = true
+familia_feliz = false
+familia_feliz_aux = true
+radiacao = false
+radiacao_aux = true
+mofo = false
+mofo_aux = true
+comerciante = false
+comerciante_aux = true
+crianca = false
+crianca_aux = true
+
 eventos_inicio = embaralhar([
 	"gripe",
 	"enxaqueca",
-	"baratas",
-	"baratas",
 	"baratas",
 	"canos",
 	"idoso",
@@ -90,35 +129,56 @@ inicio_data = {
 	dia9: eventos_inicio[9],
 	dia9: eventos_inicio[10],
 	dia9: eventos_inicio[11],
-	dia9: eventos_inicio[12],
 }
 
 eventos_meio = embaralhar ([
-	"baratas",
-	"rachaduras",
-	"infiltração",
+	"doenca_gata",
+	"eletricidade",
+	"rachadura",
+	"infiltracao",
+	"chuva acida",
 	"termostato",
-	"chuva acida"
+	"coleta",
+	"mala",
+	"cardume",
+	"saque",
+	"emma",
+	"comerciante"
 ])
 meio_data = {
 	dia31: eventos_meio[0],
-	dia32: eventos_meio[1],
-	dia33: eventos_meio[2],
-	dia36: eventos_meio[3],
-	dia38: eventos_meio[4]
+	dia34: eventos_meio[1],
+	dia36: eventos_meio[2],
+	dia37: eventos_meio[3],
+	dia38: eventos_meio[4],
+	dia40: eventos_meio[5],
+	dia42: eventos_meio[6],
+	dia44: eventos_meio[8],
+	dia46: eventos_meio[9],
+	dia49: eventos_meio[10],
+	dia51: eventos_meio[11],
 }
 
-meio_data = {
+eventos_fim = embaralhar([
+	"disenteria",
+	"escorbuto",
+	"ventilacao",
+	"familia_feliz",
+	"depressao",
+	"mofo",
+	"coleta",
+	"mala",
+	"mib",
+	"delinquentes",
+	"cogumelos",
+	"crianca",
+	"radiacao"
+])
+
+fim_data = {
 	dia70: eventos_fim[0],
 	dia72: eventos_fim[1],
 	dia74: eventos_fim[2],
 	dia76: eventos_fim[3],
 	dia78: eventos_fim[4]
 }
-eventos_fim = embaralhar([
-	"baratas",
-	"ventilacao",
-	"mofo",
-	"radiacao",
-	"radiacao"
-])
