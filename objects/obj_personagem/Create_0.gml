@@ -26,7 +26,6 @@ bbb = false
 tempo_over2 = 0
 aux2 = true
 tempo_over3 = 0
-aux3 = true
 cor_botao = c_white
 
 passagem_dia = false
@@ -45,7 +44,7 @@ humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 atributos = {
 	saude: 100,
 	fome: 100,
-	sede: 1,
+	sede: 100,
 	sanidade: 100,
 	humor: humores[0],
 	sagacidade: 30,

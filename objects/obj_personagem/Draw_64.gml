@@ -38,13 +38,18 @@ if game_over {
 		draw_set_font(fnt_dialogos)
 		if tempo_over < current_time / 1000 {
 			draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
-			tempo_over2 = current_time / 1000 + 1.5
-			aux1 = false
-		} 
+			if aux1 {
+				tempo_over2 = current_time / 1000 + 1.5
+				aux1 = false
+			}
+		}
 		if tempo_over2 < current_time / 1000 and !aux1 {
-			draw_text(960 - string_width(msg_game_over) / 2, 760, "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes))
-			tempo_over3 = current_time / 1000 + 1.5
-			aux2 = false
+			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+			if aux2 {
+				tempo_over3 = current_time / 1000 + 1.5
+				aux2 = false
+			}
 		}
 		if tempo_over3 < current_time / 1000 and !aux2 {
 			var msg_tela_inicial = "Voltar para tela inicial"
