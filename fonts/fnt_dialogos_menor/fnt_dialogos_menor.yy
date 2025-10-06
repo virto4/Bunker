@@ -227,10 +227,7 @@
   "sdfSpread":8,
   "size":20.0,
   "styleName":"Medium",
-  "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
-  },
+  "textureGroupId":null,
   "TTFName":"C:\\Users\\sergi\\Bunker\\fonts\\fnt_dialogos2\\rainyhearts.ttf",
   "usesSDF":false,
 }

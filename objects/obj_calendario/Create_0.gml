@@ -7,3 +7,6 @@ mudou_dia = false
 dia_semana = 1
 
 dia_semana1 = 0
+
+dia_atual2 = 0
+mes_atual2 = 0

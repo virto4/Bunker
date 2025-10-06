@@ -15,12 +15,37 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
+
+game_over = false
+msg_game_over = ""
+alpha_over = 0
+inicio = false
+tempo_over = 0
+aux1 = true
+bbb = false
+tempo_over2 = 0
+aux2 = true
+tempo_over3 = 0
+aux3 = true
+cor_botao = c_white
+
+passagem_dia = false
+alpha_dia = 0
+escureceu = false
+animacao_dia = false
+time = false
+time2 = 0
+time3 = 0
+clareou = false
+aaa = false
+mudou_data = false
+
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
 	saude: 100,
 	fome: 100,
-	sede: 100,
+	sede: 1,
 	sanidade: 100,
 	humor: humores[0],
 	sagacidade: 30,

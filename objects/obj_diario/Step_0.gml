@@ -75,6 +75,7 @@ switch dia {
 	case 1:
 		ds_list_replace(obj_diario.paginas_escritas, 0, obj_diario.paginas.atributos)
 		ds_list_replace(obj_diario.paginas_escritas, 1, obj_diario.paginas.atributos2)
+		ds_list_replace(paginas_escritas, dia + 1, "Nada de mais hoje.")
 		break
 	case 3:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia3
@@ -188,7 +189,5 @@ switch dia {
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia96
 		break
 	default:
-		if pagina < dia {
-			ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, "Nada de mais hoje.")
-		}
+		ds_list_replace(paginas_escritas, dia + 1, "Nada de mais hoje.")
 }

@@ -106,82 +106,82 @@ if crianca and crianca_aux {
 
 if cogumelos and cogumelos_aux {
 	cogumelos_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.cogumelos)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.cogumelos)
 }
 
 if depressao and depressao_aux {
 	depressao_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.depressao)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.depressao)
 }
 
 if comerciante and comerciante_aux {
 	comerciante_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.comerciante)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.comerciante)
 }
 
 if familia_feliz and familia_feliz_aux {
 	familia_feliz_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.familia_feliz)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.familia_feliz)
 }
 
 if escorbuto and escorbuto_aux {
 	escorbuto_aux = false 
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.escorbuto)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.escorbuto)
 }
 
 if disenteria and disenteria_aux {
 	disenteria_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.disenteria)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.disenteria)
 }
 
 if termostato and termostato_aux {
 	termostato_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.termostato)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.termostato)
 }
 
 if eletricidade and eletricidade_aux {
 	eletricidade_aux = false 
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.eletricidade)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.eletricidade)
 }
 
 if doenca_gata and doenca_gata_aux {
 	doenca_gata_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.doenca_gata)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.doenca_gata)
 }
 
 if leptospirose and leptospirose_aux {
 	leptospirose_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.leptospirose)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.leptospirose)
 }
 
 if mala and mala_aux {
 	mala_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.mala)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mala)
 }
 
 if coleta and coleta_aux {
 	coleta_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.coleta)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.coleta)
 }
 
 if desidratacao and desidratacao_aux {
 	desidratacao_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.desidratacao)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.desidratacao)
 }
 
 if idoso and idoso_aux {
 	idoso_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.idoso)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.idoso)
 }
 
 if enxaqueca and enxaqueca_aux {
 	enxaqueca_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.enxaqueca)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.enxaqueca)
 }
 
 if gripe and gripe_aux {
 	gripe_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.gripe)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.gripe)
 }
 
 if barata and barata_aux {
@@ -195,7 +195,7 @@ if barata and barata_aux {
 	obj_escada.inimigo.sagacidade = 35
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.barata)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.barata)
 }
 
 if capivara and capivara_aux {
@@ -209,7 +209,7 @@ if capivara and capivara_aux {
 	obj_escada.inimigo.sagacidade = 20
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.capivara)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
 if delinquentes and delinquentes_aux {
@@ -223,7 +223,7 @@ if delinquentes and delinquentes_aux {
 	obj_escada.inimigo.sagacidade = 40
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.delinquentes)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.delinquentes)
 }
 
 if cardume and cardume_aux {
@@ -237,7 +237,7 @@ if cardume and cardume_aux {
 	obj_escada.inimigo.sagacidade = 50
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.cardume)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.cardume)
 }
 
 if sequestro and sequestro_aux {
@@ -251,7 +251,7 @@ if sequestro and sequestro_aux {
 	obj_escada.inimigo.sagacidade = 65
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.capivara)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
 if saque {
@@ -265,7 +265,7 @@ if saque {
 	obj_escada.inimigo.sagacidade = 70
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.saque)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.saque)
 }
 
 if emma and emma_aux {
@@ -279,7 +279,7 @@ if emma and emma_aux {
 	obj_escada.inimigo.sagacidade = 90
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.emma)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.emma)
 }
 
 if fredie and fredie_aux {
@@ -293,7 +293,7 @@ if fredie and fredie_aux {
 	obj_escada.inimigo.sagacidade = 50
 	obj_escada.inimigo.fugir = false
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.freddie)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.freddie)
 }
 
 if maniaco and maniaco_aux {
@@ -307,7 +307,7 @@ if maniaco and maniaco_aux {
 	obj_escada.inimigo.sagacidade = 20
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.capivara)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
 if kkk  and kkk_aux {
@@ -321,7 +321,7 @@ if kkk  and kkk_aux {
 	obj_escada.inimigo.sagacidade = 70
 	obj_escada.inimigo.fugir = false
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.capivara)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
 if alcoolatra and alcoolatra_aux {
@@ -335,7 +335,7 @@ if alcoolatra and alcoolatra_aux {
 	obj_escada.inimigo.sagacidade = 65
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.capivara)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
 if mib and mib_aux {
@@ -349,7 +349,7 @@ if mib and mib_aux {
 	obj_escada.inimigo.sagacidade = 70
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.mib)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mib)
 }
 
 if evento_inimigo {
@@ -369,7 +369,7 @@ if evento_baratas {
 		instanciou_baratas = true
 		dia_baratas = obj_diario.dia
 		obj_personagem.atributos.sanidade -= 10
-		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.baratas)
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.baratas)
 	}
 	if obj_diario.dia != dia_baratas and !dia_baratas_aux  and morreu_inseticida < 5 {
 		instanciou_baratas = false
@@ -385,7 +385,7 @@ if evento_rachaduras {
 		for (var i = 0; i < instanciar; i++) {
 			instance_create_layer(posicoes[i][0], posicoes[i][1], "Instances", obj_rachadura, {})
 		}
-		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.rachaduras)
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.rachaduras)
 		instanciou_rachaduras = true
 	}
 	if !instance_exists(obj_rachadura) {
@@ -403,7 +403,7 @@ if evento_infiltracao {
 		instance_create_layer(posicoes[0][0], posicoes[0][1], "Instances", obj_poca, {})
 		instance_create_layer(posicoes[1][0], posicoes[1][1], "Instances", obj_poca, {})
 		instance_create_layer(posicoes[2][0], posicoes[2][1], "Instances", obj_poca, {})
-		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.infiltracao)
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.infiltracao)
 		instanciou_infiltracoes = true
 	}
 	if !instance_exists(obj_poca) {
@@ -415,5 +415,5 @@ if evento_ventilacao and !coisou_ventilacao {
 	var instancias = irandom_range(0, 2)
 	instance_find(obj_ventilacao, instancias).comecar = true
 	coisou_ventilacao = true
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 2, obj_diario.paginas.ventilacao)
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.ventilacao)
 }

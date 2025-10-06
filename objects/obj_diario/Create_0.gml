@@ -24,7 +24,7 @@ paginas = {
 	canos: "A água está contaminada com radiação; Se continuarmos tomando dela vamos morrer cedo. ",
 	idoso: "Tem alguém na porta...",
 	coleta: "",
-	desidratacao: "Estou me sentindo meio cansado e doente; minha pele está gosmente de sudorese e não sinto fome... acho que estou desidratado.",
+	desidratacao: "Estou me sentindo meio cansado e doente; minha pele está gosmenta de sudorese e não sinto fome... acho que estou desidratado.",
 	mala: "Apareceu esta mala na frente do bunker... será que abro?",
 	capivara: "Tem alguém na porta... ",
 	barata: "Tem alguém na porta...",

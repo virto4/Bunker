@@ -1,3 +1,140 @@
+if room == rm_bunker {
+	var _mes = 0
+	switch obj_calendario.mes_atual {
+		case 7:	
+			_mes = "Julho"
+			break
+		case 8:
+			_mes = "Agosto"
+			break
+		case 9:	
+			_mes = "Setembro"
+			break
+		case 10:
+			_mes = "Outubro"
+			break
+		case 11:
+			_mes = "Novembro"
+			break
+		case 12:
+			_mes = "Dezembro"
+			break
+	}
+}
+if game_over {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_over)
+	if alpha_over < 1 {
+		alpha_over += 1.5 * delta_time / 1000000
+	} else {
+		if !bbb {
+			bbb = true
+			tempo_over = current_time / 1000 + 1.5
+		}
+		draw_set_font(fnt_alagard)
+		draw_set_color(c_white)
+		var _txt = "Fim de Jogo"
+		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+		draw_set_font(fnt_dialogos)
+		if tempo_over < current_time / 1000 {
+			draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
+			tempo_over2 = current_time / 1000 + 1.5
+			aux1 = false
+		} 
+		if tempo_over2 < current_time / 1000 and !aux1 {
+			draw_text(960 - string_width(msg_game_over) / 2, 760, "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes))
+			tempo_over3 = current_time / 1000 + 1.5
+			aux2 = false
+		}
+		if tempo_over3 < current_time / 1000 and !aux2 {
+			var msg_tela_inicial = "Voltar para tela inicial"
+			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+			var yinicial = 860 - 5
+			var yfinal = 860 + string_height(msg_tela_inicial) + 5
+			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+				cor_botao = #527F7F
+				if mouse_check_button_pressed(mb_left) {
+					room_goto(rm_tela_inicial)
+				}
+			} else {
+				cor_botao = c_white
+			}
+		}
+	}
+}
+
+if passagem_dia  {
+	global.tem_tela_aberta = true
+	draw_set_color(c_black)
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_dia)
+	if !escureceu {
+		if alpha_dia < 1 {
+			alpha_dia += 1.5 * delta_time / 1000000
+		} else {
+			escureceu = true
+			time2 = current_time / 1000 + 2
+		}
+	} else if !animacao_dia {
+		if time and !mudou_data {
+			//aqui vai todas as coisas que acontecem quando um dia passa
+			obj_calendario.mudou_dia = true
+			obj_diario.dia += 1
+			mudou_data = true
+			atributos.fome -= 7
+			atributos.sede -= 25
+			if obj_diario.dia < 33 {
+				atributos.sanidade -= 9
+			} else if obj_diario.dia < 66 {
+				atributos.sanidade -= 15
+			} else {
+				atributos.sanidade -= 21
+			}
+			if instance_exists(obj_davi) {
+			 	obj_davi.atributos.fome -= 7
+				obj_davi.atributos.sede -= 25
+				if dia < 33 {
+					obj_davi.atributos.sanidade -= 9
+				} else if dia < 66 {
+					obj_davi.atributos.sanidade -= 15
+				} else {
+					obj_davi.atributos.sanidade -= 21
+				}
+			}
+		}
+		if time2 < current_time / 1000 and !time { 
+			time = true
+			time3 = current_time / 1000 + 2
+			aaa = true
+		} else if time3 < current_time / 1000 and aaa {
+			animacao_dia = true
+		}
+		var texto = string(obj_calendario.dia_atual) + " de " + string(_mes)
+		draw_set_color(c_white)
+		draw_set_font(fnt_alagard)
+		draw_text(960 - string_width(texto) / 2, 540, texto)
+	} else if !clareou {
+		if alpha_dia > 0 {
+			alpha_dia -= 1.5 * delta_time / 1000000
+		} else {
+			passagem_dia = false
+			global.tem_tela_aberta = false
+			alpha_dia = 0
+			escureceu = false
+			animacao_dia = false
+			time = false
+			time2 = 0
+			time3 = 0
+			clareou = false
+			aaa = false
+			mudou_data = false
+		}
+	}
+}
+
 if alpha == 0 and !tutorial {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
@@ -78,6 +215,15 @@ if room == rm_bunker {
 			desenha = false
 		}
 	}
+}
+if passagem_dia {
+	desenha = false
+} else {
+	desenha = true 
+}
+
+if game_over {
+	desenha = false
 }
 
 if instance_exists(obj_diario) {
