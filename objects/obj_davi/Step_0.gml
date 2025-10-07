@@ -41,7 +41,7 @@ depth = -y
 function andar(direcao) {
 	switch direcao {
 		case "cima":
-			sprite_index = spr_davi_down
+			sprite_index = spr_davi_up
 			y -= 30 * delta_time / 1000000
 			if image_xscale == -1 {
 				image_xscale = 1

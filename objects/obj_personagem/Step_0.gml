@@ -85,6 +85,10 @@ if room == rm_casa and !tutorial_ask and !tutorial {
 	}
 }
 
+if current_time / 1000 > timer {
+	timer = current_time / 1000 + 0.8
+}
+
 if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	var _cima, _baixo, _pulo, _esquerda, _direita
 	_esquerda = keyboard_check(inputs.esquerda)
@@ -97,25 +101,29 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		global.tem_tela_aberta = true
 		opcoes = true
 	}
-	
 	if _esquerda {
 		sprite_index = spr_roger_right
 		image_xscale = -1
+		image_speed = 1
 	} else if _direita {
 		if image_xscale == -1 {
 			image_xscale = 1
 		}
 		sprite_index = spr_roger_right
+		image_speed = 1
 	} else if _baixo {
 		if image_xscale == -1 {
 			image_xscale = 1
 		}
 		sprite_index = spr_roger_down
+		image_speed = 1
 	} else if _cima {
 		if image_xscale == -1 {
 			image_xscale = 1
 		}
-		sprite_index = spr_roger_up
+		sprite_index = spr_roger_DEFINITIVO
+	} else {
+		image_speed = 1
 	}
 
 	if _pulo and !apertou_pulo {

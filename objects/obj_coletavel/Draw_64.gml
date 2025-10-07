@@ -1,7 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 if obj_personagem.direita_coletavel {
-	global.tem_tela_aberta = true
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
 	draw_set_color(c_black)
 	draw_set_font(fnt_dialogos)
