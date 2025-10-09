@@ -1,5 +1,27 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+function maior() {
+	var encontrou = false
+	for (var k = 6; k >= 0 and !encontrou; k--) {
+		for (var l = 6; l >= 0 and !encontrou; l--) {
+			for (var i = 0; i < array_length(pecas_jogador) and !encontrou; i++) {
+				if array_equals(pecas_jogador[i], [k, l]) or array_equals(pecas_jogador[i], [l, k]) {
+					encontrou = true
+					array_delete(pecas_jogador, i, 1)
+					vez_davi = true
+					tempo = current_time / 1000 + 3
+					return [k, l]
+				} else if array_equals(pecas_adversario[i], [k, l]) or array_equals(pecas_adversario[i], [l, k]) {
+					encontrou = true
+					array_delete(pecas_adversario, i, 1)
+					return [k, l]
+				}
+			}
+		}
+	}
+}
+
 function pontos(n, _x, _y) {
 	draw_set_color(c_black)
 	switch n {
@@ -38,7 +60,6 @@ function pontos(n, _x, _y) {
 			break
 	}
 }
-
 if clicou {
 	draw_sprite_ext(spr_interface_mesa, 0, 960, 540, 4, 4, 0, c_white, 1)
 	draw_sprite(spr_voltar, 0, 1800, 50)
@@ -63,7 +84,7 @@ if clicou {
 		draw_rectangle_color(xis + 70 * i + 5, 983, xis + 45 + 70 * i, 1025, cor_peca, cor_peca, cor_peca, cor_peca, false)
 		pontos(pecas_tela[i][0], xis + 70 * i + 25, 956)
 		pontos(pecas_tela[i][1], xis + 70 * i + 25, 1006)
-		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) and !vez_davi{
+		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) and !vez_davi and !primeira_peca {
 			if mouse_check_button_pressed(mb_left) {
 				if prim == pecas_tela[i][0] or prim == pecas_tela[i][1] {
 					array_insert(pecas_mesa, 0, pecas_tela[i])
@@ -81,9 +102,40 @@ if clicou {
 			}
 		}
 	}
-	if pode_jogar {
-		
+	
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_white)
+	var text1 = "Comprar"
+	var text2 = "Passar vez"
+	var x1 = 1720 + string_width(text1)
+	var x2 = 1510 + string_width(text2)
+	draw_rectangle_color(1700, 935, x1, 983, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_color(1700 + 5, 935 + 5, x1 - 5, 983 - 5, cor1, cor1, cor1, cor1, false)
+	draw_text(1710, 959 - string_height(text1) / 2, text1)
+	draw_rectangle_color(1500, 935, x2, 983, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_color(1500 + 5, 935 + 5, x2 - 5, 983 - 5, cor2, cor2, cor2, cor2, false)
+	draw_text(1510, 959 - string_height(text2) / 2, text2)
+	if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1700, 935, x1, 983) {
+		cor1 = #061E33
+		if mouse_check_button_pressed(mb_left) and array_length(monte) > 0 and !vez_davi {
+			array_push(pecas_tela, monte[0])
+			array_delete(monte, 0, 1)
+		}
+	} else {
+		cor1 = #092E4C
 	}
+	if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1500, 935, x2, 983) {
+		cor2 = #053330
+		if mouse_check_button_pressed(mb_left) and !vez_davi {
+			if !vez_davi {
+				vez_davi = true
+				tempo = current_time / 1000 + 3
+			}
+		}
+	} else {
+		cor2 = #084C48
+	}
+	
 	if array_length(pecas_jogador) > 14 {
 		if pecas_jogador[0] != pecas_tela[0] {
 			draw_sprite(spr_voltar_diario, 0, (1920 - 70 * array_length(pecas_tela)) / 2 - 72 , 980)
@@ -161,4 +213,85 @@ if clicou {
 			ult = pecas_mesa[i][1]
 		}
 	}
+}
+
+
+if clicou and primeira_peca {
+	var _text = "Clique para começar o jogo"
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_white)
+	draw_set_alpha(alpha)
+	draw_text(960 - string_width(_text) / 2, 540 - string_height(_text) / 2, _text)
+	draw_set_alpha(1)
+	if reverse {
+		alpha -= 0.1
+		if alpha <= 0 {
+			reverse = false
+		}
+	} else {
+		alpha += 0.1
+		if alpha >= 1 {
+			reverse = true
+		}
+	}
+	
+	if mouse_check_button_pressed(mb_left) {
+		if !maismais {
+			maismais = true
+		} else {
+			primeira_peca = false
+			array_push(pecas_mesa, maior())
+		}
+	}
+}
+
+if clicou and !primeira_peca {
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_white)
+	if reverse {
+		alpha -= 0.1
+		if alpha <= 0 {
+			reverse = false
+		}
+	} else {
+		alpha += 0.1
+		if alpha >= 1 {
+			reverse = true
+		}
+	}
+	draw_set_alpha(alpha)
+	if vez_davi {
+		draw_text(100, 150, "Vez de Davi")
+	} else {
+		draw_text(100, 930, "Sua vez")
+	}
+	draw_set_alpha(1)
+}
+
+if davi_pulou and !vez_davi {
+	if davi_pulou_comeco {
+		alpha2 += 0.05
+		if alpha == 1 {
+			davi_pulou_comeco = false
+			timer = current_time / 1000 + 3
+		}
+	}
+	if timer < current_time / 1000 {
+		davi_pulou_fim = true
+	}
+	if davi_pulou_fim {
+		alpha2 -= 0.05
+		if alpha == 0 {
+			davi_pulou_fim = false
+			davi_pulou = false
+		}
+	}
+	draw_set_alpha(alpha2)
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_white)
+	draw_text(100, 150, "Davi não encontrou peças jogáveis")
+	
+	draw_set_alpha(1)
+} else {
+	alpha2 = 0
 }

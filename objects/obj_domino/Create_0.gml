@@ -17,6 +17,18 @@ tempo = 0
 cor_peca = #CCCCCC
 prim = 0
 ult = 0
+primeira_peca = true
+alpha = 0
+maismais = false
+reverse = false
+cor1 = #092E4C
+cor2 = #084C48
+davi_pulou = false
+davi_pulou_comeco = false
+davi_pulou_fim = false
+alpha2 = 0
+timer = 0
+
 for (var i = 0; i < 7; i++) {
 	for (var j = i; j < 7; j++) {
 		array_push(pecas, [i, j])
