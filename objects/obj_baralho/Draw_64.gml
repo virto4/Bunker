@@ -64,6 +64,7 @@ if clicou {
 		} else {
 			comprar = false
 			descartar = false
+			sua_vez = false
 		}
 	}
 	
@@ -89,7 +90,7 @@ if clicou {
 	}
 	draw_set_alpha(1)
 	
-	draw_sprite(spr_carta_atras, 0, 800, 540)
+	draw_sprite(spr_carta_atras, 0, 700, 540)
 	if carta_monte != 0 {
 		desenhar(carta_monte.numero, carta_monte.naipe, 1220, 540)
 	}
@@ -99,7 +100,7 @@ if clicou {
 			if point_in_rectangle(mx, my, xis + 85 * i - 37.5, 1000 - 60, xis + 85 * i + 37.5, 1000 + 60) and carta_monte_passada != cartas_roger[i] {
 				draw_rectangle_color(xis + 85 * i - 42.5 , 1000 - 65, xis + 85 * i + 42.5, 1000 + 65, c_white, c_white, c_white, c_white, false) 
 				if mouse_check_button_pressed(mb_left) {
-					array_push(cartas_comprar, carta_monte) //coloca a carta que nunca mais será utilizada no fundo da pilha de comprar, porque eu só preciso guardar as 2 primeiras cartasd a pilha
+					array_push(cartas_comprar, carta_monte_passada) //coloca a carta que nunca mais será utilizada no fundo da pilha de comprar, porque eu só preciso guardar as 2 primeiras cartasd a pilha
 					carta_monte_passada = carta_monte
 					carta_monte = cartas_roger[i]
 					array_delete(cartas_roger, i, 1)
@@ -107,6 +108,16 @@ if clicou {
 				}
 			}
 		}
-		desenhar(cartas_roger[i].numero, cartas_roger[i].naipe, xis + 85 * i, 1000)
+		if i < array_length(cartas_roger) {
+			desenhar(cartas_roger[i].numero, cartas_roger[i].naipe, xis + 85 * i, 1000)
+		}
+	}
+	
+	//tem´porario
+	var xis2 = (1920 - 85 * array_length(cartas_davi)) / 2
+	for (var i = 0; i < array_length(cartas_davi); i++) {
+		desenhar(cartas_davi[i].numero, cartas_davi[i].naipe, xis2 + 85 * i, 200)
+		draw_set_font(fnt_dialogos)
+		draw_text(xis2 + 85 * i, 200 + 60 + 10, cartas_davi[i].valor)
 	}
 }

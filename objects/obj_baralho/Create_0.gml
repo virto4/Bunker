@@ -19,20 +19,23 @@ msg = ""
 reverse = false
 alpha = 0
 
+timer = 0
+a = false
+
 for (var i = 0; i < 4; i++) {
 	for (var j = 1; j <= 13; j++) {
 		switch i {
 			case 1:
-				array_push(cartas, {numero: j, naipe: "espadas"})
+				array_push(cartas, {numero: j, naipe: "espadas", valor: 0})
 				break
 			case 2:
-				array_push(cartas, {numero: j, naipe: "paus"})
+				array_push(cartas, {numero: j, naipe: "paus", valor: 0})
 				break
 			case 3:
-				array_push(cartas, {numero: j, naipe: "copas"})
+				array_push(cartas, {numero: j, naipe: "copas", valor: 0})
 				break
 			case 0:
-				array_push(cartas, {numero: j, naipe: "ouros"})
+				array_push(cartas, {numero: j, naipe: "ouros", valor: 0})
 				break
 		}
 	}
