@@ -22,6 +22,9 @@ if clicou {
 		my > ty_sair - height_sair && my < ty_sair + height_sair {
 			clicou = false
 			global.tem_tela_aberta = false
+			primeira_peca = true
+			maismais = false
+			ganhou = false
 		}
 	}
 	if comecou {
@@ -50,7 +53,7 @@ if clicou {
 	}
 }
 
-if vez_davi {
+if vez_davi and !ganhou {
 	if current_time / 1000 > tempo {
 		calculo_davi = true
 	}

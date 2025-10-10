@@ -28,6 +28,7 @@ davi_pulou_comeco = false
 davi_pulou_fim = false
 alpha2 = 0
 timer = 0
+ganhou = false
 
 for (var i = 0; i < 7; i++) {
 	for (var j = i; j < 7; j++) {

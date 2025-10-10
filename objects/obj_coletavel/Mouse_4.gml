@@ -30,6 +30,12 @@ if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta 
 	obj_domino.comecou = true
 }
 
+if object_index == obj_baralho and room == rm_bunker and !global.tem_tela_aberta {
+	nao = true
+	obj_baralho.clicou = true
+	obj_baralho.comecou = true
+}
+
 if !global.tem_tela_aberta and !nao {
 	if !obj_personagem.coleta and obj_personagem.tutorial {
 		obj_personagem.coleta = true

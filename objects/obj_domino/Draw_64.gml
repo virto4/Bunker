@@ -84,7 +84,7 @@ if clicou {
 		draw_rectangle_color(xis + 70 * i + 5, 983, xis + 45 + 70 * i, 1025, cor_peca, cor_peca, cor_peca, cor_peca, false)
 		pontos(pecas_tela[i][0], xis + 70 * i + 25, 956)
 		pontos(pecas_tela[i][1], xis + 70 * i + 25, 1006)
-		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) and !vez_davi and !primeira_peca {
+		if point_in_rectangle(mx, my, xis + 70 * i, 930, xis + 50 + 70 * i, 1030) and !vez_davi and !primeira_peca and !ganhou {
 			if mouse_check_button_pressed(mb_left) {
 				if prim == pecas_tela[i][0] or prim == pecas_tela[i][1] {
 					array_insert(pecas_mesa, 0, pecas_tela[i])
@@ -101,6 +101,23 @@ if clicou {
 				}
 			}
 		}
+	}
+	
+	if array_length(pecas_tela) == 0 {
+		var msg = "Você ganhou!"
+		pecas_mesa = []
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_white)
+		draw_text(960 - string_width(msg) / 2, 540 - string_height(msg) / 2, msg)
+		ganhou = true
+	}
+	if array_length(pecas_adversario) == 0 {
+		var msg = "Davi ganhou!"
+		pecas_mesa = []
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_white)
+		draw_text(960 - string_width(msg) / 2, 540 - string_height(msg) / 2, msg)
+		ganhou = true
 	}
 	
 	draw_set_font(fnt_dialogos)
@@ -243,6 +260,7 @@ if clicou and primeira_peca {
 			array_push(pecas_mesa, maior())
 		}
 	}
+	
 }
 
 if clicou and !primeira_peca {
@@ -271,7 +289,7 @@ if clicou and !primeira_peca {
 if davi_pulou and !vez_davi {
 	if davi_pulou_comeco {
 		alpha2 += 0.05
-		if alpha == 1 {
+		if alpha2 == 1 {
 			davi_pulou_comeco = false
 			timer = current_time / 1000 + 3
 		}
@@ -281,7 +299,7 @@ if davi_pulou and !vez_davi {
 	}
 	if davi_pulou_fim {
 		alpha2 -= 0.05
-		if alpha == 0 {
+		if alpha2 == 0 {
 			davi_pulou_fim = false
 			davi_pulou = false
 		}
