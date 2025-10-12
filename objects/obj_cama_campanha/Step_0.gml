@@ -20,6 +20,12 @@ if clicou {
 				obj_radio.entrou = true
 				obj_radio.programacao = noone
 			}
+			if instance_exists(obj_davi) {
+				obj_davi.interagir = true
+			}
+			if instance_exists(obj_meredith) {
+				obj_meredith.interagir = true
+			}
 		}
 	} else {
 		mouse_sim = false

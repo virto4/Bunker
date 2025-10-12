@@ -34,6 +34,10 @@ grupos_roger = []
 grupos_davi = []
 venceu = false
 fechou_grupo = false
+instrucoes = false
+draw_set_font(fnt_dialogos)
+msg_instrucoes = "Nesse jogo, a cada rodada, você compra uma carta de uma das pilhas no centro da tela e coloca uma carta de sua mão na pilha de descarte. Essas ações você realiza clicando com o botão esquerdo do mouse na carta selecionada. O objetivo é formar 3 trios de cartas da seguinte forma: 3 cartas do mesmo número e naipes distintos; 3 cartas do mesmo naipe em sequência. Para selecionar os trios, clique com o botão direito do mouse em cada carta que deseja selecionar."
+linhas = 30 * (string_width(msg_instrucoes) div 300)
 
 for (var i = 0; i < 4; i++) {
 	for (var j = 1; j <= 13; j++) {

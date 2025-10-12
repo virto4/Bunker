@@ -37,6 +37,21 @@ if clicou {
 	
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
+	if instrucoes and mouse_check_button_pressed(mb_left) {
+		instrucoes = false
+	}
+	
+	draw_sprite_ext(spr_exclamacao, 0, 1600, 50, 3, 3, 0, c_white, 1)
+	if point_in_rectangle(mx, my, 1600 - 48, 50 - 48, 1600 + 48, 50 + 48) and mouse_check_button_pressed(mb_left) {
+		instrucoes = true
+	}
+	if instrucoes {
+		draw_rectangle_color(1600 - 200, 110, 1600 + 200, 120 + linhas, #2B4C4B, #2B4C4B, #2B4C4B, #2B4C4B, false)
+		draw_rectangle_color(1600 - 195, 115, 1600 + 195, 115 + linhas, #396664, #396664, #396664, #396664, false)
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_white)
+		draw_text_ext(1600 - 190, 120, msg_instrucoes, 30, 380)
+	}
 	
 	if sua_vez and !venceu {
 		if !comprar {
@@ -160,6 +175,19 @@ if clicou {
 						}
 					}
 				}
+				if vermelho[0][0] == 1 and vermelho [1][0] == 12 and vermelho[2][0] == 13 {
+					array_push(grupos_roger, [vermelho[1], vermelho[2], vermelho[0]])
+					var indices = []
+					for (var j = 0; j < array_length(cartas_roger); j++) {
+						if cartas_roger[j] == vermelho[0] or cartas_roger[j] == vermelho[1] or cartas_roger[j] == vermelho[2] {
+							array_push(indices, j)
+						}
+					}
+					array_delete(cartas_roger, indices[2], 1)
+					array_delete(cartas_roger, indices[1], 1)
+					array_delete(cartas_roger, indices[0], 1)
+				}
+				
 				if vermelho[1][0] - vermelho[0][0] == 1 and vermelho[2][0] - vermelho[1][0] == 1 {
 					array_push(grupos_roger, [vermelho[0], vermelho[1], vermelho[2]])
 					var indices = []
@@ -191,18 +219,18 @@ if clicou {
 	
 	for (var i = 0; i < array_length(grupos_davi); i++) {
 		for (var j = 0; j < array_length(grupos_davi[i]); j++) {
-			desenhar(grupos_davi[i][j][0], grupos_davi[i][j][1], 260 + 35 * j, 80 + 140 * i)
+			desenhar(grupos_davi[i][j][0], grupos_davi[i][j][1], 115 + 35 * j, 80 + 140 * i)
 		}
 	}
 	
-	/*tem´porario
+	/*
 	var xis2 = (1920 - 85 * (array_length(cartas_davi) - 1)) / 2
 	for (var i = 0; i < array_length(cartas_davi); i++) {
 		desenhar(cartas_davi[i][0], cartas_davi[i][1], xis2 + 85 * i, 200)
 		draw_set_font(fnt_dialogos)
 		draw_text(xis2 + 85 * i, 200 + 60 + 10, cartas_davi[i][2])
-	}
-	*/
+	}*/
+	
 	if array_length(grupos_roger) == 3 and array_length(cartas_roger) == 0 {
 		venceu = true
 	}
@@ -212,6 +240,8 @@ if clicou {
 	}
 	
 	if venceu {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_white)
 		if array_length(grupos_roger) == 3 and array_length(cartas_roger) == 0 {
 			var txt = "Você venceu!"
 			draw_text(960 - string_width(txt) / 2, 540 - string_height(txt) / 2, txt)
@@ -219,5 +249,6 @@ if clicou {
 			var txt = "Davi venceu!"
 			draw_text(960 - string_width(txt) / 2, 540 - string_height(txt) / 2, txt)
 		}
+		
 	}
 }

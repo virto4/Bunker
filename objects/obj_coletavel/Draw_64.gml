@@ -10,7 +10,11 @@ if obj_personagem.direita_coletavel {
 		draw_text(190, 850 + 50 * i, linhas[i])
 	}
 	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
-	draw_sprite_ext(object_get_sprite(obj_personagem.objeto), 0, 1632, 552, 4, 4, 0, c_white, 1)
+	var maior = sprite_get_height(object_get_sprite(obj_personagem.objeto))
+	if sprite_get_width(object_get_sprite(obj_personagem.objeto)) > sprite_get_height(object_get_sprite(obj_personagem.objeto)) {
+		maior = sprite_get_width(object_get_sprite(obj_personagem.objeto))
+	}
+	draw_sprite_ext(object_get_sprite(obj_personagem.objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
 	if mouse_check_button_pressed(mb_left) {
 		obj_personagem.direita_coletavel = false
 		global.tem_tela_aberta = false

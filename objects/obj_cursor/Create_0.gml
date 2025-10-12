@@ -4,3 +4,10 @@
 window_set_cursor(cr_none)
 objetos_interativos = [obj_geladeira, obj_porta, obj_coletavel, obj_bunker, obj_cama_campanha, obj_freezer, 
 						obj_cozinha_bunker, obj_calendario, obj_diario]
+
+interagir = {
+	davi: false,
+	meredith: false
+}
+
+longe = false

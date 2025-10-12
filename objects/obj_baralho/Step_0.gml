@@ -43,6 +43,8 @@ if clicou {
 			venceu = false
 			carta_monte = 0
 			carta_monte_passada = 0
+			comprar = false
+			descartar = false
 		}
 	}
 	if comecou {
@@ -98,14 +100,15 @@ if clicou {
 				for (var k = j + 1; k < array_length(cartas_davi) and (davi_descarte or davi_monte); k++) {
 					if string(cartas_davi[j][1]) == string(cartas_davi[i][1]) and string(cartas_davi[j][1]) == string(cartas_davi[k][1]) and string(cartas_davi[k][1]) == string(cartas_davi[i][1]) {
 						var trinca = ordenar([cartas_davi[j], cartas_davi[i], cartas_davi[k]])
-						show_debug_message(string(trinca))
+						if trinca[0][0] == 1 and trinca[1][0] == 12 and trinca[2][0] == 13 {
+							array_push(grupos_davi, [trinca[1], trinca[2], trinca[0]])
+							eliminar([i, j, k])
+						}
 						if trinca[1][0] - trinca[0][0] == 1 and trinca[2][0] - trinca[1][0] == 1 {
 							array_push(grupos_davi, trinca)
 							eliminar([i, j, k])
 						}
 					}
-					n++
-					show_debug_message(string(n))
 				}
 			}
 		}

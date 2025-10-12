@@ -374,6 +374,15 @@ if room_get_name(room) == "rm_casa" {
 	}
 }
 
+if room == rm_bunker {
+	if instance_exists(obj_davi) {
+		obj_davi.interagir = true
+	}
+	if instance_exists(obj_meredith) {
+		obj_meredith.interagir = true
+	}
+}
+
 alimento = false
 alimento_scale = 0
 alpha_sim = 0

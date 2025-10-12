@@ -12,6 +12,22 @@ function escrever(_x, _y, _texto, _cores) { //cores é um vetro de struct assim:
 	}
 }
 
+if !global.tem_tela_aberta {
+	if interagir {
+		var mx = device_mouse_x_to_gui(0)
+		var my = device_mouse_y_to_gui(0)
+		if point_in_rectangle(mouse_x, mouse_y, x - 28, y - 110, x + 32, y + 86) {
+			variable_struct_set(obj_cursor.interagir, "davi", true)
+			if mouse_check_button_pressed(mb_left) and point_distance(obj_personagem.x, obj_personagem.y, x, y) < 100 {
+					
+			}
+		} else {
+			variable_struct_set(obj_cursor.interagir, "davi", false)
+		}
+	}
+}
+
+
 if alimento or remedio {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
 	if alimento_scale < 5 {
