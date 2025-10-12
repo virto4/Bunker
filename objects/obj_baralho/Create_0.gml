@@ -21,21 +21,34 @@ alpha = 0
 
 timer = 0
 a = false
+b = false
+c = false
+d = false
+timer2 = 0
+davi_monte = false
+davi_descarte = false
+carta_descarte = 0
+carta_aux = 0
+vermelho = []
+grupos_roger = []
+grupos_davi = []
+venceu = false
+fechou_grupo = false
 
 for (var i = 0; i < 4; i++) {
 	for (var j = 1; j <= 13; j++) {
 		switch i {
 			case 1:
-				array_push(cartas, {numero: j, naipe: "espadas", valor: 0})
+				array_push(cartas, [j, "espadas", 0])
 				break
 			case 2:
-				array_push(cartas, {numero: j, naipe: "paus", valor: 0})
+				array_push(cartas, [j, "paus", 0])
 				break
 			case 3:
-				array_push(cartas, {numero: j, naipe: "copas", valor: 0})
+				array_push(cartas, [j, "copas", 0])
 				break
 			case 0:
-				array_push(cartas, {numero: j, naipe: "ouros", valor: 0})
+				array_push(cartas, [j, "ouros", 0])
 				break
 		}
 	}
@@ -52,4 +65,23 @@ function embaralhar(_array) {
 		i -= 1;
 	}
 	return _array;
+}
+
+function ordenar(_array) {
+	for (var i = 0; i < array_length(_array) - 1; i++) { // ordena as carta em ordem crescente de valor
+		for (var j = 0; j < array_length(_array) - 1 - i; j++) {
+			if _array[j][0] > _array[j + 1][0] {
+				var aux = _array[j + 1]
+				_array[j + 1] = _array[j]
+				_array[j] = aux
+			}
+		}
+	}
+	return _array
+}
+
+function eliminar(posicoes) { //tem que ser nessa ordem por k é o ultimo e tem que ser eliminado primeiro
+	array_delete(cartas_davi, posicoes[2], 1)
+	array_delete(cartas_davi, posicoes[1], 1)
+	array_delete(cartas_davi, posicoes[0], 1)
 }

@@ -26,7 +26,23 @@ if clicou {
 		my > ty_sair - height_sair && my < ty_sair + height_sair {
 			clicou = false
 			global.tem_tela_aberta = false
-			sua_vez = false
+			sua_vez = true
+			timer = 0
+			a = false
+			b = false
+			c = false
+			d = false
+			timer2 = 0
+			davi_monte = false
+			davi_descarte = false
+			carta_descarte = 0
+			carta_aux = 0
+			vermelho = []
+			grupos_roger = []
+			grupos_davi = []
+			venceu = false
+			carta_monte = 0
+			carta_monte_passada = 0
 		}
 	}
 	if comecou {
@@ -46,36 +62,56 @@ if clicou {
 		}
 	}
 	
-	if !sua_vez {
-		array_push(cartas_davi, carta_monte)
+	if !sua_vez and !venceu {
+		if !c {
+			array_push(cartas_davi, carta_monte)
+			c = true
+		}
 		
 		for (var i = 0; i < array_length(cartas_davi); i++) {
-			variable_struct_set(cartas_davi[i], valor, 0)
+			cartas_davi[i][2] = 0
 		}
 		for (var i = 0; i < array_length(cartas_davi); i++) { //verifica cartas do mesmo numero
 			for (var j = i + 1; j < array_length(cartas_davi); j++) {
-				if variable_struct_get(cartas_davi[j], numero) == variable_struct_get(cartas_davi[i], numero) and
-				variable_struct_get(cartas_davi[j], naipe) != variable_struct_get(cartas_davi[i], naipe) {
-					variable_struct_set(cartas_davi[i], valor, variable_struct_get(cartas_davi[i], valor) + 1)
-					variable_struct_set(cartas_davi[j], valor, variable_struct_get(cartas_davi[j], valor) + 1)
+				if cartas_davi[j][0] == cartas_davi[i][0] and cartas_davi[j][1] != cartas_davi[i][1] {
+					cartas_davi[i][2] += 1
+					cartas_davi[j][2] += 1
 				}
-			}
-		}
-		for (var i = 0; i < array_length(cartas_davi); i++) { //verifica cartas do mesmo naipe em sequencia
-			for (var j = i + 1; j < array_length(cartas_davi); j++) {
-				if variable_struct_get(cartas_davi[j], naipe) == variable_struct_get(cartas_davi[i], naipe) {
-					if abs(variable_struct_get(cartas_davi[j], numero) - variable_struct_get(cartas_davi[i], numero)) == 1 
-							or abs(variable_struct_get(cartas_davi[j], numero) - variable_struct_get(cartas_davi[i], numero)) == 2 
-							or abs(variable_struct_get(cartas_davi[j], numero) - variable_struct_get(cartas_davi[i], numero)) == 3 {
-						variable_struct_set(cartas_davi[i], valor, variable_struct_get(cartas_davi[i], valor) + 1)
-						variable_struct_set(cartas_davi[j], valor, variable_struct_get(cartas_davi[j], valor) + 1)
+				for (var k = j + 1; k < array_length(cartas_davi) and (davi_descarte or davi_monte); k++) {
+					if cartas_davi[j][0] == cartas_davi[i][0] and cartas_davi[j][0] == cartas_davi[k][0]
+						and cartas_davi[j][1] != cartas_davi[i][1] and cartas_davi[j][1] != cartas_davi[k][1] and cartas_davi[k][1] != cartas_davi[i][1]  {
+							array_push(grupos_davi, [cartas_davi[j], cartas_davi[i], cartas_davi[k]])
+							eliminar([i, j, k])
 					}
 				}
 			}
 		}
-		for (var i = 0; i < array_length(cartas_davi) - 1; i++) {
+		var n = 0
+		for (var i = 0; i < array_length(cartas_davi); i++) { //verifica cartas do mesmo naipe em sequencia
+			for (var j = i + 1; j < array_length(cartas_davi); j++) {
+				if string(cartas_davi[j][1]) == string(cartas_davi[i][1]) {
+					if abs(cartas_davi[j][0] - cartas_davi[i][0]) == 1 or abs(cartas_davi[j][0] - cartas_davi[i][0]) == 2 {
+						cartas_davi[i][2] += 1
+						cartas_davi[j][2] += 1
+					}
+				}
+				for (var k = j + 1; k < array_length(cartas_davi) and (davi_descarte or davi_monte); k++) {
+					if string(cartas_davi[j][1]) == string(cartas_davi[i][1]) and string(cartas_davi[j][1]) == string(cartas_davi[k][1]) and string(cartas_davi[k][1]) == string(cartas_davi[i][1]) {
+						var trinca = ordenar([cartas_davi[j], cartas_davi[i], cartas_davi[k]])
+						show_debug_message(string(trinca))
+						if trinca[1][0] - trinca[0][0] == 1 and trinca[2][0] - trinca[1][0] == 1 {
+							array_push(grupos_davi, trinca)
+							eliminar([i, j, k])
+						}
+					}
+					n++
+					show_debug_message(string(n))
+				}
+			}
+		}
+		for (var i = 0; i < array_length(cartas_davi) - 1; i++) { // ordena as carta em ordem crescente de valor
 			for (var j = 0; j < array_length(cartas_davi) - 1 - i; j++) {
-				if variable_struct_get(cartas_davi[j], valor) > variable_struct_get(cartas_davi[j + 1], valor) {
+				if cartas_davi[j][2] > cartas_davi[j + 1][2] {
 					var aux = cartas_davi[j + 1]
 					cartas_davi[j + 1] = cartas_davi[j]
 					cartas_davi[j] = aux
@@ -83,45 +119,72 @@ if clicou {
 			}
 		}
 		
-		for (var i = 0; i < array_length(cartas_davi); i++) {
+		if !d {
+			d = true
+			timer2 = current_time / 1000 + 2
+		}
+		
+		for (var i = 0; i < array_length(cartas_davi) and d and timer2 < current_time / 1000; i++) {
 			if cartas_davi[i] == carta_monte {
-				if variable_struct_get(cartas_davi[i], valor) < 1 {
-					array_delete(cartas_davi, i, 1)
-					array_push(cartas_davi, cartas_comprar[0])
-					array_delete(cartas_comprar, 0, 1)
-					if !a {
-						a = true
-						timer = current_time / 1000 + 3
-						msg = "Davi compra do monte"
-					}
-					if a and timer < current_time / 1000 {
-						array_push(cartas_comprar, carta_monte) 
-						carta_monte_passada = carta_monte
-						carta_monte = cartas_davi[0]
-						array_delete(cartas_davi, 0, 1)
-						sua_vez = true
-					}
+				if cartas_davi[i][2] < 1 {
+					davi_monte = true
+					carta_descarte = i
 				} else {
-					var aux = carta_monte
-					carta_monte = carta_monte_passada
-					carta_monte_passada = aux
-					if !a {
-						a = true
-						timer = current_time / 1000 + 3
-						msg = "Davi compra da pilha de descarte"
-					}
-					if a and timer < current_time / 1000 {
-						var index = 0
-						if aux == cartas_davi[0] {
-							index = 1
-						}
-						array_push(cartas_comprar, carta_monte_passada) 
-						carta_monte_passada = carta_monte
-						carta_monte = cartas_davi[index]
-						array_delete(cartas_davi, index, 1)
-						sua_vez = true
-					}
+					davi_descarte = true
 				}
+			}
+		}
+		if davi_descarte {
+			if !b {
+				carta_aux = carta_monte
+				carta_monte = carta_monte_passada
+				carta_monte_passada = carta_aux
+				b = true
+			}
+			if !a {
+				a = true
+				timer = current_time / 1000 + 3
+				msg = "Davi compra da pilha de descarte"
+			}
+			if a and timer < current_time / 1000 {
+				var index = 0
+				if carta_aux == cartas_davi[0] {
+					index = 1
+				}
+				array_push(cartas_comprar, carta_monte_passada) 
+				carta_monte_passada = carta_monte
+				carta_monte = cartas_davi[index]
+				array_delete(cartas_davi, index, 1)
+				sua_vez = true
+				a = false
+				b = false
+				c = false
+				d = false
+				davi_descarte = false
+			}
+		} else if davi_monte {
+			if !b {
+				array_delete(cartas_davi, carta_descarte, 1)
+				array_push(cartas_davi, cartas_comprar[0])
+				array_delete(cartas_comprar, 0, 1)
+				b = true
+			}
+			if !a {
+				a = true
+				timer = current_time / 1000 + 3
+				msg = "Davi compra do monte"
+			}
+			if a and timer < current_time / 1000 {
+				array_push(cartas_comprar, carta_monte) 
+				carta_monte_passada = carta_monte
+				carta_monte = cartas_davi[0]
+				array_delete(cartas_davi, 0, 1)
+				sua_vez = true
+				a = false
+				b = false
+				c = false
+				d = false
+				davi_monte = false
 			}
 		}
 	}
