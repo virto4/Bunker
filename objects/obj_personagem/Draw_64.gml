@@ -101,9 +101,9 @@ if passagem_dia  {
 			if instance_exists(obj_davi) {
 			 	obj_davi.atributos.fome -= 7
 				obj_davi.atributos.sede -= 25
-				if dia < 33 {
+				if obj_diario.dia < 33 {
 					obj_davi.atributos.sanidade -= 9
-				} else if dia < 66 {
+				} else if obj_diario.dia < 66 {
 					obj_davi.atributos.sanidade -= 15
 				} else {
 					obj_davi.atributos.sanidade -= 21
@@ -122,11 +122,11 @@ if passagem_dia  {
 		draw_set_font(fnt_alagard)
 		draw_text(960 - string_width(texto) / 2, 540, texto)
 	} else if !clareou {
+		global.tem_tela_aberta = false
 		if alpha_dia > 0 {
 			alpha_dia -= 1.5 * delta_time / 1000000
 		} else {
 			passagem_dia = false
-			global.tem_tela_aberta = false
 			alpha_dia = 0
 			escureceu = false
 			animacao_dia = false
@@ -216,7 +216,7 @@ if room == rm_bunker {
 		desenha = false
 	}
 }
-if passagem_dia {
+if passagem_dia  {
 	desenha = false
 } else {
 	desenha = true 
@@ -226,24 +226,44 @@ if game_over {
 	desenha = false
 }
 
-if instance_exists(obj_diario) {
+if instance_exists(obj_diario) and desenha {
 	if obj_diario.clicou {
 		desenha = false
 	}
 }
 
-if tutorial_ask or direita_coletavel {
+if tutorial_ask or direita_coletavel and desenha {
 	desenha = false
 }
 
-if instance_exists(obj_domino) {
+if instance_exists(obj_domino) and desenha {
 	if obj_domino.clicou or obj_domino.comecou {
 		desenha = false
 	}
 }
-if instance_exists(obj_baralho) {
+if instance_exists(obj_baralho) and desenha {
 	if obj_baralho.clicou {
 		desenha = false
+	}
+}
+
+if instance_exists(obj_radio) and desenha {
+	if obj_radio.clicou {
+		desenha = false
+	} else {
+		desenha = true	
+	}
+}
+
+if instance_exists(obj_davi) and desenha {
+
+}
+
+if instance_exists(obj_meredith) and desenha {
+	if obj_meredith.mostrar {
+		desenha = false
+	} else {
+		desenha = true
 	}
 }
 

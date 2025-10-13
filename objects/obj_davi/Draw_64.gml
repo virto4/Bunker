@@ -18,12 +18,51 @@ if !global.tem_tela_aberta {
 		var my = device_mouse_y_to_gui(0)
 		if point_in_rectangle(mouse_x, mouse_y, x - 28, y - 110, x + 32, y + 86) {
 			variable_struct_set(obj_cursor.interagir, "davi", true)
-			if mouse_check_button_pressed(mb_left) and point_distance(obj_personagem.x, obj_personagem.y, x, y) < 100 {
-					
+			if mouse_check_button_pressed(mb_left) {
+				mostrar = true
+				global.tem_tela_aberta = true
 			}
 		} else {
 			variable_struct_set(obj_cursor.interagir, "davi", false)
 		}
+	}
+}
+
+if interagir and mostrar {
+	var msg = variable_struct_get(falas[fala_dia][fala_atual], "fala")
+	if current_time > tempo {
+		if char_index < string_length(msg) {
+			char_index++
+		}
+		tempo = current_time + type_speed
+	}
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_black)
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
+	draw_text_ext(210, 760, string_copy(msg, 1, char_index), 30, 1520)
+	var largura = string_width("Davi")
+	draw_sprite_ext(spr_dialogo, 0, 170 + largura / 2, 665, (largura + 10) / 320, 1.3, 0, c_white, 1)
+	draw_text(170, 640, "Davi")
+	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
+	draw_sprite_ext(variable_struct_get(falas[fala_dia][fala_atual], "retrato"), 0, 1632, 552, 1, 1, 0, c_white, 1)
+	if mouse_check_button_pressed(mb_left) and aux {
+		if char_index < string_length(msg) {
+			char_index = string_length(msg)
+		} else if fala_atual < array_length(falas[fala_dia]) - 1 {
+			fala_atual++
+			char_index = 0
+		} else {
+			variable_struct_set(obj_cursor.interagir, "davi", false)
+			interagir = false
+			mostrar = false
+			global.tem_tela_aberta = false
+			aux = false
+			current_text = ""
+			char_index = 0
+			fala_atual = 0
+		}
+	} else if !aux and mouse_check_button_pressed(mb_left) {
+		aux = true
 	}
 }
 

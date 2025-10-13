@@ -17,17 +17,18 @@ if room == rm_bunker {
 	sprite_index = spr_meredith_sleep
 }
 
-interagir = true
+msg = "Miau, maiu."
+
+tem_fala = true
 mostrar = false
-char_index = 0
+char_index = 1
 type_speed = 0.06; // caracteres por frame
 current_text = 0
-tempo = 0
+tempo_fala = 0
 aux = false
 function escrever(mensagem) {
-	draw_set_font(fnt_dialogos)
 	if char_index < string_length(mensagem) {
 		char_index++
-		return string_copy(mensagem, 1, char_index)
+		current_text =  string_copy(mensagem, 1, char_index)
 	}
 }

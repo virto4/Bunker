@@ -45,3 +45,26 @@ terminou = 0
 frames = 0
 ipsilon = 0
 tempo = 0
+
+/* davi é um jovem que joga futebol americano, gosta de ler, meditar e é bastante introspectivo. 
+durante toda sua vida, teve que lidar com os caprichos do pai, que o proibia de fazer um monte de coisas por conta de suas opiniões bastante controversas;
+ele não tem muitos amigos, pois todos o julgam por conta de seu pai maluco.
+No entanto, davi é um exemplo de humildade e se destaca em várias habilidades, tanto intelectuais, como emocionais e físicas
+ele sofreu de muita ansiedade e depressao na época da morte de sua mãe, que orreu de tifo no início da sua adolescência
+ele sempre culpou o pai por não ter levado a sério a doença da mãe, pelo menos, não tão a serio quanto todas suas outras paranoias.
+agora, davi já está recuperado de sua depressão, pois aprendeu a focar em coisas que realmente importam e construiu diversos habitos saudaveis para enfrentar a dor da perda.
+
+retratos: feliz, com raivo, triste, apavorado, neutro
+
+*/
+falas = [
+	[{fala: "Poxa, pai, que coisa horrível... será que algum dia vamos sair daqui?", retrato: spr_acucar/*davi triste*/}, {fala: "", retrato: spr_acucar/*roger neutro*/}],
+	[{fala: "aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaa", retrato: spr_alface}]
+]
+mostrar = false
+aux = false
+fala_dia = 0
+char_index = 0
+current_text = ""
+type_speed = 0.06
+fala_atual = 0
