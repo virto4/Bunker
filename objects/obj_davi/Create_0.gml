@@ -61,10 +61,10 @@ falas = [
 	[{fala: "Poxa, pai, que coisa horrível... será que algum dia vamos sair daqui?", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}, 
 	{fala: "Gostaria de dizer que sim, filho... mas nenhum de nós acredita nisso.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
 	{fala: "Vamos adicionar essa às palavras de sabedoria.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
-	[{fala: "Sabe a diferença entre uma privada e uma bicicleta?", retrato: spr_alface/*davi neutro*/, personagem: "Davi"},
-	{fala: "A bicicleta você senta pra correr, a privada você corre pra sentar.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"},
-	{fala: "...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
-	{fala: "Essa geração está perdida mesmo...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
+//	[{fala: "Sabe a diferença entre uma privada e uma bicicleta?", retrato: spr_alface/*davi neutro*/, personagem: "Davi"},
+//	{fala: "A bicicleta você senta pra correr, a privada você corre pra sentar.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"},
+//	{fala: "...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
+//	{fala: "Essa geração está perdida mesmo...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
 	[{fala: "Está um tédio aqui dentro... não tem livros, não tem TV nem ar puro... Deus! Era feliz e não sabia lá fora...", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
 	[{fala: "Eaí, filho, tudo em cima?", retrato: spr_acucar/*roger feliz*/, personagem: "roger"}, {fala: "Bença, pai.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}],
 	//5
@@ -76,9 +76,9 @@ falas = [
 	{fala: "Agora você me fez lembrar do meu tempo de jogador de basquete. Será que algum dia vou voltar a jogar?", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
 	[{fala: "Pai... você tem saudades da mamãe de vez em quando?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"},
 	{fala: "Tenho filho... bastante, por quê?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Nada não...", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
-	[{fala: "Pai: top 3 frutas, agora!", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}, {fala: "Tomate, pera e maçã", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
-	{fala: "Tomate? E desde quando tomate é fruta?", retrato: spr_acucar/*Davi neutro*/, personagem: "Davi"}, {fala: "Desde que o mundo é mundo filho; vai dizer que nunca experimentou uma mordidona de tomate?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
-	{fala: "Jesus...", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+//	[{fala: "Pai: top 3 frutas, agora!", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}, {fala: "Tomate, pera e maçã", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
+//	{fala: "Tomate? E desde quando tomate é fruta?", retrato: spr_acucar/*Davi neutro*/, personagem: "Davi"}, {fala: "Desde que o mundo é mundo filho; vai dizer que nunca experimentou uma mordidona de tomate?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
+//	{fala: "Jesus...", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
 	//10
 	[{fala: "Pai, você acha que ainda tem gente lá fora?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"},
 	{fala: "Acho que sim, filho. Acho que tem muitas pessoas vagando por aí, mas não podemos ajudar nenhuma. Temos que nos preocupar com os nossos.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
@@ -93,7 +93,7 @@ falas = [
 	{fala: "Então diga, pai, diga o que você quer dizer.", retrato: spr_acucar/*davi raiva*/, personagem: "Davi"},
 	{fala: "Davi, tudo que eu fiz foi para nos proteger, tá bom? A prova final disso é que estamos a salvo! E você quer reclamar ainda assim? Tudo bem, eu reconheço que não fui o mais afetuoso com você, mas esse aqui é o meu jeito de demonstrar a minha fé nessa família.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
 	{fala: "Bem, concordo com você. Eu não entendo sua forma de cuidar de nós, mas acho que vocÊ também não entende a minha. E eu entendo que talvez você não foi o culpado pela morte da mamãe, já que ela mesma não queria ir no médico, já que fazia tudo que vocÊ mandava...", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
-	[{fala: "Agora quer café da mannha?", retrato: spr_acucar/*roger feliz*/, personagem: "Roger"}, {fala: "Pode ser, pai, obrigado.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}],
+	[{fala: "Agora quer café da manhã?", retrato: spr_acucar/*roger feliz*/, personagem: "Roger"}, {fala: "Pode ser, pai, obrigado.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}],
 	//15
 	[{fala: "Vamos revisar os estoques.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "De novo?", retrato: spr_acucar/*Davi neutro*/, personagem: "Davi"},
 	{fala: "Segurança nunca é demais", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Você devia tatuar isso na testa.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
@@ -106,10 +106,47 @@ falas = [
 	{fala: "Obrigada, pai. Às vezes me esqueço desse seu lado.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}],
 	//20
 	[{fala: "Você acredita em Deus, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Acreditava", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Eu acredito, ainda. Quem fez isso não foi Deus, foram os humanos. Disso tenho certeza. Isso me ajuda a enfrentar tudo de cabeça erguida.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
-	[{fala: "Você fica muito tempo calado, pai. O silência desse bunker pesa demais.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Você fica muito tempo calado, pai. O silêncio desse bunker pesa demais.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
 	[{fala: "Como será que está o céu hoje? Queria poder vez de novo...", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
 	[{fala: "Queria poder assistir um filme de novo; só mais uma vez...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
-	[{fala: "Pai, aonde você acha que vão os mortos?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Para lugar nenhum. A morte é o fim, ponto.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Com você é tudo preto no branco, né?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}]
+	[{fala: "Pai, aonde você acha que vão os mortos?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Para lugar nenhum. A morte é o fim, ponto.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Com você é tudo preto no branco, né?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	//25
+//	[{fala: "Pai, quem você acha que lançou as bombas?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Que sono... como é possível a gente não ter nada para fazer e ainda assim ficar tão cansado. A percepção de tempo muda completamente.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Filho, saiba que sempre que algo acontecer, pode contar comigo. Sou seu pai e te amo.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
+	[{fala: "A solidão me faz sentir tão depressivo... tenho saudade da escola, mesmo que também passasse o tempo todo sozinho.", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
+	[{fala: "Obrigado por estar aqui, pai. Não sobreviveria 1 dia sem você!", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}],
+	//30
+	[{fala: "E as menininha, Davi? Tava interessado em alguma?", retrato: spr_acucar/*roger feliz*/, personagem: "Roger"}, {fala: "Não começa, pai.", retrato: spr_acucar/*davi nervoso*/, personagem: "Davi"}],
+	[{fala: "Saudade do mundo... Saudade da vida... Que droga de bunker maldito!", retrato: spr_acucar/*davi nervoso*/, personagem: "Davi"}],
+	[{fala: "Bom dia, pai.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Bom dia, filho.", retrato: spr_acucar/*roger feliz*/, personagem: "Roger"}],
+	[{fala: "Davi... fica quieto, acho que tem alguma coisa se espreitando aqui dentro...", retrato: spr_acucar/*roger apavorado*/, personagem: "Roger"}, {fala: "!!!", retrato: spr_acucar/*davi apávorado*/, personagem: "Davi"},
+	{fala: "AAAAAAHHHH!!!", retrato: spr_acucar/*roger apavorado*/, personagem: "Roger"}, {fala: "UMA BARATA ENORME! MATA ELA, FILHO!", retrato: spr_acucar, personagem: "Roger"}, {fala: "Ah, para, pai, só um insetosinho... eles devem ser mais limpos que nós a esse altura. Deixa que eu resolvo. ", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+//	[{fala: "Você é feliz, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Depende... o que é felicidade para você?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Para os gregos, felicidade é aquele momento que fale por si mesmo; o instante de vida que você gostaria que durasse mais.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}]
+	//35
+	[{fala: "Quer ouvir uma piada, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Acho que fica pra próxima, filho.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
+	[{fala: "Você acredita em Deus, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Acreditava", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Eu acredito, ainda. Quem fez isso não foi Deus, foram os humanos. Disso tenho certeza. Isso me ajuda a enfrentar tudo de cabeça erguida.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Música favorita, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "'In the Mood', Glenn Miller... Sua mãe e eu dançávamos essa direto na nossa época.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Poxa, pai... É como diz o outro: os tempos bons só são assim reconhecidos depois que passamos por eles...", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
+	[{fala: "Bom dia, Davi! Como tem passado? Sei que estamos o tempo todo juntos aqui, mas raramente temos uma conversa mais profunda.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Sendo bem sincero, pai... me sinto mais deprimido agora que durante toda minha vida. Quando a mamãe morreu... pensei que o mundo tinha acabado; mas agora, olha que irônico: ele realmente acabou! HAHAHAHAHAHAHH!!", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	//40
+	[{fala: "Você fica muito tempo calado, pai. O silêncio desse bunker pesa demais.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Como será que está o céu hoje? Queria poder vez de novo...", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
+	[{fala: "Queria poder assistir um filme de novo; só mais uma vez...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
+	[{fala: "Pai, aonde você acha que vão os mortos?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Para lugar nenhum. A morte é o fim, ponto.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Com você é tudo preto no branco, né?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{ fala: "Hoje você acordou cedo.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Já disse isso: é tão silencioso que incomoda!", retrato: spr_acucar, personagem: "Davi"}],
+	//45
+	[{fala: "Pai, se eu morrer antes de você...", retrato: spr_acucar, personagem: "Davi"}, {fala: "Não fala isso...", retrato: spr_acucar, personagem: "Roger"}, {fala: "... você me queimaria ou enterraria?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Não quero pensar nisso, filho... mas acho mais correto enterrar do lado de fora. Lá no quintal, onde você brincava quando criança.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Pai, olha, você deveria começar a meditar, que nem eu!", retrato: spr_acucar, personagem: "Davi"}, {fala: "Não preciso dessas coisas...", retrato: spr_acucar, personagem: "Roger"}, {fala: "Mas tenta! Olha que me ajuda bastante!", retrato: spr_acucar, personagem: "Davi"}],
+	//[{fala: "Pai, fala um cheiro bom.", retrato: spr_acucar, personagem: "Davi"},]
+	[{fala: "Eu queria muito aprender a tocar violão... ", retrato: spr_acucar, personagem: "Davi"}, {fala: "E eu queria visitar a América do Sul... lá tem paixagens muito bonitas... Enfim, a gente não pode ter tudo, né?", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Hoje faz 50 dias... parece uma vida!", retrato: spr_acucar, personagem: "Roger"}],
+	//50
+	[{fala: "Nunca vi o mar... Você já viu, pai?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Já... e é lindo, acredite!", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Temos que limpar melhor isso aqui. A ventilação já está entupindo de novo.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Mas limpamos não tem nem 1 semana!", retrato: spr_acucar, personagem: "Davi"},{fala: "Uma semana foi a uma semana atrás, hoje é hoje.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Mais uma para as palavras de sabedoria.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Pai... perdi.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Perdeu o quê?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Perdi. (O JOGO)", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Vamos lá: um pensamento por outro. Eu começo. Estou pensando que deveria ter trazido uma cadeira mais confortável... essa cama já está com o formato da minha bunda.", retrato: spr_acucar, personagem: "Roger"}, {fala: "", retrato: spr_acucar, personagem: "Davi"},]
+	
 ]
 mostrar = false
 aux = false
