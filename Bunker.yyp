@@ -373,6 +373,7 @@
     {"id":{"name":"spr_resistencia_cheio","path":"sprites/spr_resistencia_cheio/spr_resistencia_cheio.yy",},},
     {"id":{"name":"spr_resistencia_var","path":"sprites/spr_resistencia_var/spr_resistencia_var.yy",},},
     {"id":{"name":"spr_retornar_item","path":"sprites/spr_retornar_item/spr_retornar_item.yy",},},
+    {"id":{"name":"spr_retrato_meredith","path":"sprites/spr_retrato_meredith/spr_retrato_meredith.yy",},},
     {"id":{"name":"spr_retrato","path":"sprites/spr_retrato/spr_retrato.yy",},},
     {"id":{"name":"spr_retrato2","path":"sprites/spr_retrato2/spr_retrato2.yy",},},
     {"id":{"name":"spr_roger_DEFINITIVO","path":"sprites/spr_roger_DEFINITIVO/spr_roger_DEFINITIVO.yy",},},

@@ -40,9 +40,9 @@ if interagir and mostrar {
 	draw_set_color(c_black)
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
 	draw_text_ext(210, 760, string_copy(msg, 1, char_index), 30, 1520)
-	var largura = string_width("Davi")
+	var largura = string_width(falas[fala_dia][fala_atual].personagem)
 	draw_sprite_ext(spr_dialogo, 0, 170 + largura / 2, 665, (largura + 10) / 320, 1.3, 0, c_white, 1)
-	draw_text(170, 640, "Davi")
+	draw_text(170, 640, falas[fala_dia][fala_atual].personagem)
 	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
 	draw_sprite_ext(variable_struct_get(falas[fala_dia][fala_atual], "retrato"), 0, 1632, 552, 1, 1, 0, c_white, 1)
 	if mouse_check_button_pressed(mb_left) and aux {

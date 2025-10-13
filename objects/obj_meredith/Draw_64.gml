@@ -31,6 +31,7 @@ if tem_fala {
 		draw_sprite_ext(spr_dialogo, 0, 170 + largura / 2, 665, (largura + 10) / 320, 1.3, 0, c_white, 1)
 		draw_text(170, 640, "Meredith")
 		draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
+		draw_sprite_ext(spr_retrato_meredith, 0, 1632, 552, 2, 2, 0, c_white, 1)
 		if mouse_check_button_pressed(mb_left) and aux {
 			if char_index < string_length(msg) {
 				char_index = string_length(msg)
