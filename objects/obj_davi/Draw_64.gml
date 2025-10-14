@@ -9,7 +9,7 @@ function escrever(_x, _y, _texto, _cores) { //cores é um vetro de struct assim:
 		draw_set_font(fnt_dialogos)
 		draw_text(x_atual, _y, string_copy(_texto, inicio, fim - inicio))
 		x_atual += string_width(string_copy(_texto, inicio, fim - inicio))
-	}
+	} 
 }
 
 if !global.tem_tela_aberta {

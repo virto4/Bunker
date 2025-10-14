@@ -145,8 +145,63 @@ falas = [
 	[{fala: "Nunca vi o mar... Você já viu, pai?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Já... e é lindo, acredite!", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Temos que limpar melhor isso aqui. A ventilação já está entupindo de novo.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Mas limpamos não tem nem 1 semana!", retrato: spr_acucar, personagem: "Davi"},{fala: "Uma semana foi a uma semana atrás, hoje é hoje.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Mais uma para as palavras de sabedoria.", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Pai... perdi.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Perdeu o quê?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Perdi. (O JOGO)", retrato: spr_acucar, personagem: "Davi"}],
-	[{fala: "Vamos lá: um pensamento por outro. Eu começo. Estou pensando que deveria ter trazido uma cadeira mais confortável... essa cama já está com o formato da minha bunda.", retrato: spr_acucar, personagem: "Roger"}, {fala: "", retrato: spr_acucar, personagem: "Davi"},]
-	
+	[{fala: "Vamos lá: um pensamento por outro. Eu começo. Estou pensando que deveria ter trazido uma cadeira mais confortável... essa cama já está com o formato da minha bunda.", retrato: spr_acucar, personagem: "Roger"}, {fala: "", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Eu reparei que você anota tudo que acontece.", retrato: spr_acucar, personagem: "Davi"}, {fala: "É meu diário. Ajuda bastante a manter o controle.", retrato: spr_acucar, personagem: "Roger"}],
+	//55
+	[{fala: "Você acha que o bunker vai durar para sempre?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Nada dura para sempre; mas acho que dura mais que nós.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Você ainda medita?", retrato: spr_acucar, personagem: "Roger"}, {fala: "De vez em quando; faz eu parar de pensar na morte a cada cinco minutos.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Sabe o que é engraçado? Antes eu odiava ficar em casa. Agora daria tudo para sari daqui.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Hoje sonhei com algo engraçado. Estávamos eu, você e a mamãe no parque, antes disso tudo; nós conversávamos e, quando mais ríamos, começávamos a inchar e explodir de tanta felicidade. Foi bom.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Nunca vou aprender a dirigir...", retrato: spr_acucar, personagem: "Davi"}],
+	//60
+	[{fala: "Lembra do cachorro que tínhamos quando eu era criança? Um pastor alemão... ele me mordeu e você mandou ele embora... Tinha tanta pena dele que chorava direto; não era a intenção ele me machucar.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Queria tanto comer churrasco uma última vez...", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Pai, tá tudo bem?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Tudo, filho. Tudo.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Pai, o que você acha de abóbora?", retrato: spr_acucar, personagem: "Davi"}, {fala: "É bom. Um vegetal versátil, dá pra fazer doce e salgado; é bom.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Você é feliz, filho?", retrato: spr_acucar, personagem: "Roger"}, {fala: "...Não.", retrato: spr_acucar, personagem: "Davi"}, {fala: "...", retrato: spr_acucar, personagem: "Davi"}],
+	//65
+	[{fala: "Queria beber água. Estou tomando menos água do que tomava antes... saudades da minha vida antiga; nunca pensei que sentiria falta de água.", retrato: spr_acucar, personagem: "Davi"}],
+//	[{fala: "Está quase acabando, pai?", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Queria ver TV uma última vez...", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Fala alguma coisa, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Minha cabeça está desaprendendo a se comunicar.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Você acha que a vida presta, pai?", retrato: spr_acucar, personagem: "Davi"}, {fala: "...", retrato: spr_acucar, personagem: "Roger"}, {fala: "Eu não sei, filho. Eu não sei. Não tenho palavras para explicar o que está acontecendo.", retrato: spr_acucar, personagem: "Roger"}],
+	//70
+	[{fala: "Dormiu bem?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Sonhei que a porta do bunker abria e a morte vinha em pessoa nos levar.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Sabe, filho, acho que o ser humano não foi feito para nada disso... deveríamos ter continuado a viver caçando e colhendo frutinhas na selva!", retrato: spr_acucar, personagem: "Roger"}],
+//	[{fala: "Pai, o que você quer fazer assim que sair daqui?", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "Sabe o que deu vontade de fazer?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Assistir uma partida de futebol.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Você nem gosta de esportes, só me assistia no basquete porque era legal pra mim.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Eu gostava de futebol quando era moleque. Era um hiperfoco meu, sabe. Bons tempos aqueles.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Vontade de comer nuggets.", retrato: spr_acucar, personagem: "Davi"}],
+	//75
+	[{fala: "Me arrependo de tantas coisas agora... deveria ter feito tudo diferente na minha vida. Mas agora é fácil de falar.", retrato: spr_acucar, personagem: "Roger"}],
+//	[{fala: "Se pudesse ir para qualquer lugar, sem que houvesse radiação, para onde iria?", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "Sonhei que estava num mundo de fantasia em que tudo era comida... os rios eram bebidas açucaradas, as árvores davam frutos doces e suculentos e os as montanhas eram bolos de infinitas camadas!", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Vê se anda direito, muleque, fica aí se arrastando pela sala, eu hein.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Pai, o mundo explodiu!, quem liga pro jeito que eu ando?", retrato: spr_acucar, personagem: "Davi"}, {fala: "É justamente por isso que a disciplina é importante. E não me responda!", retrato: spr_acucar, personagem: "Roger"}, {fala: "Tá, bom, 'capitão Bunker'", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Bom dia, filho.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Bom dia, pai.", retrato: spr_acucar, personagem: "Davi"}],
+	//80
+	[{fala: "Pai, por que construiu um bunker em baixo da nossa casa?", retrato: spr_acucar, personagem: "Davi"},{fala: "Segurança, filho. Qualquer um com 2 neurônios na cabeça sabia que era cedo ou tarde para algo acontecer. A guerra só poderia levar a algo catastrófico assim. Construí porque nunca confiei na humanidade.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "O que está pensando agora?", retrato: spr_acucar, personagem: "Roger"}, {fala: "No cheiro de giz do quadro negro da escola. Sinto falta de lá. Tudo bem que eu sofria bullying, mas preferiria estar lá do que aqui.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Bullying? Que história é essa?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Ah, pai...", retrato: spr_acucar, personagem: "Davi"}, {fala: "As pessoas não gostavam muito de meu pai ser um 'lunático super-protetor'.", retrato: spr_acucar, personagem: "Davi"},
+	{fala: "Bem, se serve de consolo, quase nenhum dos seus 'amigos' deve ter sobrevivido... Então agradeça por ter um pai 'lunático super-protetor'.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Davi, o que é isso na sua mão?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Um parafuso, por quê?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Aqui até o lixo tem dono, passa pra cá.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Saudade de sentir o vento fresco do verão batendo nas costas... Azar que hoje o único vento que tem ali fora mata.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Você deveria praticar estoicismo, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Para com essa baboseira de filosofia barata; eu já sou bastante seguro de mim mesmo sem nada disso.", retrato: spr_acucar, personagem: "Davi"}]
+	//85
+	[{fala: "Já percebeu o silêncio medonho que faz aqui? Cruzes! Dá de ouvir até seus pensamentos.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Costeletas de porco ao molho barbecue... purê de batata... brócolis cozido no vapor bem crocante...", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Eu gostava de fazer cookies e mergulhá-los em uma xícara de leite quente... ficava tão bom!", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Tudo bem, pai?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Tudo em cima, filho, graças a Deus!", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "A comida tá com um gosto esquisito... Urgh.", retrato: spr_acucar, personagem: "Davi"}, {fala: "A data de validade era amanhã.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Melhor que morrer de fome, né? HAHAHAHAAHAHAHA... MORRER DE FOME! Que engraçado!", retrato: spr_acucar, personagem: "Davi"}],
+	//90
+	[{fala: "Escuta...", retrato: spr_acucar, personagem: "Roger"}, {fala: "O quê?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Passos!", retrato: spr_acucar, personagem: "Roger"}, {fala: "São meus, pai!", retrato: spr_acucar, personagem: "Davi"}, {fala: "Ah... que bom.", retrato: spr_acucar, personagem: "Roger"}]
+	[{fala: "Você está ficando tão pálido, filho...", retrato: spr_acucar, personagem: "Roger"}, {fala: "Falta de sol.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Pai, a quanto tempo estamos aqui?", retrato: spr_acucar, personagem: "Davi"}, {fala: "93 dias... e contando.", retrato: spr_acucar, personagem: "Roger"}],
+	[{fala: "Estava chorando, filho?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Estava pensando na mamãe.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Vai lá, pode chorar. Aqui dentro ninguém vai julgar.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Estou pressentindo que alguma coisa vai acontecer, pai! E está próximo.", retrato: spr_acucar, personagem: "Davi"}]
+	//95
+	[{fala: "Bom dia!", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Bom dia!", retrato: spr_acucar, personagem: "Davi"}, {fala: "Bom dia, filho. Que bom que acordou bem.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Estava pensando como é bom não ter que se preocupar com nada... Um dos pontos positivos de não existir trabalho nem escola.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Tá lendo o que agora?", retrato: spr_acucar, personagem: "Roger"}, {fala: "'Memórias do Subsolo', Fiódor Dostoiévski", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Filho, se sairmos daqui vivos... prometo que vou te dar tudo o que você quiser, está bem?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Pai, não precisa me dar nada. Se sairmos daqui mesmo, esse presente bastará pelo resto da vida.", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "É hoje, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "É hoje...", retrato: spr_acucar, personagem: "Davi"}]
 ]
 mostrar = false
 aux = false
