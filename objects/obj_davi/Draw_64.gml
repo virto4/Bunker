@@ -54,6 +54,7 @@ if interagir and mostrar {
 			draw_rectangle_color(200, 830 - altura_opcao / 2, 220 + largura_opcao, 850 + altura_opcao / 2, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(205, 835 - altura_opcao / 2, 215 + largura_opcao, 845 + altura_opcao / 2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
+				especial = true
 				aux = true
 				respondeu = true
 				resposta = variable_struct_get(falas[fala_dia][fala_atual], "respostas2")
@@ -69,6 +70,7 @@ if interagir and mostrar {
 			draw_rectangle_color(xis - 10, 830 - altura_opcao / 2, xis + 10 + largura_opcao, 850 + altura_opcao / 2, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(xis - 5, 835 - altura_opcao / 2, xis + 5 + largura_opcao, 845 + altura_opcao / 2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
+				especial = true
 				aux = true
 				respondeu = true
 				resposta = variable_struct_get(falas[fala_dia][fala_atual], "respostas2")
@@ -84,6 +86,7 @@ if interagir and mostrar {
 			draw_rectangle_color(xis - 10, 830 - altura_opcao / 2, xis + 10 + largura_opcao, 850 + altura_opcao / 2, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(xis - 5, 835 - altura_opcao / 2, xis + 5 + largura_opcao, 845 + altura_opcao / 2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
+				especial = true
 				aux = true
 				respondeu = true
 				resposta = variable_struct_get(falas[fala_dia][fala_atual], "respostas2")
@@ -91,8 +94,6 @@ if interagir and mostrar {
 			}
 		}
 		draw_text(xis, 820, variable_struct_get(struct, "tres"))
-	} else if array_length(struct_get_names(falas[fala_dia][fala_atual])) > 3 and respondeu {
-		especial = true
 	}
 	draw_text_ext(210, 760, string_copy(msg, 1, char_index), 30, 1520)
 	var largura = string_width(falas[fala_dia][fala_atual].personagem)
@@ -116,8 +117,10 @@ if interagir and mostrar {
 			char_index = 0
 			fala_atual = 0
 			respondeu = false
-		} if especial {
+			fala_dia++
+		} else if especial {
 			especial = false
+			char_index = 0
 		}
 	} else if !aux and mouse_check_button_pressed(mb_left) {
 		aux = true

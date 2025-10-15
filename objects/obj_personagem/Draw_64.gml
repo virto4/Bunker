@@ -256,7 +256,11 @@ if instance_exists(obj_radio) and desenha {
 }
 
 if instance_exists(obj_davi) and desenha {
-
+	if obj_davi.mostrar {
+		desenha = false
+	} else {
+		desenha = true
+	}
 }
 
 if instance_exists(obj_meredith) and desenha {

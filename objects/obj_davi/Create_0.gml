@@ -62,13 +62,12 @@ retratos: feliz, com raivo, triste, apavorado, neutro
 
 */
 falas = [
-//	[{fala: "Poxa, pai, que coisa horrível... será que algum dia vamos sair daqui?", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}, 
-//	{fala: "Gostaria de dizer que sim, filho... mas nenhum de nós acredita nisso.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
-//	{fala: "Vamos adicionar essa às palavras de sabedoria.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Poxa, pai, que coisa horrível... será que algum dia vamos sair daqui?", retrato: spr_acucar/*davi triste*/, personagem: "Davi", 
+	respostas: {um: "Com certeza", dois: "Não sei", tres: "Nunca"}, respostas2: {um: {fala: "É isso aí, pai!", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "É verdade, pai.", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Nossa, pai... você é muito deprê.", retrato: spr_acucar, personagem: "Davi"}}}],
 	[{fala: "Sabe a diferença entre uma privada e uma bicicleta?", retrato: spr_alface/*davi neutro*/, personagem: "Davi"},
 	{fala: "A bicicleta você senta pra correr, a privada você corre pra sentar.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"},
 	{fala: "O que você achou dessa piada, pai?", retrato: spr_acucar/*roger neutro*/, personagem: "Davi", 
-		respostas: {um: "Horrível", dois: "Mais ou menos", tres: "Muito boa"}, respostas2: {um: {fala: "Nossa pai... Só queria descontrair um pouco...", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "É, eu também não gistei muito.", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Obrigado, pai!", retrato: spr_acucar, personagem: "Davi",}}}],
+		respostas: {um: "Horrível", dois: "Mais ou menos", tres: "Muito boa"}, respostas2: {um: {fala: "Nossa pai... Só queria descontrair um pouco...", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "É, eu também não gostei muito.", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Obrigado, pai!", retrato: spr_acucar, personagem: "Davi"}}}],
 	[{fala: "Está um tédio aqui dentro... não tem livros, não tem TV nem ar puro... Deus! Era feliz e não sabia lá fora...", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
 	[{fala: "Eaí, filho, tudo em cima?", retrato: spr_acucar/*roger feliz*/, personagem: "roger"}, {fala: "Bença, pai.", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}],
 	//5
@@ -80,9 +79,8 @@ falas = [
 	{fala: "Agora você me fez lembrar do meu tempo de jogador de basquete. Será que algum dia vou voltar a jogar?", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
 	[{fala: "Pai... você tem saudades da mamãe de vez em quando?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"},
 	{fala: "Tenho filho... bastante, por quê?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Nada não...", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
-//	[{fala: "Pai: top 3 frutas, agora!", retrato: spr_acucar/*davi feliz*/, personagem: "Davi"}, {fala: "Tomate, pera e maçã", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
-//	{fala: "Tomate? E desde quando tomate é fruta?", retrato: spr_acucar/*Davi neutro*/, personagem: "Davi"}, {fala: "Desde que o mundo é mundo filho; vai dizer que nunca experimentou uma mordidona de tomate?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"},
-//	{fala: "Jesus...", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Pai: top 3 frutas, agora!", retrato: spr_acucar/*davi feliz*/, personagem: "Davi", 
+	respostas: {um: "Maçã, pera e uva", dois: "Abacaxi, mamão e melancia", tres: "Tomate, pepino e laranja"}, respostas2: {um: {fala: "Boa escolha, pai! Gosta dos crocantes, né.", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "Uma vibe mais tropical, né.", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Jesus... Que pessoa amargurada você deve ser.", retrato: spr_acucar, personagem: "Davi",}}}],
 	//10
 	[{fala: "Pai, você acha que ainda tem gente lá fora?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"},
 	{fala: "Acho que sim, filho. Acho que tem muitas pessoas vagando por aí, mas não podemos ajudar nenhuma. Temos que nos preocupar com os nossos.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
@@ -115,7 +113,7 @@ falas = [
 	[{fala: "Queria poder assistir um filme de novo; só mais uma vez...", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
 	[{fala: "Pai, aonde você acha que vão os mortos?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Para lugar nenhum. A morte é o fim, ponto.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Com você é tudo preto no branco, né?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
 	//25
-//	[{fala: "Pai, quem você acha que lançou as bombas?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
+	[{fala: "Pai, quem você acha que lançou as bombas?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi", respostas: {um: "O governo americano", dois: "Os nazistas", tres: "Os japas"}, respostas2: {um: {fala: "Duvido muito... por que fariam isso?", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "Só pode ter sido eles...", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Filhos da puta! Primeiro Pearl Harbor, e agora isso!", retrato: spr_acucar, personagem: "Davi"}}}],
 	[{fala: "Que sono... como é possível a gente não ter nada para fazer e ainda assim ficar tão cansado. A percepção de tempo muda completamente.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
 	[{fala: "Filho, saiba que sempre que algo acontecer, pode contar comigo. Sou seu pai e te amo.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
 	[{fala: "A solidão me faz sentir tão depressivo... tenho saudade da escola, mesmo que também passasse o tempo todo sozinho.", retrato: spr_acucar/*davi triste*/, personagem: "Davi"}],
@@ -126,7 +124,7 @@ falas = [
 	[{fala: "Bom dia, pai.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Bom dia, filho.", retrato: spr_acucar/*roger feliz*/, personagem: "Roger"}],
 	[{fala: "Davi... fica quieto, acho que tem alguma coisa se espreitando aqui dentro...", retrato: spr_acucar/*roger apavorado*/, personagem: "Roger"}, {fala: "!!!", retrato: spr_acucar/*davi apávorado*/, personagem: "Davi"},
 	{fala: "AAAAAAHHHH!!!", retrato: spr_acucar/*roger apavorado*/, personagem: "Roger"}, {fala: "UMA BARATA ENORME! MATA ELA, FILHO!", retrato: spr_acucar, personagem: "Roger"}, {fala: "Ah, para, pai, só um insetosinho... eles devem ser mais limpos que nós a esse altura. Deixa que eu resolvo. ", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
-//	[{fala: "Você é feliz, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Depende... o que é felicidade para você?", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Para os gregos, felicidade é aquele momento que fale por si mesmo; o instante de vida que você gostaria que durasse mais.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}]
+	[{fala: "Você é feliz, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi", respostas: {um: "Sim, muito", dois: "Nunca fui", tres: "Depende, o que é felicidade?"}, respostas2: {um: {fala: "Sério? Que vida boa, hein.", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "Poxa, sinto muito.", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Bem, para os gregos, a felicidade é o instante de vida que vale por si mesmo: um momento que queremos que dure um pouco mais!", retrato: spr_acucar, personagem: "Davi",}}}],
 	//35
 	[{fala: "Quer ouvir uma piada, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Acho que fica pra próxima, filho.", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}],
 	[{fala: "Você acredita em Deus, pai?", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}, {fala: "Acreditava", retrato: spr_acucar/*roger neutro*/, personagem: "Roger"}, {fala: "Eu acredito, ainda. Quem fez isso não foi Deus, foram os humanos. Disso tenho certeza. Isso me ajuda a enfrentar tudo de cabeça erguida.", retrato: spr_acucar/*davi neutro*/, personagem: "Davi"}],
@@ -142,7 +140,7 @@ falas = [
 	//45
 	[{fala: "Pai, se eu morrer antes de você...", retrato: spr_acucar, personagem: "Davi"}, {fala: "Não fala isso...", retrato: spr_acucar, personagem: "Roger"}, {fala: "... você me queimaria ou enterraria?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Não quero pensar nisso, filho... mas acho mais correto enterrar do lado de fora. Lá no quintal, onde você brincava quando criança.", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Pai, olha, você deveria começar a meditar, que nem eu!", retrato: spr_acucar, personagem: "Davi"}, {fala: "Não preciso dessas coisas...", retrato: spr_acucar, personagem: "Roger"}, {fala: "Mas tenta! Olha que me ajuda bastante!", retrato: spr_acucar, personagem: "Davi"}],
-	//[{fala: "Pai, fala um cheiro bom.", retrato: spr_acucar, personagem: "Davi"},]
+	[{fala: "Pai, fala um cheiro bom.", retrato: spr_acucar, personagem: "Davi", respostas: {um: "Grama recém-cortada", dois: "Gasolina", tres: "Lavanda"}, respostas2: {um: {fala: "É bom mesmo.", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "Credo... negócio ruim!", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Bom gosto, pai, bom gosto se chama.", retrato: spr_acucar, personagem: "Davi",}}}],
 	[{fala: "Eu queria muito aprender a tocar violão... ", retrato: spr_acucar, personagem: "Davi"}, {fala: "E eu queria visitar a América do Sul... lá tem paixagens muito bonitas... Enfim, a gente não pode ter tudo, né?", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Hoje faz 50 dias... parece uma vida!", retrato: spr_acucar, personagem: "Roger"}],
 	//50
@@ -165,19 +163,19 @@ falas = [
 	[{fala: "Você é feliz, filho?", retrato: spr_acucar, personagem: "Roger"}, {fala: "...Não.", retrato: spr_acucar, personagem: "Davi"}, {fala: "...", retrato: spr_acucar, personagem: "Davi"}],
 	//65
 	[{fala: "Queria beber água. Estou tomando menos água do que tomava antes... saudades da minha vida antiga; nunca pensei que sentiria falta de água.", retrato: spr_acucar, personagem: "Davi"}],
-//	[{fala: "Está quase acabando, pai?", retrato: spr_acucar, personagem: "Davi"}],
+	[{fala: "Está quase acabando, pai?", retrato: spr_acucar, personagem: "Davi", respostas: {um: "Estamos quase lá", dois: "Nunca vai acabar", tres: "Não sei de nada, filho"}, respostas2: {um: {fala: "É assim que se fala!", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "AAAHHHHAAAHHHHHRG!", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Verdade...", retrato: spr_acucar, personagem: "Davi",}}}], 
 	[{fala: "Queria ver TV uma última vez...", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Fala alguma coisa, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Minha cabeça está desaprendendo a se comunicar.", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Você acha que a vida presta, pai?", retrato: spr_acucar, personagem: "Davi"}, {fala: "...", retrato: spr_acucar, personagem: "Roger"}, {fala: "Eu não sei, filho. Eu não sei. Não tenho palavras para explicar o que está acontecendo.", retrato: spr_acucar, personagem: "Roger"}],
 	//70
 	[{fala: "Dormiu bem?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Sonhei que a porta do bunker abria e a morte vinha em pessoa nos levar.", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Sabe, filho, acho que o ser humano não foi feito para nada disso... deveríamos ter continuado a viver caçando e colhendo frutinhas na selva!", retrato: spr_acucar, personagem: "Roger"}],
-//	[{fala: "Pai, o que você quer fazer assim que sair daqui?", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "Pai, o que você quer fazer assim que sair daqui?", retrato: spr_acucar, personagem: "Davi", respostas: {um: "Comer muito", dois: "Ir à praia", tres: "Ver o pôr do sol"}, respostas2: {um: {fala: "Depois eu que sou o faminto, né?", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "Verdade... nunca fui à praia.", retrato: spr_acucar, personagem: "Davi"}, tres: {fala: "O pôr do Sol era tão lindo, mesmo.", retrato: spr_acucar, personagem: "Davi",}}}],
 	[{fala: "Sabe o que deu vontade de fazer?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Assistir uma partida de futebol.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Você nem gosta de esportes, só me assistia no basquete porque era legal pra mim.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Eu gostava de futebol quando era moleque. Era um hiperfoco meu, sabe. Bons tempos aqueles.", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Vontade de comer nuggets.", retrato: spr_acucar, personagem: "Davi"}],
 	//75
 	[{fala: "Me arrependo de tantas coisas agora... deveria ter feito tudo diferente na minha vida. Mas agora é fácil de falar.", retrato: spr_acucar, personagem: "Roger"}],
-//	[{fala: "Se pudesse ir para qualquer lugar, sem que houvesse radiação, para onde iria?", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "Se pudesse ir para qualquer lugar, sem que houvesse radiação, para onde iria?", retrato: spr_acucar, personagem: "Davi", respostas: {um: "Rio de Janeiro", dois: "Torre Eiffel", tres: "Pousada no interior"}, respostas2: {um: {fala: "Sério?... Teria coragem pra isso?", retrato: spr_acucar, personagem: "Davi"}, dois: {fala: "Acho muito superestimado, se quer minha opinião.", retrato: spr_acucar/*roger neutro*/, personagem: "Davi"}, tres: {fala: "Você é dos meus, pai! Nada como a paz do campo...", retrato: spr_acucar, personagem: "Davi",}}}],
 	[{fala: "Sonhei que estava num mundo de fantasia em que tudo era comida... os rios eram bebidas açucaradas, as árvores davam frutos doces e suculentos e os as montanhas eram bolos de infinitas camadas!", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Vê se anda direito, muleque, fica aí se arrastando pela sala, eu hein.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Pai, o mundo explodiu!, quem liga pro jeito que eu ando?", retrato: spr_acucar, personagem: "Davi"}, {fala: "É justamente por isso que a disciplina é importante. E não me responda!", retrato: spr_acucar, personagem: "Roger"}, {fala: "Tá, bom, 'capitão Bunker'", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Bom dia, filho.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Bom dia, pai.", retrato: spr_acucar, personagem: "Davi"}],

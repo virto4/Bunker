@@ -26,9 +26,6 @@ if clicou {
 			if instance_exists(obj_meredith) {
 				obj_meredith.tem_fala = true
 			}
-			if instance_exists(obj_davi) {
-				obj_davi.fala_dia++
-			}
 		}
 	} else {
 		mouse_sim = false
