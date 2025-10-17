@@ -138,6 +138,14 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		colidiu_porta_aux = false
 	}
 
+	if _esquerda or _direita or _cima or _baixo {
+	    if (!audio_is_playing(snd_passos_roger)) {
+	        audio_play_sound(snd_passos_roger, 1, true);
+	    }
+	} else {
+		 audio_stop_sound(snd_passos_roger);
+	}
+
 	if !apertou_pulo {
 		velv = _baixo - _cima
 		velh = _direita - _esquerda

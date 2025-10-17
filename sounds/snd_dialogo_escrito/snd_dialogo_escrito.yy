@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_dialogo_escrito",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":0,
+  "bitRate":16,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.48619047,
+  "name":"snd_dialogo_escrito",
+  "parent":{
+    "name":"Sons",
+    "path":"folders/Sons.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":5512,
+  "soundFile":"snd_dialogo_escrito.mp3",
+  "type":2,
+  "volume":1.0,
+}

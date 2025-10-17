@@ -38,6 +38,9 @@ if mudou_humor {
 
 depth = -y
 function andar(direcao) {
+	if (!audio_is_playing(snd_passos_davi)) {
+		audio_play_sound(snd_passos_davi, 1, true);
+	}
 	switch direcao {
 		case "cima":
 			sprite_index = spr_davi_up
@@ -73,6 +76,10 @@ function acerto_de_contas(slot) {
 	return noone
 }
 
+if global.tem_tela_aberta {
+	audio_stop_sound(snd_passos_davi)
+}
+
 if !global.tem_tela_aberta and room == rm_bunker {
 	if obj_diario.dia != dia_bunker {
 		comecou_dia = true
@@ -87,6 +94,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				y = 354
 			}
 			if terminou == 0 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
@@ -107,6 +115,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 2
 				}
 			} else if terminou == 2 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
@@ -135,6 +144,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				y = 270
 			}
 			if terminou == 0 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
@@ -155,6 +165,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 2
 				}
 			} else if terminou == 2 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
@@ -175,6 +186,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 4
 				}
 			} else if terminou == 4 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
@@ -319,6 +331,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 2
 				}
 			} else if terminou == 2 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				if frames == 0 {
 					frames = 1
@@ -349,6 +362,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 5
 				}
 			} else if terminou == 5 {
+				audio_stop_sound(snd_passos_davi);
 				sprite_index = spr_davi_idle_down
 				//fica parado ou dorme
 			}

@@ -10,8 +10,13 @@ function escrever(mensagem) {
 	draw_set_font(fnt_dialogos)
 	if char_index < string_length(mensagem) {
 		char_index++
-		current_text = string_copy(mensagem, 1, char_index)
+		if (!audio_is_playing(snd_dialogo_escrito)) {
+			audio_play_sound(snd_dialogo_escrito, 1, true);
+	    }
+	} else {
+		audio_stop_sound(snd_dialogo_escrito)
 	}
+	current_text = string_copy(mensagem, 1, char_index)
 }
 
 function quebrar_texto(texto, largura_maxima) {

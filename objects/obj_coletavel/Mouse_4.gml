@@ -15,6 +15,17 @@ if instance_exists(obj_ferramentas) {
 	}
 }
 
+if object_index == obj_meredith and !global.tem_tela_aberta {
+	var a = irandom(1)
+	obj_meredith.audio = 0
+	if a == 1 {
+		 obj_meredith.audio = snd_miado1
+	} else {
+		obj_meredith.audio = snd_miado2
+	}
+	audio_play_sound(obj_meredith.audio, 1, false)
+}
+
 if room == rm_bunker and (object_index == obj_meredith or object_index == obj_davi or object_index == obj_radio) {
 	nao = true
 }

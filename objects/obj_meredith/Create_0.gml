@@ -26,6 +26,8 @@ type_speed = 0.06; // caracteres por frame
 current_text = 0
 tempo_fala = 0
 aux = false
+clicou = false
+audio = 0
 function escrever(mensagem) {
 	if char_index < string_length(mensagem) {
 		char_index++

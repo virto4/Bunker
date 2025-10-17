@@ -37,7 +37,12 @@ if interagir and mostrar {
 	}
 	if current_time > tempo {
 		if char_index < string_length(msg) {
+			if (!audio_is_playing(snd_dialogo_escrito)) {
+		        audio_play_sound(snd_dialogo_escrito, 1, true);
+		    }
 			char_index++
+		} else {
+			audio_stop_sound(snd_dialogo_escrito)
 		}
 		tempo = current_time + type_speed
 	}
@@ -104,10 +109,12 @@ if interagir and mostrar {
 	if mouse_check_button_pressed(mb_left) and aux {
 		if char_index < string_length(msg) {
 			char_index = string_length(msg)
+			audio_stop_sound(snd_dialogo_escrito);
 		} else if fala_atual < array_length(falas[fala_dia]) - 1 {
 			fala_atual++
 			char_index = 0
 		} else if !especial {
+			audio_stop_sound(snd_dialogo_escrito);
 			variable_struct_set(obj_cursor.interagir, "davi", false)
 			interagir = false
 			mostrar = false

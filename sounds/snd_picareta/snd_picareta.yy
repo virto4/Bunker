@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_picareta",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":1.1280046,
+  "name":"snd_picareta",
+  "parent":{
+    "name":"Sons",
+    "path":"folders/Sons.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_picareta.mp3",
+  "type":0,
+  "volume":1.0,
+}
