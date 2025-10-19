@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.5673469,
+  "duration":1.4159864,
   "name":"snd_golpe_inimigo",
   "parent":{
     "name":"Sons",

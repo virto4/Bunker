@@ -1,6 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 if clicou {
+	audio_play_sound(snd_geladeira_ronco, 1, true)
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
 	if mouse_check_button_pressed(mb_left) {
@@ -12,6 +13,10 @@ if clicou {
 			clicou = false
 			global.tela_hotbar = false
 			global.tem_tela_aberta = false
+			audio_stop_sound(snd_geladeira_ronco)
+			if !audio_is_playing(snd_geladeira_abrindo) and !audio_is_playing(snd_geladeira_fechando) {
+				audio_play_sound(snd_geladeira_fechando, 1, false)
+			}
 		}
 		for (var i = 0; i < array_length(posicoes); i++) {
 			if quantidades[i][1] > 0 {

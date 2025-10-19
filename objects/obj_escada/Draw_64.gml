@@ -169,19 +169,32 @@ if clicou and !derrotou {
 	}
 	
 	if selecionar_arma_roger and !batalha {
-		for (var i = 0; i < array_length(obj_personagem.armas_pegas); i++) {
-			if obj_personagem.armas_pegas[i] == arma_davi or obj_personagem.armas_pegas[i] == arma_roger {
-				continue
+		for (var i = 0; i <= array_length(obj_personagem.armas_pegas); i++) {
+			if i < array_length(obj_personagem.armas_pegas) {
+				if obj_personagem.armas_pegas[i] == arma_davi or obj_personagem.armas_pegas[i] == arma_roger {
+					continue
+				}
 			}
-			var width = sprite_get_width(object_get_sprite(obj_personagem.armas_pegas[i]))
-			var heigth = sprite_get_height(object_get_sprite(obj_personagem.armas_pegas[i]))
+			var width = 0
+			var heigth = 0
+			if i < array_length(obj_personagem.armas_pegas) {
+				width = sprite_get_width(object_get_sprite(obj_personagem.armas_pegas[i]))
+				heigth = sprite_get_height(object_get_sprite(obj_personagem.armas_pegas[i]))
+			} else {
+				width = sprite_get_width(object_get_sprite(obj_punhos))
+				heigth = sprite_get_height(object_get_sprite(obj_punhos))
+			}
 			maior = width
 			if width < heigth {
 				maior = heigth
 			}
 			if point_in_circle(mx, my, 390 + arma_x_roger * 80, 894, 40) { //davi
 				if mouse_check_button_pressed(mb_left) {
-					arma_roger = obj_personagem.armas_pegas[i]
+					if i < array_length(obj_personagem.armas_pegas) {
+						arma_roger = obj_personagem.armas_pegas[i]
+					} else {
+						arma_roger = obj_punhos
+					}
 					selecionar_arma_roger = false
 					break
 				}
@@ -196,7 +209,11 @@ if clicou and !derrotou {
 				cor_circulo = #2E7F0E
 			}
 			draw_circle_color(390 + arma_x_roger * 80, 894,30, cor_circulo, cor_circulo, false)
-			draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 390 + arma_x_roger* 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
+			if i < array_length(obj_personagem.armas_pegas) {
+				draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 390 + arma_x_roger* 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
+			} else {
+				draw_sprite_ext(object_get_sprite(obj_punhos), 0, 390 + arma_x_roger* 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
+			}
 			arma_x_roger++
 		}
 		arma_x_roger = 1
@@ -233,19 +250,32 @@ if clicou and !derrotou {
 		draw_line_width(x_davi - 128, novo_y_roger - 95, x_davi + 128, novo_y_roger - 95, 5)
 		
 		if selecionar_arma_davi and !batalha {
-			for (var i = 0; i < array_length(obj_personagem.armas_pegas); i++) {
-				if obj_personagem.armas_pegas[i] == arma_davi or obj_personagem.armas_pegas[i] == arma_roger {
-					continue
+			for (var i = 0; i <= array_length(obj_personagem.armas_pegas); i++) {
+				if i < array_length(obj_personagem.armas_pegas) {
+					if (obj_personagem.armas_pegas[i] == arma_davi or obj_personagem.armas_pegas[i] == arma_roger) {
+						continue
+					}
 				}
-				var width = sprite_get_width(object_get_sprite(obj_personagem.armas_pegas[i]))
-				var heigth = sprite_get_height(object_get_sprite(obj_personagem.armas_pegas[i]))
+				var width = 0
+				var heigth = 0
+				if i == array_length(obj_personagem.armas_pegas) {
+					width = sprite_get_width(object_get_sprite(obj_punhos))
+					heigth = sprite_get_height(object_get_sprite(obj_punhos))
+				} else {
+					width = sprite_get_width(object_get_sprite(obj_personagem.armas_pegas[i]))
+					heigth = sprite_get_height(object_get_sprite(obj_personagem.armas_pegas[i]))
+				}
 				maior = width
 				if width < heigth {
 					maior = heigth
 				}
 				if point_in_circle(mx, my, 1524 - arma_x_davi * 80, 894, 40) { //davi
 					if mouse_check_button_pressed(mb_left) {
-						arma_davi = obj_personagem.armas_pegas[i]
+						if i == array_length(obj_personagem.armas_pegas) {
+							arma_davi = obj_punhos
+						} else {
+							arma_davi = obj_personagem.armas_pegas[i]
+						}
 						selecionar_arma_davi = false
 						break
 					}
@@ -260,7 +290,11 @@ if clicou and !derrotou {
 					cor_circulo = #2E7F0E
 				}
 				draw_circle_color(1524 - arma_x_davi * 80, 894,30, cor_circulo, cor_circulo, false)
-				draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 1524 - arma_x_davi * 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
+				if i == array_length(obj_personagem.armas_pegas) {
+					draw_sprite_ext(object_get_sprite(obj_punhos), 0, 1524 - arma_x_davi * 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
+				} else {
+					draw_sprite_ext(object_get_sprite(obj_personagem.armas_pegas[i]), 0, 1524 - arma_x_davi * 80, 894, 64 / maior, 64 / maior, 0, c_white, 1)
+				}
 				arma_x_davi++
 			}
 			arma_x_davi = 1
@@ -487,6 +521,24 @@ if clicou and !derrotou {
 							break
 					}
 					if atacou {
+
+						if !roger_som {
+							roger_som = true
+							switch arma_roger {
+								case obj_metralhadora:
+									audio_play_sound(snd_metralhadora, 1, false)
+									break
+								case obj_pistola:
+									audio_play_sound(snd_pistola, 1, false)
+									break
+								case obj_machado:
+									audio_play_sound(snd_machado, 1, false)
+									break
+								case obj_picareta:
+									audio_play_sound(snd_picareta, 1, false)
+									break
+							}
+						}
 						
 						if arma_roger == obj_metralhadora {
 							tiros_metra--
@@ -632,6 +684,25 @@ if clicou and !derrotou {
 							break
 					}
 					if atacou {
+						
+						if !davi_som {
+							davi_som = true
+							switch arma_davi {
+								case obj_metralhadora:
+									audio_play_sound(snd_metralhadora, 1, false)
+									break
+								case obj_pistola:
+									audio_play_sound(snd_pistola, 1, false)
+									break
+								case obj_machado:
+									audio_play_sound(snd_machado, 1, false)
+									break
+								case obj_picareta:
+									audio_play_sound(snd_picareta, 1, false)
+									break
+							}
+						}
+						
 						if arma_davi == obj_metralhadora {
 							tiros_metra--
 						} else if arma_davi == obj_pistola {
@@ -675,6 +746,7 @@ if clicou and !derrotou {
 						}
 					}
 				} else {
+					audio_play_sound(snd_golpe_inimigo, 1, false)
 					ataque = 0
 					_y = y_inimigo
 					//vez do inimigo
@@ -736,6 +808,8 @@ if clicou and !derrotou {
 					ataque_inimigo = true
 				}
 			}
+			davi_som = false
+			roger_som = false
 			executar = false
 			if current_time / 1000 < tempo_turno {
 				if atacou {

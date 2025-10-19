@@ -1,6 +1,16 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-interagir = true
+if room == rm_bunker {
+	interagir = true
+} else {
+	interagir = false
+}
+primeiro = false
+primeiro2 = false
+primeiro3 = false
+
+mouse_aux1 = false
+mouse_aux2 = false
 
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 

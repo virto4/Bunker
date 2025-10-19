@@ -1,18 +1,31 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 if image_speed > 0 {
+	segundo = false
+	audio_stop_sound(snd_geladeira_ronco)
+	if !primeiro and !audio_is_playing(snd_geladeira_abrindo) and !audio_is_playing(snd_geladeira_fechando) {
+		audio_play_sound(snd_geladeira_abrindo, 1, false)
+		primeiro = true
+	}
 	if image_index >= image_number - 2 {
 		image_index = image_number - 1
 		image_speed = 0
 		is_aberta = true
 	}
 } else if image_speed < 0 {
+	primeiro = false
+	audio_stop_sound(snd_geladeira_ronco)
+	if !segundo and !audio_is_playing(snd_geladeira_abrindo) and !audio_is_playing(snd_geladeira_fechando) {
+		audio_play_sound(snd_geladeira_fechando, 1, false)
+		segundo = true
+	}
 	if image_index <= 1 {
 		image_index = 0
 		image_speed = 0
 		is_aberta = false
 	}
 } else if image_index = image_number - 1 and image_speed = 0 {
+	audio_play_sound(snd_geladeira_ronco, 1, true)
 	desenhar = true
 	if mouse_check_button_pressed(mb_left) {
 		var mx = device_mouse_x_to_gui(0)
@@ -91,4 +104,6 @@ if image_speed > 0 {
 			}
 		}
 	}
+} else {
+	audio_stop_sound(snd_geladeira_ronco)
 }

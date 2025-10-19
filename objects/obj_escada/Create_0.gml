@@ -88,8 +88,7 @@ armas = {
 	"obj_pistola": 80,
 	"obj_machado": 75,
 	"obj_picareta": 70,
-	"obj_frigideira": 40,
-	"obj_panela_pressao": 35
+	"obj_punhos": 50
 }
 
 
@@ -123,3 +122,7 @@ largura_metra = 0
 tiros_pistola = 10
 tiros_metra = 8
 atirou = false
+
+davi_som = false
+roger_som = false
+inimigo_som = false

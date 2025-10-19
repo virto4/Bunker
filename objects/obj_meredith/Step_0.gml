@@ -10,6 +10,12 @@ if y < obj_personagem.y + 86 and y > obj_personagem.y - 5 {
 	}
 }
 
+if global.tem_tela_aberta {
+	image_speed = 0
+} else {
+	image_speed = 1
+}
+
 function andar(direcao) {
 	switch direcao {
 		case "cima":

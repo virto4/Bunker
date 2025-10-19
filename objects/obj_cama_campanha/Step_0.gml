@@ -11,6 +11,10 @@ draw_set_font(fnt_alagard)
 
 if clicou {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+		if !primeiro {
+			primeiro = true
+			audio_play_sound(snd_menu_mouse, 1, false)
+		}
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
 			obj_personagem.passagem_dia = true
@@ -28,15 +32,21 @@ if clicou {
 			}
 		}
 	} else {
+		primeiro = false
 		mouse_sim = false
 	}
 	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+		if !primeiro2 {
+			audio_play_sound(snd_menu_mouse, 1, false)
+			primeiro2 = true
+		}
 		mouse_nao = true
 		if mouse_check_button_pressed(mb_left) {
 			clicou = false
 			global.tem_tela_aberta = false
 		}
 	} else {
+		primeiro2 = false
 		mouse_nao = false
 	}
 }

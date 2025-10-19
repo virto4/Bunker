@@ -36,9 +36,16 @@ if mudou_humor {
 	mudou_humor = false
 }
 
+
+if global.tem_tela_aberta {
+	image_speed = 0
+} else {
+	image_speed = 1
+}
+
 depth = -y
 function andar(direcao) {
-	if (!audio_is_playing(snd_passos_davi)) {
+	if (!audio_is_playing(snd_passos_davi)) and !global.tem_tela_aberta {
 		audio_play_sound(snd_passos_davi, 1, true);
 	}
 	switch direcao {

@@ -19,7 +19,11 @@ if room == rm_bunker {
 
 msg = "Miau, maiu."
 
-tem_fala = true
+if room == rm_bunker {
+	tem_fala = true
+} else {
+	tem_fala = false
+}
 mostrar = false
 char_index = 1
 type_speed = 0.06; // caracteres por frame

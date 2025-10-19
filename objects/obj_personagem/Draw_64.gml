@@ -180,13 +180,25 @@ if tutorial_ask {
 	draw_set_color(c_black)
 	draw_text(220, 800, "Você gostaria de jogar o tutorial?")
 	if mouse_sim {
+		if !primeiro {
+			primeiro = true
+			audio_play_sound(snd_menu_mouse, 1, false)
+		}
 		draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 		draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+	} else {
+		primeiro = false
 	}
 	draw_text(300, 940, "Sim")
 	if mouse_nao {
+		if !segundo {
+			segundo = true
+			audio_play_sound(snd_menu_mouse, 1, false)
+		}
 		draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 		draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+	} else {
+		segundo = false
 	}
 	draw_text(1620, 940, "Não")
 }
@@ -216,11 +228,16 @@ if room == rm_bunker {
 		desenha = false
 	}
 }
-if passagem_dia  {
-	desenha = false
-} else {
-	desenha = true 
+
+if instance_exists(obj_cama_campanha) {
+	if obj_cama_campanha.clicou and desenha {
+		desenha = false
+	}
 }
+
+if passagem_dia and desenha {
+	desenha = false
+} 
 
 if game_over {
 	desenha = false
@@ -250,24 +267,18 @@ if instance_exists(obj_baralho) and desenha {
 if instance_exists(obj_radio) and desenha {
 	if obj_radio.clicou {
 		desenha = false
-	} else {
-		desenha = true	
 	}
 }
 
 if instance_exists(obj_davi) and desenha {
 	if obj_davi.mostrar {
 		desenha = false
-	} else {
-		desenha = true
 	}
 }
 
 if instance_exists(obj_meredith) and desenha {
 	if obj_meredith.mostrar {
 		desenha = false
-	} else {
-		desenha = true
 	}
 }
 
@@ -377,13 +388,25 @@ if alimento or remedio {
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		if mouse_sim {
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			primeiro = false
 		}
 		draw_text(300, 940, "Sim")
 		if mouse_nao {
+			if !segundo {
+				segundo = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			segundo = false
 		}
 		draw_text(1620, 940, "Não")
 	}

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":2.2767575,
+  "duration":3.2826304,
   "name":"snd_cozinhar",
   "parent":{
     "name":"Sons",

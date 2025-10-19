@@ -15,6 +15,9 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
+primeiro = false
+segundo = false
+
 timer = current_time / 1000 + 0.8
 
 game_over = false
@@ -206,7 +209,7 @@ inputs = {
 
 opcoes = false
 
-armas_pegas = []
+armas_pegas = [obj_picareta, obj_metralhadora, obj_pistola, obj_machado]
 
 tutorial_ask = false
 tutorial = false
@@ -222,7 +225,7 @@ direita_coletavel = false
 objeto = noone
 
 if room_get_name(room) == "rm_casa" {
-	tempo_decorrido = 0 
+	tempo_decorrido = 0
 	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true

@@ -1,6 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 function casa(slot, slot_novo, slot_n) {
+	if !audio_is_playing(snd_menu_out) {
+		audio_play_sound(snd_menu_out, 1, false)
+	}
 	if slot != noone {
 		var is_consumivel = false
 		for (var i = 0; i < array_length(itens_nao_consumiveis); i++) {

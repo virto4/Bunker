@@ -101,7 +101,8 @@ comerciante_aux = true
 crianca = false
 crianca_aux = true
 
-eventos_inicio = embaralhar([
+eventos_inicio = [
+	"capivara",
 	"gripe",
 	"enxaqueca",
 	"baratas",
@@ -114,7 +115,7 @@ eventos_inicio = embaralhar([
 	"barata", //ok
 	"leptospirose", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
 	"freddie",//ok
-])
+]
 
 inicio_data = {
 	dia3: eventos_inicio[0],

@@ -73,6 +73,12 @@ for (var i = 0; i < 5; i++) {
 	}
 }
 
+if global.tem_tela_aberta {
+	image_speed = 0
+} else {
+	image_speed = 1
+}
+
 sprite_index = spr_roger_idle_down
 
 if !apertou_pulo {
@@ -89,13 +95,22 @@ if current_time / 1000 > timer {
 	timer = current_time / 1000 + 0.8
 }
 
-if alpha == 0 and !opcoes and !global.tem_tela_aberta {
-	var _cima, _baixo, _pulo, _esquerda, _direita
+var _cima, _baixo, _pulo, _esquerda, _direita
 	_esquerda = keyboard_check(inputs.esquerda)
 	_direita = keyboard_check(inputs.direita)
 	_cima = keyboard_check(inputs.cima)
 	_baixo = keyboard_check(inputs.baixo)
 	_pulo = keyboard_check_pressed(inputs.pulo)
+
+if _esquerda or _direita or _cima or _baixo and !global.tem_tela_aberta {
+	   if (!audio_is_playing(snd_passos_roger)) {
+        audio_play_sound(snd_passos_roger, 1, true);
+    }
+} else {
+	 audio_stop_sound(snd_passos_roger);
+}
+
+if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 
 	if !global.tem_tela_aberta and keyboard_check_pressed(vk_escape) {
 		global.tem_tela_aberta = true
@@ -136,14 +151,6 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		colidiu_porta_aux = true
 	} else {
 		colidiu_porta_aux = false
-	}
-
-	if _esquerda or _direita or _cima or _baixo {
-	    if (!audio_is_playing(snd_passos_roger)) {
-	        audio_play_sound(snd_passos_roger, 1, true);
-	    }
-	} else {
-		 audio_stop_sound(snd_passos_roger);
 	}
 
 	if !apertou_pulo {

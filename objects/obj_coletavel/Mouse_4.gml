@@ -23,7 +23,9 @@ if object_index == obj_meredith and !global.tem_tela_aberta {
 	} else {
 		obj_meredith.audio = snd_miado2
 	}
-	audio_play_sound(obj_meredith.audio, 1, false)
+	if !audio_is_playing(obj_meredith.audio) {
+		audio_play_sound(obj_meredith.audio, 1, false)
+	}
 }
 
 if room == rm_bunker and (object_index == obj_meredith or object_index == obj_davi or object_index == obj_radio) {
@@ -181,6 +183,9 @@ if !global.tem_tela_aberta and !nao {
 	}
 
 	if point_distance(obj_personagem.x, obj_personagem.y, x, y) < 100 { //se o personagem estiver proximo do coletavel
+		if !audio_is_playing(snd_menu_in) {
+			audio_play_sound(snd_menu_in, 1, false)
+		}
 		if obj_personagem.is_consumivel {
 			if !obj_personagem.item_devolvido { //se o clique sobre o coletavel nao foi feito para devolvê-lo
 				switch obj_personagem.slot_selecionado { //verificando se o slot_selecionado esta ocupado na hora do clique

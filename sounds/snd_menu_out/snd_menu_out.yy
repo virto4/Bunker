@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_ronrono",
+  "%Name":"snd_menu_out",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":31.320816,
-  "name":"snd_ronrono",
+  "duration":0.3392517,
+  "name":"snd_menu_out",
   "parent":{
     "name":"Sons",
     "path":"folders/Sons.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_ronrono.wav",
+  "soundFile":"snd_menu_out.wav",
   "type":0,
   "volume":1.0,
 }

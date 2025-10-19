@@ -56,6 +56,10 @@ if interagir and mostrar {
 		var largura_opcao = string_width(variable_struct_get(struct, "um"))
 		var altura_opcao = string_height(variable_struct_get(struct, "um"))
 		if point_in_rectangle(mx, my, 200, 830 - altura_opcao / 2, 220 + largura_opcao, 850 + altura_opcao / 2) {
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(200, 830 - altura_opcao / 2, 220 + largura_opcao, 850 + altura_opcao / 2, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(205, 835 - altura_opcao / 2, 215 + largura_opcao, 845 + altura_opcao / 2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
@@ -65,6 +69,8 @@ if interagir and mostrar {
 				resposta = variable_struct_get(falas[fala_dia][fala_atual], "respostas2")
 				resposta = variable_struct_get(resposta, "um")
 			}
+		} else {
+			primeiro = false
 		}
 		draw_text(210, 820, variable_struct_get(struct, "um"))
 		
@@ -72,6 +78,10 @@ if interagir and mostrar {
 		largura_opcao = string_width(variable_struct_get(struct, "dois"))
 		var xis = 960 - largura_opcao / 2
 		if point_in_rectangle(mx, my, xis - 10, 830 - altura_opcao / 2, xis + 10 + largura_opcao, 850 + altura_opcao / 2) {
+			if !primeiro2 {
+				primeiro2 = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(xis - 10, 830 - altura_opcao / 2, xis + 10 + largura_opcao, 850 + altura_opcao / 2, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(xis - 5, 835 - altura_opcao / 2, xis + 5 + largura_opcao, 845 + altura_opcao / 2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
@@ -81,6 +91,8 @@ if interagir and mostrar {
 				resposta = variable_struct_get(falas[fala_dia][fala_atual], "respostas2")
 				resposta = variable_struct_get(resposta, "dois")
 			}
+		} else {
+			primeiro2 = false
 		}
 		draw_text(xis, 820, variable_struct_get(struct, "dois"))
 		
@@ -88,6 +100,10 @@ if interagir and mostrar {
 		largura_opcao = string_width(variable_struct_get(struct, "tres"))
 		xis = 1710 - largura_opcao
 		if point_in_rectangle(mx, my, xis - 19, 830 - altura_opcao / 2, xis + 10 + largura_opcao, 850 + altura_opcao / 2) {
+			if !primeiro3 {
+				primeiro3 = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(xis - 10, 830 - altura_opcao / 2, xis + 10 + largura_opcao, 850 + altura_opcao / 2, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(xis - 5, 835 - altura_opcao / 2, xis + 5 + largura_opcao, 845 + altura_opcao / 2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
@@ -97,6 +113,8 @@ if interagir and mostrar {
 				resposta = variable_struct_get(falas[fala_dia][fala_atual], "respostas2")
 				resposta = variable_struct_get(resposta, "tres")
 			}
+		} else {
+			primeiro3 = false
 		}
 		draw_text(xis, 820, variable_struct_get(struct, "tres"))
 	}
@@ -147,13 +165,25 @@ if alimento or remedio {
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		if mouse_sim {
+			if !mouse_aux1 {
+				mouse_aux1 = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			mouse_aux1 = false
 		}
 		draw_text(300, 940, "Sim")
 		if mouse_nao {
+			if !mouse_aux2 {
+				mouse_aux2 = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
 			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			mouse_aux2 = false
 		}
 		draw_text(1620, 940, "Não")
 	}

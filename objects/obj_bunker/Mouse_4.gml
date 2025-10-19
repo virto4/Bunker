@@ -47,22 +47,37 @@ if !global.tem_tela_aberta {
 		}
 
 		if obj_personagem.slot_selecionado == 1 and obj_personagem.slot1 != noone {
+			if !audio_is_playing(snd_devolver_item) {
+				audio_play_sound(snd_devolver_item, 1, false)
+			}
 			ds_list_add(global.itens_pegos, obj_personagem.slot1)
 			tirar_slot(obj_personagem.slot1, obj_personagem.slot1_n)
 			mudar_slot_cheio()
 		} else if obj_personagem.slot_selecionado == 2 and obj_personagem.slot2 != noone {
+			if !audio_is_playing(snd_devolver_item) {
+				audio_play_sound(snd_devolver_item, 1, false)
+			}
 			ds_list_add(global.itens_pegos, obj_personagem.slot2)
 			tirar_slot(obj_personagem.slot2, obj_personagem.slot2_n)
 			mudar_slot_cheio()
 		} else if obj_personagem.slot_selecionado == 3 and obj_personagem.slot3 != noone {
+			if !audio_is_playing(snd_devolver_item) {
+				audio_play_sound(snd_devolver_item, 1, false)
+			}
 			ds_list_add(global.itens_pegos, obj_personagem.slot3)
 			tirar_slot(obj_personagem.slot3, obj_personagem.slot3_n)
 			mudar_slot_cheio()
 		} else if obj_personagem.slot_selecionado == 4 and obj_personagem.slot4 != noone {
+			if !audio_is_playing(snd_devolver_item) {
+				audio_play_sound(snd_devolver_item, 1, false)
+			}
 			ds_list_add(global.itens_pegos, obj_personagem.slot4)
 			tirar_slot(obj_personagem.slot4, obj_personagem.slot4_n)
 			mudar_slot_cheio()
 		} else if obj_personagem.slot_selecionado == 5 and obj_personagem.slot5 != noone {
+			if !audio_is_playing(snd_devolver_item) {
+				audio_play_sound(snd_devolver_item, 1, false)
+			}
 			ds_list_add(global.itens_pegos, obj_personagem.slot5)
 			tirar_slot(obj_personagem.slot5, obj_personagem.slot5_n)
 			mudar_slot_cheio()

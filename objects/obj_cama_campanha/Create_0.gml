@@ -2,6 +2,9 @@
 // Você pode escrever seu código neste editor
 clicou = false
 
+primeiro = false
+primeiro2 = false
+
 mouse_sim = false
 mouse_nao = false
 

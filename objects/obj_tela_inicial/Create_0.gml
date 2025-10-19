@@ -2,6 +2,13 @@
 // Você pode escrever seu código neste editor
 persistent = true
 
+primeiro = false
+primeiro2 = false
+primeiro3 = false
+primeiro4 = false
+primeiro5 = false
+
+
 window_set_fullscreen(true)
 cliques_dividir_tela = 0
 

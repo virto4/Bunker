@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_pick",
+  "%Name":"snd_menu_mouse",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.20213152,
-  "name":"snd_pick",
+  "duration":0.15179138,
+  "name":"snd_menu_mouse",
   "parent":{
     "name":"Sons",
     "path":"folders/Sons.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_pick.wav",
+  "soundFile":"snd_menu_mouse.wav",
   "type":0,
   "volume":1.0,
 }

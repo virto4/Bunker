@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 image_speed = 0
+primeiro = false
+segundo = false
 is_aberta = false
 desenhar = false
 posicoes = [

@@ -6,12 +6,18 @@ if room_get_name(room) == "rm_tela_inicial" {
 			if a_jogar < 1.08 {
 				a_jogar += 0.005
 			}
+			if !primeiro {
+				audio_play_sound(snd_menu_mouse, 1, false)
+				primeiro = true
+			}
 			if mouse_check_button_pressed(mb_left) {
+				audio_play_sound(snd_botao, 1, false)
 				em_transicao = true
 				mudar_jogo = true
 				tempo = current_time
 			}
 		} else {
+			primeiro = false
 			if a_jogar > 1 {
 				a_jogar -= 0.005
 			}
@@ -21,12 +27,18 @@ if room_get_name(room) == "rm_tela_inicial" {
 			if a_conquistas < 1.08 {
 				a_conquistas += 0.005
 			}
+			if !primeiro3 {
+				audio_play_sound(snd_menu_mouse, 1, false)
+				primeiro3 = true
+			}
 			if mouse_check_button_pressed(mb_left) {
+				audio_play_sound(snd_botao, 1, false)
 				mudar_conquistas = true
 				em_transicao = true
 				tempo = current_time
 			}
 		} else {
+			primeiro3 = false
 			if a_conquistas > 1 {
 				a_conquistas -= 0.005
 			}
@@ -35,8 +47,10 @@ if room_get_name(room) == "rm_tela_inicial" {
 		if mouse_x <= x_dividir + l_dividir and mouse_x >= x_dividir - l_dividir and mouse_y <= y_dividir + l_dividir and mouse_y >= y_dividir - l_dividir {
 			if mouse_check_button_pressed(mb_left) {
 				if cliques_dividir_tela % 2 == 0 {
+					audio_play_sound(snd_menu_in, 1, false)
 					window_set_fullscreen(false)
 				} else {
+					audio_play_sound(snd_menu_out, 1, false)
 					window_set_fullscreen(true)
 				}
 				cliques_dividir_tela++
@@ -47,12 +61,18 @@ if room_get_name(room) == "rm_tela_inicial" {
 			if a_sair < 1.08 {
 				a_sair += 0.005
 			}
+			if !primeiro4 {
+				audio_play_sound(snd_menu_mouse, 1, false)
+				primeiro4 = true
+			}
 			if mouse_check_button_pressed(mb_left) {
+				audio_play_sound(snd_botao, 1, false)
 				sair_jogo = true
 				em_transicao = true
 				tempo = current_time
 			}
 		} else {
+			primeiro4 = false
 			if a_sair > 1 {
 				a_sair -= 0.005
 			}
@@ -136,10 +156,16 @@ if room_get_name(room) == "rm_tela_inicial" {
 		if a_voltar < 1.08 {
 			a_voltar += 0.005
 		}
+		if !primeiro5 {
+				audio_play_sound(snd_menu_mouse, 1, false)
+				primeiro5 = true
+			}
 		if mouse_check_button_pressed(mb_left) { //se clicar, volta para tela inicial
+			audio_play_sound(snd_botao, 1, false)
 			sair_conquistas = true
 		}
 	} else {
+		primeiro5 = false
 		if a_voltar > 1 {
 			a_voltar -= 0.005
 		}
