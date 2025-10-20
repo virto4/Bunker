@@ -95,7 +95,7 @@ if clicou and !derrotou {
 	var x_scale = 1
 	var y_scale = 1
 	var maior = 1
-	if hab_roger and !batalha{
+	if hab_roger and !batalha {
 		for (var i = 0; i < array_length(obj_personagem.habilidades_adquiridas); i++) {
 			var nome = obj_personagem.habilidades_adquiridas[i][0]
 			var descricao = obj_personagem.habilidades_adquiridas[i][1]
@@ -119,16 +119,30 @@ if clicou and !derrotou {
 			draw_rectangle_color(x_roger - 128 - 5, novo_y_roger - 180 - 40 - i * 45 - 5, x_roger + 10 + string_width(nome) + 4, novo_y_roger - 180 - i * 45 + 5, c_black, c_black, c_black, c_black, false )
 			draw_rectangle_color(x_roger - 128, novo_y_roger - 180 - 40 - i * 45, x_roger + 10 + string_width(nome), novo_y_roger - 180 - i * 45, cor_unidade, cor_unidade, cor_unidade, cor_unidade, false )
 			draw_text(x_roger - 100, novo_y_roger - 180 - 40 - i * 45, nome)
-			if point_in_rectangle(mx, my, x_roger - 128 - 5, novo_y_roger - 180 - 40 - i * 45 - 5, x_roger + 10 + string_width(nome) + 4, novo_y_roger - 180 - i * 45 + 5) {
+			if point_in_rectangle(mx, my, x_roger - 128 - 5, novo_y_roger - 180 - 40 - i * 45, x_roger + 10 + string_width(nome) + 4, novo_y_roger - 180 - i * 45) {
+				if !aaa {
+					i_selecionado = i
+					i_selecionado_novo = i
+					aaa = true
+				} 
+				i_selecionado = i
+				if i_selecionado != i_selecionado_novo {
+					i_selecionado_novo = i_selecionado
+					audio_play_sound(snd_menu_mouse, 1, false)
+				}
+		
 				draw_rectangle_color(mx + 50, my, mx + 60 + string_width(descricao) + 5, my + string_height(descricao) + 10 + 5, c_black, c_black, c_black, c_black, false)
 				draw_rectangle_color(mx + 50, my - 5, mx + 60 + string_width(descricao), my + string_height(descricao) + 10, #B28435, #B28435, #B28435, #B28435, false)
 				draw_text(mx + 60, my + 5, descricao)
 				if mouse_check_button_pressed(mb_left) and !c {
+					audio_play_sound(snd_menu_in, 1, false)
 					habilidade_roger = nome
 					hab_roger = false
 				}
 			} else if !aux {
 				if mouse_check_button_pressed(mb_left) {
+					audio_play_sound(snd_menu_out, 1, false)
+					aaa = false
 					hab_roger = false
 				}
 			}
@@ -189,7 +203,18 @@ if clicou and !derrotou {
 				maior = heigth
 			}
 			if point_in_circle(mx, my, 390 + arma_x_roger * 80, 894, 40) { //davi
+				if !bbb {
+					i_selecionadob = i
+					i_selecionado_novob = i
+					bbb = true
+				} 
+				i_selecionadob = i
+				if i_selecionadob != i_selecionado_novob {
+					i_selecionado_novob = i_selecionadob
+					audio_play_sound(snd_menu_mouse, 1, false)
+				}
 				if mouse_check_button_pressed(mb_left) {
+					audio_play_sound(snd_menu_in, 1, false)
 					if i < array_length(obj_personagem.armas_pegas) {
 						arma_roger = obj_personagem.armas_pegas[i]
 					} else {
@@ -200,6 +225,7 @@ if clicou and !derrotou {
 				}
 			} else if !aux {
 				if mouse_check_button_pressed(mb_left) {
+					audio_play_sound(snd_menu_out, 1, false)
 					selecionar_arma_roger = false
 				}
 			}
@@ -270,7 +296,18 @@ if clicou and !derrotou {
 					maior = heigth
 				}
 				if point_in_circle(mx, my, 1524 - arma_x_davi * 80, 894, 40) { //davi
+					if !bbb {
+						i_selecionadob = i
+						i_selecionado_novob = i
+						bbb = true
+					} 
+					i_selecionadob = i
+					if i_selecionadob != i_selecionado_novob {
+						i_selecionado_novob = i_selecionadob
+						audio_play_sound(snd_menu_mouse, 1, false)
+					}
 					if mouse_check_button_pressed(mb_left) {
+						audio_play_sound(snd_menu_in, 1, false)
 						if i == array_length(obj_personagem.armas_pegas) {
 							arma_davi = obj_punhos
 						} else {
@@ -281,6 +318,7 @@ if clicou and !derrotou {
 					}
 				} else if !aux {
 					if mouse_check_button_pressed(mb_left) {
+						audio_play_sound(snd_menu_out, 1, false)
 						selecionar_arma_davi = false
 					}
 				}
@@ -332,16 +370,30 @@ if clicou and !derrotou {
 				draw_rectangle_color(x_davi + 128 - 40 - string_width(nome) - 5, novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45 + 5, c_black, c_black, c_black, c_black, false )
 				draw_rectangle_color(x_davi + 128 - 40 - string_width(nome), novo_y - 180 - 40 - i * 45, x_davi + 123, novo_y - 180 - i * 45, cor_unidade, cor_unidade, cor_unidade, cor_unidade, false )
 				draw_text(x_davi + 128 - 20 - string_width(nome), novo_y_roger - 180 - 40 - i * 45, nome)
-				if point_in_rectangle(mx, my, x_davi + 128 - 10 - string_width(nome) - 5, novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45 + 5) {
+				if point_in_rectangle(mx, my, x_davi + 128 - 10 - string_width(nome), novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45) {
+					if !aaa {
+						i_selecionado = i
+						i_selecionado_novo = i
+						aaa = true
+					} 
+					i_selecionado = i
+					if i_selecionado != i_selecionado_novo {
+						i_selecionado_novo = i_selecionado
+						audio_play_sound(snd_menu_mouse, 1, false)
+					}
+		
 					draw_rectangle_color(mx - 30 - string_width(descricao) - 5, my, mx - 20, my + string_height(descricao) + 10 + 5, c_black, c_black, c_black, c_black, false)
 					draw_rectangle_color(mx - 30 - string_width(descricao) - 5, my - 5, mx - 15, my + string_height(descricao) + 10, #B28435, #B28435, #B28435, #B28435, false)
 					draw_text(mx - 30 - string_width(descricao), my + 5, descricao)
 					if mouse_check_button_pressed(mb_left) and !b {
+						audio_play_sound(snd_menu_in, 1, false)
 						habilidade_davi = nome
 						hab_davi = false
 					} 
 				} else if !aux {
 					if mouse_check_button_pressed(mb_left) {
+						audio_play_sound(snd_menu_out, 1, false)
+						aaa = false
 						hab_davi = false
 					}
 				}

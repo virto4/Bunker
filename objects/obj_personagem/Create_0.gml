@@ -15,6 +15,8 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
+pode_tocar = false
+
 primeiro = false
 segundo = false
 

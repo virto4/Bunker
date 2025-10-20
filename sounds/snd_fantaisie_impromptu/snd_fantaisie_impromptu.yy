@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_fantaisie_impromptu",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":363.25983,
+  "name":"snd_fantaisie_impromptu",
+  "parent":{
+    "name":"musicas",
+    "path":"folders/Sons/musicas.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_fantaisie_impromptu.mp3",
+  "type":0,
+  "volume":1.0,
+}

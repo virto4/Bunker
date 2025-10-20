@@ -1,5 +1,38 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+musica = -1
+musicas = [
+	snd_fantaisie_impromptu,
+	snd_moonlight_sonata_third,
+	snd_vivaldi_summer,
+	snd_vivaldi_winter,
+	snd_passacaglia,
+	snd_passacaglia,
+	snd_marriage_damour,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu,
+	snd_moonlight_sonata_third,
+	snd_vivaldi_summer,
+	snd_vivaldi_winter,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu,
+	snd_fantaisie_impromptu
+	
+]
+
+tocar = false
+i_selecionado = 0
+i_selecionado_novo = 0
+aaa = false
+bbb = false
+i_selecionadob = 0
+i_selecionado_novob = 0
+
 clicou = false
 nome_inimigo = "inimigo"
 cor_atacar = #990A0E

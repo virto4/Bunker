@@ -1,7 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste 
 if !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 
-	and obj_controlador_evento.evento_inimigo and !derrotou{
+	and obj_controlador_evento.evento_inimigo and !derrotou {
+	audio_stop_all()
+	musica++
+	audio_play_sound(musicas[musica], 1, false)
 	clicou = true
 	global.tem_tela_aberta = true
 	

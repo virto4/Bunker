@@ -22,6 +22,13 @@ if room == rm_bunker {
 	}
 }
 if game_over {
+	if !pode_tocar {
+		audio_stop_all()
+		pode_tocar = true
+	}
+	if !audio_is_playing(snd_marcha_funebre) {
+		audio_play_sound(snd_marcha_funebre, 1, true)
+	}
 	global.tem_tela_aberta = true
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_over)
 	if alpha_over < 1 {
