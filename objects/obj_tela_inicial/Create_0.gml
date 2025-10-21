@@ -2,6 +2,7 @@
 // Você pode escrever seu código neste editor
 persistent = true
 
+pode_tocar = true
 primeiro = false
 primeiro2 = false
 primeiro3 = false

@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_fantaisie_impromptu",
+  "%Name":"snd_cartas",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":358.20392,
-  "name":"snd_fantaisie_impromptu",
+  "duration":0.6286168,
+  "name":"snd_cartas",
   "parent":{
-    "name":"musicas",
-    "path":"folders/Sons/musicas.yy",
+    "name":"Sons",
+    "path":"folders/Sons.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_fantaisie_impromptu.wav",
+  "soundFile":"snd_cartas.wav",
   "type":0,
   "volume":1.0,
 }

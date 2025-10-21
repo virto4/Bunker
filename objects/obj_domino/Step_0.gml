@@ -25,6 +25,7 @@ if clicou {
 			primeira_peca = true
 			maismais = false
 			ganhou = false
+			audio_stop_sound(snd_jazz)
 		}
 	}
 	if comecou {

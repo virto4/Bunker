@@ -45,6 +45,7 @@ if clicou {
 			carta_monte_passada = 0
 			comprar = false
 			descartar = false
+			audio_stop_sound(snd_jazz)
 		}
 	}
 	if comecou {

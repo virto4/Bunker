@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":454.6623,
+  "duration":449.68713,
   "name":"snd_moonlight_sonata_third",
   "parent":{
     "name":"musicas",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_moonlight_sonata_third.mp3",
+  "soundFile":"snd_moonlight_sonata_third.wav",
   "type":0,
   "volume":1.0,
 }

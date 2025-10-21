@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":270.89087,
+  "duration":269.0126,
   "name":"snd_marriage_damour",
   "parent":{
     "name":"musicas",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_marriage_damour.mp3",
+  "soundFile":"snd_marriage_damour.wav",
   "type":0,
   "volume":1.0,
 }

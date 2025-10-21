@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":166.3227,
+  "duration":163.2743,
   "name":"snd_passacaglia",
   "parent":{
     "name":"musicas",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_passacaglia.mp3",
+  "soundFile":"snd_passacaglia.wav",
   "type":0,
   "volume":1.0,
 }

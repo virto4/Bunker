@@ -54,12 +54,15 @@ if (mouse_check_button_pressed(mb_left)) {
     if (mx > tx_voltar - width_voltar && mx < tx_voltar + width_voltar &&
 		my > ty_voltar - height_voltar && my < ty_voltar + height_voltar) and pagina > 0 {
         pagina--
+		audio_play_sound(snd_paginas, 1, false)
     } else if (mx > tx_avancar - width_avancar && mx < tx_avancar + width_avancar &&
 		my > ty_avancar - height_avancar && my < ty_avancar + height_avancar) and pagina < paginas.numero{
 		pagina++
+		audio_play_sound(snd_paginas, 1, false)
 	} else if (mx > tx_primeira - width_primeira && mx < tx_primeira + width_primeira &&
 		my > ty_primeira - height_primeira && my < ty_primeira + height_primeira) and pagina > 0 {
 		pagina = 0
+		audio_play_sound(snd_paginas, 1, false)
 	}
 }
 

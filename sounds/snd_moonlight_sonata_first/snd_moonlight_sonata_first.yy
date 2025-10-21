@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":395.49387,
+  "duration":392.75488,
   "name":"snd_moonlight_sonata_first",
   "parent":{
     "name":"musicas",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_moonlight_sonata_first.mp3",
+  "soundFile":"snd_moonlight_sonata_first.wav",
   "type":0,
   "volume":1.0,
 }

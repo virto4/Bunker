@@ -1,6 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste
 if room_get_name(room) == "rm_tela_inicial" {
+	if pode_tocar {
+		pode_tocar = false
+		audio_play_sound(snd_concerto2, 1, false)
+	}
 	if !em_transicao {
 		if mouse_x <= x_jogar + width / 2 and mouse_x >= x_jogar - width / 2 and mouse_y <= y_jogar + height / 2 and mouse_y >= y_jogar - height / 2 {
 			if a_jogar < 1.08 {
@@ -12,6 +16,7 @@ if room_get_name(room) == "rm_tela_inicial" {
 			}
 			if mouse_check_button_pressed(mb_left) {
 				audio_play_sound(snd_botao, 1, false)
+				audio_stop_sound(snd_concerto2)
 				em_transicao = true
 				mudar_jogo = true
 				tempo = current_time

@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_fantaisie_impromptu",
+  "%Name":"snd_concerto2",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":358.20392,
-  "name":"snd_fantaisie_impromptu",
+  "duration":750.35297,
+  "name":"snd_concerto2",
   "parent":{
     "name":"musicas",
     "path":"folders/Sons/musicas.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_fantaisie_impromptu.wav",
+  "soundFile":"snd_concerto2.wav",
   "type":0,
   "volume":1.0,
 }

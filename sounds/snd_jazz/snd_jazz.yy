@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snd_fantaisie_impromptu",
+  "%Name":"snd_jazz",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,8 +9,8 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":358.20392,
-  "name":"snd_fantaisie_impromptu",
+  "duration":131.07664,
+  "name":"snd_jazz",
   "parent":{
     "name":"musicas",
     "path":"folders/Sons/musicas.yy",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_fantaisie_impromptu.wav",
+  "soundFile":"snd_jazz.mp3",
   "type":0,
   "volume":1.0,
 }

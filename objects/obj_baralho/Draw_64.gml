@@ -59,6 +59,7 @@ if clicou {
 			if point_in_rectangle(mx, my, 700 - 37.5, 540 - 60, 700 + 37.5, 540 + 60) {
 				draw_rectangle_color(700 - 42.5, 540 - 65, 700 + 42.5, 540 + 65, c_white, c_white, c_white, c_white, false) 
 				if mouse_check_button_pressed(mb_left) {
+					audio_play_sound(snd_cartas, 1, false)
 					comprar = true
 					array_push(cartas_roger, cartas_comprar[0])
 					array_delete(cartas_comprar, 0, 1)
@@ -67,6 +68,7 @@ if clicou {
 			if point_in_rectangle(mx, my, 1220 - 37.5, 540 - 60, 1220 + 37.5, 540 + 60) and carta_monte != 0 {
 				draw_rectangle_color(1220 - 42.5, 540 - 65, 1220 + 42.5, 540 + 65, c_white, c_white, c_white, c_white, false) 
 				if mouse_check_button_pressed(mb_left) {
+					audio_play_sound(snd_cartas, 1, false)
 					array_push(cartas_roger, carta_monte)
 					var aux = carta_monte
 					carta_monte = carta_monte_passada
@@ -119,6 +121,7 @@ if clicou {
 			if point_in_rectangle(mx, my, xis + 85 * i - 37.5, 1000 - 60, xis + 85 * i + 37.5, 1000 + 60) and carta_monte_passada != cartas_roger[i] {
 				draw_rectangle_color(xis + 85 * i - 42.5 , 1000 - 65, xis + 85 * i + 42.5, 1000 + 65, c_white, c_white, c_white, c_white, false) 
 				if mouse_check_button_pressed(mb_left) {
+					audio_play_sound(snd_cartas, 1, false)
 					array_push(cartas_comprar, carta_monte_passada) //coloca a carta que nunca mais será utilizada no fundo da pilha de comprar, porque eu só preciso guardar as 2 primeiras cartasd a pilha
 					carta_monte_passada = carta_monte
 					carta_monte = cartas_roger[i]
@@ -130,6 +133,7 @@ if clicou {
 		}
 		var aaa = false
 		if mouse_check_button_pressed(mb_right) and point_in_rectangle(mx, my, xis + 85 * i - 37.5, 1000 - 60, xis + 85 * i + 37.5, 1000 + 60) and sua_vez and comprar {
+			audio_play_sound(snd_menu_in, 1, false)
 			for (var j = 0; j < array_length(vermelho); j++) {
 				if vermelho[j] == cartas_roger[i] {
 					aaa = true

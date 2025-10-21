@@ -71,6 +71,7 @@ if game_over {
 				cor_botao = #527F7F
 				if mouse_check_button_pressed(mb_left) {
 					room_goto(rm_tela_inicial)
+					audio_stop_sound(snd_marcha_funebre)
 				}
 			} else {
 				cor_botao = c_white
@@ -93,6 +94,7 @@ if passagem_dia  {
 	} else if !animacao_dia {
 		if time and !mudou_data {
 			//aqui vai todas as coisas que acontecem quando um dia passa
+			audio_play_sound(snd_paginas, 1, false)
 			obj_calendario.mudou_dia = true
 			obj_diario.dia += 1
 			mudou_data = true

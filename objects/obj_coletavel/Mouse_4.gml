@@ -38,6 +38,8 @@ if object_index == obj_radio and obj_radio.programacao != noone{
 
 if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta {
 	nao = true	
+	audio_stop_all()
+	audio_play_sound(snd_jazz, 1, true)
 	obj_domino.clicou = true
 	global.tem_tela_aberta = true
 	obj_domino.comecou = true
@@ -45,6 +47,8 @@ if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta 
 
 if object_index == obj_baralho and room == rm_bunker and !global.tem_tela_aberta {
 	nao = true
+	audio_stop_all()
+	audio_play_sound(snd_jazz, 1, true)
 	obj_baralho.clicou = true
 	obj_baralho.comecou = true
 }
