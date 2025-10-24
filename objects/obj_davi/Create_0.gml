@@ -2,9 +2,11 @@
 // Você pode escrever seu código neste editor
 if room == rm_bunker {
 	interagir = true
+	comecou_dia = true
 } else {
 	interagir = false
 }
+pode_pular = true
 primeiro = false
 primeiro2 = false
 primeiro3 = false

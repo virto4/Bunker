@@ -26,9 +26,11 @@ if clicou {
 			}
 			if instance_exists(obj_davi) {
 				obj_davi.interagir = true
+				obj_davi.comecou_dia = true
 			}
 			if instance_exists(obj_meredith) {
 				obj_meredith.tem_fala = true
+				obj_meredith.comecou_dia = true
 			}
 		}
 	} else {

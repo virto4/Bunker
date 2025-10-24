@@ -16,6 +16,9 @@ itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
 pode_tocar = false
+auxua = false
+pode_jogar = true //variavel para saber se o jogador pode jogar cacheta ou domino; o codiugo esta no obj coletavel,
+//mas ele nao pode executar o create pois é um objeto que não está instanciaod no ambiemte
 
 primeiro = false
 segundo = false
@@ -228,7 +231,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 0
+	tempo_espera = 660
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true

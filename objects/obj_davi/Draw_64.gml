@@ -52,7 +52,7 @@ if interagir and mostrar {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
 	if array_length(struct_get_names(falas[fala_dia][fala_atual])) > 3 and !respondeu {
 		var struct = variable_struct_get(falas[fala_dia][fala_atual], "respostas")
-		
+		pode_pular = false
 		var largura_opcao = string_width(variable_struct_get(struct, "um"))
 		var altura_opcao = string_height(variable_struct_get(struct, "um"))
 		if point_in_rectangle(mx, my, 200, 830 - altura_opcao / 2, 220 + largura_opcao, 850 + altura_opcao / 2) {
@@ -117,6 +117,8 @@ if interagir and mostrar {
 			primeiro3 = false
 		}
 		draw_text(xis, 820, variable_struct_get(struct, "tres"))
+	} else {
+		pode_pular = true
 	}
 	draw_text_ext(210, 760, string_copy(msg, 1, char_index), 30, 1520)
 	var largura = string_width(falas[fala_dia][fala_atual].personagem)
@@ -131,7 +133,7 @@ if interagir and mostrar {
 		} else if fala_atual < array_length(falas[fala_dia]) - 1 {
 			fala_atual++
 			char_index = 0
-		} else if !especial {
+		} else if !especial and pode_pular {
 			audio_stop_sound(snd_dialogo_escrito);
 			variable_struct_set(obj_cursor.interagir, "davi", false)
 			interagir = false

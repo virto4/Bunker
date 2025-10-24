@@ -178,7 +178,7 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		}
 	}
 	
-	if desenhar {
+	if desenhar and instance_exists(item_segurado) {
 		if tempo == false {
 			tempo2 = current_time
 			tempo = true
@@ -218,8 +218,10 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	}
 	
 } else if opcoes {
-	if display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 and display_mouse_get_y() > display_get_height() / 2 - 5 and display_mouse_get_y() < display_get_height() / 2 + 5 {
-		if mouse_check_button_pressed(mb_left) and !mudar_fov{
+	var mx = device_mouse_x_to_gui(0)
+	var my = device_mouse_y_to_gui(0)
+	if point_in_rectangle(mx, my, 960 - 160, 540 - 5, 960 + 160, 540 + 5) {
+		if mouse_check_button_pressed(mb_left) and !mudar_fov {
 			mudar_volume = true
 			clicou_volume = true
 		} else  {
@@ -237,12 +239,12 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		}
 	}
 	if mudar_volume {
-		var _posicao = 960 - 128 - display_mouse_get_x() * 1920 / 1366
-		var _volume = _posicao / 256
+		var _posicao = mx - (960 - 160)
+		var _volume = _posicao / 320
 		audio_master_gain(_volume)
 	}
 	
-	if display_mouse_get_x() > display_get_width() / 2 - 128 and display_mouse_get_x() < display_get_width() / 2 + 128 and display_mouse_get_y() > 700 * 768 / 1080 - 5 and display_mouse_get_y() < 700 * 768 / 1080 + 5 {
+	if point_in_rectangle(mx, my, 960 - 160, 700 - 5, 960 + 160, 700 + 5) {
 		if mouse_check_button_pressed(mb_left) and !mudar_volume {
 			mudar_fov = true
 			clicou_fov = true
@@ -252,7 +254,7 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 	} else if !clicou_fov {
 		mudar_fov = false
 	}
-	if clicou_fov and !mudar_volume{
+	if clicou_fov and !mudar_volume {
 		if mouse_check_button(mb_left) {
 			mudar_fov = true
 		} else {
@@ -261,13 +263,13 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 		}
 	}
 	if mudar_fov {
-		var _posicao = fov_x - (960 - 128)
-		var _x = 1.5 * _posicao / 256 + 0.7
+		var _posicao = fov_x - (960 - 160)
+		var _x = 1.5 * _posicao / 320 + 0.7
 		camera_set_view_size(view_camera[0], (view_width_base / _x), (view_height_base / _x))
 		camera_set_view_pos(view_camera[0], x - (view_width_base / _x) * 0.5, y - (view_height_base / _x) * 0.5)
 	}
 	
-	if display_mouse_get_x() > (display_get_width() / 2 - 65 * 1366 / 1920) and display_mouse_get_x() < (display_get_width() / 2 + 65 * 1366 / 1920) and display_mouse_get_y() > (display_get_height() / 2 - 185 * 768 / 1080) and display_mouse_get_y() < (display_get_height() / 2 - 115 * 768 / 1080) {
+	if point_in_rectangle(mx, my, 960 - 65, 540 - 185, 960 + 65, 540 - 115) {
 		if mouse_check_button_pressed(mb_left) {
 			room_goto(rm_tela_inicial)
 			ds_list_clear(global.itens_pegos)

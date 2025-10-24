@@ -1,3 +1,42 @@
+if direita_coletavel {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
+	draw_set_color(c_black)
+	draw_set_font(fnt_dialogos)
+	var linhas = obj_conquistas.quebrar_texto(variable_struct_get(global.descricoes, object_get_name(obj_personagem.objeto)), 1500)
+	draw_text(190, 800, variable_struct_get(global.nomes, object_get_name(obj_personagem.objeto)))
+	for (var i = 0; i < array_length(linhas); i++) {
+		draw_text(190, 850 + 50 * i, linhas[i])
+	}
+	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
+	var maior = sprite_get_height(object_get_sprite(objeto))
+	if sprite_get_width(object_get_sprite(objeto)) > sprite_get_height(object_get_sprite(objeto)) {
+		maior = sprite_get_width(object_get_sprite(objeto))
+	}
+	draw_sprite_ext(object_get_sprite(objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
+	if mouse_check_button_pressed(mb_left) {
+		direita_coletavel = false
+		global.tem_tela_aberta = false
+	}
+}
+
+if !pode_jogar {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
+	draw_set_color(c_black)
+	draw_set_font(fnt_dialogos)
+	draw_text(220, 800, "Você não pode jogar sozinho.")
+	if mouse_check_button_pressed(mb_left) {
+		if auxua {
+			global.tem_tela_aberta = false
+			pode_jogar = true
+			auxua = false
+			global.tem_tela_aberta = false
+		} else {
+			auxua = true
+		}
+	} 
+}
+
 if room == rm_bunker {
 	var _mes = 0
 	switch obj_calendario.mes_atual {
@@ -238,6 +277,12 @@ if room == rm_bunker {
 	}
 }
 
+if room == rm_bunker {
+	if !pode_jogar and desenha {
+		desenha = false
+	}
+}
+
 if instance_exists(obj_cama_campanha) {
 	if obj_cama_campanha.clicou and desenha {
 		desenha = false
@@ -343,30 +388,32 @@ if mudar_bunker and room == rm_casa{
 }
 
 if opcoes {
+	var mx = device_mouse_x_to_gui(0)
+	var my = device_mouse_y_to_gui(0)
 	cursor_sprite = spr_cursor_padrao
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 0.4)
 	draw_sprite(spr_tela_opcoes_jogo, 0, 1920 / 2, 1080 / 2)
 	draw_rectangle_color(960 - 160, 540 - 5, 960 + 160, 540 + 5, c_black, c_black, c_black, c_black, false)
 	draw_sprite(spr_sair_tela_inicial, 0, 960, 540 - 150)
 	if mudar_volume {
-		if display_mouse_get_x() * 1920 / 1366 > 960 + 160 {
+		if mx > 960 + 160 {
 			volume_x = 960 + 160
-		} else if display_mouse_get_x() * 1920 / 1366 < 960 - 160 {
+		} else if mx < 960 - 160 {
 			volume_x = 960 - 160
 		} else {
-			volume_x = display_mouse_get_x() * 1920 / 1366
+			volume_x = mx
 		}
 	}
 	draw_circle_color(volume_x, 540, 20, c_black, c_black, false)
 	
 	draw_rectangle_color(960 - 160, 700 - 5, 960 + 160, 700 + 5, c_black, c_black, c_black, c_black, false)
 	if mudar_fov {
-		if display_mouse_get_x() * 1920 / 1366 > 960 + 160 {
+		if mx > 960 + 160 {
 			fov_x = 960 + 160
-		} else if display_mouse_get_x() * 1920 / 1366 < 960 - 160 {
+		} else if mx < 960 - 160 {
 			fov_x = 960 - 160
 		} else {
-			fov_x = display_mouse_get_x() * 1920 / 1366
+			fov_x = mx
 		}
 	}
 	draw_circle_color(fov_x, 700, 20, c_black, c_black, false)

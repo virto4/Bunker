@@ -99,6 +99,8 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				comecou_dia = false
 				x = 1121
 				y = 354
+				terminou = 0
+				frames = 0
 			}
 			if terminou == 0 {
 				audio_stop_sound(snd_passos_davi);
@@ -149,6 +151,8 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				comecou_dia = false
 				x = 250
 				y = 270
+				terminou = 0
+				frames = 0
 			}
 			if terminou == 0 {
 				audio_stop_sound(snd_passos_davi);
@@ -264,9 +268,10 @@ if !global.tem_tela_aberta and room == rm_bunker {
 		case 3:
 			if comecou_dia {
 				comecou_dia = false
-				x = 1021 + 179
+				x = 1021
 				y = 350
 				terminou = 0
+				frames = 0
 			}
 			if terminou == 0 {
 				andar("direita")
@@ -316,6 +321,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				x = 1021 + 179
 				y = 350
 				terminou = 0
+				frames = 0
 			}
 			if terminou == 0 {
 				andar("baixo")
