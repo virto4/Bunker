@@ -3,6 +3,8 @@
 if clicou {
 	draw_sprite_ext(spr_interface_freezer, 0, 1920 / 2, (1080 / 2) + 40, 2.4, 2.4, 0, c_white, 1)
 	draw_sprite(spr_voltar, 0, 1920 - 300, 50)
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_black)
 	for (var i = 0; i < array_length(quantidades); i++) {
 		if quantidades[i][1] > 0 {
 			for (var j = 0; j < array_length(posicoes); j++) {

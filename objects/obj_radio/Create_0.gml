@@ -6,6 +6,8 @@
 //quinta: Notícias Urgentes, fala sobre decisões governamentais, ONG's e suas ações recentes, catástrofes ambientes próximas, dicas de locais de distribuição de recurso
 //domingo: radio jesus, Padre Keyson leva sua palavra de fé aos católicos restantes
 //todo dia: musica, somente música tocando mesmo
+scale = 0
+etapa2 = false
 function escrever(mensagem) {
 	draw_set_font(fnt_dialogos)
 	if char_index < string_length(mensagem) {

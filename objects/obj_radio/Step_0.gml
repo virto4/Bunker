@@ -104,6 +104,7 @@ if clicou {
 					clicou_radio = false
 					indice_atual = 0
 					global.tem_tela_aberta = false
+					etapa2 = true
 				} else {
 					char_index = 0
 					indice_atual++

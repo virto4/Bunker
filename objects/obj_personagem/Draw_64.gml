@@ -138,7 +138,9 @@ if passagem_dia  {
 			obj_diario.dia += 1
 			mudou_data = true
 			atributos.fome -= 7
-			atributos.sede -= 25
+			if obj_controlador_evento.evento_canos {
+				atributos.sede -= 25
+			}
 			if obj_diario.dia < 33 {
 				atributos.sanidade -= 9
 			} else if obj_diario.dia < 66 {
@@ -148,7 +150,9 @@ if passagem_dia  {
 			}
 			if instance_exists(obj_davi) {
 			 	obj_davi.atributos.fome -= 7
-				obj_davi.atributos.sede -= 25
+				if obj_controlador_evento.evento_canos {
+					obj_davi.atributos.sede -= 25
+				}
 				if obj_diario.dia < 33 {
 					obj_davi.atributos.sanidade -= 9
 				} else if obj_diario.dia < 66 {
@@ -275,6 +279,16 @@ if room == rm_bunker {
 	if obj_escada.clicou {
 		desenha = false
 	}
+}
+
+if instance_exists(obj_davi) {
+	if (obj_davi.remedio or obj_davi.beber_agua or obj_davi.alimento) and desenha {
+		desenha = false
+	}
+}
+
+if (remedio or beber_agua or alimento) and desenha {
+	desenha = false
 }
 
 if room == rm_bunker {
@@ -431,12 +445,12 @@ function escrever(_x, _y, _texto, _cores) { //cores é um vetro de struct assim:
 	}
 }
 
-if alimento or remedio {
+if alimento or remedio or beber_agua {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
 	if alimento_scale < 5 {
 		alimento_scale += 0.5
 	} else if alimento_scale >= 5 {
-		var nome = variable_struct_get(global.nomes, object_get_name(obj_personagem.item_selecionado))
+		var nome = variable_struct_get(global.nomes, object_get_name(item_selecionado))
 		var largura = string_length(nome)
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
@@ -465,5 +479,14 @@ if alimento or remedio {
 			segundo = false
 		}
 		draw_text(1620, 940, "Não")
+	}
+}
+
+if tirar {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
+	if alimento_scale > 0 {
+		alimento_scale -= 0.5
+	} else if alimento_scale == 0 {
+		tirar = false
 	}
 }

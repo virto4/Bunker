@@ -79,6 +79,7 @@ switch dia {
 		ds_list_replace(obj_diario.paginas_escritas, 0, obj_diario.paginas.atributos)
 		ds_list_replace(obj_diario.paginas_escritas, 1, obj_diario.paginas.atributos2)
 		ds_list_replace(paginas_escritas, dia + 1, "Nada de mais hoje.")
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia1
 		break
 	case 3:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia3

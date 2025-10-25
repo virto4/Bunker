@@ -20,7 +20,7 @@ if !global.tem_tela_aberta {
 		if point_in_rectangle(mouse_x, mouse_y, x - 28, y - 110, x + 32, y + 86) {
 			variable_struct_set(obj_cursor.interagir, "davi", true)
 			if mouse_check_button_pressed(mb_left) {
-				mostrar = true
+				etapa = true
 				global.tem_tela_aberta = true
 			}
 		} else {
@@ -29,7 +29,18 @@ if !global.tem_tela_aberta {
 	}
 }
 
+if interagir and etapa {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, fala_scale, fala_scale, 0, c_white, 1)
+	if fala_scale < 5 {
+		fala_scale += 0.5
+	} else if fala_scale >= 5 {
+		etapa = false
+		mostrar = true
+	}
+}
+
 if interagir and mostrar {
+	
 	if !respondeu {
 		msg = variable_struct_get(falas[fala_dia][fala_atual], "fala")
 	} else {
@@ -46,7 +57,7 @@ if interagir and mostrar {
 		}
 		tempo = current_time + type_speed
 	}
-	
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
@@ -145,6 +156,7 @@ if interagir and mostrar {
 			fala_atual = 0
 			respondeu = false
 			fala_dia++
+			etapa2 = true
 		} else if especial {
 			especial = false
 			char_index = 0
@@ -154,7 +166,7 @@ if interagir and mostrar {
 	}
 }
 
-if alimento or remedio {
+if alimento or remedio or beber_agua {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
 	if alimento_scale < 5 {
 		alimento_scale += 0.5
@@ -188,5 +200,24 @@ if alimento or remedio {
 			mouse_aux2 = false
 		}
 		draw_text(1620, 940, "Não")
+	}
+}
+
+if etapa2 {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, fala_scale, fala_scale, 0, c_white, 1)
+	if fala_scale > 0 {
+		fala_scale -= 0.5
+	} else if fala_scale == 0 {
+		etapa2 = false
+		mostrar = false
+	}
+}
+
+if tirar {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
+	if alimento_scale > 0 {
+		alimento_scale -= 0.5
+	} else if alimento_scale == 0 {
+		tirar = false
 	}
 }

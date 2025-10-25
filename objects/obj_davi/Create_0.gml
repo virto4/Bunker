@@ -3,9 +3,20 @@
 if room == rm_bunker {
 	interagir = true
 	comecou_dia = true
+	etapa = false
+	fala_scale = 0
 } else {
 	interagir = false
 }
+etapa2 = false
+tirar = false
+
+enter = false
+enter2 = false
+beber_agua = false
+bebeu_agua = false
+aumento_sede = 0
+
 pode_pular = true
 primeiro = false
 primeiro2 = false

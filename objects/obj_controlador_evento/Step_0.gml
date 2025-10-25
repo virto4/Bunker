@@ -100,6 +100,11 @@ switch evento_hoje {
 		break
 }
 
+if evento_canos and canos {
+	canos = false
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.canos)
+}
+
 if crianca and crianca_aux {
 	crianca_aux = false
 }

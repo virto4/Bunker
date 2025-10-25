@@ -100,6 +100,7 @@ comerciante = false
 comerciante_aux = true
 crianca = false
 crianca_aux = true
+canos = true
 
 eventos_inicio = [
 	"capivara",
@@ -118,6 +119,7 @@ eventos_inicio = [
 ]
 
 inicio_data = {
+	dia1: "canos", //adicionar aqui o evento que está testando
 	dia3: eventos_inicio[0],
 	dia6: eventos_inicio[1],
 	dia8: eventos_inicio[2],

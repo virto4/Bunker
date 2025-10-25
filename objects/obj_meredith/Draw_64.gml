@@ -5,7 +5,7 @@ if !global.tem_tela_aberta {
 		if point_in_rectangle(mouse_x, mouse_y, x - 20, y - 20, x + 20, y + 20) {
 			variable_struct_set(obj_cursor.interagir, "meredith", true)
 			if mouse_check_button_pressed(mb_left) {
-				mostrar = true
+				etapa = true
 				tempo_fala = current_time + type_speed
 				global.tem_tela_aberta = true
 			}
@@ -15,6 +15,15 @@ if !global.tem_tela_aberta {
 	}
 }
 
+if etapa {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, fala_scale, fala_scale, 0, c_white, 1)
+	if fala_scale < 5 {
+		fala_scale += 0.5
+	} else if fala_scale >= 5 {
+		etapa = false
+		mostrar = true
+	}
+}
 if tem_fala {
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
@@ -43,9 +52,20 @@ if tem_fala {
 				aux = false
 				current_text = ""
 				char_index = 0
+				etapa2 = true
 			}
 		} else if !aux and mouse_check_button_pressed(mb_left) {
 			aux = true
 		}
+	}
+}
+
+if etapa2 {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, fala_scale, fala_scale, 0, c_white, 1)
+	if fala_scale > 0 {
+		fala_scale -= 0.5
+	} else if fala_scale == 0 {
+		etapa2 = false
+		mostrar = false
 	}
 }

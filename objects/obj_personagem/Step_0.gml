@@ -302,7 +302,7 @@ function acerto_de_contas(slot) {
 }
 
 if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == rm_bunker) {
-    if (point_in_rectangle(mouse_x, mouse_y, x - sprite_width/2, y - sprite_height/2, x + sprite_width/2, y + sprite_height/2)) {
+    if (point_in_rectangle(mouse_x, mouse_y, x - 30, y - 110, x + 30, y + 86)) {
 		var is_alimento = false
 		for (var i = 0; i < array_length(global.alimentos_consumiveis); i++) {
 			if global.alimentos_consumiveis[i] == obj_personagem.item_selecionado {
@@ -317,6 +317,11 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == 
 			}
 		}
 		
+		var is_agua = false
+		if item_selecionado == obj_agua {
+			is_agua = true
+		}
+		
 		if is_alimento {
 			alimento = true
 			global.tem_tela_aberta = true
@@ -325,7 +330,56 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == 
 			remedio = true
 			global.tem_tela_aberta = true
 		}
+		if is_agua {
+			beber_agua = true
+			global.tem_tela_aberta = true
+		}
     }
+}
+
+
+if beber_agua and room == rm_bunker {
+	var mx = device_mouse_x_to_gui(0)
+	var my = device_mouse_y_to_gui(0)
+	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+		mouse_sim = true
+		if mouse_check_button_pressed(mb_left) {
+			if atributos.sede + valor_agua > 100 {
+				aumento_sede = 100 - atributos.sede
+				atributos.sede = 100
+			} else {
+				atributos.sede += valor_agua 
+				aumento_sede = valor_agua
+			}
+			if slot_selecionado == 1 {
+				slot1 = noone
+			} else if slot_selecionado == 2 {
+				slot2 = noone
+			} else if slot_selecionado == 3 {
+				slot3 = noone
+			} else if slot_selecionado == 4 {
+				slot4 = noone
+			} else {
+				slot5 = noone 
+			}
+			bebeu_agua = true
+			beber_agua = false
+			tirar = true
+			global.tem_tela_aberta = false
+		}
+	} else {
+		mouse_sim = false
+	}
+	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+		mouse_nao = true
+		if mouse_check_button_pressed(mb_left) {
+			beber_agua = false
+			tirar = true
+			global.tem_tela_aberta = false
+		}
+	} else {
+		mouse_nao = false
+	}
 }
 
 if alimento and room == rm_bunker {
@@ -334,6 +388,7 @@ if alimento and room == rm_bunker {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
+			tirar = true
 			atributos.fome += variable_struct_get(global.fome, object_get_name(obj_personagem.item_selecionado))
 			if atributos.fome > 100 {
 				aumento_fome = variable_struct_get(global.fome, object_get_name(obj_personagem.item_selecionado)) - (atributos.fome - 100)
@@ -353,6 +408,7 @@ if alimento and room == rm_bunker {
 				obj_personagem.slot5= acerto_de_contas(obj_personagem.slot5)
 			}
 			alimento = false
+			alimentou = true
 			global.tem_tela_aberta = false
 		}
 	} else {
@@ -361,6 +417,7 @@ if alimento and room == rm_bunker {
 	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
 		mouse_nao = true
 		if mouse_check_button_pressed(mb_left) {
+			tirar = true
 			alimento = false
 			global.tem_tela_aberta = false
 		}
@@ -400,6 +457,7 @@ if remedio and room == rm_bunker {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
+			tirar = true
 			if obj_personagem.slot_selecionado == 1 {
 				obj_personagem.slot1 = acerto_de_contas(obj_personagem.slot1)
 			} else if obj_personagem.slot_selecionado == 2 {
@@ -421,6 +479,7 @@ if remedio and room == rm_bunker {
 	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
 		mouse_nao = true
 		if mouse_check_button_pressed(mb_left) {
+			tirar = true
 			remedio = false
 			global.tem_tela_aberta = false
 		}

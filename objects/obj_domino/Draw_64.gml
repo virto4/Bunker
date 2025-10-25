@@ -3,16 +3,17 @@
 
 function maior() {
 	var encontrou = false
-	for (var k = 6; k >= 0 and !encontrou; k--) {
-		for (var l = 6; l >= 0 and !encontrou; l--) {
-			for (var i = 0; i < array_length(pecas_jogador) and !encontrou; i++) {
+	for (var k = 6; k >= 0; k--) {
+		for (var l = k; l >= 0; l--) {
+			for (var i = 0; i < array_length(pecas_jogador); i++) {
 				if array_equals(pecas_jogador[i], [k, l]) or array_equals(pecas_jogador[i], [l, k]) {
 					encontrou = true
 					array_delete(pecas_jogador, i, 1)
 					vez_davi = true
 					tempo = current_time / 1000 + 3
 					return [k, l]
-				} else if array_equals(pecas_adversario[i], [k, l]) or array_equals(pecas_adversario[i], [l, k]) {
+				}
+				if array_equals(pecas_adversario[i], [k, l]) or array_equals(pecas_adversario[i], [l, k]) {
 					encontrou = true
 					array_delete(pecas_adversario, i, 1)
 					return [k, l]
@@ -134,7 +135,7 @@ if clicou {
 	draw_text(1510, 959 - string_height(text2) / 2, text2)
 	if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1700, 935, x1, 983) {
 		cor1 = #061E33
-		if mouse_check_button_pressed(mb_left) and array_length(monte) > 0 and !vez_davi {
+		if mouse_check_button_pressed(mb_left) and array_length(monte) > 0 and !vez_davi and !primeira_peca {
 			array_push(pecas_tela, monte[0])
 			array_delete(monte, 0, 1)
 		}
@@ -143,7 +144,7 @@ if clicou {
 	}
 	if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1500, 935, x2, 983) {
 		cor2 = #053330
-		if mouse_check_button_pressed(mb_left) and !vez_davi {
+		if mouse_check_button_pressed(mb_left) and !vez_davi and !primeira_peca {
 			if !vez_davi {
 				vez_davi = true
 				tempo = current_time / 1000 + 3

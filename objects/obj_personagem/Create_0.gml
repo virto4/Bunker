@@ -15,6 +15,12 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
+tirar = false
+valor_agua = 30 //quanta sede recupera 1 garrafa de agua
+beber_agua = false
+bebeu_agua = false
+aumento_sede = 0
+
 pode_tocar = false
 auxua = false
 pode_jogar = true //variavel para saber se o jogador pode jogar cacheta ou domino; o codiugo esta no obj coletavel,
@@ -231,7 +237,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 660
+	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true

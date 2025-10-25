@@ -1,5 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+fala_scale = 0
+etapa = false
+etapa2 = false
+
 image_speed = 0
 tempo = current_time / 1000
 lambendo = true

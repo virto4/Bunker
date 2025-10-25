@@ -10,6 +10,17 @@ if alimentou {
 	y_alimentou -= 0.5
 	if y - sprite_height / 2 - 20 >= y_alimentou {
 		alimentou = false
-		y_alimentou = y - sprite_height / 2 + 20
+	}
+}
+
+if bebeu_agua {
+	draw_set_font(fnt_dialogos)
+	draw_set_color(#1111dd)
+	var width = string_width("+ " + string(aumento_sede))
+	var height = string_height("+ " + string(aumento_sede))
+	draw_text(x - sprite_width / 2 + (sprite_width - width) / 2, y_alimentou, "+ " + string(aumento_sede))
+	y_alimentou -= 0.5
+	if y - sprite_height / 2 - 20 >= y_alimentou {
+		bebeu_agua = false
 	}
 }
