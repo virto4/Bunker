@@ -203,7 +203,6 @@
     {"id":{"name":"spr_coletar_destruir","path":"scripts/spr_coletar_destruir/spr_coletar_destruir.yy",},},
     {"id":{"name":"snd_botao","path":"sounds/snd_botao/snd_botao.yy",},},
     {"id":{"name":"snd_cartas","path":"sounds/snd_cartas/snd_cartas.yy",},},
-    {"id":{"name":"snd_concerto2","path":"sounds/snd_concerto2/snd_concerto2.yy",},},
     {"id":{"name":"snd_cozinhar","path":"sounds/snd_cozinhar/snd_cozinhar.yy",},},
     {"id":{"name":"snd_devolver_item","path":"sounds/snd_devolver_item/snd_devolver_item.yy",},},
     {"id":{"name":"snd_dialogo_escrito","path":"sounds/snd_dialogo_escrito/snd_dialogo_escrito.yy",},},

@@ -172,7 +172,6 @@
     {"name":"spr_coletar_destruir","order":3,"path":"scripts/spr_coletar_destruir/spr_coletar_destruir.yy",},
     {"name":"snd_botao","order":10,"path":"sounds/snd_botao/snd_botao.yy",},
     {"name":"snd_cartas","order":25,"path":"sounds/snd_cartas/snd_cartas.yy",},
-    {"name":"snd_concerto2","order":9,"path":"sounds/snd_concerto2/snd_concerto2.yy",},
     {"name":"snd_cozinhar","order":17,"path":"sounds/snd_cozinhar/snd_cozinhar.yy",},
     {"name":"snd_devolver_item","order":9,"path":"sounds/snd_devolver_item/snd_devolver_item.yy",},
     {"name":"snd_dialogo_escrito","order":4,"path":"sounds/snd_dialogo_escrito/snd_dialogo_escrito.yy",},
