@@ -6,23 +6,18 @@ musicas = [
 	snd_fantaisie_impromptu,
 	snd_moonlight_sonata_third,
 	snd_vivaldi_summer,
-	snd_vivaldi_winter,
-	snd_passacaglia,
-	snd_passacaglia,
-	snd_marriage_damour,
-	snd_fantaisie_impromptu,
 	snd_fantaisie_impromptu,
 	snd_moonlight_sonata_third,
 	snd_vivaldi_summer,
-	snd_vivaldi_winter,
 	snd_fantaisie_impromptu,
+	snd_moonlight_sonata_third,
+	snd_vivaldi_summer,
 	snd_fantaisie_impromptu,
+	snd_moonlight_sonata_third,
+	snd_vivaldi_summer,
 	snd_fantaisie_impromptu,
-	snd_fantaisie_impromptu,
-	snd_fantaisie_impromptu,
-	snd_fantaisie_impromptu,
-	snd_fantaisie_impromptu
-	
+	snd_moonlight_sonata_third,
+	snd_vivaldi_summer,
 ]
 
 tocar = false

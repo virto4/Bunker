@@ -17,6 +17,7 @@ if clicou {
 		}
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
+			tirar = true
 			obj_personagem.passagem_dia = true
 			clicou = false
 			global.tem_tela_aberta = false
@@ -44,6 +45,7 @@ if clicou {
 		}
 		mouse_nao = true
 		if mouse_check_button_pressed(mb_left) {
+			tirar = true
 			clicou = false
 			global.tem_tela_aberta = false
 		}

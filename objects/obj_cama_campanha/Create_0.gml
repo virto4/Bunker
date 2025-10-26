@@ -1,10 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 clicou = false
-
+scale = 0
 primeiro = false
 primeiro2 = false
-
+tirar = false
 mouse_sim = false
 mouse_nao = false
 
