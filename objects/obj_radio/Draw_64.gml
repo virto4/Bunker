@@ -8,23 +8,40 @@ if clicou {
 		if scale < 5 {
 			scale += 0.5
 		} else if scale >= 5 {
-			if current_time > tempo {
-				escrever(programacao[indice_atual])
-				tempo = current_time + type_speed
+			if !pilhas {
+				if current_time > tempo {
+					escrever(programacao[indice_atual])
+					tempo = current_time + type_speed
+				}
+				draw_set_font(fnt_dialogos)
+				draw_set_color(c_black)
+				if programacao != sem_programa {
+					var largura = string_width(programa)
+					draw_sprite_ext(spr_dialogo, 0, 1760 - 10 - largura / 2, 665, (largura + 20) / 320, 1.5, 0, c_white, 1)
+					draw_text(1760 - 10 - largura, 640, programa)
+				}
+				draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
+				var linhas = quebrar_texto(current_text, 1520)
+				for (var i = 0; i < array_length(linhas); i++) {
+					draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
+				}
+			} else {
+				draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+				if scale < 5 {
+					scale += 0.5
+				} else if scale >= 5 {
+					draw_text(200, 760, "Seu rádio está sem bateria! Precisa de pilhas para poder usá-lo novamente.")
+					if !clicou_radio {
+						clicou_radio = true
+					} else {
+						clicou = false
+						clicou_radio = false
+						global.tem_tela_aberta = false
+						etapa2 = true
+					}
+				}
 			}
-			draw_set_font(fnt_dialogos)
-			draw_set_color(c_black)
-			if programacao != sem_programa {
-				var largura = string_width(programa)
-				draw_sprite_ext(spr_dialogo, 0, 1760 - 10 - largura / 2, 665, (largura + 20) / 320, 1.5, 0, c_white, 1)
-				draw_text(1760 - 10 - largura, 640, programa)
-			}
-			draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
-			var linhas = quebrar_texto(current_text, 1520)
-			for (var i = 0; i < array_length(linhas); i++) {
-				draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
-			}
-		}
+		} 
 	}
 }
 

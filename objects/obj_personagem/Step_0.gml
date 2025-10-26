@@ -298,6 +298,28 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 
 function acerto_de_contas(slot) {
 	variable_struct_set(obj_personagem.qtde_itens1, object_get_name(slot), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(slot)) - 1)
+	switch slot_selecionado {
+		case 1:
+			casa(slot1, slot1_novo, slot1_n)
+			slot1 = noone
+			break
+		case 2:
+			casa(slot2, slot2_novo, slot2_n)
+			slot2 = noone
+			break
+		case 3:
+			casa(slot3, slot3_novo, slot3_n)
+			slot3 = noone
+			break
+		case 4:
+			casa(slot4, slot4_novo, slot4_n)
+			slot4 = noone
+			break
+		case 5:
+			casa(slot5, slot5_novo, slot5_n)
+			slot5 = noone
+			break
+	}
 	return noone
 }
 
@@ -352,15 +374,15 @@ if beber_agua and room == rm_bunker {
 				aumento_sede = valor_agua
 			}
 			if slot_selecionado == 1 {
-				slot1 = noone
+				slot1 = acerto_de_contas(slot1)
 			} else if slot_selecionado == 2 {
-				slot2 = noone
+				slot2 = acerto_de_contas(slot2)
 			} else if slot_selecionado == 3 {
-				slot3 = noone
+				slot3 = acerto_de_contas(slot3)
 			} else if slot_selecionado == 4 {
-				slot4 = noone
+				slot4 = acerto_de_contas(slot4)
 			} else {
-				slot5 = noone 
+				slot5 = acerto_de_contas(slot5) 
 			}
 			bebeu_agua = true
 			beber_agua = false

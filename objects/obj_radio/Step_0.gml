@@ -1,6 +1,16 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 depth = -y
+if instance_exists(obj_diario) {
+	if obj_diario.dia == 1 and !pilha_aux1 {
+		pilhas = true
+		pilha_aux1 = true
+	} else if obj_diario.dia == 66 and !pilha_aux2 {
+		pilhas = true
+		pilha_aux2 = true
+	}
+}
+
 if entrou and instance_exists(obj_calendario) {
     // Reinicia variáveis de controle
     dia_semana1 = -1;
@@ -73,7 +83,7 @@ if entrou and instance_exists(obj_calendario) {
 	}
 	entrou = false
 }
-if clicou {
+if clicou and !pilhas {
 	global.tem_tela_aberta = true
 	tempo = current_time + type_speed
 	j = 0

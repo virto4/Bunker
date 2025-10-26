@@ -8,6 +8,9 @@
 //todo dia: musica, somente música tocando mesmo
 scale = 0
 etapa2 = false
+pilhas = false
+pilha_aux1 = false
+pilha_aux2 = false
 function escrever(mensagem) {
 	draw_set_font(fnt_dialogos)
 	if char_index < string_length(mensagem) {

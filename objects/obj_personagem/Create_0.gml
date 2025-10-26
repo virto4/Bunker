@@ -417,3 +417,125 @@ aumento_fome = 0
 remedio = false
 tomou_remedio = false
 aumento_saude = 0
+
+
+function casa(slot, slot_novo, slot_n) {
+	if !audio_is_playing(snd_menu_out) {
+		audio_play_sound(snd_menu_out, 1, false)
+	}
+	if slot != noone {
+		var is_consumivel = false
+		for (var i = 0; i < array_length(itens_nao_consumiveis); i++) {
+			if slot == itens_nao_consumiveis[i] {
+				is_consumivel = true
+				break
+			}
+		}
+		var is_alimento = false;
+		for (var i = 0; i < array_length(global.alimentos); i++) {
+			if slot == global.alimentos[i] {
+				is_alimento = true
+				break
+			}
+		}
+		var is_ferramenta = false
+		for (var i = 0; i < array_length(global.ferramentas); i++) {
+			if slot == global.ferramentas[i] {
+				is_ferramenta = true
+				break
+			}
+		}
+		if is_consumivel { //se NAO for consumivel, aqui eu me confundi na nomenclatura da variavel
+			if room == rm_bunker {
+				var posicoes = variable_struct_get_names(global.posicoes)
+				for (var i = 0; i < array_length(posicoes); i++) {
+					if asset_get_index(posicoes[i]) == slot {
+						var struct = variable_struct_get(global.posicoes, posicoes[i])
+						var ax = variable_struct_get(struct, "x")
+						var ay = variable_struct_get(struct, "y")
+						px = ax
+						py = ay
+						instance_create_layer(ax, ay, layer_get_id("Instances"), slot, {})
+						break
+					}
+				}
+			} else {
+				for (var i = 0; i < array_length(global.casa); i++) {
+					if asset_get_index(global.casa[i][0]) == slot {
+						var ax = global.casa[i][1]
+						var ay = global.casa[i][2]
+						px = ax
+						py = ay
+						instance_create_layer(ax, ay, layer_get_id("Instances"), slot, {})
+					}
+				}
+			}
+			if !desenhar {
+				desenhar = true
+				item_segurado = slot
+			}
+		} else {
+			if is_alimento and room == rm_bunker {
+				for (var i = 0; i < array_length(obj_freezer.quantidades); i++) {
+					if obj_freezer.quantidades[i][0] = slot {
+						obj_freezer.quantidades[i][1] += 1
+						break
+					}
+				}
+			} else if is_ferramenta and room == rm_bunker {
+				if item_selecionado == obj_martelo {
+					obj_ferramentas.martelo = false
+					obj_ferramentas.martelo_cor = c_white
+				} else if item_selecionado == obj_fita_isolante {
+					obj_ferramentas.fita = false
+					obj_ferramentas.fita_cor = c_white
+				} else if item_selecionado == obj_chave_fenda {
+					obj_ferramentas.chave = false
+					obj_ferramentas.chave_cor = c_white
+				} else {
+					obj_ferramentas.argamassa = false
+					obj_ferramentas.argamassa_cor = c_white
+				}
+			} else if !instance_exists(slot) and room == rm_bunker {
+				var posicoes = variable_struct_get_names(global.posicoes)
+				for (var i = 0; i < array_length(posicoes); i++) {
+					if asset_get_index(posicoes[i]) == slot {
+						var struct = variable_struct_get(global.posicoes, posicoes[i])
+						var ax = variable_struct_get(struct, "x")
+						var ay = variable_struct_get(struct, "y")
+						instance_create_layer(ax, ay, layer_get_id("Instances"), slot, {})
+						break
+					}
+				}
+			} else if room == rm_bunker {
+				slot.qtde_itens++
+			}
+			if !is_alimento and !is_ferramenta {
+				if !desenhar2 {
+					desenhar2 = true
+				}
+				item_segurado = slot
+			}
+		}
+		if slot1_n == slot_n {
+			slot1 = noone
+			slot1_novo = false
+		} 
+		if slot2_n == slot_n {
+			slot2 = noone
+			slot2_novo = false
+		} 
+		if slot3_n == slot_n {
+			slot3 = noone
+			slot3_novo = false
+		} 
+		if slot4_n == slot_n {
+			slot4 = noone
+			slot4_novo = false
+		} 
+		if slot5_n == slot_n {
+			slot5 = noone
+			slot5_novo = false
+		}
+	}
+}

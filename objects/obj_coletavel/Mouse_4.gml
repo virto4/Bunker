@@ -33,7 +33,32 @@ if room == rm_bunker and (object_index == obj_meredith or object_index == obj_da
 	nao = true
 }
 
-if object_index == obj_radio and obj_radio.programacao != noone{
+var is_pilha = false 
+if instance_exists(obj_radio) {
+	if obj_radio.pilhas and obj_personagem.item_selecionado == obj_pilha {
+		is_pilha = true
+		obj_radio.pilhas = false
+		switch obj_personagem.slot_selecionado {
+			case 1:
+				obj_personagem.slot1 = global.coletar_destruir(obj_personagem.slot1)
+				break
+			case 2:
+				obj_personagem.slot2 = global.coletar_destruir(obj_personagem.slot2)
+				break
+			case 3:
+				obj_personagem.slot3 = global.coletar_destruir(obj_personagem.slot3)
+				break
+			case 4:
+				obj_personagem.slot4 = global.coletar_destruir(obj_personagem.slot4)
+				break
+			case 5:
+				obj_personagem.slot5 = global.coletar_destruir(obj_personagem.slot5)
+				break
+		}
+	}
+}
+
+if object_index == obj_radio and obj_radio.programacao != noone and !is_pilha {
 	obj_radio.clicou = true
 }
 

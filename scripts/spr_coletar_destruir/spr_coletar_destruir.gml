@@ -1,7 +1,7 @@
 // Os recursos de script mudaram para a v2.3.0; veja
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para obter mais informações
 
-function coletar_destruir(slot, personagem) {
+function coletar_destruir(slot) {
 	obj_personagem.slots_disponiveis = false
 	var qtde_slots = 0
 	if obj_personagem.slot1 == noone {
@@ -59,20 +59,20 @@ function coletar_destruir(slot, personagem) {
 			}
 			if g == 1 and obj_personagem.slot1 == noone {
 				h++
-			obj_personagem.slot1_n = obj_personagem.numero_n
-				} else if g == 2 and obj_personagem.slot2 == noone {
-			h++
-					obj_personagem.slot2_n = obj_personagem.numero_n
+				obj_personagem.slot1_n = obj_personagem.numero_n
+			} else if g == 2 and obj_personagem.slot2 == noone {
+				h++
+				obj_personagem.slot2_n = obj_personagem.numero_n
 			} else if g == 3 and obj_personagem.slot3 == noone {
 				h++
-			obj_personagem.slot3_n = obj_personagem.numero_n
-				} else if g == 4 and obj_personagem.slot4 == noone {
+				obj_personagem.slot3_n = obj_personagem.numero_n
+			} else if g == 4 and obj_personagem.slot4 == noone {
 				h++
-					obj_personagem.slot4_n = obj_personagem.numero_n
-				} else if g == 5 and obj_personagem.slot5 == noone {
-					h++
-					obj_personagem.slot5_n = obj_personagem.numero_n
-				}
+				obj_personagem.slot4_n = obj_personagem.numero_n
+			} else if g == 5 and obj_personagem.slot5 == noone {
+				h++
+				obj_personagem.slot5_n = obj_personagem.numero_n
+			}
 				g--
 				if g < 1 {
 					g = 5

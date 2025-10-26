@@ -80,9 +80,30 @@ function andar(direcao) {
 
 function acerto_de_contas(slot) {
 	variable_struct_set(obj_personagem.qtde_itens1, object_get_name(slot), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(slot)) - 1)
+	switch slot_selecionado {
+		case 1:
+			obj_personagem.casa(obj_personagem.slot1, obj_personagem.slot1_novo, obj_personagem.slot1_n)
+			obj_personagem.slot1 = noone
+			break
+		case 2:
+			obj_personagem.casa(obj_personagem.slot2, obj_personagem.slot2_novo, obj_personagem.slot2_n)
+			obj_personagem.slot2 = noone
+			break
+		case 3:
+			obj_personagem.casa(obj_personagem.slot3, obj_personagem.slot3_novo, obj_personagem.slot3_n)
+			obj_personagem.slot3 = noone
+			break
+		case 4:
+			obj_personagem.casa(obj_personagem.slot4, obj_personagem.slot4_novo, obj_personagem.slot4_n)
+			obj_personagem.slot4 = noone
+			break
+		case 5:
+			obj_personagem.casa(obj_personagem.slot5, obj_personagem.slot5_novo, obj_personagem.slot5_n)
+		 	obj_personagem.slot5 = noone
+			break
+	}
 	return noone
 }
-
 if global.tem_tela_aberta {
 	audio_stop_sound(snd_passos_davi)
 }
@@ -383,7 +404,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 }
 
 if mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == rm_casa and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 {
-	if (point_in_rectangle(mouse_x, mouse_y, x - sprite_width/2, y - sprite_height/2, x + sprite_width/2, y + sprite_height/2)) {
+	if (point_in_rectangle(mouse_x, mouse_y, x - 30, y - 110, x + 30, y + 86)) {
 		switch obj_personagem.slot_selecionado {
 			case 1:
 				obj_personagem.slot1 = global.coletar_destruir(object_index, obj_personagem.item_selecionado)
@@ -454,15 +475,15 @@ if beber_agua and room == rm_bunker {
 				atributos.sede += obj_personagem.valor_agua 
 			}
 			if obj_personagem.slot_selecionado == 1 {
-				obj_personagem.slot1 = noone
+				obj_personagem.slot1 = acerto_de_contas(obj_personagem.slot1)
 			} else if obj_personagem.slot_selecionado == 2 {
-				obj_personagem.slot2 = noone
+				obj_personagem.slot2 = acerto_de_contas(obj_personagem.slot2)
 			} else if obj_personagem.slot_selecionado == 3 {
-				obj_personagem.slot3 = noone
+				obj_personagem.slot3 = acerto_de_contas(obj_personagem.slot3)
 			} else if obj_personagem.slot_selecionado == 4 {
-				obj_personagem.slot4 = noone
+				obj_personagem.slot4 = acerto_de_contas(obj_personagem.slot4)
 			} else {
-				obj_personagem.slot5 = noone 
+				obj_personagem.slot5 = acerto_de_contas(obj_personagem.slot5) 
 			}
 			y_alimentou = y - sprite_height / 2 + 20
 			tirar = true
