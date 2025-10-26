@@ -40,26 +40,28 @@ if instance_exists(obj_radio) {
 		obj_radio.pilhas = false
 		switch obj_personagem.slot_selecionado {
 			case 1:
-				obj_personagem.slot1 = global.coletar_destruir(obj_personagem.slot1)
+				obj_personagem.casa(obj_personagem.slot1, obj_personagem.slot1_novo, obj_personagem.slot1_n)
 				break
 			case 2:
-				obj_personagem.slot2 = global.coletar_destruir(obj_personagem.slot2)
+				obj_personagem.casa(obj_personagem.slot2, obj_personagem.slot2_novo, obj_personagem.slot2_n)
 				break
 			case 3:
-				obj_personagem.slot3 = global.coletar_destruir(obj_personagem.slot3)
+				obj_personagem.casa(obj_personagem.slot3, obj_personagem.slot3_novo, obj_personagem.slot3_n)
 				break
 			case 4:
-				obj_personagem.slot4 = global.coletar_destruir(obj_personagem.slot4)
+				obj_personagem.casa(obj_personagem.slot4, obj_personagem.slot4_novo, obj_personagem.slot4_n)
 				break
 			case 5:
-				obj_personagem.slot5 = global.coletar_destruir(obj_personagem.slot5)
+				obj_personagem.casa(obj_personagem.slot5, obj_personagem.slot5_novo, obj_personagem.slot5_n)
 				break
 		}
 	}
 }
 
-if object_index == obj_radio and obj_radio.programacao != noone and !is_pilha {
-	obj_radio.clicou = true
+if instance_exists(obj_radio) {
+	if object_index == obj_radio and obj_radio.programacao != noone and !is_pilha and !clicou and !obj_radio.etapa2 {
+		obj_radio.clicou = true
+	}
 }
 
 if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta {
@@ -221,7 +223,7 @@ if !global.tem_tela_aberta and !nao and image_alpha == 1 {
 		return noone
 	}
 
-	if point_distance(obj_personagem.x, obj_personagem.y, x, y) < 100 { //se o personagem estiver proximo do coletavel
+	if point_distance(obj_personagem.x, obj_personagem.y, x, y) < 200 { //se o personagem estiver proximo do coletavel
 		if !audio_is_playing(snd_menu_in) {
 			audio_play_sound(snd_menu_in, 1, false)
 		}

@@ -29,7 +29,7 @@ if global.tem_tela_aberta {
 	if place_meeting(mouse_x, mouse_y, objetos_interativos) {
 		var _colisao = instance_place(mouse_x, mouse_y, objetos_interativos)
 		cursor_sprite = spr_cursor_mao
-		if point_distance(obj_personagem.x, obj_personagem.y, _colisao.x, _colisao.y) > 100 {
+		if point_distance(obj_personagem.x, obj_personagem.y, _colisao.x, _colisao.y) > 200 {
 			cursor_sprite = spr_cursor_mao_trans
 		} else {
 			cursor_sprite = spr_cursor_mao

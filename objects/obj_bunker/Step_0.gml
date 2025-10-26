@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if point_distance(x, y, obj_personagem.x, obj_personagem.y) < 100 {
+if point_distance(x, y, obj_personagem.x, obj_personagem.y) < 200 {
 	image_speed = 1
 	if !primeiro and !audio_is_playing(snd_portao_bunker){
 		audio_play_sound(snd_portao_bunker, 1, false)

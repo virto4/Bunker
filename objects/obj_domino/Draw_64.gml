@@ -3,20 +3,20 @@
 
 function maior() {
 	var encontrou = false
-	for (var k = 6; k >= 0; k--) {
-		for (var l = k; l >= 0; l--) {
-			for (var i = 0; i < array_length(pecas_jogador); i++) {
+	for (var k = 6; k >= 0 and !encontrou; k--) {
+		for (var l = k; l >= 0 and !encontrou; l--) {
+			for (var i = 0; i < array_length(pecas_jogador) and !encontrou; i++) {
 				if array_equals(pecas_jogador[i], [k, l]) or array_equals(pecas_jogador[i], [l, k]) {
 					encontrou = true
 					array_delete(pecas_jogador, i, 1)
 					vez_davi = true
 					tempo = current_time / 1000 + 3
-					return [k, l]
-				}
-				if array_equals(pecas_adversario[i], [k, l]) or array_equals(pecas_adversario[i], [l, k]) {
+					array_push(pecas_mesa, [k, l])
+				}if array_equals(pecas_adversario[i], [k, l]) or array_equals(pecas_adversario[i], [l, k]) {
 					encontrou = true
+					vez_davi = false
 					array_delete(pecas_adversario, i, 1)
-					return [k, l]
+					array_push(pecas_mesa, [k, l])
 				}
 			}
 		}
@@ -180,7 +180,18 @@ if clicou {
 	largura = 0
 	var ultima = 0
 	for (var i = 0; i < array_length(pecas_mesa); i++) { 
-		if pecas_mesa[i][0] == pecas_mesa[i][1] {
+		if array_length(pecas_mesa) == 1 {
+			n_pecas += 50
+			largura += 50
+			draw_set_color(c_black)	
+			draw_rectangle(xmesa + n_pecas - 50, 540 - 50, xmesa + n_pecas, 540 + 50, false)
+			draw_set_color(#CCCCCC)
+			draw_rectangle(xmesa + n_pecas - 45, 495, xmesa + n_pecas - 5, 537, false)
+			draw_rectangle(xmesa + n_pecas - 45, 542, xmesa + n_pecas - 5, 585, false)
+			pontos(pecas_mesa[i][0], xmesa + n_pecas - 25, 515)
+			pontos(pecas_mesa[i][1], xmesa + n_pecas - 25, 565)
+			ultima = pecas_mesa[i][0]
+		} else if pecas_mesa[i][0] == pecas_mesa[i][1] {
 			n_pecas += 50
 			largura += 50
 			draw_set_color(c_black)	
@@ -258,7 +269,7 @@ if clicou and primeira_peca {
 			maismais = true
 		} else {
 			primeira_peca = false
-			array_push(pecas_mesa, maior())
+			maior()
 		}
 	}
 	
