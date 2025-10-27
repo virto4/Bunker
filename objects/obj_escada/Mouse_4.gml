@@ -1,6 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste 
-if !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 
+if !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 200 
 	and obj_controlador_evento.evento_inimigo and !derrotou {
 	audio_stop_all()
 	musica++
@@ -10,7 +10,7 @@ if !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_person
 	
 	seguir = false
 	largura_inimigo = (246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
-	largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
+
 
 	largura_roger = (246 * obj_personagem.atributos.saude / 100 < 0) ? 0 : 246 * obj_personagem.atributos.saude / 100
 	habilidade_roger = ""
@@ -18,9 +18,13 @@ if !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_person
 	arma_davi = noone
 	arma_roger = noone
 	obj_personagem.mudou_humor = true
-	obj_personagem.atributos.humor = obj_davi.humores[0]
-	obj_davi.mudou_humor = true
-	obj_davi.atributos.humor = obj_davi.humores[0]
+	obj_personagem.atributos.humor = obj_personagem.humores[0]
+	
+	if instance_exists(obj_davi) {
+		largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
+		obj_davi.mudou_humor = true
+		obj_davi.atributos.humor = obj_davi.humores[0]
+	}
 	
 	golpe_morte_tempo1 = false
 	golpe_morte_numero1 = 1

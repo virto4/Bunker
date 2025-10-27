@@ -5,10 +5,11 @@ depth = -y
 if point_in_rectangle(x, y, obj_personagem.x - 40, obj_personagem.y, obj_personagem.x + 40, obj_personagem.y + 90) {
 	depth = obj_personagem.depth + 1
 }
-if point_in_rectangle(x, y, obj_davi.x - 40, obj_davi.y, obj_davi.x + 40, obj_davi.y + 90) {
-	depth = obj_davi.depth + 1
+if instance_exists(obj_davi) {
+	if point_in_rectangle(x, y, obj_davi.x - 40, obj_davi.y, obj_davi.x + 40, obj_davi.y + 90) {
+		depth = obj_davi.depth + 1
+	}
 }
-
 if clicou {
 	var width_sair = sprite_get_width(spr_voltar) / 2
 	var height_sair = sprite_get_height(spr_voltar) / 2 

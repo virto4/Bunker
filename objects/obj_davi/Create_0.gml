@@ -28,7 +28,7 @@ mouse_aux2 = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 100,
+	saude: 0,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
@@ -39,7 +39,10 @@ atributos = {
 	fortuna: 45,
 }
 
-atributos_originais = atributos
+forca_padrao = atributos.forca
+fortuna_padrao = atributos.fortuna
+resistencia_padrao = atributos.resistencia
+sagacidade_padrao = atributos.sagacidade
 
 mudou_humor = false
 

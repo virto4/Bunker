@@ -1,5 +1,20 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+mes = 0
+morte_davi = false
+morte_roger = false
+alpha_morte = 0
+etapa1_morte = false
+etapa2_morte = false
+morte_davi_aux = true
+tempo_morte = 0
+cor_botao = c_white
+tempo_over = false
+tempo_over2 = false
+tempo_over3 = false
+aux1 = false
+pode_comecar = true
+pode_comecar2 = true
 
 musica = -1
 musicas = [

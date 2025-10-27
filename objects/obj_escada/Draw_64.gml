@@ -472,10 +472,15 @@ if clicou and !derrotou {
 			if executar {
 				atirou = true
 				if sua_vez == 0 {
-					sua_vez = 1
+					if instance_exists(obj_davi) {
+						sua_vez = 1
+					} else {
+						sua_vez = 2
+					}
 					_y = y_roger
 					receptor = inimigo
 					ataque = sqrt(obj_personagem.atributos.forca * variable_struct_get(armas, object_get_name(arma_roger))) //média geometrica 
+					ataque = ataque / (ataque + 20) * 100
 					switch habilidade_roger {
 						case "Sniper":
 							if arma_roger == obj_metralhadora or arma_roger == obj_pistola {
@@ -598,35 +603,26 @@ if clicou and !derrotou {
 							tiros_pistola--
 						}
 						
-						var critico = false
-						var errou = false
-						if obj_personagem.atributos.sagacidade > 85 {
-							if irandom_range(0, 6) == 0 {
-								critico = true
-							}
-						} else if obj_personagem.atributos.sagacidade > 50 {
-							if irandom_range(0, 12) == 0 {
-								critico = true
-							}
-						} else if obj_personagem.atributos.sagacidade > 30 {
-							if irandom_range(0, 25) == 0 {
-								errou = true
-							}
-						} else {
-							if irandom_range(0, 15) == 0 {
-								errou = true
-							}
-						}
-						var ataque_final
+						var sag = obj_personagem.atributos.sagacidade;
+
+						var chance_critico = clamp((sag - 30) / 5, 0, 25);
+						var chance_erro    = clamp((40 - sag) / 5, 0, 16);
+
+						var rolagem = irandom(99);
+						var critico = (rolagem < chance_critico);
+						var errou   = (!critico && rolagem > 99 - chance_erro);
+
+ 						var ataque_final = 0
 						if errou {
 							ataque_final = 0
 							errou2 = true
 						} else if critico {
 							critico2 = true
-							ataque_final = round(random_range(0.9, 1.1) * ataque * 1.6 * (1 - inimigo.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * 1.6 * (1 - power(inimigo.resistencia / 100, 1.3))
 						} else {
-							ataque_final = round(random_range(0.9, 1.1) * ataque * (1 - inimigo.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * (1 - power(inimigo.resistencia / 100, 1.3))
 						}
+						ataque_final = round(lerp(ataque_final, random_range(ataque_final * 0.8, ataque_final * 1.2), 0.25))
 						inimigo.vida -= ataque_final
 						obj = "inimigo"
 						dano = ataque_final
@@ -634,11 +630,12 @@ if clicou and !derrotou {
 							obj_personagem.atributos.resistencia /= 1.2
 						}
 					}
-				} else if sua_vez == 1 {
+				} else if sua_vez == 1 and instance_exists(obj_davi) {
 					sua_vez = 2
 					_y = y_davi
 					receptor = inimigo
-					ataque = sqrt(obj_davi.atributos.forca * variable_struct_get(armas, object_get_name(arma_davi)))
+					ataque = sqrt(obj_personagem.atributos.forca * variable_struct_get(armas, object_get_name(arma_roger))) //média geometrica 
+					ataque = ataque / (ataque + 20) * 100
 					switch habilidade_davi {
 						case "Sniper":
 							if arma_davi == obj_metralhadora or arma_davi == obj_pistola {
@@ -761,35 +758,26 @@ if clicou and !derrotou {
 							tiros_pistola--
 						}
 						
-						var critico = false
-						var errou = false
-						if obj_davi.atributos.sagacidade > 85 {
-							if irandom_range(0, 6) == 0 {
-								critico = true
-							}
-						} else if obj_davi.atributos.sagacidade > 50 {
-							if irandom_range(0, 12) == 0 {
-								critico = true
-							}
-						} else if obj_davi.atributos.sagacidade > 30 {
-							if irandom_range(0, 25) == 0 {
-								errou = true
-							}
-						} else {
-							if irandom_range(0, 15) == 0 {
-								errou = true
-							}
-						}
-						var ataque_final = 0
+						var sag = obj_davi.atributos.sagacidade;
+
+						var chance_critico = clamp((sag - 30) / 5, 0, 25);
+						var chance_erro    = clamp((40 - sag) / 5, 0, 16);
+
+						var rolagem = irandom(99);
+						var critico = (rolagem < chance_critico);
+						var errou   = (!critico && rolagem > 99 - chance_erro);
+
+ 						var ataque_final = 0
 						if errou {
-							errou2 = true
 							ataque_final = 0
+							errou2 = true
 						} else if critico {
 							critico2 = true
-							ataque_final = round(random_range(0.9, 1.1) * ataque * 1.6 * (1 - inimigo.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * 1.6 * (1 - power(inimigo.resistencia / 100, 1.3))
 						} else {
-							ataque_final = round(random_range(0.9, 1.1) * ataque * (1 - inimigo.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * (1 - power(inimigo.resistencia / 100, 1.3))
 						}
+						ataque_final = round(lerp(ataque_final, random_range(ataque_final * 0.8, ataque_final * 1.2), 0.25))
 						inimigo.vida -= ataque_final
 						obj = "inimigo"
 						dano = ataque_final
@@ -802,38 +790,28 @@ if clicou and !derrotou {
 					ataque = 0
 					_y = y_inimigo
 					//vez do inimigo
-					var critico = false
-					var errou = false
-					if inimigo.sagacidade > 85 {
-						if irandom_range(0, 6) == 0 {
-							critico = true
-						}
-					} else if inimigo.sagacidade > 50 {
-						if irandom_range(0, 12) == 0 {
-							critico = true
-						}
-					} else if inimigo.sagacidade > 30 {
-						if irandom_range(0, 25) == 0 {
-							errou = true
-						}
-					} else {
-						if irandom_range(0, 15) {
-							errou = true
-						}
-					}
+					
+					var sag = inimigo.sagacidade;
+					var chance_critico = clamp((sag - 30) / 5, 0, 25);
+					var chance_erro    = clamp((40 - sag) / 5, 0, 16);
+					var rolagem = irandom(99);
+					var critico = (rolagem < chance_critico);
+					var errou   = (!critico && rolagem > 99 - chance_erro)
 					var ataque_final = 0
-					if irandom_range(0, 1) == 1 {
+					if irandom_range(0, 1) == 1 or !instance_exists(obj_davi) {
 						obj = "Roger"
 						receptor = obj_personagem
 						if errou {
-							errou2 = true
 							ataque_final = 0
+							errou2 = true
 						} else if critico {
 							critico2 = true
-							ataque_final = round(inimigo.forca * 1.6 * (1 - obj_personagem.atributos.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * 1.6 * (1 - power(obj_personagem.atributos.resistencia / 100, 1.3))
 						} else {
-							ataque_final = round(inimigo.forca * (1 - obj_personagem.atributos.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * (1 - power(obj_personagem.atributos.resistencia / 100, 1.3))
 						}
+						ataque_final = round(lerp(ataque_final, random_range(ataque_final * 0.8, ataque_final * 1.2), 0.25))
+					
 						obj_personagem.atributos.saude -= ataque_final
 						mensagem = true
 						codigo = string(inimigo.nome) + " ataca Roger"
@@ -842,15 +820,16 @@ if clicou and !derrotou {
 						obj = "Davi"
 						receptor = obj_davi
 						if errou {
-							errou2 = true
 							ataque_final = 0
+							errou2 = true
 						} else if critico {
 							critico2 = true
-							ataque_final = round(inimigo.forca * 1.6 * (1 - obj_davi.atributos.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * 1.6 * (1 - power(obj_davi.atributos.resistencia / 100, 1.3))
 						} else {
-							ataque_final = round(inimigo.forca * (1 - obj_davi.atributos.resistencia / 100))
+							ataque_final = random_range(0.9, 1.1) * (ataque * 0.8 + 5) * (1 - power(obj_davi.atributos.resistencia / 100, 1.3))
 						}
-						ataque_final = round(ataque_final * random_range(0.9, 1.1))
+						ataque_final = round(lerp(ataque_final, random_range(ataque_final * 0.8, ataque_final * 1.2), 0.25))
+					
 						obj_davi.atributos.saude -= ataque_final
 						mensagem = true
 						codigo = string(inimigo.nome) + " ataca Davi"
@@ -885,7 +864,9 @@ if clicou and !derrotou {
 				critico2 = false
 			}
 			largura_inimigo = (246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
-			largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
+			if instance_exists(obj_davi) {
+				largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
+			}
 			largura_roger = (246 * obj_personagem.atributos.saude / 100 < 0) ? 0 : 246 * obj_personagem.atributos.saude / 100
 		} else {
 			if mensagem_turno {
@@ -940,29 +921,48 @@ if clicou and !derrotou {
 				obj_personagem.atributos.resistencia = round(obj_personagem.atributos.resistencia * 1.09)
 				obj_personagem.atributos.sagacidade = round(obj_personagem.atributos.sagacidade * 1.09)
 				obj_personagem.atributos.fortuna = round(obj_personagem.atributos.fortuna * 1.09)
-			
-				obj_davi.atributos.forca = round(obj_davi.atributos.forca * 1.09)
-				obj_davi.atributos.resistencia = round(obj_davi.atributos.resistencia * 1.09)
-				obj_davi.atributos.sagacidade = round(obj_davi.atributos.sagacidade * 1.09)
-				obj_davi.atributos.fortuna = round(obj_davi.atributos.fortuna * 1.09)
+				if instance_exists(obj_davi) {
+					obj_davi.atributos.forca = round(obj_davi.atributos.forca * 1.09)
+					obj_davi.atributos.resistencia = round(obj_davi.atributos.resistencia * 1.09)
+					obj_davi.atributos.sagacidade = round(obj_davi.atributos.sagacidade * 1.09)
+					obj_davi.atributos.fortuna = round(obj_davi.atributos.fortuna * 1.09)
+					obj_davi.forca_padrao = obj_davi.atributos.forca
+					obj_davi.fortuna_padrao = obj_davi.atributos.fortuna
+					obj_davi.resistencia_padrao = obj_davi.atributos.resistencia
+					obj_davi.sagacidade_padrao = obj_davi.atributos.sagacidade
+				}
+				obj_personagem.forca_padrao = obj_personagem.atributos.forca
+				obj_personagem.fortuna_padrao = obj_personagem.atributos.fortuna
+				obj_personagem.resistencia_padrao = obj_personagem.atributos.resistencia
+				obj_personagem.sagacidade_padrao = obj_personagem.atributos.sagacidade
 				
 				seguir = true
 				
 				loots = []
-				var sorte = sqrt(obj_davi.atributos.fortuna * obj_personagem.atributos.fortuna)
+				var sorte = 0
+				if instance_exists(obj_davi) {
+					sorte = sqrt(obj_davi.atributos.fortuna * obj_personagem.atributos.fortuna)
+				} else {
+					sorte = obj_personagem.atributos.fortuna
+				}
+				sorte = sorte / (sorte + 30) * 100
+				var qtde_loots = irandom(sorte div 10)
+				var loots_coletados = 0
 				var probabilidades = {
 					"obj_municao": 0.2 + (sorte div 10) / 20,
-					"obj_pilha": 0.1 + (sorte div 10) / 20,
+					"obj_pilha": 0.01 + (sorte div 10) / 20,
 					"obj_batata": 0.08 + (sorte div 10) / 20,
-					"obj_cookie": 0.08 + (sorte div 10) / 20,
-					"obj_arroz": 0.08 + (sorte div 10) / 20,
+					"obj_cookie": 0.09 + (sorte div 10) / 20,
+					"obj_arroz": 0.01 + (sorte div 10) / 20,
 					"obj_frango": 0.1 + (sorte div 10) / 20,
 					"obj_repolho": 0.05 + (sorte div 10) / 20,
-					"obj_agua": 0.2 + (sorte div 10) / 20,
-					"obj_curativo": 0.1 + (sorte div 10) / 20
+					"obj_agua": 0.5 + (sorte div 10) / 20,
+					"obj_curativo": 0.1 + (sorte div 10) / 20,
+					"obj_antibiotico": 0.2 + (sorte div 10) / 20,
 				}
 				for (var i = 0; i < array_length(struct_get_names(probabilidades)); i++) {
-					if random(1) < variable_struct_get(probabilidades, struct_get_names(probabilidades)[i]) {
+					if random(1) < variable_struct_get(probabilidades, struct_get_names(probabilidades)[i]) and loots_coletados <= qtde_loots {
+						loots_coletados++
 						array_push(loots, struct_get_names(probabilidades)[i])
 						var is_alimento = false
 						for (var j = 0; j < array_length(global.alimentos); j++) {
@@ -1012,5 +1012,77 @@ if clicou and !derrotou {
 	}
 	if mouse_check_button_pressed(mb_left) {
 		final = false
+	}
+}
+if instance_exists(obj_davi) and clicou {
+	if obj_davi.atributos.saude <= 0 {
+		if sua_vez == 1 {
+			sua_vez = 2
+		}
+		if morte_davi_aux {
+			morte_davi = true
+			morte_davi_aux = false
+		}
+	}
+}
+
+if morte_davi and clicou {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if !etapa2_morte and alpha_morte < 1 {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		} 
+	} else if !etapa2_morte {
+		var msg_game_over = "Ele levou a pior enquanto lutava pela soberania do Bunker, embora tenha lutado bravamente"
+		if !aux1 {
+			aux1 = true
+			tempo_over = current_time / 1000 + 1.5
+		}
+		draw_set_font(fnt_alagard)
+		draw_set_color(c_white)
+		var _txt = "Davi morreu"
+		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+		draw_set_font(fnt_dialogos)
+		if tempo_over < current_time / 1000 {
+			draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
+			if pode_comecar {
+				tempo_over2 = current_time / 1000 + 1.5
+				pode_comecar = false
+			}
+		}
+		if tempo_over2 < current_time / 1000 and !pode_comecar {
+			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(mes)
+			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+			if pode_comecar2 {
+				tempo_over3 = current_time / 1000 + 1.5
+				pode_comecar2 = false
+			}
+		}
+		if tempo_over3 < current_time / 1000 and !pode_comecar2 {
+			var msg_tela_inicial = "Voltar para a batalha"
+			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+			var yinicial = 860 - 5
+			var yfinal = 860 + string_height(msg_tela_inicial) + 5
+			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+				cor_botao = #527F7F
+				if mouse_check_button_pressed(mb_left) {
+					etapa2_morte = true
+					instance_destroy(obj_davi)
+				}
+			} else {
+				cor_botao = c_white
+			}
+		}
+	} else if etapa2_morte {
+		if alpha_morte > 0 {
+			alpha_morte -= 0.05
+		} else {
+			etapa2_morte = false
+			morte_davi = false
+		}
 	}
 }

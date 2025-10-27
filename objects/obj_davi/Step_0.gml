@@ -1,29 +1,35 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // No evento Step ou Draw do personagem
-if mudou_humor {
 
-	if atributos.humor == "COLÉRICO" {
-		atributos.forca += 20  
-		atributos.resistencia -= 20
-		atributos.sagacidade -= 20
-		atributos.fortuna -= 20
-	} else if atributos.humor == "APAVORADO" {
-		atributos.forca += 20
-		atributos.resistencia -= 20
-		atributos.sagacidade += 20
-		atributos.fortuna -= 20
-	} else if atributos.humor == "DEPRIMIDO" {
-		atributos.forca -= 20
-		atributos.resistencia += 20
-		atributos.sagacidade -= 20
-		atributos.fortuna -= 20 
-	} else if atributos.humor == "EXTASIADO" {
-		atributos.forca += 20
-		atributos.resistencia += 20
-		atributos.sagacidade -= 20
-		atributos.fortuna += 20
+if mudou_humor {
+	if atributos.humor == "NEUTRO" {
+		atributos.forca = forca_padrao
+		atributos.sagacidade = sagacidade_padrao
+		atributos.fortuna = fortuna_padrao
+		atributos.resistencia = resistencia_padrao
 	}
+	if atributos.humor == "COLÉRICO" {
+		atributos.forca = forca_padrao + 20  
+		atributos.resistencia = resistencia_padrao - 20
+		atributos.sagacidade = sagacidade_padrao - 20
+		atributos.fortuna = fortuna_padrao - 20
+	} else if atributos.humor == "APAVORADO" {
+		atributos.forca = forca_padrao + 20
+		atributos.resistencia = resistencia_padrao - 20
+		atributos.sagacidade = sagacidade_padrao + 20
+		atributos.fortuna = fortuna_padrao - 20
+	} else if atributos.humor == "DEPRIMIDO" {
+		atributos.forca = forca_padrao - 20
+		atributos.resistencia = resistencia_padrao + 20
+		atributos.sagacidade = sagacidade_padrao - 20
+		atributos.fortuna = fortuna_padrao - 20 
+	} else if atributos.humor == "EXTASIADO" {
+		atributos.forca = forca_padrao + 20
+		atributos.resistencia = resistencia_padrao + 20
+		atributos.sagacidade = sagacidade_padrao - 20
+		atributos.fortuna = fortuna_padrao + 20
+	} 
 	atributos.forca = (atributos.forca > 100) ? 100 : atributos.forca
 	atributos.resistencia = (atributos.resistencia > 100) ? 100 : atributos.resistencia 
 	atributos.fortuna = (atributos.fortuna > 100) ? 100 : atributos.fortuna
@@ -36,7 +42,6 @@ if mudou_humor {
 	
 	mudou_humor = false
 }
-
 
 if global.tem_tela_aberta {
 	image_speed = 0
