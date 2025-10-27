@@ -57,10 +57,9 @@ if interagir and mostrar {
 		}
 		tempo = current_time + type_speed
 	}
-	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, alimento_scale, alimento_scale, 0, c_white, 1)
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, fala_scale, fala_scale, 0, c_white, 1)
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
-	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
 	if array_length(struct_get_names(falas[fala_dia][fala_atual])) > 3 and !respondeu {
 		var struct = variable_struct_get(falas[fala_dia][fala_atual], "respostas")
 		pode_pular = false
@@ -133,7 +132,15 @@ if interagir and mostrar {
 	}
 	draw_text_ext(210, 760, string_copy(msg, 1, char_index), 30, 1520)
 	var largura = string_width(falas[fala_dia][fala_atual].personagem)
-	draw_sprite_ext(spr_dialogo, 0, 170 + largura / 2, 665, (largura + 10) / 320, 1.3, 0, c_white, 1)
+	var altura = 640 - (78 - string_height("A")) / 2
+	draw_sprite_part_ext(spr_dialogo, 0, 0, 0, 10, 60, 160, altura, 1.3, 1.3, c_white, 1)
+	var xis = 0
+	for (var i = 0; i < largura / 10; i++) {
+		draw_sprite_part_ext(spr_dialogo, 0, 10, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
+		xis += 10
+	}
+	draw_sprite_part_ext(spr_dialogo, 0, 310, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
+	//draw_sprite_ext(spr_dialogo, 0, 170 + largura / 2, 665, (largura + 10) / 320, 1.3, 0, c_white, 1)
 	draw_text(170, 640, falas[fala_dia][fala_atual].personagem)
 	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
 	draw_sprite_ext(variable_struct_get(falas[fala_dia][fala_atual], "retrato"), 0, 1632, 552, 1, 1, 0, c_white, 1)

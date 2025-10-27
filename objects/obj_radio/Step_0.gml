@@ -1,8 +1,16 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 depth = -y
+
+if point_in_rectangle(x, y, obj_personagem.x - 40, obj_personagem.y, obj_personagem.x + 40, obj_personagem.y + 90) {
+	depth = obj_personagem.depth + 1
+}
+if point_in_rectangle(x, y, obj_davi.x - 40, obj_davi.y, obj_davi.x + 40, obj_davi.y + 90) {
+	depth = obj_davi.depth + 1
+}
+
 if instance_exists(obj_diario) {
-	if obj_diario.dia == 1 and !pilha_aux1 {
+	if obj_diario.dia == 33 and !pilha_aux1 {
 		pilhas = true
 		pilha_aux1 = true
 	} else if obj_diario.dia == 66 and !pilha_aux2 {
@@ -51,7 +59,6 @@ if entrou and instance_exists(obj_calendario) {
     }
     else if (dia_semana1 == 4) { // Quarta
         programacao = cozinha[cozinha_id];
-		cozinha_id++
 		programa = "Cozinha Improvisada"
 		if cozinha_id % 4 == 0 {
 			ovo_mexido = true
@@ -73,6 +80,7 @@ if entrou and instance_exists(obj_calendario) {
 		} else {
 			bolo_quatro_quartos = false
 		}
+		cozinha_id++
     }
     else if (dia_semana1 == 5) { // Quinta
         programacao = noticias[noticias_id];

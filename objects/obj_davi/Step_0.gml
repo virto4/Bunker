@@ -2,6 +2,7 @@
 // Você pode escrever seu código neste editor
 // No evento Step ou Draw do personagem
 if mudou_humor {
+
 	if atributos.humor == "COLÉRICO" {
 		atributos.forca += 20  
 		atributos.resistencia -= 20

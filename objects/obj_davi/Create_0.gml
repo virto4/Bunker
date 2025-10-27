@@ -39,6 +39,8 @@ atributos = {
 	fortuna: 45,
 }
 
+atributos_originais = atributos
+
 mudou_humor = false
 
 alimento = false

@@ -370,7 +370,7 @@ if clicou and !derrotou {
 				draw_rectangle_color(x_davi + 128 - 40 - string_width(nome) - 5, novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45 + 5, c_black, c_black, c_black, c_black, false )
 				draw_rectangle_color(x_davi + 128 - 40 - string_width(nome), novo_y - 180 - 40 - i * 45, x_davi + 123, novo_y - 180 - i * 45, cor_unidade, cor_unidade, cor_unidade, cor_unidade, false )
 				draw_text(x_davi + 128 - 20 - string_width(nome), novo_y_roger - 180 - 40 - i * 45, nome)
-				if point_in_rectangle(mx, my, x_davi + 128 - 10 - string_width(nome), novo_y - 180 - 40 - i * 45 - 5, x_davi + 128, novo_y - 180 - i * 45) {
+				if point_in_rectangle(mx, my, x_davi + 128 - 10 - string_width(nome), novo_y - 180 - 40 - i * 45, x_davi + 128, novo_y - 180 - i * 45) {
 					if !aaa {
 						i_selecionado = i
 						i_selecionado_novo = i

@@ -2,12 +2,11 @@
 // Você pode escrever seu código neste editor
 depth = -y
 
-if y < obj_personagem.y + 86 and y > obj_personagem.y - 5 {
+if point_in_rectangle(x, y, obj_personagem.x - 40, obj_personagem.y, obj_personagem.x + 40, obj_personagem.y + 90) {
 	depth = obj_personagem.depth + 1
-} else if instance_exists(obj_davi) {
-	if y < obj_davi.y + 86 and y > obj_davi.y - 5 {
-		depth = obj_personagem.depth + 1
-	}
+}
+if point_in_rectangle(x, y, obj_davi.x - 40, obj_davi.y, obj_davi.x + 40, obj_davi.y + 90) {
+	depth = obj_davi.depth + 1
 }
 
 if global.tem_tela_aberta {
