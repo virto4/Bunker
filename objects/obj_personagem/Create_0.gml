@@ -15,6 +15,9 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
+
+tirar_jogo = false
+jogo_scale = 0
 tirar = false
 valor_agua = 30 //quanta sede recupera 1 garrafa de agua
 beber_agua = false

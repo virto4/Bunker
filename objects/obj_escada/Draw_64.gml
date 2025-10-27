@@ -1,5 +1,46 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if question {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+	if scale < 5 {
+		scale += 0.5
+	} else {
+		var mx = device_mouse_x_to_gui(0)
+		var my = device_mouse_y_to_gui(0)
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text(220, 800, "Você deseja enfrentar um inimigo desconhecido?")
+		if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+			if !mouse_aux1 {
+				mouse_aux1 = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if mouse_check_button_pressed(mb_left) {
+				question = false
+				etapa2 = true
+				escureceu = true
+			}
+		} else if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+			if !mouse_aux2 {
+				mouse_aux2 = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if mouse_check_button_pressed(mb_left) {
+				question = false
+				etapa2 = true
+				global.tem_tela_aberta = false
+			}
+		}
+		draw_text(300, 940, "Sim")
+		draw_text(1620, 940, "Não")
+	}
+}
+
 function recarrega(obj, arma) {
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
@@ -910,12 +951,9 @@ if clicou and !derrotou {
 		mensagem = true
 		codigo = "Batalha concluída"
 		tempo = current_time / 1000 + 3
+		venceu = true
 		if mouse_check_button_pressed(mb_left) {
-			batalha = false
-			clicou = false
-			derrotou = true 
-			final = true 
-			global.tem_tela_aberta = false
+			escureceu2 = true
 			if !seguir {
 				obj_personagem.atributos.forca = round(obj_personagem.atributos.forca * 1.09)
 				obj_personagem.atributos.resistencia = round(obj_personagem.atributos.resistencia * 1.09)
@@ -935,9 +973,9 @@ if clicou and !derrotou {
 				obj_personagem.fortuna_padrao = obj_personagem.atributos.fortuna
 				obj_personagem.resistencia_padrao = obj_personagem.atributos.resistencia
 				obj_personagem.sagacidade_padrao = obj_personagem.atributos.sagacidade
-				
+		
 				seguir = true
-				
+	
 				loots = []
 				var sorte = 0
 				if instance_exists(obj_davi) {
@@ -994,24 +1032,30 @@ if clicou and !derrotou {
 		}
 	}
 } else if final {
-	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
-	draw_set_font(fnt_dialogos)
-	draw_set_color(c_black)
-	var texto = ""
-	if array_length(loots) > 0 {
-		texto = "Enquanto seu inimigo jazia morto no chão, você coletou dele: "
-		for (var i = 0; i < array_length(loots); i++) {
-			texto += variable_struct_get(global.nomes, loots[i]) + "; "
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	if scale < 5 {
+		scale += 0.5
+	} else if scale >= 5 {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		var texto = ""
+		if array_length(loots) > 0 {
+			texto = "Enquanto seu inimigo jazia morto no chão, você coletou dele: "
+			for (var i = 0; i < array_length(loots); i++) {
+				texto += variable_struct_get(global.nomes, loots[i]) + "; "
+			}
+		} else {
+			texto = "Você não conseguiu coletar nada"
 		}
-	} else {
-		texto = "Você não conseguiu coletar nada"
-	}
-	var linhas = quebrar_texto(texto, 1520)
-	for (var i = 0; i < array_length(linhas); i++) {
-		draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
-	}
-	if mouse_check_button_pressed(mb_left) {
-		final = false
+		var linhas = quebrar_texto(texto, 1520)
+		for (var i = 0; i < array_length(linhas); i++) {
+			draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
+		}
+		if mouse_check_button_pressed(mb_left) {
+			final = false
+			etapa2 = true
+			global.tem_tela_aberta = false
+		}
 	}
 }
 if instance_exists(obj_davi) and clicou {
@@ -1033,7 +1077,7 @@ if morte_davi and clicou {
 			alpha_morte += 0.05
 		} 
 	} else if !etapa2_morte {
-		var msg_game_over = "Ele levou a pior enquanto lutava pela soberania do Bunker, embora tenha lutado bravamente"
+		var msg_game_over = "Ele levou a pior enquanto lutava pela soberania do Bunker, embora o tenha feito bravamente"
 		if !aux1 {
 			aux1 = true
 			tempo_over = current_time / 1000 + 1.5
@@ -1083,6 +1127,78 @@ if morte_davi and clicou {
 		} else {
 			etapa2_morte = false
 			morte_davi = false
+		}
+	}
+}
+
+if etapa2 {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+	if scale > 0 {
+		scale -= 0.5
+	} else if scale == 0 {
+		etapa2 = false
+	}
+}
+
+if escureceu {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if !escureceu_aux {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		} else {
+			iniciar_batalha()
+			escureceu_aux = true
+		}
+	} else {
+		if alpha_morte > 0 {
+			alpha_morte -= 0.05
+		} else {
+			escureceu = false
+			escureceu_aux = false
+		}
+	}
+}
+
+if escureceu2 {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if !escureceu_aux {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		} else {
+			if audio_is_playing(musicas[musica]) {
+				audio_stop_sound(musicas[musica])
+			}
+			clicou = false
+			derrotou = true 
+			final = true 
+			escureceu_aux = true
+		}
+	} else {
+		if alpha_morte > 0 {
+			alpha_morte -= 0.05
+		} else {
+			escureceu2 = false
+		}
+	}
+}
+
+if escureceu3 {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if !escureceu_aux {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		} else {
+			audio_stop_sound(musicas[musica])
+			derrotou = true
+			global.tem_tela_aberta = false
+			clicou = false
+			escureceu_aux = true
+		}
+	} else {
+		if alpha_morte > 0 {
+			alpha_morte -= 0.05
+		} else {
+			escureceu3 = false
 		}
 	}
 }

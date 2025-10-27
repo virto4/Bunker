@@ -41,10 +41,7 @@ if clicou and !derrotou {
 				mensagem = true
 				codigo = "Não há para onde correr"
 			} else {
-				audio_stop_sound(musicas[musica])
-				derrotou = true
-				global.tem_tela_aberta = false
-				clicou = false
+				escureceu3 = true
 			}
 		}
 	} else {

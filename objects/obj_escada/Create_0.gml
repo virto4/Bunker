@@ -15,6 +15,24 @@ tempo_over3 = false
 aux1 = false
 pode_comecar = true
 pode_comecar2 = true
+scale = 0
+etapa2 = false
+question = false
+venceu = false
+
+draw_set_font(fnt_dialogos)
+largura_sim = string_width("Sim")
+altura_sim = string_height("Sim")
+largura_nao = string_width("Não")
+altura_nao = string_height("Não")
+sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
+nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
+mouse_aux1 = false
+mouse_aux2 = false
+escureceu = false
+escureceu_aux = false
+escureceu2 = false
+escureceu3 = false
 
 musica = -1
 musicas = [
@@ -169,3 +187,47 @@ atirou = false
 davi_som = false
 roger_som = false
 inimigo_som = false
+
+function iniciar_batalha() {
+	audio_stop_all()
+	musica++
+	audio_play_sound(musicas[musica], 1, false)
+	clicou = true
+	global.tem_tela_aberta = true
+	
+	seguir = false
+	largura_inimigo = (246 * inimigo.vida / inimigo.total_vida < 0) ? 0 : 246 * inimigo.vida / inimigo.total_vida
+
+
+	largura_roger = (246 * obj_personagem.atributos.saude / 100 < 0) ? 0 : 246 * obj_personagem.atributos.saude / 100
+	habilidade_roger = ""
+	habilidade_davi = ""
+	arma_davi = noone
+	arma_roger = noone
+	obj_personagem.mudou_humor = true
+	obj_personagem.atributos.humor = obj_personagem.humores[0]
+	
+	if instance_exists(obj_davi) {
+		largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
+		obj_davi.mudou_humor = true
+		obj_davi.atributos.humor = obj_davi.humores[0]
+	}
+	
+	golpe_morte_tempo1 = false
+	golpe_morte_numero1 = 1
+	mestre_tempo1 = false
+	mestre_numero1 = 1
+
+	golpe_morte_tempo2 = false
+	golpe_morte_numero2 = 1
+	mestre_tempo2 = false
+	mestre_numero2 = 1
+	contagem = false
+	
+	critico2 = false
+	errou2 = false
+	receptor = noone
+	
+	sua_vez = 0
+	batalha = false
+}

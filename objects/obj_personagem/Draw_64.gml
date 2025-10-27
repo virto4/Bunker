@@ -21,20 +21,34 @@ if direita_coletavel {
 
 if !pode_jogar {
 	global.tem_tela_aberta = true
-	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
-	draw_set_color(c_black)
-	draw_set_font(fnt_dialogos)
-	draw_text(220, 800, "Você não pode jogar sozinho.")
-	if mouse_check_button_pressed(mb_left) {
-		if auxua {
-			global.tem_tela_aberta = false
-			pode_jogar = true
-			auxua = false
-			global.tem_tela_aberta = false
-		} else {
-			auxua = true
-		}
-	} 
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, jogo_scale, jogo_scale, 0, c_white, 1)
+	if jogo_scale < 5 {
+		jogo_scale += 0.5
+	} else {
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text(220, 800, "Você não pode jogar sozinho.")
+		if mouse_check_button_pressed(mb_left) {
+			if auxua {
+				global.tem_tela_aberta = false
+				pode_jogar = true
+				auxua = false
+				global.tem_tela_aberta = false
+				tirar_jogo = true
+			} else {
+				auxua = true
+			}
+		} 
+	}
+}
+
+if tirar_jogo {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, jogo_scale, jogo_scale, 0, c_white, 1)
+	if jogo_scale > 0 {
+		jogo_scale -= 0.5
+	} else if jogo_scale == 0 {
+		tirar_jogo = false
+	}
 }
 
 if room == rm_bunker {
@@ -299,6 +313,18 @@ if room == rm_bunker {
 
 if instance_exists(obj_cama_campanha) {
 	if obj_cama_campanha.clicou and desenha {
+		desenha = false
+	}
+}
+
+if room == rm_bunker {
+	if obj_escada.question and desenha {
+		desenha = false
+	}
+	if obj_escada.final and desenha {
+		desenha = false
+	}
+	if obj_calendario.clicou and desenha {
 		desenha = false
 	}
 }
