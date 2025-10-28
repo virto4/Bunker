@@ -153,32 +153,39 @@ bolo_chocolate = false
 bolo_quatro_quartos = false
 salada = false
 
+sniper = false
+ferramenteiro = false
+curandeiro = false
+
 sobrevivencia_id = 0
 sobrevivencia = [
 	["Nesse programa, possarei para vocês técnics de sobrevivência após o apocalipse.", 
 	"Na edição de hoje, ensinarei algumas técnicas de reparo no seu abrigo. É simples: tome cuidado com as ventilações, sempre limpando quando precisar; use água sanitária para retirar mofo das paredes e corrija vazamentos ou rachaduras no chão e teto.",
-	"Semana que vem tem mais. Até lá!"],
+	"Semana que vem tem mais. Até lá!"],//0
 	["Num mundo conturbado como esse, é imprescindível saber se defender. Portanto, darei dicas sobre porte de armas de fogo.", " É simples: desative a trava de segurança e mire, com olhos fixos no alvo. Não tenha insegurança e não exite, mas também não seja confiante demais.",
-	"procure mirar em partes não vitais e puxe o gatilho; lembre-se de abastecer-se de munições regularmente e pense que aqui é matar ou morrer.", "Boa noite e até mais."],
+	"procure mirar em partes não vitais e puxe o gatilho; lembre-se de abastecer-se de munições regularmente e pense que aqui é matar ou morrer.", "Boa noite e até mais."],//1 SNIPER
 	["Boa noite: no dia de hoje falaremos sobre ferramentas de corte. Elas são suas maiores aliadas; machados, facas, facões, canivetes... cada uma tem sua função e podem ser usadas como armas ou ferramentas.",
 	" Deixe elas sempre afiadas; para isso, basta água e uma pedra para amolar, e o procedimento é simples: esfregue a lâmina na pedra a um ãngulo de 45°, com movimentos circulares.",
-	"Para usar e não se ferir, procure sempre portar e utilizar a arma num ângulo tambbém próximo aos 45°. Espero ter ajudado e até a vista."],
+	"Para usar e não se ferir, procure sempre portar e utilizar a arma num ângulo também próximo aos 45°. Espero ter ajudado e até a vista."],//2 FERRAMENTEIRO
 	["No episódio de hoje, trataremos sobre sobrevivência na mata. As 4 principais coisas são: água, alimento, abrigo e fogo. Sua prioridade é aquela que estará mais escassa em sua região. ",
 	"Procure filtrar e aquecer a água de córregos para beber; monte armadilhas para pequenos animais e aprenda a diagnosticar se uma planta é venenosa ou não.",
 	"Faça fogo com pederneiras ou fósforos (leve-os sempre consigo) e monte abrigo em alguma clareira ou caverna; senão, cubra-se com uma generosa camada de folhas e deleite-se.",
-	"Boa noite."],
-	["Mente forte vence – O desespero é o maior inimigo. Respire fundo, planeje e aja. Você é mais resistente do que imagina!"],
-	["Silêncio é ouro – Evite gritar ou fazer barulho desnecessário. Sons atraem curiosos – e nem todos são amigos."],
-	["[Reprise] Boa noite: no dia de hoje falaremos sobre ferramentas de corte. Elas são suas maiores aliadas; machados, facas, facões, canivetes... cada uma tem sua função e podem ser usadas como armas ou ferramentas.",
-	"[Reprise] Deixe elas sempre afiadas; para isso, basta água e uma pedra para amolar, e o procedimento é simples: esfregue a lâmina na pedra a um ãngulo de 45°, com movimentos circulares.",
-	"[Reprise] Para usar e não se ferir, procure sempre portar e utilizar a arma num ângulo tambbém próximo aos 45°. Espero ter ajudado e até a vista."],
-	["Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],
-	["Defesa contra animais silvestres: não que tenham sobrado muitos mais, mas as dica de ouro é a seguinte: mantenha contato visual e retroceda lentamente; em alguns casos, se não funcionar, assuste o animal, tenatndo mostrar-se mais forte e alto. Boa noite."],
-	["Nós salvam vidas – Domine nós como o parafuso e o prussik para escalar, prender armadilhas ou construir abrigos."],
-	["Conheça plantas comestíveis: lembre-se que frutos coloridos demais, de odor forte e acre e que apresentam fiapos como nossos cabelos geralmente não devem ser consumidos."],
-	["Armadilhas silenciosas – Aprenda a fazer armadilhas com galhos e cordas para capturar pequenos animais sem gastar energia."],
-	["Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],
-	["Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],
+	"Boa noite."],//3
+	["Mente forte vence – O desespero é o maior inimigo. Respire fundo, planeje e aja. Você é mais resistente do que imagina!"],//4
+	["Silêncio é ouro – Evite gritar ou fazer barulho desnecessário. Sons atraem curiosos – e nem todos são amigos."],//5
+	["[REPRISE] Boa noite: no dia de hoje falaremos sobre ferramentas de corte. Elas são suas maiores aliadas; machados, facas, facões, canivetes... cada uma tem sua função e podem ser usadas como armas ou ferramentas.",
+	"[REPRISE] Deixe elas sempre afiadas; para isso, basta água e uma pedra para amolar, e o procedimento é simples: esfregue a lâmina na pedra a um ãngulo de 45°, com movimentos circulares.",
+	"[REPRISE] Para usar e não se ferir, procure sempre portar e utilizar a arma num ângulo tambbém próximo aos 45°. Espero ter ajudado e até a vista."],//6 FERRAMENTEIRO
+	["Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],//7 CURANDIERO MESTRE
+	["Defesa contra animais silvestres: não que tenham sobrado muitos mais, mas as dica de ouro é a seguinte: mantenha contato visual e retroceda lentamente; em alguns casos, se não funcionar, assuste o animal, tenatndo mostrar-se mais forte e alto. Boa noite."],//8
+	["Nós salvam vidas – Domine nós como o parafuso e o prussik para escalar, prender armadilhas ou construir abrigos."],//9
+	["Conheça plantas comestíveis: lembre-se que frutos coloridos demais, de odor forte e acre e que apresentam fiapos como nossos cabelos geralmente não devem ser consumidos."],//10
+	["[REPRISE] Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],//11 CURANDIERO MESTRE
+	["Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//12
+	["Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//13
+	["[REPRISE] Armadilhas silenciosas – Aprenda a fazer armadilhas com galhos e cordas para capturar pequenos animais sem gastar energia."],//14
+	["[REPRISE] Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//15
+	["[REPRISE] Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//16
 ]
 
 jesus_id = 0

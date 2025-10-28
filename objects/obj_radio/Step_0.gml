@@ -55,8 +55,25 @@ if entrou and instance_exists(obj_calendario) {
     }
     else if (dia_semana1 == 2) { // Segunda
         programacao = sobrevivencia[sobrevivencia_id];
-		sobrevivencia_id++
 		programa = "Guia de Sobrevivência Pós-Apocalíptica"
+		switch sobrevivencia_id {
+			case 1:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				break
+			case 2:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				break
+			case 6:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				break
+			case 7:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				break
+			case 11:	
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				break
+		}
+		sobrevivencia_id++
     }
     else if (dia_semana1 == 4) { // Quarta
         programacao = cozinha[cozinha_id];

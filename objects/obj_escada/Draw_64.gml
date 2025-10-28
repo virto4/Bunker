@@ -719,7 +719,7 @@ if clicou and !derrotou {
 							obj_davi.mudou_humor = true
 							break
 						case "Pensamentos intrusivos":
-							obj_davi.atributos.humor = objobj_davi_personagem.humores[3]
+							obj_davi.atributos.humor = obj_davi.humores[3]
 							atacou = false
 							mensagem = true
 							tempo = current_time / 1000 + 3
@@ -839,7 +839,14 @@ if clicou and !derrotou {
 					var critico = (rolagem < chance_critico);
 					var errou   = (!critico && rolagem > 99 - chance_erro)
 					var ataque_final = 0
-					if irandom_range(0, 1) == 1 or !instance_exists(obj_davi) {
+					var roger = false
+					if irandom(1) == 1 {
+						roger = true
+					}
+					if !instance_exists(obj_davi) {
+						roger = true
+					}
+					if roger {
 						obj = "Roger"
 						receptor = obj_personagem
 						if errou {
@@ -1058,6 +1065,20 @@ if clicou and !derrotou {
 		}
 	}
 }
+
+if obj_personagem.atributos.saude <= 0 {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if alpha_morte < 1 {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		} 
+	} else { 
+		obj_personagem.game_over = true
+		obj_personagem.msg_game_over = "Você desfaleceu enqanto lutava pela soberania do bunker"
+	}
+}
+
 if instance_exists(obj_davi) and clicou {
 	if obj_davi.atributos.saude <= 0 {
 		if sua_vez == 1 {

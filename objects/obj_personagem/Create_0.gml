@@ -15,7 +15,7 @@ personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
-
+global.tem_tela_aberta = false
 tirar_jogo = false
 jogo_scale = 0
 tirar = false
@@ -60,7 +60,7 @@ mudou_data = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 100,
+	saude: 1,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
@@ -211,7 +211,7 @@ habilidades = [
 	["Ataque", "Um ataque padrão. Nada de mais"],
 ]
 
-habilidades_adquiridas = habilidades //provisorio, futuramente as habilidades serão conquistadas ao longo do tempo
+habilidades_adquiridas =[habilidades[3], habilidades[4], habilidades[5], habilidades[8], habilidade[6], habilidades[9], habilidades[10]]//provisorio, futuramente as habilidades serão conquistadas ao longo do tempo
 
 inputs = {
 	esquerda	: ord("A"),
