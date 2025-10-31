@@ -119,45 +119,49 @@ if clicou {
 	}
 }
 
-if variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_chocolate") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_farinha") >= 1 and  variable_struct_get(obj_personagem.qtde_itens1, "obj_acucar") >= 1 {
+if variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_chocolate") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_farinha") >= 1 and  variable_struct_get(obj_personagem.qtde_itens1, "obj_acucar") >= 1 and ds_list_find_index(receitas, obj_bolo_chocolate) != -1 {
 	bolo_chocolate = true
-	cookie = true
 } else {
 	bolo_chocolate = false
+}
+
+if variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_chocolate") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_farinha") >= 1 and  variable_struct_get(obj_personagem.qtde_itens1, "obj_acucar") >= 1 and ds_list_find_index(receitas, obj_cookie) != -1 {
+	cookie = true
+} else {
 	cookie = false
 }
 
-if variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_farinha") >= 1 and  variable_struct_get(obj_personagem.qtde_itens1, "obj_acucar") >= 1 {
+if variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_farinha") >= 1 and  variable_struct_get(obj_personagem.qtde_itens1, "obj_acucar") >= 1 and ds_list_find_index(receitas, obj_bolo_quatro_quartos) != -1 {
 	bolo_quatro_quartos = true
 } else {
 	bolo_quatro_quartos = false
 }
 
-if variable_struct_get(obj_personagem.qtde_itens1, "obj_frango") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_alface") >= 1 {
+if variable_struct_get(obj_personagem.qtde_itens1, "obj_frango") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_alface") >= 1 and ds_list_find_index(receitas, obj_salada) != -1 {
 	salada = true
 } else {
 	salada = false
 }
 
-if variable_struct_get(obj_personagem.qtde_itens1, "obj_frango") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_arroz") >= 1 {
+if variable_struct_get(obj_personagem.qtde_itens1, "obj_frango") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_arroz") >= 1 and ds_list_find_index(receitas, obj_arroz_frango) != -1 {
 	arroz_frango= true
 } else {
 	arroz_frango = false
 }
 
-if variable_struct_get(obj_personagem.qtde_itens1, "obj_frango") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_batata") >= 1 {
+if variable_struct_get(obj_personagem.qtde_itens1, "obj_frango") >= 1 and variable_struct_get(obj_personagem.qtde_itens1, "obj_batata") >= 1 and ds_list_find_index(receitas, obj_escondidinho) != -1 {
 	escondidinho = true
 } else {
 	escondidinho = false
 }
 
-if  variable_struct_get(obj_personagem.qtde_itens1, "repolho") >= 1 {
+if  variable_struct_get(obj_personagem.qtde_itens1, "repolho") >= 1 and ds_list_find_index(receitas, obj_chucrute) != -1 {
 	chucrute = true
 } else {
 	chucrute = false
 }
 
-if  variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 3 {
+if  variable_struct_get(obj_personagem.qtde_itens1, "obj_ovo") >= 3 and ds_list_find_index(receitas, obj_ovo_mexido) != -1 {
 	ovo_mexido = true
 } else {
 	ovo_mexido = false

@@ -20,7 +20,7 @@ if instance_exists(obj_diario) {
 	}
 }
 
-if entrou and instance_exists(obj_calendario) {
+if entrou and instance_exists(obj_calendario) and clicou {
     // Reinicia variáveis de controle
     dia_semana1 = -1;
     dia_atual++
@@ -61,42 +61,65 @@ if entrou and instance_exists(obj_calendario) {
 				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
 				break
 			case 2:
-				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[1])
 				break
-			case 6:
-				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+			case 2:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[2])
+				break
+			case 8:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[7])
 				break
 			case 7:
-				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[2])
 				break
-			case 11:	
-				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[0])
+			case 12:
+				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[7])
 				break
 		}
 		sobrevivencia_id++
     }
-    else if (dia_semana1 == 4) { // Quarta
+    else if (dia_semana1 == 8) { // Quarta
         programacao = cozinha[cozinha_id];
 		programa = "Cozinha Improvisada"
-		if cozinha_id % 4 == 0 {
+		if cozinha_id % 8 == 0 {
 			ovo_mexido = true
 		} else {
 			ovo_mexido = false
 		}
-		if cozinha_id % 4 == 1 {
+		if cozinha_id % 8 == 1 {
 			salada = true
 		} else {
 			salada = false
 		}
-		if cozinha_id % 4 == 2 {
+		if cozinha_id % 8 == 2 {
 			bolo_chocolate = true
 		} else {
 			bolo_chocolate = false
 		}
-		if cozinha_id % 4 == 3 {
+		if cozinha_id % 8 == 3 {
 			bolo_quatro_quartos = true
 		} else {
 			bolo_quatro_quartos = false
+		}
+		if cozinha_id % 8 == 4 {
+			chucrute = true
+		} else {
+			chucrute = false
+		}
+		if cozinha_id % 8 == 5 {
+			cookie = true
+		} else {
+			cookie = false
+		}
+		if cozinha_id % 8 == 6 {
+			escondidinho = true
+		} else {
+			escondidinho = false
+		}
+		if cozinha_id % 8 == 7 {
+			arroz_frango = true
+		} else {
+			arroz_frango = false
 		}
 		cozinha_id++
     }
@@ -129,6 +152,18 @@ if clicou and !pilhas {
 			}
 			if salada {
 				ds_list_add(obj_cozinha_bunker.receitas, obj_salada )
+			}
+			if cookie {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_cookie )
+			}
+			if escondidinho {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_escondidinho )
+			}
+			if arroz_frango {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_arroz_frango )
+			}
+			if chucrute {
+				ds_list_add(obj_cozinha_bunker.receitas, obj_chucrute )
 			}
 			if char_index < string_length(programacao[indice_atual]) {
 				current_text = programacao[indice_atual]

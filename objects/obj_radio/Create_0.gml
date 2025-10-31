@@ -124,34 +124,46 @@ cozinha = [
 	["Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
 	"Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
 	
-	["[Reprise] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
-	"[Reprise] Hoje, vamos cozinhar um ovo mexido! Primeiro, separe 3 ovos de galinha.", "[Reprise] Em seguida coloque no fogo baixo e mexa, retirando e recolocando no fogo várias vezes até o ovo fica pronto."],
-	["[Reprise] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
-	"Primeiramente, corte pedaços de pão amanhecido e frite. Cozinhe o frango e desfie. Corte as folhas do alface. Misture tudo e está pronto! Desejo uma boa semana a todos e até a próxima edição!"],
-	["[Reprise] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
-	["[Reprise] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
-	"[Reprise] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
+	["Bom dia, boa tarde, boa noite! Sou Kelly e vamos discutir sobre uma comida bastante polêmica: chucrute!", "Essa iguaria alemã é RIQUÍSSIMA em vitamina C, o que os impedia de sofrer escorbuto e outras doenças na época das Navegações.", "Utilize com sabedoria!"],
+	["Bom dia, povo! Hoje vamos aprender um clássico da culinária mundial: os biscoitos!", "A receita é praticamente igual a brownie de chocolate: misture ovos, muita manteiga e açúcar, após isso, a farinha, o fermento e as gotículas de chocolate e está feito!", "Aproveite e tenha um dia classe A1!"],
+	["Gente, prestem atenção! A receita de hoje é D-I-V-I-N-A!", "Escondidinho! Simples, rápido e fácil: uma camada de carne entre 2 de batata! Fica maravilhoso, sério, experimentem!"],
+	["Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
 	
-	["[Reprise] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
+	["[REPRISE] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
 	"[Reprise] Hoje, vamos cozinhar um ovo mexido! Primeiro, separe 3 ovos de galinha.", "[Reprise] Em seguida coloque no fogo baixo e mexa, retirando e recolocando no fogo várias vezes até o ovo fica pronto."],
-	["[Reprise] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
+	["[REPRISE] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
 	"Primeiramente, corte pedaços de pão amanhecido e frite. Cozinhe o frango e desfie. Corte as folhas do alface. Misture tudo e está pronto! Desejo uma boa semana a todos e até a próxima edição!"],
-	["[Reprise] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
-	["[Reprise] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
-	"[Reprise] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
+	["[REPRISE] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
+	["[REPRISE] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
+	"[REPRISE] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
 	
-	["[Reprise] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
+	["[REPRISE] Bom dia, boa tarde, boa noite! Sou Kelly e vamos discutir sobre uma comida bastante polêmica: chucrute!", "Essa iguaria alemã é RIQUÍSSIMA em vitamina C, o que os impedia de sofrer escorbuto e outras doenças na época das Navegações.", "Utilize com sabedoria!"],
+	["[REPRISE] Bom dia, povo! Hoje vamos aprender um clássico da culinária mundial: os biscoitos!", "A receita é praticamente igual a brownie de chocolate: misture ovos, muita manteiga e açúcar, após isso, a farinha, o fermento e as gotículas de chocolate e está feito!", "Aproveite e tenha um dia classe A1!"],
+	["[REPRISE] Gente, prestem atenção! A receita de hoje é D-I-V-I-N-A!", "Escondidinho! Simples, rápido e fácil: uma camada de carne entre 2 de batata! Fica maravilhoso, sério, experimentem!"],
+	["[REPRISE] Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
+
+	["[REPRISE] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
 	"[Reprise] Hoje, vamos cozinhar um ovo mexido! Primeiro, separe 3 ovos de galinha.", "[Reprise] Em seguida coloque no fogo baixo e mexa, retirando e recolocando no fogo várias vezes até o ovo fica pronto."],
-	["[Reprise] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
+	["[REPRISE] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
 	"Primeiramente, corte pedaços de pão amanhecido e frite. Cozinhe o frango e desfie. Corte as folhas do alface. Misture tudo e está pronto! Desejo uma boa semana a todos e até a próxima edição!"],
-	["[Reprise] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
-	["[Reprise] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
-	"[Reprise] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
+	["[REPRISE] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
+	["[REPRISE] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
+	"[REPRISE] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
+	
+	["[REPRISE] Bom dia, boa tarde, boa noite! Sou Kelly e vamos discutir sobre uma comida bastante polêmica: chucrute!", "Essa iguaria alemã é RIQUÍSSIMA em vitamina C, o que os impedia de sofrer escorbuto e outras doenças na época das Navegações.", "Utilize com sabedoria!"],
+	["[REPRISE] Bom dia, povo! Hoje vamos aprender um clássico da culinária mundial: os biscoitos!", "A receita é praticamente igual a brownie de chocolate: misture ovos, muita manteiga e açúcar, após isso, a farinha, o fermento e as gotículas de chocolate e está feito!", "Aproveite e tenha um dia classe A1!"],
+	["[REPRISE] Gente, prestem atenção! A receita de hoje é D-I-V-I-N-A!", "Escondidinho! Simples, rápido e fácil: uma camada de carne entre 2 de batata! Fica maravilhoso, sério, experimentem!"],
+	["[REPRISE] Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
+
 ]
 ovo_mexido = false
 bolo_chocolate = false
 bolo_quatro_quartos = false
 salada = false
+cookie = false
+chucrute = false
+arroz_frango = false
+escondidinho = false
 
 sniper = false
 ferramenteiro = false
@@ -171,21 +183,22 @@ sobrevivencia = [
 	"Procure filtrar e aquecer a água de córregos para beber; monte armadilhas para pequenos animais e aprenda a diagnosticar se uma planta é venenosa ou não.",
 	"Faça fogo com pederneiras ou fósforos (leve-os sempre consigo) e monte abrigo em alguma clareira ou caverna; senão, cubra-se com uma generosa camada de folhas e deleite-se.",
 	"Boa noite."],//3
-	["Mente forte vence – O desespero é o maior inimigo. Respire fundo, planeje e aja. Você é mais resistente do que imagina!"],//4
-	["Silêncio é ouro – Evite gritar ou fazer barulho desnecessário. Sons atraem curiosos – e nem todos são amigos."],//5
+	["Aqui você vai aprender uma coisa muito importante.", "Inspire...", "Expire...", "Inspire...", "Expire...", "Pronto! Você adquiriu um novo poder."]//4 GOLPE DA MORTE
+	["Mente forte vence – O desespero é o maior inimigo. Respire fundo, planeje e aja. Você é mais resistente do que imagina!"],//5
+	["Silêncio é ouro – Evite gritar ou fazer barulho desnecessário. Sons atraem curiosos – e nem todos são amigos."],//6
 	["[REPRISE] Boa noite: no dia de hoje falaremos sobre ferramentas de corte. Elas são suas maiores aliadas; machados, facas, facões, canivetes... cada uma tem sua função e podem ser usadas como armas ou ferramentas.",
 	"[REPRISE] Deixe elas sempre afiadas; para isso, basta água e uma pedra para amolar, e o procedimento é simples: esfregue a lâmina na pedra a um ãngulo de 45°, com movimentos circulares.",
-	"[REPRISE] Para usar e não se ferir, procure sempre portar e utilizar a arma num ângulo tambbém próximo aos 45°. Espero ter ajudado e até a vista."],//6 FERRAMENTEIRO
-	["Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],//7 CURANDIERO MESTRE
-	["Defesa contra animais silvestres: não que tenham sobrado muitos mais, mas as dica de ouro é a seguinte: mantenha contato visual e retroceda lentamente; em alguns casos, se não funcionar, assuste o animal, tenatndo mostrar-se mais forte e alto. Boa noite."],//8
-	["Nós salvam vidas – Domine nós como o parafuso e o prussik para escalar, prender armadilhas ou construir abrigos."],//9
-	["Conheça plantas comestíveis: lembre-se que frutos coloridos demais, de odor forte e acre e que apresentam fiapos como nossos cabelos geralmente não devem ser consumidos."],//10
-	["[REPRISE] Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],//11 CURANDIERO MESTRE
-	["Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//12
-	["Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//13
-	["[REPRISE] Armadilhas silenciosas – Aprenda a fazer armadilhas com galhos e cordas para capturar pequenos animais sem gastar energia."],//14
-	["[REPRISE] Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//15
-	["[REPRISE] Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//16
+	"[REPRISE] Para usar e não se ferir, procure sempre portar e utilizar a arma num ângulo tambbém próximo aos 45°. Espero ter ajudado e até a vista."],//7 FERRAMENTEIRO
+	["Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],//8 CURANDIERO MESTRE
+	["Defesa contra animais silvestres: não que tenham sobrado muitos mais, mas as dica de ouro é a seguinte: mantenha contato visual e retroceda lentamente; em alguns casos, se não funcionar, assuste o animal, tenatndo mostrar-se mais forte e alto. Boa noite."],//9
+	["Nós salvam vidas – Domine nós como o parafuso e o prussik para escalar, prender armadilhas ou construir abrigos."],//10
+	["Conheça plantas comestíveis: lembre-se que frutos coloridos demais, de odor forte e acre e que apresentam fiapos como nossos cabelos geralmente não devem ser consumidos."],//11
+	["[REPRISE] Hoje falaremos sobre primeiros socorros. O básico é o XABCDE: comece verificando hemorragias; em seguida vias aéreas, respiração, circulação, disposição e, por fim, exposição. Boa noite."],//12 CURANDIERO MESTRE
+	["Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//13
+	["Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//14
+	["[REPRISE] Armadilhas silenciosas – Aprenda a fazer armadilhas com galhos e cordas para capturar pequenos animais sem gastar energia."],//15
+	["[REPRISE] Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//16
+	["[REPRISE] Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//17
 ]
 
 jesus_id = 0

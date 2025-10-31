@@ -18,3 +18,5 @@ chucrute = false
 escondidinho = false
 arroz_frango = false
 salada = false
+
+entrou2 = false

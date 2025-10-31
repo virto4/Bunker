@@ -198,20 +198,20 @@ qtde_itens1 = {
 }
 
 habilidades = [
-	["Sniper", "Armas de fogo dão mais dano."],
-	["Ferramenteiro", "Obtém mais eficiência em armas brancas."],
-	["Golpe da morte", "Dá 2 ataques pelo preço de um"],
-	["Estoicismo", "Remove suas emoções."],
-	["Pensamentos intrusivos", "Fica deprimido."],
-	["Pensamentos intrusivos 2", "Fica coolérico."],
-	["Curandeiro aprendiz", "Cura 1/3 de toda a saúde do personagem"],
-	["Curandeiro mestre", "Cura toda a saúde de um personagem"],
-	["Parque de diversões", "Fica extasiado"],
-	["Concentração", "Resistência e força são melhoradas um pouco."],
-	["Ataque", "Um ataque padrão. Nada de mais"],
+	["Sniper", "Armas de fogo dão mais dano."],//0
+	["Ferramenteiro", "Obtém mais eficiência em armas brancas."],//1
+	["Golpe da morte", "Dá 2 ataques pelo preço de um"],//2
+	["Estoicismo", "Remove suas emoções."],//3
+	["Pensamentos intrusivos", "Fica deprimido."],//4
+	["Pensamentos intrusivos 2", "Fica coolérico."],//5
+	["Curandeiro aprendiz", "Cura 1/3 de toda a saúde do personagem"],//6
+	["Curandeiro mestre", "Cura toda a saúde de um personagem"],//7
+	["Parque de diversões", "Fica extasiado"],//8
+	["Concentração", "Resistência e força são melhoradas um pouco."],//9
+	["Ataque", "Um ataque padrão. Nada de mais"],//10
 ]
 
-habilidades_adquiridas =[habilidades[3], habilidades[4], habilidades[5], habilidades[8], habilidade[6], habilidades[9], habilidades[10]]//provisorio, futuramente as habilidades serão conquistadas ao longo do tempo
+habilidades_adquiridas =[habilidades[3], habilidades[4], habilidades[5], habilidades[8], habilidade[6], habilidades[9], habilidades[10]]
 
 inputs = {
 	esquerda	: ord("A"),
