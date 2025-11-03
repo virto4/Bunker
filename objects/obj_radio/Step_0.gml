@@ -63,9 +63,6 @@ if entrou and instance_exists(obj_calendario) and clicou {
 			case 2:
 				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[1])
 				break
-			case 2:
-				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[2])
-				break
 			case 8:
 				array_push(obj_personagem.habilidades_adquiridas, obj_personagem.habilidades[7])
 				break

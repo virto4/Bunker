@@ -8,7 +8,7 @@ primeiro2 = false
 primeiro3 = false
 primeiro4 = false
 primeiro5 = false
-
+alpha_jogo = 0
 
 window_set_fullscreen(true)
 cliques_dividir_tela = 0

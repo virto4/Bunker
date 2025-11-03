@@ -1,5 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if obj_personagem.tempo_escrito == 0 {
+	audio_stop_sound(snd_geladeira_ronco)
+}
+
 if image_speed > 0 {
 	segundo = false
 	audio_stop_sound(snd_geladeira_ronco)

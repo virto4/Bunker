@@ -27,18 +27,10 @@ if room_get_name(room) == "rm_tela_inicial" and sair_jogo {
 		alpha += 0.03
 	}
 } else if room_get_name(room) = "rm_tela_inicial" and mudar_jogo {
-	for(var _i = 0; _i <= tempo; _i++) {
-		var _x  = 0
-		var _y = 32 * _i
-		if _i % 2 == 0 {
-			_x = 0
-		} else {
-			_x = -32
-		}
-		draw_sprite(spr_efeito_transicao, 0, _x, _y)
-	}
-	tempo++
-	if tempo >= 35 {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_jogo)
+	if alpha_jogo < 1 {
+		alpha_jogo += 0.05
+	} else {
 		room_goto(rm_casa)
 		instance_destroy()
 	}

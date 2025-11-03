@@ -11,6 +11,9 @@ if room == rm_bunker {
 etapa2 = false
 tirar = false
 
+passagem_dia = false
+game_over = false
+
 enter = false
 enter2 = false
 beber_agua = false
@@ -213,7 +216,7 @@ falas = [
 	{fala: "Bem, se serve de consolo, quase nenhum dos seus 'amigos' deve ter sobrevivido... Então agradeça por ter um pai 'lunático super-protetor'.", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Davi, o que é isso na sua mão?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Um parafuso, por quê?", retrato: spr_acucar, personagem: "Davi"}, {fala: "Aqui até o lixo tem dono, passa pra cá.", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Saudade de sentir o vento fresco do verão batendo nas costas... Azar que hoje o único vento que tem ali fora mata.", retrato: spr_acucar, personagem: "Davi"}],
-	[{fala: "Você deveria praticar estoicismo, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Para com essa baboseira de filosofia barata; eu já sou bastante seguro de mim mesmo sem nada disso.", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "Você deveria praticar estoicismo, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Para com essa baboseira de filosofia barata; eu já sou bastante seguro de mim mesmo sem nada disso.", retrato: spr_acucar, personagem: "Davi"}],
 	//85
 	[{fala: "Já percebeu o silêncio medonho que faz aqui? Cruzes! Dá de ouvir até seus pensamentos.", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Costeletas de porco ao molho barbecue... purê de batata... brócolis cozido no vapor bem crocante...", retrato: spr_acucar, personagem: "Davi"}],
@@ -225,13 +228,13 @@ falas = [
 	[{fala: "Você está ficando tão pálido, filho...", retrato: spr_acucar, personagem: "Roger"}, {fala: "Falta de sol.", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Pai, a quanto tempo estamos aqui?", retrato: spr_acucar, personagem: "Davi"}, {fala: "93 dias... e contando.", retrato: spr_acucar, personagem: "Roger"}],
 	[{fala: "Estava chorando, filho?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Estava pensando na mamãe.", retrato: spr_acucar, personagem: "Davi"}, {fala: "Vai lá, pode chorar. Aqui dentro ninguém vai julgar.", retrato: spr_acucar, personagem: "Davi"}],
-	[{fala: "Estou pressentindo que alguma coisa vai acontecer, pai! E está próximo.", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "Estou pressentindo que alguma coisa vai acontecer, pai! E está próximo.", retrato: spr_acucar, personagem: "Davi"}],
 	//95
 	[{fala: "Bom dia!", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Bom dia!", retrato: spr_acucar, personagem: "Davi"}, {fala: "Bom dia, filho. Que bom que acordou bem.", retrato: spr_acucar, personagem: "Roger"}, {fala: "Estava pensando como é bom não ter que se preocupar com nada... Um dos pontos positivos de não existir trabalho nem escola.", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Tá lendo o que agora?", retrato: spr_acucar, personagem: "Roger"}, {fala: "'Memórias do Subsolo', Fiódor Dostoiévski", retrato: spr_acucar, personagem: "Davi"}],
 	[{fala: "Filho, se sairmos daqui vivos... prometo que vou te dar tudo o que você quiser, está bem?", retrato: spr_acucar, personagem: "Roger"}, {fala: "Pai, não precisa me dar nada. Se sairmos daqui mesmo, esse presente bastará pelo resto da vida.", retrato: spr_acucar, personagem: "Davi"}],
-	[{fala: "É hoje, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "É hoje...", retrato: spr_acucar, personagem: "Davi"}]
+	[{fala: "É hoje, pai.", retrato: spr_acucar, personagem: "Davi"}, {fala: "É hoje...", retrato: spr_acucar, personagem: "Davi"}],
 ]
 mostrar = false
 aux = false

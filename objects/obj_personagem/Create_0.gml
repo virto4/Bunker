@@ -23,6 +23,9 @@ valor_agua = 30 //quanta sede recupera 1 garrafa de agua
 beber_agua = false
 bebeu_agua = false
 aumento_sede = 0
+tutorial_scale = 0
+tut_alpha = 1
+tut_saindo = false
 
 pode_tocar = false
 auxua = false
@@ -85,11 +88,13 @@ itens_iguais = ds_list_create()
 mudar_bunker = 0
 alpha2 = 0
 if room == rm_bunker {
+	pode_comecar = true
 	mudar_bunker = true
 	alpha2 = 1
 } else if room == rm_casa {
 	mudar_bunker = false
 	alpha2 = 0
+	pode_comecar = false
 }
 
 desenhar = false
@@ -211,7 +216,7 @@ habilidades = [
 	["Ataque", "Um ataque padrão. Nada de mais"],//10
 ]
 
-habilidades_adquiridas =[habilidades[3], habilidades[4], habilidades[5], habilidades[8], habilidade[6], habilidades[9], habilidades[10]]
+habilidades_adquiridas =[habilidades[3], habilidades[4], habilidades[5], habilidades[8], habilidades[6], habilidades[9], habilidades[10]]
 
 inputs = {
 	esquerda	: ord("A"),
@@ -240,7 +245,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 0
+	tempo_espera = 10
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true

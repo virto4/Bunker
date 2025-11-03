@@ -183,7 +183,7 @@ sobrevivencia = [
 	"Procure filtrar e aquecer a água de córregos para beber; monte armadilhas para pequenos animais e aprenda a diagnosticar se uma planta é venenosa ou não.",
 	"Faça fogo com pederneiras ou fósforos (leve-os sempre consigo) e monte abrigo em alguma clareira ou caverna; senão, cubra-se com uma generosa camada de folhas e deleite-se.",
 	"Boa noite."],//3
-	["Aqui você vai aprender uma coisa muito importante.", "Inspire...", "Expire...", "Inspire...", "Expire...", "Pronto! Você adquiriu um novo poder."]//4 GOLPE DA MORTE
+	["Aqui você vai aprender uma coisa muito importante.", "Inspire...", "Expire...", "Inspire...", "Expire...", "Pronto! Você adquiriu um novo poder."],//4 GOLPE DA MORTE
 	["Mente forte vence – O desespero é o maior inimigo. Respire fundo, planeje e aja. Você é mais resistente do que imagina!"],//5
 	["Silêncio é ouro – Evite gritar ou fazer barulho desnecessário. Sons atraem curiosos – e nem todos são amigos."],//6
 	["[REPRISE] Boa noite: no dia de hoje falaremos sobre ferramentas de corte. Elas são suas maiores aliadas; machados, facas, facões, canivetes... cada uma tem sua função e podem ser usadas como armas ou ferramentas.",
@@ -198,7 +198,7 @@ sobrevivencia = [
 	["Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//14
 	["[REPRISE] Armadilhas silenciosas – Aprenda a fazer armadilhas com galhos e cordas para capturar pequenos animais sem gastar energia."],//15
 	["[REPRISE] Água é vida – Encontre fontes limpas, como riachos, e ferva ou filtre antes de beber. Evite desidratação a todo custo!"],//16
-	["[REPRISE] Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."],//17
+	["[REPRISE] Fogo salva – Aprenda a fazer fogo com pederneira, lupa ou graveto. Mantenha as chamas acesas para aquecer e afastar animais."]//17
 ]
 
 jesus_id = 0

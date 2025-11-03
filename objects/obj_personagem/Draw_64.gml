@@ -206,7 +206,7 @@ if passagem_dia  {
 	}
 }
 
-if alpha == 0 and !tutorial {
+if pode_comecar and !tutorial {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
 		draw_set_font(fnt_alagard)
@@ -240,33 +240,49 @@ if tutorial and room == rm_casa {
 }
 
 if tutorial_ask {
-	draw_sprite(spr_mudar_casa, 0, 0, 0)
-	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
-	draw_set_font(fnt_dialogos)
-	draw_set_color(c_black)
-	draw_text(220, 800, "Você gostaria de jogar o tutorial?")
-	if mouse_sim {
-		if !primeiro {
-			primeiro = true
-			audio_play_sound(snd_menu_mouse, 1, false)
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, tut_alpha)
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, tutorial_scale, tutorial_scale, 0, c_white, 1)
+	if tutorial_scale < 5 and !tut_saindo {
+		tutorial_scale += 0.5
+	} else if !tut_saindo {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text(220, 800, "Você gostaria de jogar o tutorial?")
+		if mouse_sim {
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			primeiro = false
 		}
-		draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-		draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
-	} else {
-		primeiro = false
-	}
-	draw_text(300, 940, "Sim")
-	if mouse_nao {
-		if !segundo {
-			segundo = true
-			audio_play_sound(snd_menu_mouse, 1, false)
+		draw_text(300, 940, "Sim")
+		if mouse_nao {
+			if !segundo {
+				segundo = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			segundo = false
 		}
-		draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-		draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
-	} else {
-		segundo = false
+		draw_text(1620, 940, "Não")
+	} else if tut_saindo {
+		if tut_alpha > 0 {
+			tut_alpha -= 0.05
+		}
+		if tutorial_scale > 0 {
+			tutorial_scale -= 0.5
+		}
+		if tutorial_scale <= 0 and tut_alpha <= 0 {
+			global.tem_tela_aberta = false
+			tutorial_ask = false
+			pode_comecar = true
+		}
 	}
-	draw_text(1620, 940, "Não")
 }
 
 var _slotx1=768
@@ -343,7 +359,7 @@ if instance_exists(obj_diario) and desenha {
 	}
 }
 
-if tutorial_ask or direita_coletavel and desenha {
+if (tutorial_ask or direita_coletavel) and desenha {
 	desenha = false
 }
 
@@ -411,17 +427,19 @@ if desenha {
 		desenhar_hotbar(slot5, slot5_novo, _slotx5)
 	}
 }
-if alpha > 0 and !tutorial_ask {
-	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha)
-	alpha -= 0.05
-} 
 
-if mudar_bunker and room == rm_casa{
+show_debug_message(string(slot1) + ",  " + string(slot1_n) + ", " + string(slot1_novo))
+show_debug_message(string(slot2) + ",  " + string(slot2_n) + ", " + string(slot2_novo))
+show_debug_message(string(slot3) + ",  " + string(slot3_n) + ", " + string(slot3_novo))
+show_debug_message(string(slot4) + ",  " + string(slot4_n) + ", " + string(slot4_novo))
+show_debug_message(string(slot5) + ",  " + string(slot5_n) + ", " + string(slot5_novo))
+ 
+if mudar_bunker and room == rm_casa {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha2)
-	alpha2 += 0.1 
+	alpha2 += 0.05 
 } else if mudar_bunker and room == rm_bunker {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha2)
-	alpha2 -= 0.1 
+	alpha2 -= 0.05
 } else if mudar_bunker and room == rm_bunker and alpha2 == 0 {
 	mudar_bunker = false
 	global.tem_tela_aberta = false

@@ -110,7 +110,7 @@ if _esquerda or _direita or _cima or _baixo and !global.tem_tela_aberta {
 	 audio_stop_sound(snd_passos_roger);
 }
 
-if alpha == 0 and !opcoes and !global.tem_tela_aberta {
+if pode_comecar and !opcoes and !global.tem_tela_aberta {
 
 	if !global.tem_tela_aberta and keyboard_check_pressed(vk_escape) {
 		global.tem_tela_aberta = true
@@ -283,18 +283,18 @@ if alpha == 0 and !opcoes and !global.tem_tela_aberta {
 }
 
 //passando de cena
-	if room == rm_casa {
-		if alpha2 == 1 {
-			room_goto(rm_bunker)
-		}
-		if tempo_espera <= tempo_decorrido {
-			mudar_bunker = true
-			global.tem_tela_aberta = true
-		}
-	} else if room == rm_bunker and alpha2 == 0 {
-		mudar_bunker = false
+if room == rm_casa {
+	if alpha2 == 1 {
+		room_goto(rm_bunker)
 	}
-	
+	if tempo_espera <= tempo_decorrido {
+		mudar_bunker = true
+		global.tem_tela_aberta = true
+	}
+} else if room == rm_bunker and alpha2 == 0 {
+	mudar_bunker = false
+	global.tem_tela_aberta = false
+}	
 
 function acerto_de_contas(slot) {
 	variable_struct_set(obj_personagem.qtde_itens1, object_get_name(slot), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(slot)) - 1)
@@ -454,8 +454,8 @@ if tutorial_ask {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
+			tut_saindo = true
 			tutorial = true
-			tutorial_ask = false
 			global.tem_tela_aberta = false
 		}
 	} else {
@@ -465,7 +465,7 @@ if tutorial_ask {
 	if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
 		mouse_nao = true
 		if mouse_check_button_pressed(mb_left) {
-			tutorial_ask = false
+			tut_saindo = true
 			global.tem_tela_aberta = false
 		}
 	} else {

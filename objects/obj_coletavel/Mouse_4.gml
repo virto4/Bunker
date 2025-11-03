@@ -297,5 +297,4 @@ if !global.tem_tela_aberta and !nao and image_alpha == 1 {
 		instance_destroy(obj_personagem.obj_anterior)
 		obj_personagem.obj_anterior = noone
 	}
-
 }
