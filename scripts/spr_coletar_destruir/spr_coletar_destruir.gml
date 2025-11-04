@@ -39,10 +39,17 @@ function coletar_destruir(slot) {
 					instance_destroy(slot)
 				}
 			}
-		} else if !obj_freezer.clicou  and !obj_ferramentas.pressionou {
+		} else if !obj_freezer.clicou {
 			slot.qtde_itens-- //vai diminuindo a contagem de itens conforme o jogador os pega
 			if slot.qtde_itens == 0 {
 				instance_destroy(slot)
+			}
+		} else if instance_exists(obj_ferramentas) {
+			if obj_ferramentas.pressionou {
+				slot.qtde_itens-- //vai diminuindo a contagem de itens conforme o jogador os pega
+				if slot.qtde_itens == 0 {
+					instance_destroy(slot)
+				}
 			}
 		} else {
 			for (var i = 0; i < array_length(obj_freezer.quantidades); i++) {
@@ -50,7 +57,7 @@ function coletar_destruir(slot) {
 					obj_freezer.quantidades[i][1]--
 				}
 			}
-			}
+		}
 		var g = obj_personagem.slot_selecionado
 		var h = 0
 		for (var i = 0; i < 5; i++) {

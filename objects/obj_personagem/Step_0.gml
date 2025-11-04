@@ -1,5 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if room == rm_bunker and audio_is_playing(snd_geladeira_ronco) {
+	audio_stop_sound(snd_geladeira_ronco)
+}
+
 if !passagem_dia { //para que ele só morra depois que o dia passar
 	if atributos.sede <= 0 {
 		game_over = true
@@ -291,10 +295,7 @@ if room == rm_casa {
 		mudar_bunker = true
 		global.tem_tela_aberta = true
 	}
-} else if room == rm_bunker and alpha2 == 0 {
-	mudar_bunker = false
-	global.tem_tela_aberta = false
-}	
+}
 
 function acerto_de_contas(slot) {
 	variable_struct_set(obj_personagem.qtde_itens1, object_get_name(slot), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(slot)) - 1)

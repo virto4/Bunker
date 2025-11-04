@@ -1,8 +1,5 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-if obj_personagem.tempo_escrito == 0 {
-	audio_stop_sound(snd_geladeira_ronco)
-}
 
 if image_speed > 0 {
 	segundo = false
@@ -80,27 +77,27 @@ if image_speed > 0 {
 				switch (obj_personagem.slot_selecionado) { //se o slot_selecionado esta vazio
 					case 1: 
 						if obj_personagem.slot1 == noone {
-							obj_personagem.slot1 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot1)
+							obj_personagem.slot1 = global.coletar_destruir(posicoes[i][0])
 						}
 						break
 					case 2: 
 						if obj_personagem.slot2 == noone {
-							obj_personagem.slot2 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot2)
+							obj_personagem.slot2 = global.coletar_destruir(posicoes[i][0])
 						}
 						break
 					case 3: 
 						if obj_personagem.slot3 == noone {
-							obj_personagem.slot3 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot3)
+							obj_personagem.slot3 = global.coletar_destruir(posicoes[i][0])
 						}
 						break
 					case 4: 
 						if obj_personagem.slot4 == noone {
-							obj_personagem.slot4 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot4)
+							obj_personagem.slot4 = global.coletar_destruir(posicoes[i][0])
 						}
 						break
 					case 5: 
 						if obj_personagem.slot5 == noone {
-							obj_personagem.slot5 = global.coletar_destruir(posicoes[i][0], obj_personagem.slot5)
+							obj_personagem.slot5 = global.coletar_destruir(posicoes[i][0])
 						}
 						break
 				}

@@ -427,12 +427,13 @@ if desenha {
 		desenhar_hotbar(slot5, slot5_novo, _slotx5)
 	}
 }
-
+/*
 show_debug_message(string(slot1) + ",  " + string(slot1_n) + ", " + string(slot1_novo))
 show_debug_message(string(slot2) + ",  " + string(slot2_n) + ", " + string(slot2_novo))
 show_debug_message(string(slot3) + ",  " + string(slot3_n) + ", " + string(slot3_novo))
 show_debug_message(string(slot4) + ",  " + string(slot4_n) + ", " + string(slot4_novo))
 show_debug_message(string(slot5) + ",  " + string(slot5_n) + ", " + string(slot5_novo))
+*/
  
 if mudar_bunker and room == rm_casa {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha2)

@@ -259,27 +259,27 @@ if !global.tem_tela_aberta and !nao and image_alpha == 1 {
 				switch (obj_personagem.slot_selecionado) { //se o slot_selecionado esta vazio
 					case 1: 
 						if obj_personagem.slot1 == noone {
-							obj_personagem.slot1 = coletar_destruir(obj_personagem.slot1)
+							obj_personagem.slot1 = global.coletar_destruir(object_index)
 						}
 						break
-					case 2: 
+					case 2:
 						if obj_personagem.slot2 == noone {
-							obj_personagem.slot2 = coletar_destruir(obj_personagem.slot2)
+							obj_personagem.slot2 = global.coletar_destruir(object_index)
 						}
 						break
 					case 3: 
 						if obj_personagem.slot3 == noone {
-							obj_personagem.slot3 = coletar_destruir(obj_personagem.slot3)
+							obj_personagem.slot3 = global.coletar_destruir(object_index)
 						}
 						break
 					case 4: 
 						if obj_personagem.slot4 == noone {
-							obj_personagem.slot4 = coletar_destruir(obj_personagem.slot4)
+							obj_personagem.slot4 = global.coletar_destruir(object_index)
 						}
 						break
 					case 5: 
 						if obj_personagem.slot5 == noone {
-							obj_personagem.slot5 = coletar_destruir(obj_personagem.slot5)
+							obj_personagem.slot5 = global.coletar_destruir(object_index)
 						}
 						break
 				}
