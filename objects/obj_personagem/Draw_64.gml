@@ -1,3 +1,211 @@
+if room == rm_bunker {
+	var _mes = 0
+	switch obj_calendario.mes_atual {
+		case 7:	
+			_mes = "Julho"
+			break
+		case 8:
+			_mes = "Agosto"
+			break
+		case 9:	
+			_mes = "Setembro"
+			break
+		case 10:
+			_mes = "Outubro"
+			break
+		case 11:
+			_mes = "Novembro"
+			break
+		case 12:
+			_mes = "Dezembro"
+			break
+	}
+}
+
+if morte_davi {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if !etapa2_morte and alpha_morte < 1 {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		}
+	} else if !etapa2_morte {
+		if !pode_tocar {
+			audio_stop_all()
+			pode_tocar = true
+		}
+		if !audio_is_playing(snd_marcha_funebre) {
+			audio_play_sound(snd_marcha_funebre, 1, true)
+		}
+		if !aux1 {
+			aux1 = true
+			tempo_over = current_time / 1000 + 1.5
+		}
+		draw_set_font(fnt_alagard)
+		draw_set_color(c_white)
+		var _txt = "Davi morreu"
+		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+		draw_set_font(fnt_dialogos)
+		if tempo_over < current_time / 1000 {
+			draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
+			if pode_comecarb {
+				tempo_over2 = current_time / 1000 + 1.5
+				pode_comecarb = false
+			}
+		}
+		if tempo_over2 < current_time / 1000 and !pode_comecarb {
+			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+			if pode_comecarc {
+				tempo_over3 = current_time / 1000 + 1.5
+				pode_comecarc = false
+			}
+		}
+		if tempo_over3 < current_time / 1000 and !pode_comecarc {
+			var msg_tela_inicial = "Voltar para o jogo"
+			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+			var yinicial = 860 - 5
+			var yfinal = 860 + string_height(msg_tela_inicial) + 5
+			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+				cor_botao = #527F7F
+				if mouse_check_button_pressed(mb_left) {
+					audio_stop_sound(snd_marcha_funebre)
+					etapa2_morte = true
+					instance_destroy(obj_davi)
+				}
+			} else {
+				cor_botao = c_white
+			}
+		}
+	} else if etapa2_morte {
+		if alpha_morte > 0 {
+			alpha_morte -= 0.05
+		} else {
+			global.tem_tela_aberta = false
+			morte_davi = false
+			msg_davi = ""
+			etapa2_morte = false
+			alpha_morte = 0
+			aux1 = false
+			aux2 = false
+			tempo_over = 0
+			pode_comecarb = true
+			pode_comecarc = true
+			tempo_over2 = 0
+			tempo_over3 = 0
+			pode_tocar = false
+			cor_botao = c_white
+		}
+	}
+}
+
+if ganhou_jogo {
+	global.tem_tela_aberta = true
+	audio_play_sound(snd_adagio, 1, false)
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_final)
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale_final, scale_final, 0, c_white, 1)
+	if !escureceu_final {
+		if alpha_final < 1 {
+			alpha_final += 1.5 * delta_time / 1000000
+		} else {
+			escureceu_final = true
+		}
+	} else if !voltar_menu {
+		if scale_final < 5 {
+			scale_final += 0.5
+		} else {
+			draw_set_color(c_black)
+			draw_set_font(fnt_dialogos)
+			if final_secreto and !pode_comecar_falas {
+				falas_utilizadas = falas_secreto
+				pode_comecar_falas = true
+				tempo_final = current_time + type_speed
+			}
+			
+			if current_time > tempo_final {
+				if char_index < string_length(falas_utilizadas[indice_atual]) {
+					if (!audio_is_playing(snd_dialogo_escrito)) {
+				        audio_play_sound(snd_dialogo_escrito, 1, true);
+				    }
+					char_index++
+				} else {
+					audio_stop_sound(snd_dialogo_escrito)
+				}
+				tempo_final = current_time + type_speed
+			}
+			draw_text_ext(210, 760, string_copy(falas_utilizadas[indice_atual], 1, char_index), 30, 1520)
+			if mouse_check_button_pressed(mb_left) {
+				if char_index < string_length(falas_utilizadas[indice_atual]) {
+					current_text = falas_utilizadas[indice_atual]
+					char_index = string_length(falas_utilizadas[indice_atual])
+				} else {
+					if indice_atual == array_length(falas_utilizadas) - 1 {
+						voltar_menu = true
+						char_index = 0
+						indice_atual = 0
+					} else {
+						char_index = 0
+						indice_atual++
+					}
+				}
+			}
+		}
+	} else {
+		if scale_final > 0 {
+			scale_final -= 0.5
+		} else {
+			draw_set_color(c_white)
+			draw_set_font(fnt_dialogos)
+			draw_sprite_ext(spr_logo, 0, 960, 300, 4, 4, 0, c_white, alpha_logo)
+			if alpha_logo < 1 {
+				alpha_logo += 0.02
+			} else if !bbb {
+				bbb = true
+				tempo_over = current_time / 1000 + 1.5
+			}
+			if tempo_over < current_time / 1000 and bbb {
+				var msg = "Você zerou o jogo. Obrigado!"
+				draw_text(960 - string_width(msg) / 2, 660, msg)
+				if aux1 {
+					tempo_over2 = current_time / 1000 + 1.5
+					aux1 = false
+				}
+			}
+			if tempo_over2 < current_time / 1000 and !aux1 {
+				var devs = "Desenvolvedores: Vitor Marian (Programador) e João Marlon Meneghelli (Designer)"
+				draw_text(960 - string_width(devs) / 2, 760, devs)
+				if aux2 {
+					tempo_over3 = current_time / 1000 + 1.5
+					aux2 = false
+				}
+			}
+			if tempo_over3 < current_time / 1000 and !aux2 {
+				var msg_tela_inicial = "Voltar para tela inicial"
+				var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+				var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+				var yinicial = 860 - 5
+				var yfinal = 860 + string_height(msg_tela_inicial) + 5
+				draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+				draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+				draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+				if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+					cor_botao = #527F7F
+					if mouse_check_button_pressed(mb_left) {
+						room_goto(rm_tela_inicial)
+						audio_stop_all()
+					}
+				} else {
+					cor_botao = c_white
+				}
+			}
+		}
+	}
+}
+
 if direita_coletavel {
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
 	draw_set_color(c_black)
@@ -48,30 +256,6 @@ if tirar_jogo {
 		jogo_scale -= 0.5
 	} else if jogo_scale == 0 {
 		tirar_jogo = false
-	}
-}
-
-if room == rm_bunker {
-	var _mes = 0
-	switch obj_calendario.mes_atual {
-		case 7:	
-			_mes = "Julho"
-			break
-		case 8:
-			_mes = "Agosto"
-			break
-		case 9:	
-			_mes = "Setembro"
-			break
-		case 10:
-			_mes = "Outubro"
-			break
-		case 11:
-			_mes = "Novembro"
-			break
-		case 12:
-			_mes = "Dezembro"
-			break
 	}
 }
 if game_over {
@@ -327,6 +511,10 @@ if room == rm_bunker {
 	}
 }
 
+if ganhou_jogo and desenha {
+	desenha = false
+}
+
 if instance_exists(obj_cama_campanha) {
 	if obj_cama_campanha.clicou and desenha {
 		desenha = false
@@ -347,7 +535,11 @@ if room == rm_bunker {
 
 if passagem_dia and desenha {
 	desenha = false
-} 
+}
+
+if morte_davi and desenha {
+	desenha = false
+}
 
 if game_over {
 	desenha = false

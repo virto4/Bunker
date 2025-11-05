@@ -1,23 +1,29 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 // No evento Step ou Draw do personagem
-
-if !passagem_dia { //para que ele só morra depois que o dia passar
+var is_dia = false
+if room == rm_bunker {
+	if obj_diario.dia == obj_personagem.dias_bunker + 1 {
+		is_dia = true
+	}
+}
+if !passagem_dia and !is_dia { //para que ele só morra depois que o dia passar
+	pode_conversar = true
 	if atributos.sede <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem morreu desidratado"
+		obj_personagem.morte_davi = true
+		obj_personagem.msg_davi = "Davi morreu desidratado"
 	} 
 	if atributos.fome <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem morreu faminto"
+		obj_personagem.morte_davi = true
+		obj_personagem.msg_davi = "Davi morreu faminto"
 	}
 	if atributos.sanidade <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem se perdeu em desvario e cometeu suicídio"
+		obj_personagem.morte_davi = true
+		obj_personagem.msg_davi = "Davi se perdeu em desvario e cometeu suicídio"
 	}
 	if atributos.saude <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem morreu da doença que lhe acometeu"
+		obj_personagem.morte_davi = true
+		obj_personagem.msg_davi = "Davi morreu da doença que lhe acometeu"
 	}
 }
 if mudou_humor {

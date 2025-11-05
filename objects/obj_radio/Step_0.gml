@@ -52,8 +52,16 @@ if entrou and instance_exists(obj_calendario) and clicou {
         programacao = jesus[jesus_id];
 		jesus_id++
 		programa = "Rádio Jesus"
+		if instance_exists(obj_conquistas) and !assistiu_jesus {
+			assistiu_jesus = true
+			obj_conquistas.programas_assistidos++
+		}
     }
     else if (dia_semana1 == 2) { // Segunda
+		if instance_exists(obj_conquistas) and !assistiu_sob {
+			assistiu_sob = true
+			obj_conquistas.programas_assistidos++
+		}
         programacao = sobrevivencia[sobrevivencia_id];
 		programa = "Guia de Sobrevivência Pós-Apocalíptica"
 		switch sobrevivencia_id {
@@ -76,6 +84,10 @@ if entrou and instance_exists(obj_calendario) and clicou {
 		sobrevivencia_id++
     }
     else if (dia_semana1 == 8) { // Quarta
+		if instance_exists(obj_conquistas) and !assistiu_comida {
+			assistiu_comida = true
+			obj_conquistas.programas_assistidos++
+		}
         programacao = cozinha[cozinha_id];
 		programa = "Cozinha Improvisada"
 		if cozinha_id % 8 == 0 {
@@ -121,6 +133,10 @@ if entrou and instance_exists(obj_calendario) and clicou {
 		cozinha_id++
     }
     else if (dia_semana1 == 5) { // Quinta
+		if instance_exists(obj_conquistas) and !assistiu_noticias {
+			assistiu_noticias = true
+			obj_conquistas.programas_assistidos++
+		}
         programacao = noticias[noticias_id];
 		noticias_id++
 		programa = "Notícias Urgentes"

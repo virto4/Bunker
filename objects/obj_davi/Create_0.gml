@@ -10,7 +10,7 @@ if room == rm_bunker {
 }
 etapa2 = false
 tirar = false
-
+pode_conversar = true
 passagem_dia = false
 game_over = false
 
@@ -31,7 +31,7 @@ mouse_aux2 = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 100,
+	saude: 0,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,

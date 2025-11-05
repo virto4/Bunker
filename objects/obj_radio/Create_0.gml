@@ -5,12 +5,16 @@
 //segunda: Guia de Sobrevivência Pós-Apocalíptica, programa no qual o ex-militar Roberto Navas fala sobre dicas de sobrevivência em situações de recursos escassos e pode dar habilidades ao jogador de reparos em seu bunker e de combate
 //quinta: Notícias Urgentes, fala sobre decisões governamentais, ONG's e suas ações recentes, catástrofes ambientes próximas, dicas de locais de distribuição de recurso
 //domingo: radio jesus, Padre Keyson leva sua palavra de fé aos católicos restantes
-//todo dia: musica, somente música tocando mesmo
 scale = 0
 etapa2 = false
 pilhas = false
 pilha_aux1 = false
 pilha_aux2 = false
+assistiu_jesus = false
+assistiu_sob = false
+assistiu_comida = false
+assistiu_noticias = false
+
 function escrever(mensagem) {
 	draw_set_font(fnt_dialogos)
 	if char_index < string_length(mensagem) {

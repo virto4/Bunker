@@ -40,7 +40,9 @@ if interagir and etapa {
 }
 
 if interagir and mostrar {
-	
+	if pode_conversar {
+		obj_conquistas.conversou++
+	}
 	if !respondeu {
 		msg = variable_struct_get(falas[fala_dia][fala_atual], "fala")
 	} else {
@@ -49,7 +51,7 @@ if interagir and mostrar {
 	if current_time > tempo {
 		if char_index < string_length(msg) {
 			if (!audio_is_playing(snd_dialogo_escrito)) {
-		        audio_play_sound(snd_dialogo_escrito, 1, true);
+		        audio_play_sound(snd_dialogo_escrito, 1, true)
 		    }
 			char_index++
 		} else {

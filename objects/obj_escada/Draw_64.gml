@@ -960,6 +960,7 @@ if clicou and !derrotou {
 		tempo = current_time / 1000 + 3
 		venceu = true
 		if mouse_check_button_pressed(mb_left) {
+			obj_conquistas.batalhas++
 			escureceu2 = true
 			if !seguir {
 				obj_personagem.atributos.forca = round(obj_personagem.atributos.forca * 1.09)
@@ -1096,7 +1097,7 @@ if morte_davi and clicou {
 	if !etapa2_morte and alpha_morte < 1 {
 		if alpha_morte < 1 {
 			alpha_morte += 0.05
-		} 
+		}
 	} else if !etapa2_morte {
 		var msg_game_over = "Ele levou a pior enquanto lutava pela soberania do Bunker, embora o tenha feito bravamente"
 		if !aux1 {

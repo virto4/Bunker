@@ -1,7 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 ganhou_conquista = false
-
+batalhas = 0
+programas_assistidos = 0
+conversou = 0
+persistent = true
 function quebrar_texto(texto, largura_maxima) {
     var linhas = [];
     var palavras = string_split(texto, " ");

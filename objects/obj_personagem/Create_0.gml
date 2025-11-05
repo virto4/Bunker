@@ -8,13 +8,59 @@ humor: extasiado (+força +resistencia -sagaz + fortuna),
 	deprimido (- força - fortuna + resisteia +sagaz)
 	apavorado (+ forca + sagaz - todos), 
 	colérico (+ força +fortuna - sagaz - resistencia)
-	
-	
 outra coisa: CORES DOS DIÁLOGOS
 personagens ou inimigos: azul (16637F)
 itens: amarelo (B29711)
 atrivbutos e humores: roxo (7F1434)
 */
+morte_davi = false
+msg_davi = ""
+etapa2_morte = false
+alpha_morte = 0
+aux1 = false
+aux2 = false
+tempo_over = 0
+pode_comecarb = true
+pode_comecarc = true
+tempo_over2 = 0
+tempo_over3 = 0
+cor_botao = c_white
+
+alpha_logo = 0
+voltar_menu = false
+indice_atual = 0
+tempo_final = 0
+type_speed = 0.06
+current_text = ""
+char_index = 0
+ganhou_jogo = false
+dias_bunker = 50
+final_secreto = false
+aux_final = true
+escureceu_final = false
+alpha_final = 0
+scale_final = 0
+pode_comecar_falas = false
+
+falas_final = [
+	"Durante a noite, funcionários do governo localizaram o Bunker e resgataram você.",
+	"Em seguida, levaram você a um novo Bunker, porém um muito maior e melhor preparado para sobreviver ao evento.",
+	"Lá, você conseguiu reestruturar sua vida na nova e caótica sociedade que se formou no ambiente. O restante de sua vida foi tranquilo e consistiu numa tentativa de superar a experiência grotesca da vida no seu bunker anterior."
+]
+
+falas_secreto = [
+	"Quando derrotou os Homens de Preto, você coletou deles um item secreto. Hoje, você decidiu seguir as pistas deixadas por ele e partiu em uma jornada da qual nunca retornaria.",
+	"Passaram-se horas de incessante caminhada até o local. Por fim, se tratava de um lugar abandonado e caótico, repleto de aparatos tecnológicos e caros. Tudo aparentava ser de caráter oficial e estava marcado com logos e emblemas do Governo dos EUA.",
+	"Passeando pelas dependências do local, você encontra uma sala distante e acima das outras, nitidamente destacada por ser de maior importância. Você vai até ela e se depara com a porta escancarada devido ao desgaste dos materiais.",
+	"A sala estava uma bagunça; parecia saqueada e tomada por vândalos e pelo tempo. Mesmo assim, o conteúdo dela era muito interessante.",
+	"Arquivos, pastas, planos para algum evento importante. Em suma, a informação que os papéis confirmavam era insana: ",
+	"Os EUA haviam planejado o ataque da bomba que causou a reação em cadeia e destruiu a atmosfera; eles planejaram e executaram isso; construíram Bunkers pelo país todo para poderem salvar seu povo e bancar os bonzinhos.",
+	"De repente, passos ecoam pelo corredor. Mas você não os ouve. Está imerso nas informações descobertas e não repara quando figuras decentemente trajadas e nada amistosas olham pela porta, sacam armas e disparam, sem nem exitar.",
+	"Você morre. Morre por ter descoberto a verdade. Morre, assim como todos que esse governo matou em nome da 'democracia', sempre favorecendo quem sempre foi favorito e exterminando seus opositores em práticas eugenistas.",
+	"Você é somente mais um. Ninguém se lembrará de você e de sua família. Tudo foi em vão. Agora, só nos resta esquecer dessa história. Ou seremos os próximos."
+]
+falas_utilizadas = falas_final
+
 global.tem_tela_aberta = false
 tirar_jogo = false
 jogo_scale = 0
@@ -63,7 +109,7 @@ mudou_data = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 1,
+	saude: 100,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
@@ -245,7 +291,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 10
+	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true

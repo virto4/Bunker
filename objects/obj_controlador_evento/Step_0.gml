@@ -296,7 +296,7 @@ if fredie and fredie_aux {
 	obj_escada.inimigo.total_vida = 600
 	obj_escada.inimigo.vida = 600
 	obj_escada.inimigo.sagacidade = 50
-	obj_escada.inimigo.fugir = false
+	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.freddie)
 }
@@ -324,7 +324,7 @@ if kkk  and kkk_aux {
 	obj_escada.inimigo.total_vida = 600
 	obj_escada.inimigo.vida = 600
 	obj_escada.inimigo.sagacidade = 70
-	obj_escada.inimigo.fugir = false
+	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }

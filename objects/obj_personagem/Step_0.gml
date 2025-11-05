@@ -1,10 +1,25 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if instance_exists(obj_diario) {
+	if obj_diario.dia == dias_bunker + 1 and aux_final {
+		ganhou_jogo = true
+		aux_final = false
+		global.tem_tela_aberta = true
+	}
+}
+
 if room == rm_bunker and audio_is_playing(snd_geladeira_ronco) {
 	audio_stop_sound(snd_geladeira_ronco)
 }
 
-if !passagem_dia { //para que ele só morra depois que o dia passar
+var is_dia = false
+if room == rm_bunker {
+	if obj_diario.dia == dias_bunker + 1 {
+		is_dia = true
+	}
+}
+
+if !passagem_dia and !is_dia { //para que ele só morra depois que o dia passar
 	if atributos.sede <= 0 {
 		game_over = true
 		msg_game_over = "Seu personagem morreu desidratado"
