@@ -27,12 +27,14 @@ if global.conquistas.conquista2 and global.conquistas.conquista3 and global.conq
 		global.conquistas.conquista1 = true
 		ganhou_conquista = true
 		ds_list_add(global.lista_ganhos, {sprite: spr_estrela1_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
 }
 if instance_exists(obj_personagem) {
 	if obj_personagem.ganhou_jogo and !global.conquistas.conquista2 {
 		global.conquistas.conquista2 = true
 		ganhou_conquista = true
 		ds_list_add(global.lista_ganhos, {sprite: spr_estrela2_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
 	}
 }
 if instance_exists(obj_personagem) {
@@ -40,22 +42,28 @@ if instance_exists(obj_personagem) {
 		global.conquistas.conquista3 = true
 		ganhou_conquista = true
 		ds_list_add(global.lista_ganhos, {sprite: spr_estrela3_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
 	}
 }
 if batalhas >= 10 and !global.conquistas.conquista4 {
 	global.conquistas.conquista4 = true
 	ganhou_conquista = true
 	ds_list_add(global.lista_ganhos, {sprite: spr_estrela4_ganhou, tempo: 0, alpha: 0})
+	salvar_conquistas()
 }
 if batalhas >= 5 and !global.conquistas.conquista5 {
 	global.conquistas.conquista5 = true
 	ganhou_conquista = true
 	ds_list_add(global.lista_ganhos, {sprite: spr_estrela5_ganhou, tempo: 0, alpha: 0})
+	salvar_conquistas()
 }
-if room == rm_bunker and !instance_exists(obj_davi) and !global.conquistas.conquista7 {
-	global.conquistas.conquista7 = true
-	ganhou_conquista = true
-	ds_list_add(global.lista_ganhos, {sprite: spr_estrela7_ganhou, tempo: 0, alpha: 0})
+if room == rm_bunker and !global.conquistas.conquista7 {
+	if ds_list_find_index(global.itens_pegos, obj_davi) == -1 {
+		global.conquistas.conquista7 = true
+		ganhou_conquista = true
+		ds_list_add(global.lista_ganhos, {sprite: spr_estrela7_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
+	}
 }
 var _municoes = 0
 if ds_list_size(global.itens_pegos) > 0 {
@@ -69,22 +77,26 @@ if _municoes >= 5 and !global.conquistas.conquista8 {
 	global.conquistas.conquista8 = true
 	ganhou_conquista = true
 	ds_list_add(global.lista_ganhos, {sprite: spr_estrela8_ganhou, tempo: 0, alpha: 0})
+	salvar_conquistas()
 }
 if room_get_name(room) == "rm_bunker" and !global.conquistas.conquista9 {
 	global.conquistas.conquista9 = true
 	ganhou_conquista = true
 	ds_list_add(global.lista_ganhos, {sprite: spr_estrela9_ganhou, tempo: 0, alpha: 0})
+	salvar_conquistas()
 }
 if programas_assistidos == 4 and !global.conquistas.conquista10 {
 	global.conquistas.conquista10 = true
 	ganhou_conquista = true
 	ds_list_add(global.lista_ganhos, {sprite: spr_estrela10_ganhou, tempo: 0, alpha: 0})
+	salvar_conquistas()
 }
 if instance_exists(obj_personagem) {
 	if obj_personagem.atributos.humor == obj_personagem.humores[3] and !global.conquistas.conquista11 {
 		global.conquistas.conquista11 = true
 		ganhou_conquista = true
 		ds_list_add(global.lista_ganhos, {sprite: spr_estrela11_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
 	}
 }
 if room == rm_bunker {
@@ -92,6 +104,7 @@ if room == rm_bunker {
 		global.conquistas.conquista12 = true
 		ganhou_conquista = true
 		ds_list_add(global.lista_ganhos, {sprite: spr_estrela12_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
 	}
 }
 if room == rm_bunker and !global.conquistas.conquista13 {
@@ -100,6 +113,7 @@ if room == rm_bunker and !global.conquistas.conquista13 {
 			global.conquistas.conquista13 = true
 			ganhou_conquista = true
 			ds_list_add(global.lista_ganhos, {sprite: spr_estrela13_ganhou, tempo: 0, alpha: 0})
+			salvar_conquistas()
 		}
 	}
 }
@@ -107,11 +121,13 @@ if conversou == 30 and !global.conquistas.conquista14 {
 	global.conquistas.conquista14 = true
 	ganhou_conquista = true
 	ds_list_add(global.lista_ganhos, {sprite: spr_estrela14_ganhou, tempo: 0, alpha: 0})
+	salvar_conquistas()
 }
 if instance_exists(obj_personagem) {
 	if obj_personagem.ganhou_jogo and obj_personagem.final_secreto and !global.conquistas.conquista15 {
 		global.conquistas.conquista15 = true
 		ganhou_conquista = true
 		ds_list_add(global.lista_ganhos, {sprite: spr_estrela15_ganhou, tempo: 0, alpha: 0})
+		salvar_conquistas()
 	}
 }

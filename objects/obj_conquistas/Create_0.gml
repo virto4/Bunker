@@ -5,6 +5,7 @@ batalhas = 0
 programas_assistidos = 0
 conversou = 0
 persistent = true
+carregar_conquistas()
 function quebrar_texto(texto, largura_maxima) {
     var linhas = [];
     var palavras = string_split(texto, " ");
@@ -28,4 +29,48 @@ function quebrar_texto(texto, largura_maxima) {
     }
 
     return linhas;
+}
+
+function salvar_conquistas() {
+	/*var json_string = json_encode(global.conquistas)
+	var file = file_text_open_write("conquistas.sav")
+	file_text_write_string(file, json_string)
+	file_text_close(file)*/
+	// Usando ini files - mais confiável
+    ini_open("conquistas.ini")
+    
+    var names = variable_struct_get_names(global.conquistas)
+    for (var i = 0; i < array_length(names); i++) {
+        var name = names[i]
+        ini_write_real("conquistas", name, global.conquistas[$ name])
+    }
+    
+    ini_close()
+}
+function carregar_conquistas() {
+	/* if file_exists("conquistas.sav") {
+        var file = file_text_open_read("conquistas.sav")
+        var json_string = file_text_read_string(file)
+        file_text_close(file)
+        
+        // JSON decode automaticamente cria uma struct!
+        global.conquistas = json_decode(json_string)
+    } else {
+        // Primeira execução - salva struct padrão
+        salvar_conquistas()
+    }*/
+	if file_exists("conquistas.ini") {
+        ini_open("conquistas.ini")
+        
+        var names = variable_struct_get_names(global.conquistas)
+        for (var i = 0; i < array_length(names); i++) {
+            var name = names[i]
+            global.conquistas[$ name] = ini_read_real("conquistas", name, 0)
+        }
+        
+        ini_close()
+    } else {
+        // Primeira vez - cria arquivo
+        salvar_conquistas()
+    }
 }
