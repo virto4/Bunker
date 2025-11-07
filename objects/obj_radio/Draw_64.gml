@@ -2,7 +2,19 @@
 // Você pode escrever seu código neste editor
 if clicou {
 	if programacao == noone {
-		clicou = false
+		global.tem_tela_aberta = true
+		draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+		if scale < 5 {
+			scale += 0.5
+		} else if scale >= 5 {
+			draw_text(200, 760, "Sem programação para hoje.")
+			if mouse_check_button_pressed(mb_left) {		
+				clicou = false
+				clicou_radio = false
+				global.tem_tela_aberta = false
+				etapa2 = true
+			}
+		}
 	} else {
 		//global.tem_tela_aberta = true
 		draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)

@@ -1,8 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 qtde_itens = 1
-
+jogou_hoje = false
 clicou = false
+nao_pode = false
+tirar = false
 comecou = false
 cartas = []
 carta_monte = 0
@@ -11,7 +13,7 @@ sua_vez = true
 cartas_davi = []
 cartas_roger = []
 cartas_comprar = []
-
+scale = 0
 comprar = false
 descartar = false
 msg = ""

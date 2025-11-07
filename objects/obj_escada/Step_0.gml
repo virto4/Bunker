@@ -36,7 +36,7 @@ if clicou and !derrotou {
 	
 	if point_in_rectangle(mx, my, 960 - 128, 963, 960 + 128, 1043) and !morte_roger and !morte_davi and !batalha {
 		cor_correr = #B25A0B
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) and !instrucoes {
 			if !inimigo.fugir {
 				mensagem = true
 				codigo = "Não há para onde correr"
@@ -53,7 +53,7 @@ if clicou and !derrotou {
 	var humor = obj_personagem.atributos.humor
 	var novo_y_roger = y_roger - 128 - 45 - string_height(humor)
 	if point_in_rectangle(mx, my, x_roger - 128, novo_y_roger - 160, x_roger + 128, novo_y_roger - 10) and !morte_roger and !morte_davi and !batalha {
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) and !instrucoes {
 			hab_roger = true
 			aux = true
 			tempo_aux = current_time / 1000 + 0.2
@@ -66,7 +66,7 @@ if clicou and !derrotou {
 	if instance_exists(obj_davi) and !morte_roger and !morte_davi and !batalha {
 		if point_in_circle(mx, my, 1524, 894, 40) { //davi
 			cor_circulo1 = #649910
-			if mouse_check_button_pressed(mb_left) {
+			if mouse_check_button_pressed(mb_left) and !instrucoes {
 				selecionar_arma_davi = true
 				aux = true
 				tempo_aux = current_time / 1000 + 0.2
@@ -81,7 +81,7 @@ if clicou and !derrotou {
 		var novo_y = y_davi - 128 - 50 - string_height(humor_davi)
 		
 		if point_in_rectangle(mx, my, x_davi - 128, novo_y - 160, x_davi + 128, novo_y - 10) and !morte_roger and !morte_davi and !batalha {
-			if mouse_check_button_pressed(mb_left) {
+			if mouse_check_button_pressed(mb_left) and !instrucoes {
 				hab_davi = true
 				aux = true
 				tempo_aux = current_time / 1000 + 0.2
@@ -98,7 +98,7 @@ if clicou and !derrotou {
 	
 	if point_in_circle(mx, my, 390, 894, 40) and !morte_roger and !morte_davi and !batalha { //roger
 		cor_circulo2 = #649910
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) and !instrucoes {
 			selecionar_arma_roger = true
 			aux = true
 			tempo_aux = current_time / 1000 + 0.2
@@ -109,7 +109,7 @@ if clicou and !derrotou {
 	
 	var pode_batalhar = true
 	
-	if point_in_rectangle(mx, my, 960 - 128, 863, 960 + 128, 943) and mouse_check_button_pressed(mb_left) and !batalha and !morte_davi and !morte_roger {
+	if point_in_rectangle(mx, my, 960 - 128, 863, 960 + 128, 943) and mouse_check_button_pressed(mb_left) and !batalha and !morte_davi and !morte_roger and !instrucoes {
 		if habilidade_davi == "Curandeiro mestre" and mestre_tempo2 and instance_exists(obj_davi) {
 			mensagem = true
 			codigo = "Davi ainda não pode usar esta habilidade"

@@ -1,4 +1,58 @@
+//200 - 400 - 1800
+if instrucoes {
+	draw_sprite(spr_voltar, 0, 1800, 50)
+	var width_sair = sprite_get_width(spr_voltar) / 2
+	var height_sair = sprite_get_height(spr_voltar) / 2 
+	var tx_sair = 1800
+	var ty_sair = 50
+
+	var mx = device_mouse_x_to_gui(0);
+	var my = device_mouse_y_to_gui(0);
+	
+	if mouse_check_button_pressed(mb_left) {
+		if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
+			instrucoes = false
+			global.tem_tela_aberta = false
+			escrita = ""
+		}
+	}
+	var vetor = variable_struct_get_names(instrucoes_fala)
+	for (var i = 0; i < array_length(vetor); i++) {
+		var cor_menu = #E5CE72
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		var largura = string_width(vetor[i])
+		var altura = string_height(vetor[i])
+		if point_in_rectangle(mx, my, (200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura) {
+			cor_menu = #E5C444
+			if mouse_check_button_pressed(mb_left) {
+				escrita = variable_struct_get(instrucoes_fala, vetor[i])
+			}
+		} else {
+			cor_menu = #E5CE72
+		}
+		draw_rectangle_color((200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_color((200 - largura) / 2 - 5, 380 + 80 * i - 5, (200 + largura) / 2 + 5, 380 + 80 * i + 5 + altura, cor_menu, cor_menu, cor_menu, cor_menu, false)
+		draw_text((200 - largura) / 2, 380 + 80 * i, vetor[i])
+	}
+	draw_rectangle_color(400, 100, 1800, 980, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+	draw_rectangle_color(405, 105, 1795, 975, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+	draw_text_ext(420, 120, escrita, 60, 1380)
+}
+
 if room == rm_bunker {
+	if !vermelho {
+		draw_circle_color(50, 50, 50, c_red, c_red,false)
+	}
+	draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
+	if mouse_check_button_pressed(mb_left) {
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 50 - 48, 50 - 48, 50 + 48, 50 + 48) {
+			instrucoes = true
+			vermelho = true
+			global.tem_tela_aberta = true
+		}
+	}
+	
 	var _mes = 0
 	switch obj_calendario.mes_atual {
 		case 7:	
@@ -47,7 +101,7 @@ if morte_davi {
 		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
 		draw_set_font(fnt_dialogos)
 		if tempo_over < current_time / 1000 {
-			draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
+			draw_text(960 - string_width(msg_davi) / 2, 660, msg_davi)
 			if pode_comecarb {
 				tempo_over2 = current_time / 1000 + 1.5
 				pode_comecarb = false
@@ -501,6 +555,16 @@ if instance_exists(obj_davi) {
 	}
 }
 
+if instrucoes and desenha {
+	desenha = false
+}
+
+if room == rm_bunker and instance_exists(obj_tv) and desenha {
+	if obj_tv.desenha or obj_tv.tirar {
+		desenha = false
+	}
+}
+
 if (remedio or beber_agua or alimento) and desenha {
 	desenha = false
 }
@@ -535,6 +599,18 @@ if room == rm_bunker {
 
 if passagem_dia and desenha {
 	desenha = false
+}
+
+if instance_exists(obj_baralho) {
+	if obj_baralho.nao_pode or obj_baralho.tirar and desenha {
+		desenha = false
+	}
+}
+
+if instance_exists(obj_domino) {
+	if obj_domino.nao_pode or obj_domino.tirar and desenha {
+		desenha = false
+	}
 }
 
 if morte_davi and desenha {

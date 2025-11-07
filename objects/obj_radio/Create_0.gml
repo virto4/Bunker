@@ -52,7 +52,7 @@ function quebrar_texto(texto, largura_maxima) {
 
     return linhas;
 }
-
+assistiu_hoje = false
 programa = ""
 dia_atual = 16
 programacao = noone

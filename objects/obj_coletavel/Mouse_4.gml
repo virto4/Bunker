@@ -7,6 +7,12 @@
 	global.tem_tela_aberta = true
 }*/
 var nao = false
+
+if object_index == obj_tv and room == rm_bunker and !global.tem_tela_aberta {
+	global.tem_tela_aberta = true
+	obj_tv.desenha = true
+}
+
 if instance_exists(obj_ferramentas) {
 	if object_index == obj_ferramentas and room == rm_bunker and !obj_ferramentas.pressionou and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 {
 		nao = true
@@ -59,34 +65,43 @@ if instance_exists(obj_radio) {
 }
 
 if instance_exists(obj_radio) {
-	if object_index == obj_radio and obj_radio.programacao != noone and !is_pilha and !clicou and !obj_radio.etapa2 {
+	if object_index == obj_radio and !is_pilha and !clicou and !obj_radio.etapa2 {
 		obj_radio.clicou = true
+		nao = true
 	}
 }
 
 if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta {
 	nao = true	
 	global.tem_tela_aberta = true
-	if instance_exists(obj_davi) {
-		audio_stop_all()
-		audio_play_sound(snd_jazz, 1, true)
+	if !obj_domino.jogou_hoje {
 		obj_domino.clicou = true
-		obj_domino.comecou = true
+		if instance_exists(obj_davi) {
+			audio_stop_all()
+			audio_play_sound(snd_jazz, 1, true)
+			obj_domino.comecou = true
+		} else {
+			obj_personagem.pode_jogar = false
+		}
 	} else {
-		obj_personagem.pode_jogar = false
+		obj_domino.nao_pode = true
 	}
 }
 
 if object_index == obj_baralho and room == rm_bunker and !global.tem_tela_aberta {
 	nao = true
-	if instance_exists(obj_davi) {
-		global.tem_tela_aberta = true
-		audio_stop_all()
-		audio_play_sound(snd_jazz, 1, true)
-		obj_baralho.clicou = true
-		obj_baralho.comecou = true
+	global.tem_tela_aberta = true
+	if !obj_baralho.jogou_hoje {
+		if instance_exists(obj_davi) {
+			audio_stop_all()
+			audio_play_sound(snd_jazz, 1, true)
+			obj_baralho.clicou = true
+			obj_baralho.comecou = true
+		} else {
+			obj_personagem.pode_jogar = false
+		}
 	} else {
-		obj_personagem.pode_jogar = false
+		obj_baralho.nao_pode = true
 	}
 }
 

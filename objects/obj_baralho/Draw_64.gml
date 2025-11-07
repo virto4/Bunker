@@ -1,5 +1,30 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if nao_pode {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+	if scale < 5 {
+		scale += 0.5
+	} else if scale >= 5 {
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text(220, 800, "Você não está com vontade de jogar cartas agora.")
+		if mouse_check_button_pressed(mb_left) {
+			nao_pode = false
+			tirar = true
+		}
+	}
+}
+
+if tirar {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+	if scale > 0 {
+		scale -= 0.5
+	} else if scale == 0 {
+		tirar = false
+		global.tem_tela_aberta = false
+	}
+}
+
 function desenhar(numero, naipe, _x, _y) {
 	switch naipe {
 		case "espadas":
@@ -31,7 +56,7 @@ function desenhar(numero, naipe, _x, _y) {
 	draw_text_transformed(_x + 29, _y + 56, n, 1, 1, 180)
 }
 
-if clicou {
+if clicou and !jogou_hoje {
 	draw_sprite_ext(spr_interface_mesa, 0, 960, 540, 4, 4, 0, c_white, 1)
 	draw_sprite(spr_voltar, 0, 1800, 50)
 	

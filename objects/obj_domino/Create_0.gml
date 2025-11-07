@@ -1,6 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+jogou_hoje = false
 qtde_itens = 1
+scale = 0
+nao_pode = false
+tirar = false
 clicou = false
 pecas = []
 pecas_jogador = []

@@ -1,6 +1,11 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 mes = 0
+vermelho = false
+escrita = ""
+instrucoes = false
+etapa_instrucoes = false
+alpha_instrucoes = 0
 morte_davi = false
 morte_roger = false
 alpha_morte = 0

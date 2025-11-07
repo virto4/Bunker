@@ -100,6 +100,20 @@ function recarrega(obj, arma) {
 }
 
 if clicou and !derrotou {
+	if !batalha {
+		if !vermelho {
+			draw_circle_color(50, 50, 50, c_red, c_red,false)
+		}
+		draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
+		if mouse_check_button_pressed(mb_left) {
+			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 50 - 48, 50 - 48, 50 + 48, 50 + 48) {
+				instrucoes = true
+				vermelho = true
+				global.tem_tela_aberta = true
+			}
+		}
+	}
+	
 	draw_rectangle_color(0, 0, 1920, 1080, #15404C, #002733, #00332E, #1A664F, false)
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
@@ -1215,12 +1229,72 @@ if escureceu3 {
 			global.tem_tela_aberta = false
 			clicou = false
 			escureceu_aux = true
+			if inimigo.vida == 0 {
+				if instance_exists(obj_davi) {
+					obj_davi.sao = true
+					obj_davi.aumento_sanidade = 10
+				}
+				obj_personagem.sao = true
+				obj_personagem.aumento_sanidade = 10
+			}
 		}
 	} else {
 		if alpha_morte > 0 {
 			alpha_morte -= 0.05
 		} else {
 			escureceu3 = false
+		}
+	}
+}
+
+if instrucoes {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_instrucoes)
+	if !etapa_instrucoes and alpha_instrucoes < 1 {
+		alpha_instrucoes += 0.05
+	} else if !etapa_instrucoes {
+		draw_sprite(spr_voltar, 0, 1800, 50)
+		var width_sair = sprite_get_width(spr_voltar) / 2
+		var height_sair = sprite_get_height(spr_voltar) / 2 
+		var tx_sair = 1800
+		var ty_sair = 50
+
+		var mx = device_mouse_x_to_gui(0);
+		var my = device_mouse_y_to_gui(0);
+	
+		if mouse_check_button_pressed(mb_left) {
+			if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
+				escrita = ""
+				etapa_instrucoes = true
+			}
+		}
+		var vetor = variable_struct_get_names(obj_personagem.instrucoes_fala)
+		for (var i = 0; i < array_length(vetor); i++) {
+			var cor_menu = #E5CE72
+			draw_set_font(fnt_dialogos)
+			draw_set_color(c_black)
+			var largura = string_width(vetor[i])
+			var altura = string_height(vetor[i])
+			if point_in_rectangle(mx, my, (200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura) {
+				cor_menu = #E5C444
+				if mouse_check_button_pressed(mb_left) {
+					escrita = variable_struct_get(obj_personagem.instrucoes_fala, vetor[i])
+				}
+			} else {
+				cor_menu = #E5CE72
+			}
+			draw_rectangle_color((200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color((200 - largura) / 2 - 5, 380 + 80 * i - 5, (200 + largura) / 2 + 5, 380 + 80 * i + 5 + altura, cor_menu, cor_menu, cor_menu, cor_menu, false)
+			draw_text((200 - largura) / 2, 380 + 80 * i, vetor[i])
+		}
+		draw_rectangle_color(400, 100, 1800, 980, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_color(405, 105, 1795, 975, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text_ext(420, 120, escrita, 60, 1380)
+	} else if etapa_instrucoes {
+		if alpha_instrucoes > 0 {
+			alpha_instrucoes -= 0.05
+		} else {
+			etapa_instrucoes = false
+		 	instrucoes = false
 		}
 	}
 }

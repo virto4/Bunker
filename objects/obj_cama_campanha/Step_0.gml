@@ -24,6 +24,7 @@ if clicou {
 			if instance_exists(obj_radio) {
 				obj_radio.entrou = true
 				obj_radio.programacao = noone
+				obj_radio.assistiu_hoje = false
 			}
 			if instance_exists(obj_davi) {
 				obj_davi.interagir = true
@@ -32,6 +33,12 @@ if clicou {
 			if instance_exists(obj_meredith) {
 				obj_meredith.tem_fala = true
 				obj_meredith.comecou_dia = true
+			}
+			if instance_exists(obj_domino) {
+				obj_domino.jogou_hoje = false
+			}
+			if instance_exists(obj_baralho) {
+				obj_baralho.jogou_hoje = false
 			}
 		}
 	} else {

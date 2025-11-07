@@ -11,7 +11,7 @@ if instance_exists(obj_davi) {
 	}
 }
 
-if clicou {
+if clicou and !jogou_hoje {
 	global.tem_tela_aberta = true
 	
 	var width_sair = sprite_get_width(spr_voltar) / 2
@@ -25,6 +25,15 @@ if clicou {
 	if mouse_check_button_pressed(mb_left) {
 		if mx > tx_sair - width_sair && mx < tx_sair + width_sair &&
 		my > ty_sair - height_sair && my < ty_sair + height_sair {
+			if venceu {
+				if instance_exists(obj_davi) {
+					obj_davi.sao = true
+					obj_davi.aumento_sanidade = 10
+				}
+				obj_personagem.sao = true
+				obj_personagem.aumento_sanidade = 10
+			}
+			jogou_hoje = true
 			clicou = false
 			global.tem_tela_aberta = false
 			sua_vez = true

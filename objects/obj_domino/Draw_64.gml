@@ -1,6 +1,29 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if nao_pode {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+	if scale < 5 {
+		scale += 0.5
+	} else if scale >= 5 {
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text(220, 800, "Você não está com vontade de jogar dominó agora.")
+		if mouse_check_button_pressed(mb_left) {
+			nao_pode = false
+			tirar = true
+		}
+	}
+}
 
+if tirar {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale, scale, 0, c_white, 1)
+	if scale > 0 {
+		scale -= 0.5
+	} else if scale == 0 {
+		tirar = false
+		global.tem_tela_aberta = false
+	}
+}
 function maior() {
 	var encontrou = false
 	for (var k = 6; k >= 0 and !encontrou; k--) {
@@ -61,7 +84,7 @@ function pontos(n, _x, _y) {
 			break
 	}
 }
-if clicou {
+if clicou and !jogou_hoje {
 	draw_sprite_ext(spr_interface_mesa, 0, 960, 540, 4, 4, 0, c_white, 1)
 	draw_sprite(spr_voltar, 0, 1800, 50)
 	var xis = (1920 - 70 * array_length(pecas_tela)) / 2
@@ -245,7 +268,7 @@ if clicou {
 }
 
 
-if clicou and primeira_peca {
+if clicou and primeira_peca and !jogou_hoje {
 	var _text = "Clique para começar o jogo"
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_white)
@@ -275,7 +298,7 @@ if clicou and primeira_peca {
 	
 }
 
-if clicou and !primeira_peca {
+if clicou and !primeira_peca and !jogou_hoje {
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_white)
 	if reverse {

@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
 function escrever(_x, _y, _texto, _cores) { //cores é um vetro de struct assim: {pos: 0, cor: c_green}. passar na ordem por posicao
 	var x_atual = _x
 	for (var i = 0; i < array_length(_cores); i++) {
@@ -43,6 +44,10 @@ if interagir and mostrar {
 	if pode_conversar {
 		obj_conquistas.conversou++
 	}
+	sao = true
+	aumento_sanidade = 5
+	obj_personagem.sao = true
+	obj_personagem.aumento_sanidade = 5
 	if !respondeu {
 		msg = variable_struct_get(falas[fala_dia][fala_atual], "fala")
 	} else {

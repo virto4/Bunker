@@ -21,7 +21,7 @@ paginas = {
 	gripe: "Hoje amanheci meio gripado. É esse tempo esfriando, só pode ser. Meus pulmões não são mais como antigamente... Se tiver uma aspirina aí vai ajudar.",
 	enxaqueca: "Minha cabeça dói. Preciso de aspirina.",
 	baratas: "A casa está cheia de insetos nojentos! Preciso de inseticida, senão eles não vão embora.",
-	canos: "A água está contaminada com radiação; Se continuarmos tomando dela vamos morrer cedo. ",
+	canos: "A água está contaminada com radiação; Se continuarmos tomando dela vamos morrer cedo. De agora em diante, temos que tomar água de outras fontes.",
 	idoso: "Tem alguém na porta...",
 	coleta: "",
 	desidratacao: "Estou me sentindo meio cansado e doente; minha pele está gosmenta de sudorese e não sinto fome... acho que estou desidratado.",

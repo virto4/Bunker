@@ -189,6 +189,15 @@ if clicou and !pilhas {
 					indice_atual = 0
 					global.tem_tela_aberta = false
 					etapa2 = true
+					if !assistiu_hoje {
+						assistiu_hoje = true
+						if instance_exists(obj_davi) {
+							obj_davi.sao = true
+							obj_davi.aumento_sanidade = 5
+						}
+						obj_personagem.sao = true
+						obj_personagem.aumento_sanidade = 5
+					}
 				} else {
 					char_index = 0
 					indice_atual++

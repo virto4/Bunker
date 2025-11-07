@@ -26,12 +26,12 @@ posicoes = [
 
 quantidades = [
 	[obj_acucar, 0],
-	[obj_agua, 3],
+	[obj_agua, 0],
 	[obj_alface, 0],
 	[obj_arroz, 0],
-	[obj_arroz_frango, 3],
+	[obj_arroz_frango, 0],
 	[obj_batata, 0],
-	[obj_bolo_chocolate, 2],
+	[obj_bolo_chocolate, 0],
 	[obj_bolo_quatro_quartos, 0],
 	[obj_cerveja, 0],
 	[obj_chocolate, 0],

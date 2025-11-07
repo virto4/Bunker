@@ -9,11 +9,15 @@ if room == rm_bunker {
 	interagir = false
 }
 etapa2 = false
+y_alimentou2 = 0
 tirar = false
 pode_conversar = true
 passagem_dia = false
 game_over = false
 
+aumento_sanidade = 0
+sao = false
+sao_aux = false
 enter = false
 enter2 = false
 beber_agua = false
