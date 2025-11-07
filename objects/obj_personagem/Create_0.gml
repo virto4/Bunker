@@ -136,7 +136,7 @@ mudou_data = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 100,
+	saude: 0,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,

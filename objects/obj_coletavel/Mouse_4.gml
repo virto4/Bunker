@@ -64,8 +64,9 @@ if instance_exists(obj_radio) {
 	}
 }
 
-if instance_exists(obj_radio) {
+if instance_exists(obj_radio) and room == rm_bunker and !global.tem_tela_aberta {
 	if object_index == obj_radio and !is_pilha and !clicou and !obj_radio.etapa2 {
+		global.tem_tela_aberta = true
 		obj_radio.clicou = true
 		nao = true
 	}
