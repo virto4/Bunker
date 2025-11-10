@@ -1,6 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 switch evento_hoje {
+	case "comerciante":
+		evento_comerciante = true
+		break
 	case "baratas": //inseticida
 		evento_baratas = true
 		break
@@ -98,6 +101,26 @@ switch evento_hoje {
 	case "cogumelos":
 		cogumelos = true
 		break
+}
+
+if evento_comerciante {
+	if !comerciante_aux {
+		comerciante_aux = true
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.comerciante)
+	}
+	if mudar_vez {
+		if vez_comerciante == 1 {
+			itens_comerciante = trocas.comerciante1
+			itens_jogador = trocas.jogador1
+		} else if vez_comerciante == 2 {
+			itens_comerciante = trocas.comerciante2
+			itens_jogador = trocas.jogador2
+		} else if vez_comerciante == 3 {
+			itens_comerciante = trocas.comerciante3
+			itens_jogador = trocas.jogador3
+		}
+		mudar_vez = false
+	}
 }
 
 if evento_canos and canos {

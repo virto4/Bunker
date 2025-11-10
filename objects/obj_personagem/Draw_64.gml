@@ -45,7 +45,7 @@ if room == rm_bunker {
 		draw_circle_color(50, 50, 50, c_red, c_red,false)
 	}
 	draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
-	if mouse_check_button_pressed(mb_left) {
+	if mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta {
 		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 50 - 48, 50 - 48, 50 + 48, 50 + 48) {
 			instrucoes = true
 			vermelho = true
@@ -261,23 +261,43 @@ if ganhou_jogo {
 }
 
 if direita_coletavel {
-	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
-	draw_set_color(c_black)
-	draw_set_font(fnt_dialogos)
-	var linhas = obj_conquistas.quebrar_texto(variable_struct_get(global.descricoes, object_get_name(obj_personagem.objeto)), 1500)
-	draw_text(190, 800, variable_struct_get(global.nomes, object_get_name(obj_personagem.objeto)))
-	for (var i = 0; i < array_length(linhas); i++) {
-		draw_text(190, 850 + 50 * i, linhas[i])
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale_direita, scale_direita, 0, c_white, 1)
+	if scale_direita < 5 {
+		scale_direita += 0.5
+	} else if scale_direita >= 5 {
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text_ext(210, 760, variable_struct_get(global.descricoes, object_get_name(obj_personagem.objeto)), 40, 1520)
+		var largura = string_width(variable_struct_get(global.nomes, object_get_name(obj_personagem.objeto)))
+		var altura = 640 - (78 - string_height("A")) / 2
+		draw_sprite_part_ext(spr_dialogo, 0, 0, 0, 10, 60, 160, altura, 1.3, 1.3, c_white, 1)
+		var xis = 0
+		for (var i = 0; i < largura / 10; i++) {
+			draw_sprite_part_ext(spr_dialogo, 0, 10, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
+			xis += 10
+		}
+		draw_sprite_part_ext(spr_dialogo, 0, 310, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
+		draw_text(170, 640, variable_struct_get(global.nomes, object_get_name(obj_personagem.objeto)))
+		draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
+		var maior = sprite_get_height(object_get_sprite(objeto))
+		if sprite_get_width(object_get_sprite(objeto)) > sprite_get_height(object_get_sprite(objeto)) {
+			maior = sprite_get_width(object_get_sprite(objeto))
+		}
+		draw_sprite_ext(object_get_sprite(objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
+		if mouse_check_button_pressed(mb_left) {
+			direita_coletavel = false
+			global.tem_tela_aberta = false
+			tirar_direita = true
+		}
 	}
-	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
-	var maior = sprite_get_height(object_get_sprite(objeto))
-	if sprite_get_width(object_get_sprite(objeto)) > sprite_get_height(object_get_sprite(objeto)) {
-		maior = sprite_get_width(object_get_sprite(objeto))
-	}
-	draw_sprite_ext(object_get_sprite(objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
-	if mouse_check_button_pressed(mb_left) {
-		direita_coletavel = false
-		global.tem_tela_aberta = false
+}
+
+if tirar_direita {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, scale_direita, scale_direita, 0, c_white, 1)
+	if scale_direita > 0 {
+		scale_direita -= 0.5
+	} else if scale_direita == 0 {
+		tirar_direita = false
 	}
 }
 
@@ -629,6 +649,12 @@ if instance_exists(obj_diario) and desenha {
 
 if (tutorial_ask or direita_coletavel) and desenha {
 	desenha = false
+}
+
+if room == rm_bunker and desenha {
+	if obj_controlador_evento.interagir_comerciante or obj_controlador_evento.interagir2 or obj_controlador_evento.despedida {
+		desenha = false
+	}
 }
 
 if instance_exists(obj_domino) and desenha {

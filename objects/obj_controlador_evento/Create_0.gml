@@ -11,6 +11,37 @@ function embaralhar(vetor) {
 	}
 	return vetor
 }
+itens_comerciante = []
+itens_jogador = []
+tirar_final = false
+despedida = false
+vez_comerciante =  1
+mudar_vez = true
+trocas = {
+	comerciante1: [obj_inseticida, obj_bolo_chocolate, obj_salada, obj_agua_sanitaria, obj_alface, obj_chocolate],
+	jogador1: [obj_pilha, obj_chocolate, obj_frango, obj_saco_lixo, obj_salada, obj_farinha],
+	comerciante2: [obj_radio, obj_saco_lixo, obj_analgesico, obj_antibiotico, obj_cookie, obj_farinha],
+	jogador2: [obj_tv, obj_escondidinho, obj_curativo, obj_curativo, obj_farinha, obj_chocolate],
+	comerciante3: [obj_domino, obj_ansiolitico, obj_chucrute, obj_repolho, obj_escondidinho, obj_ovo_mexido],
+	jogador3: [obj_municao, obj_cerveja, obj_agua, obj_alface, obj_batata, obj_saco_lixo],
+}
+evento_comerciante = false
+comerciante_aux = false
+interagir_comerciante = false
+scale = 0
+primeiro = false
+segundo = false
+sair = false
+interagir2 = false
+draw_set_font(fnt_dialogos)
+
+largura_sim = string_width("Sim")
+altura_sim = string_height("Sim")
+largura_nao = string_width("Não")
+altura_nao = string_height("Não")
+
+sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
+nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
 
 evento_inimigo = false
 derrotou_inimigo = false
@@ -97,12 +128,12 @@ radiacao_aux = true
 mofo = false
 mofo_aux = true
 comerciante = false
-comerciante_aux = true
 crianca = false
 crianca_aux = true
 canos = true
 
 eventos_inicio = [
+	"comerciante",
 	"capivara",
 	"gripe",
 	"enxaqueca",
@@ -119,7 +150,7 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	dia1: "capivara", //adicionar aqui o evento que está testando
+	dia1: "comerciante", //adicionar aqui o evento que está testando
 	dia3: eventos_inicio[0],
 	dia6: eventos_inicio[1],
 	dia8: eventos_inicio[2],
@@ -135,6 +166,7 @@ inicio_data = {
 }
 
 eventos_meio = embaralhar ([
+	"comerciante",
 	"doenca_gata",
 	"eletricidade",
 	"rachadura",
@@ -165,6 +197,7 @@ meio_data = {
 }
 
 eventos_fim = embaralhar([
+	"comerciante",
 	"disenteria",
 	"escorbuto",
 	"ventilacao",

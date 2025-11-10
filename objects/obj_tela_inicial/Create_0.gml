@@ -1,7 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 persistent = true
-
+audio_play_sound(snd_floresta, 1, true)
 pode_tocar = true
 primeiro = false
 primeiro2 = false

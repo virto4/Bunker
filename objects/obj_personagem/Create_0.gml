@@ -24,6 +24,10 @@ coisas que pioram sanidade:
 -morte davi=-10
 -morte meredith=-5
 */
+if room == rm_bunker {
+	audio_stop_sound(snd_floresta)
+}
+
 vermelho = false
 escrita = ""
 instrucoes_fala = {
@@ -61,7 +65,7 @@ type_speed = 0.06
 current_text = ""
 char_index = 0
 ganhou_jogo = false
-dias_bunker = 50
+dias_bunker = 100
 final_secreto = false
 aux_final = true
 escureceu_final = false
@@ -133,10 +137,13 @@ clareou = false
 aaa = false
 mudou_data = false
 
+scale_direita = 0
+tirar_direita = false
+
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 0,
+	saude: 100,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
@@ -318,7 +325,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 0
+	tempo_espera = 20
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true
@@ -464,6 +471,7 @@ if room_get_name(room) == "rm_casa" {
 			} else { //se pegou mais de uma municao, no obj_municao estara dizendo quantas ela tem
 				//variable_instance_set(obj, "qtde_itens", variable_instance_get(obj, "qtde_itens") + 1)
 				variable_instance_set(instance_find(index_obj, 0), "qtde_itens", variable_instance_get(instance_find(index_obj, 0), "qtde_itens") + 1)
+				variable_struct_set(qtde_itens1, nome_obj, variable_struct_get(qtde_itens1, nome_obj) + 1)
 			}
 		}
 	}

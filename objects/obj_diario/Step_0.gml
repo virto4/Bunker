@@ -67,8 +67,7 @@ if (mouse_check_button_pressed(mb_left)) {
 }
 
 if mouse_check_button_pressed(mb_left) {
-	if mx > tx_sair - width_sair && mx < tx_sair + width_sair &&
-	my > ty_sair - height_sair && my < ty_sair + height_sair {
+	if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
 		clicou = false
 		global.tem_tela_aberta = false
 	}
