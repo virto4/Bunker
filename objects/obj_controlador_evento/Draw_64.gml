@@ -1,3 +1,225 @@
+if sair_bunker {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	if scale < 5 {
+		scale += 0.5
+	} else if instance_exists(obj_mapa) and (instance_exists(obj_traje_davi) or instance_exists(obj_traje_roger)) {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text_ext(210, 760, "Você tem a opção de enviar alguém para fora do Bunker em uma arriscada missão para coletar itens; a pessoa escolhida voltará amanhã, podendo ou não apresentar sequelas. Porém, você só pode fazer isso munido de um traje anti-radiação e o mapa para se localizar. Esses itens não são consumíveis. Quem você envia?", 30, 1520)
+		var mx = device_mouse_x_to_gui(0)
+		var my = device_mouse_y_to_gui(0)
+		if point_in_rectangle(mx, my, roger[0][0], roger[0][1], roger[1][0], roger[1][1]) {
+			draw_rectangle_color(280, 920, 320 + largura_roger, 960 + altura_roger, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_roger, 950 + altura_roger, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			if mouse_check_button_pressed(mb_left) {
+				tirar_coleta = true
+				sair_bunker = false
+				roger_sai = true
+			}
+		} else {
+			primeiro = false
+		}
+		draw_text(300, 940, "Roger")
+		if point_in_rectangle(mx, my, davi[0][0], davi[0][1], davi[1][0], davi[1][1]) {
+			draw_rectangle_color(940 - largura_davi / 2, 920, 980 + largura_davi / 2, 960 + altura_davi, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(950 - largura_davi / 2, 930, 970 + largura_davi / 2, 950 + altura_davi, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if !segundo {
+				segundo = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			if mouse_check_button_pressed(mb_left) {
+				tirar_coleta = true
+				sair_bunker = false
+				davi_sai = true
+			}
+		} else {
+			segundo = false
+		}
+		draw_text(960 - largura_davi / 2, 940, "Davi")
+		if point_in_rectangle(mx, my, nenhum[0][0], nenhum[0][1], nenhum[1][0], nenhum[1][1]) {
+			draw_rectangle_color(1600 - largura_nenhum, 920, 1640, 960 + altura_nenhum, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610 - largura_nenhum, 930, 1630, 950 + altura_nenhum, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if !terceiro {
+				terceiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			if mouse_check_button_pressed(mb_left) {
+				tirar_coleta = true
+				sair_bunker = false
+			}
+		} else {
+			terceiro = false
+		}
+		draw_text(1630 - largura_nenhum, 940, "Nenhum")
+	} else {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text_ext(210, 760, "Você só pode sair se tiver pelo menos um traje anti-radiação e o mapa.", 30, 1520)
+		if mouse_check_button_pressed(mb_left) {
+			tirar_coleta = true
+			sair_bunker = false
+		}
+	}
+}
+
+if tirar_coleta {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	if scale > 0 {
+		scale -= 0.5
+	} else {
+		tirar_coleta = false
+		if !(davi_sai or roger_sai) {
+			global.tem_tela_aberta = false
+		}
+	}
+}
+
+if davi_sai {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_davi)
+	if alpha_davi < 1 and tempo_davi == 0 {
+		alpha_davi += 0.05
+	} else if tempo_davi == 0 {
+		esperando_davi = true
+		instance_destroy(obj_mapa)
+		if instance_exists(obj_traje_davi) {
+			instance_destroy(obj_traje_davi)
+			traje_utilizado = obj_traje_davi
+		} else {
+			instance_destroy(obj_traje_roger)
+			traje_utilizado = obj_traje_roger
+		}
+		instance_destroy(obj_davi)
+		tempo_davi = current_time / 1000 + 1
+	} else if tempo_davi < current_time / 1000 and alpha_davi > 0 {
+		alpha_davi -= 0.05
+	} else {
+		global.tem_tela_aberta = false
+		davi_sai = false
+		tempo_davi = 0
+	}
+}
+
+if davi_coletou {
+	if obj_personagem.passagem_dia and !obj_personagem.animacao_dia {
+		var posicoes = global.posicoes.obj_mapa
+		var x_= variable_struct_get(posicoes, "x")
+		var y_ = variable_struct_get(posicoes, "y")
+		instance_create_layer(x_, y_, "Instances", obj_mapa, {})
+		if traje_utilizado == obj_traje_roger {
+			posicoes = global.posicoes.obj_traje_roger
+			x_= variable_struct_get(posicoes, "x")
+			y_ = variable_struct_get(posicoes, "y")
+			instance_create_layer(x_, y_, "Instances", obj_traje_roger, {})
+		} else {
+			posicoes = global.posicoes.obj_traje_davi
+			x_= variable_struct_get(posicoes, "x")
+			y_ = variable_struct_get(posicoes, "y")
+			instance_create_layer(x_, y_, "Instances", obj_traje_davi, {})
+		}
+		for (var i = 0; i < array_length(coleta_atual) and considerar_loots; i++) {
+			for (var k = 0; k < coleta_atual[i][1]; k++) {
+				var is_alimento = false
+				for (var j = 0; j < array_length(global.alimentos); j++) {
+					if global.alimentos[j] == coleta_atual[i] {
+						is_alimento = true
+						break
+					}
+				}
+				if is_alimento {
+					for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
+						if obj_freezer.quantidades[j][0] == coleta_atual[i] {
+							obj_freezer.quantidades[j][1]++
+						}
+					}
+				} else {
+					var object = coleta_atual[i][0]
+					if !instance_exists(object) {
+						var pos = variable_struct_get(global.posicoes, object_get_name(object))
+						var ax = variable_struct_get(pos, "x")
+						var ay = variable_struct_get(pos, "y")
+						instance_create_layer(ax, ay, layer_get_id("Instances"), object, {})
+					} else {
+						object.qtde_itens += 1	
+					}
+				}
+				variable_struct_set(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]) + 1))
+			}
+		}
+		considerar_loots = false
+	} else if !obj_personagem.passagem_dia {
+		draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+		if scale < 5 {
+			scale += 0.5
+		} else {
+			var texto = "Davi conseguiu coletar: "
+			for (var i = 0; i < array_length(coleta_atual); i++) {
+				texto += variable_struct_get(global.nomes, coleta_atual[i]) + ", "
+			}
+			draw_set_font(fnt_dialogos)
+			draw_set_color(c_black)
+			draw_text_ext(210, 760, texto, 30, 1520)
+			if mouse_check_button_pressed(mb_left) {
+				considerar_loots = true
+				roger_sai = false
+				evento_coleta = false
+				coleta_aux = false
+				davi_coletou = false
+			}
+		}
+	}
+}
+
+if roger_sai and roger_sai_aux {
+	roger_sai_aux = false
+	obj_cama_campanha.passar_dia()
+} else if roger_sai and obj_personagem.passagem_dia and !obj_personagem.animacao_dia {
+	for (var i = 0; i < array_length(coleta_atual) and considerar_loots; i++) {
+		var is_alimento = false
+		for (var j = 0; j < array_length(global.alimentos); j++) {
+			if object_get_name(global.alimentos[j]) == coleta_atual[i] {
+				is_alimento = true
+			}
+		}
+		if is_alimento {
+			for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
+				if obj_freezer.quantidades[j][0] == coleta_atual[i] {
+					obj_freezer.quantidades[j][1]++
+				}
+			}
+		} else {
+			var object = coleta_atual[i]
+			if !instance_exists(object) {
+				var pos = variable_struct_get(global.posicoes, object_get_name(object))
+				var ax = variable_struct_get(pos, "x")
+				var ay = variable_struct_get(pos, "y")
+				instance_create_layer(ax, ay, layer_get_id("Instances"), object, {})
+			} else {
+				object.qtde_itens += 1	
+			}
+		}
+		variable_struct_set(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]) + 1))
+	}
+	considerar_loots = false
+} else if !obj_personagem.passagem_dia {
+	var texto = "Você conseguiu coletar: "
+	for (var i = 0; i < array_length(coleta_atual); i++) {
+		texto += variable_struct_get(global.nomes, coleta_atual[i]) + ", "
+	}
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_black)
+	draw_text_ext(210, 760, texto, 30, 1520)
+	if mouse_check_button_pressed(mb_left) {
+		roger_sai = false
+		evento_coleta = false
+		coleta_aux = false
+		considerar_loots = true
+	}
+}
+
 function acerto_de_contas(objeto_vendido, objeto_comprado) {
 	variable_struct_set(obj_personagem.qtde_itens1, object_get_name(objeto_vendido), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(objeto_vendido)) - 1)
 	var is_alimento = false

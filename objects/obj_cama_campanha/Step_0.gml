@@ -18,33 +18,9 @@ if clicou {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
 			tirar = true
-			obj_personagem.passagem_dia = true
 			clicou = false
 			global.tem_tela_aberta = false
-			if room == rm_bunker {
-				if obj_controlador_evento.evento_hoje == "comerciante" {
-					obj_controlador_evento.mudar_vez = true
-				}
-			}
-			if instance_exists(obj_radio) {
-				obj_radio.entrou = true
-				obj_radio.programacao = noone
-				obj_radio.assistiu_hoje = false
-			}
-			if instance_exists(obj_davi) {
-				obj_davi.interagir = true
-				obj_davi.comecou_dia = true
-			}
-			if instance_exists(obj_meredith) {
-				obj_meredith.tem_fala = true
-				obj_meredith.comecou_dia = true
-			}
-			if instance_exists(obj_domino) {
-				obj_domino.jogou_hoje = false
-			}
-			if instance_exists(obj_baralho) {
-				obj_baralho.jogou_hoje = false
-			}
+			passar_dia()
 		}
 	} else {
 		primeiro = false

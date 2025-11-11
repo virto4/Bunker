@@ -69,7 +69,7 @@ switch evento_hoje {
 		idoso = true
 		break
 	case "coleta":
-		coleta = true
+		evento_coleta = true
 		break
 	case "desidratacao":
 		desidratacao = true
@@ -103,7 +103,37 @@ switch evento_hoje {
 		break
 }
 
+if evento_coleta {
+	if evento_hoje != "coleta" {
+		evento_coleta = false
+	}
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.coleta)
+	if mudar_coleta {
+		switch vez_coleta {
+			case 1:
+				coleta_atual = itens_coleta.saida1
+				break
+			case 2:
+				coleta_atual = itens_coleta.saida2
+				break
+			case 3:
+				coleta_atual = itens_coleta.saida3
+				break
+			case 4:
+				coleta_atual = itens_coleta.saida4
+				break
+			case 5:
+				coleta_atual = itens_coleta.saida5
+				break
+		}
+		vez_coleta++
+	}
+}
+
 if evento_comerciante {
+	if evento_hoje != "comerciante" {
+		evento_comerciante = false
+	}
 	if !comerciante_aux {
 		comerciante_aux = true
 		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.comerciante)
@@ -185,11 +215,6 @@ if leptospirose and leptospirose_aux {
 if mala and mala_aux {
 	mala_aux = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mala)
-}
-
-if coleta and coleta_aux {
-	coleta_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.coleta)
 }
 
 if desidratacao and desidratacao_aux {

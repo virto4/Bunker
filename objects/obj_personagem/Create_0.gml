@@ -218,7 +218,8 @@ global.tem_tela_aberta = false
 
 itens_nao_consumiveis = [obj_radio, obj_machado, obj_metralhadora, obj_pistola,
 						obj_picareta, obj_tv, obj_domino, obj_contador_geiger, obj_baralho,
-						obj_inseticida, obj_ferramentas, obj_espanador, obj_meredith, obj_davi]
+						obj_inseticida, obj_ferramentas, obj_espanador, obj_meredith, obj_davi, 
+						obj_mapa, obj_traje_davi, obj_traje_roger]
 is_consumivel = true //variavel auxiliar para obj_coletavel
 obj_anterior = noone //auxilia na geracao do sprite azulxznho
 item_devolvido = false //o obj coletavel estpa por baixo deste aqui. ao clicar para devolver, ele entende que quero pegar outro também. Para saber se o clique é para pegar ou devolver, vemos essa variavel
@@ -238,6 +239,9 @@ view_width_base = camera_get_view_width(view_camera[0]);
 view_height_base = camera_get_view_height(view_camera[0]);
 
 qtde_itens1 = {
+	"obj_mapa": 0,
+	"obj_traje_davi": 0,
+	"obj_traje_roger": 0,
     "obj_acucar": 0,
     "obj_agua": 0,
     "obj_alface": 0,
@@ -308,7 +312,7 @@ inputs = {
 
 opcoes = false
 
-armas_pegas = [obj_picareta, obj_metralhadora, obj_pistola, obj_machado]
+armas_pegas = []
 
 tutorial_ask = false
 tutorial = false
@@ -325,7 +329,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 20
+	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true
@@ -448,6 +452,16 @@ if room_get_name(room) == "rm_casa" {
 				break
 			case obj_meredith:
 				mudar_fase("obj_meredith", obj_meredith)
+				break
+			case obj_traje_davi:
+				mudar_fase("obj_traje_davi", obj_traje_davi)
+				break
+			case obj_traje_roger:
+				mudar_fase("obj_traje_roger", obj_traje_roger)
+				break
+			case obj_mapa:
+				mudar_fase("obj_mapa", obj_mapa)
+				break
 		}
 	}
 

@@ -3,6 +3,9 @@
 itens_pegos = ds_list_create()
 
 posicoes = {
+	"obj_mapa": {"x": 386, "y": 244},
+	"obj_traje_davi": {"x": 1230, "y": 441},
+	"obj_traje_roger": {"x": 1162, "y": 441},
 	"obj_municao": {"x": 274, "y": 210},
 	"obj_radio": {"x": 500, "y": 482},
 	"obj_pilha": {"x": 250, "y": 213},
@@ -29,6 +32,9 @@ posicoes = {
 }
 
 casa = [
+	["obj_mapa", 1370, 534],
+	["obj_traje_davi", 245, 140],
+	["obj_traje_roger", 312, 140],
     ["obj_radio", 548, 677],
     ["obj_machado", 1494, 785],
     ["obj_metralhadora", 308.5, 720],
@@ -45,6 +51,9 @@ casa = [
 ]
 
 qtde_slots = {
+	"obj_mapa": 1,
+	"obj_traje_davi": 2,
+	"obj_traje_roger": 2,
 	"obj_davi": 5,
 	"obj_meredith": 1,
 	"obj_arroz_frango": 1, 
@@ -99,6 +108,9 @@ alimentos = [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_cho
 ferramentas = [obj_chave_fenda, obj_argamassa, obj_martelo, obj_fita_isolante]
 
 nomes = {
+	"obj_mapa": "Mapa",
+	"obj_traje_roger": "Traje Anti-Radiação",
+	"obj_traje_davi": "Traje Anti-Radiação",
 	"obj_acucar": "Açúcar",
 	"obj_agua": "Água",
 	"obj_alface": "Alface",
@@ -148,6 +160,9 @@ nomes = {
 }
 
 descricoes = {
+	"obj_mapa": "Usado para explorar mundo afora nos eventos de coleta de itens.",
+	"obj_traje_roger": "Usado para proteger-se quando for sair do Bunker.",
+	"obj_traje_davi": "Usado para proteger-se quando for sair do Bunker.",
 	"obj_acucar": "Usado em bolos e outros docinhos.",
 	"obj_agua": "Hidrate-se!",
 	"obj_alface": "Folhas verdes e saudáveis.",

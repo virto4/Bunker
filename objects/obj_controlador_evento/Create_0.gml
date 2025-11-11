@@ -11,6 +11,31 @@ function embaralhar(vetor) {
 	}
 	return vetor
 }
+traje_utilizado = noone
+davi_coletou = false
+tempo_davi = 0
+alpha_davi = 0
+esperando_davi = false
+considerar_loots = true
+roger_sai_aux = true
+alpha_coleta = 0
+roger_sai = false
+davi_sai = false
+tirar_coleta = false
+sair_bunker = false
+evento_coleta = false
+coleta_aux = false
+mudar_coleta = false
+vez_coleta = 1
+coleta_atual = []
+itens_coleta = {
+	saida1: [[obj_agua, 10], [obj_repolho, 1], [obj_analgesico, 2]],
+	saida2: [[obj_curativo, 5], [obj_municao, 4]],
+	saida3: [[obj_escondidinho, 2], [obj_ansiolitico, 2]],
+	saida4: [[obj_pilha, 1], [obj_agua_sanitaria, 1]],
+	saida5: [[obj_saco_lixo, 5], [obj_curativo, 2]]
+}
+
 itens_comerciante = []
 itens_jogador = []
 tirar_final = false
@@ -40,8 +65,20 @@ altura_sim = string_height("Sim")
 largura_nao = string_width("Não")
 altura_nao = string_height("Não")
 
+largura_davi = string_width("Davi")
+altura_davi = string_height("Davi")
+largura_roger = string_width("Roger")
+altura_roger = string_height("Roger")
+largura_nenhum = string_width("Nenhum")
+altura_nenhum = string_height("Nenhum")
+
 sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
 nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
+
+roger = [[290, 930], [310 + largura_roger, 950 + altura_roger]]
+davi = [[950 - largura_davi / 2, 930], [970 + largura_davi / 2, 950 + altura_davi]]
+nenhum = [[1610 - largura_nenhum, 930], [1630, 950 + altura_nenhum]]
+terceiro = false
 
 evento_inimigo = false
 derrotou_inimigo = false
@@ -113,8 +150,6 @@ cogumelos_aux = true
 
 idoso = false
 idoso_aux = true
-coleta = false
-coleta_aux = true
 mala = false
 mala_aux = true
 eletricidade = false
@@ -150,7 +185,7 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	dia1: "comerciante", //adicionar aqui o evento que está testando
+	dia1: "coleta", //adicionar aqui o evento que está testando
 	dia3: eventos_inicio[0],
 	dia6: eventos_inicio[1],
 	dia8: eventos_inicio[2],
