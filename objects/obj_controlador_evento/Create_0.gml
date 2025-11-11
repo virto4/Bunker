@@ -11,6 +11,11 @@ function embaralhar(vetor) {
 	}
 	return vetor
 }
+escureceu = false
+mudar = false
+clareou = false
+objeto_davi_antes = noone
+
 traje_utilizado = noone
 davi_coletou = false
 tempo_davi = 0

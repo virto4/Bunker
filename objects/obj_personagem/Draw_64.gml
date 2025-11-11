@@ -567,7 +567,7 @@ if room == rm_bunker {
 	if obj_escada.clicou {
 		desenha = false
 	}
-	if obj_controlador_evento.sair_bunker or obj_controlador_evento.davi_sai or (obj_controlador_evento.davi_coletou and !obj_personagem.passagem_dia) or (obj_controlador_evento.roger_sai and obj_controlador_evento.roger_sai_aux) and desenha {
+	if obj_controlador_evento.sair_bunker or obj_controlador_evento.davi_sai or (obj_controlador_evento.davi_coletou and !obj_personagem.passagem_dia) or obj_controlador_evento.roger_sai and desenha {
 		desenha = false
 	}
 }

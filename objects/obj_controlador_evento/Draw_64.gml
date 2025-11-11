@@ -54,7 +54,7 @@ if sair_bunker {
 		} else {
 			terceiro = false
 		}
-		draw_text(1630 - largura_nenhum, 940, "Nenhum")
+		draw_text(1620 - largura_nenhum, 940, "Nenhum")
 	} else {
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
@@ -80,9 +80,13 @@ if tirar_coleta {
 
 if davi_sai {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_davi)
-	if alpha_davi < 1 and tempo_davi == 0 {
-		alpha_davi += 0.05
-	} else if tempo_davi == 0 {
+	if !escureceu and !clareou {
+		if alpha_davi < 1 {
+			alpha_davi += 0.05
+		} else {
+			escureceu = true
+		}
+	} else if escureceu and !clareou {
 		esperando_davi = true
 		instance_destroy(obj_mapa)
 		if instance_exists(obj_traje_davi) {
@@ -92,11 +96,16 @@ if davi_sai {
 			instance_destroy(obj_traje_roger)
 			traje_utilizado = obj_traje_roger
 		}
-		instance_destroy(obj_davi)
+		instance_deactivate_object(obj_davi)
 		tempo_davi = current_time / 1000 + 1
-	} else if tempo_davi < current_time / 1000 and alpha_davi > 0 {
-		alpha_davi -= 0.05
-	} else {
+		clareou = true
+	} else if escureceu and clareou {
+		if alpha_davi > 0 {
+			alpha_davi -= 0.05
+		} else {
+			escureceu = false
+		}
+	} else if !escureceu and clareou{
 		global.tem_tela_aberta = false
 		davi_sai = false
 		tempo_davi = 0
@@ -104,7 +113,8 @@ if davi_sai {
 }
 
 if davi_coletou {
-	if obj_personagem.passagem_dia and !obj_personagem.animacao_dia {
+	if obj_personagem.passagem_dia and !obj_personagem.animacao_dia and escureceu {
+		instance_activate_object(obj_davi)
 		var posicoes = global.posicoes.obj_mapa
 		var x_= variable_struct_get(posicoes, "x")
 		var y_ = variable_struct_get(posicoes, "y")
@@ -124,14 +134,14 @@ if davi_coletou {
 			for (var k = 0; k < coleta_atual[i][1]; k++) {
 				var is_alimento = false
 				for (var j = 0; j < array_length(global.alimentos); j++) {
-					if global.alimentos[j] == coleta_atual[i] {
+					if global.alimentos[j] == coleta_atual[i][0] {
 						is_alimento = true
 						break
 					}
 				}
 				if is_alimento {
 					for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
-						if obj_freezer.quantidades[j][0] == coleta_atual[i] {
+						if obj_freezer.quantidades[j][0] == coleta_atual[i][0] {
 							obj_freezer.quantidades[j][1]++
 						}
 					}
@@ -146,28 +156,31 @@ if davi_coletou {
 						object.qtde_itens += 1	
 					}
 				}
-				variable_struct_set(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]) + 1))
+				variable_struct_set(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i][0]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i][0])) + 1)
 			}
 		}
 		considerar_loots = false
 	} else if !obj_personagem.passagem_dia {
 		draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+		global.tem_tela_aberta = true
 		if scale < 5 {
 			scale += 0.5
 		} else {
 			var texto = "Davi conseguiu coletar: "
 			for (var i = 0; i < array_length(coleta_atual); i++) {
-				texto += variable_struct_get(global.nomes, coleta_atual[i]) + ", "
+				texto += variable_struct_get(global.nomes, object_get_name(coleta_atual[i][0])) + " x " + string(coleta_atual[i][1]) + ", "
 			}
 			draw_set_font(fnt_dialogos)
 			draw_set_color(c_black)
 			draw_text_ext(210, 760, texto, 30, 1520)
 			if mouse_check_button_pressed(mb_left) {
+				global.tem_tela_aberta = false
 				considerar_loots = true
 				roger_sai = false
 				evento_coleta = false
 				coleta_aux = false
 				davi_coletou = false
+				tirar_coleta = true
 			}
 		}
 	}
@@ -176,47 +189,57 @@ if davi_coletou {
 if roger_sai and roger_sai_aux {
 	roger_sai_aux = false
 	obj_cama_campanha.passar_dia()
-} else if roger_sai and obj_personagem.passagem_dia and !obj_personagem.animacao_dia {
+} else if roger_sai and obj_personagem.passagem_dia and !obj_personagem.animacao_dia and obj_personagem.escureceu {
 	for (var i = 0; i < array_length(coleta_atual) and considerar_loots; i++) {
-		var is_alimento = false
-		for (var j = 0; j < array_length(global.alimentos); j++) {
-			if object_get_name(global.alimentos[j]) == coleta_atual[i] {
-				is_alimento = true
-			}
-		}
-		if is_alimento {
-			for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
-				if obj_freezer.quantidades[j][0] == coleta_atual[i] {
-					obj_freezer.quantidades[j][1]++
+		for (var k = 0; k < coleta_atual[i][1]; k++) {
+			var is_alimento = false
+			for (var j = 0; j < array_length(global.alimentos); j++) {
+				if global.alimentos[j] == coleta_atual[i][0] {
+					is_alimento = true
 				}
 			}
-		} else {
-			var object = coleta_atual[i]
-			if !instance_exists(object) {
-				var pos = variable_struct_get(global.posicoes, object_get_name(object))
-				var ax = variable_struct_get(pos, "x")
-				var ay = variable_struct_get(pos, "y")
-				instance_create_layer(ax, ay, layer_get_id("Instances"), object, {})
+			if is_alimento {
+				for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
+					if obj_freezer.quantidades[j][0] == coleta_atual[i][0] {
+						obj_freezer.quantidades[j][1]++
+					}
+				}
 			} else {
-				object.qtde_itens += 1	
+				var object = coleta_atual[i][0]
+				if !instance_exists(object) {
+					var pos = variable_struct_get(global.posicoes, object_get_name(object))
+					var ax = variable_struct_get(pos, "x")
+					var ay = variable_struct_get(pos, "y")
+					instance_create_layer(ax, ay, layer_get_id("Instances"), object, {})
+				} else {
+					object.qtde_itens += 1	
+				}
 			}
+			variable_struct_set(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i][0]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i][0])) + 1)
 		}
-		variable_struct_set(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i]) + 1))
 	}
 	considerar_loots = false
-} else if !obj_personagem.passagem_dia {
-	var texto = "Você conseguiu coletar: "
-	for (var i = 0; i < array_length(coleta_atual); i++) {
-		texto += variable_struct_get(global.nomes, coleta_atual[i]) + ", "
-	}
-	draw_set_font(fnt_dialogos)
-	draw_set_color(c_black)
-	draw_text_ext(210, 760, texto, 30, 1520)
-	if mouse_check_button_pressed(mb_left) {
-		roger_sai = false
-		evento_coleta = false
-		coleta_aux = false
-		considerar_loots = true
+} else if !obj_personagem.passagem_dia and roger_sai {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	global.tem_tela_aberta = true
+	if scale < 5 {
+		scale += 0.5
+	} else {
+		var texto = "Você conseguiu coletar: "
+		for (var i = 0; i < array_length(coleta_atual); i++) {
+			texto += variable_struct_get(global.nomes, object_get_name(coleta_atual[i][0])) + " x " + string(coleta_atual[i][1]) + ", "
+		}
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text_ext(210, 760, texto, 30, 1520)
+		if mouse_check_button_pressed(mb_left) {
+			global.tem_tela_aberta = false
+			roger_sai = false
+			evento_coleta = false
+			coleta_aux = false
+			considerar_loots = true
+			tirar_coleta = true
+		}
 	}
 }
 
