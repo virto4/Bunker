@@ -90,6 +90,7 @@ falas_secreto = [
 	"Você morre. Morre por ter descoberto a verdade. Morre, assim como todos que esse governo matou em nome da 'democracia', sempre favorecendo quem sempre foi favorito e exterminando seus opositores em práticas eugenistas.",
 	"Você é somente mais um. Ninguém se lembrará de você e de sua família. Tudo foi em vão. Agora, só nos resta esquecer dessa história. Ou seremos os próximos."
 ]
+
 falas_utilizadas = falas_final
 
 global.tem_tela_aberta = false
@@ -344,7 +345,7 @@ if room_get_name(room) == "rm_casa" {
 				break
 			case obj_municao:
 				mudar_fase("obj_municao", obj_municao);
-				break;
+				break
 			case obj_cerveja:
 				mudar_fase("obj_cerveja", obj_cerveja)
 				obj_freezer.quantidades[8][1] += 1

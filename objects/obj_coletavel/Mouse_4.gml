@@ -26,7 +26,7 @@ if object_index == obj_meredith and !global.tem_tela_aberta {
 	var a = irandom(1)
 	obj_meredith.audio = 0
 	if a == 1 {
-		 obj_meredith.audio = snd_miado1
+		obj_meredith.audio = snd_miado1
 	} else {
 		obj_meredith.audio = snd_miado2
 	}
@@ -76,11 +76,11 @@ if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta 
 	nao = true	
 	global.tem_tela_aberta = true
 	if !obj_domino.jogou_hoje {
-		obj_domino.clicou = true
 		if instance_exists(obj_davi) {
 			audio_stop_all()
 			audio_play_sound(snd_jazz, 1, true)
 			obj_domino.comecou = true
+			obj_domino.clicou = true
 		} else {
 			obj_personagem.pode_jogar = false
 		}

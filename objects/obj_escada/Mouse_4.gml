@@ -7,7 +7,11 @@ if obj_controlador_evento.evento_comerciante and obj_controlador_evento.evento_h
 	obj_controlador_evento.interagir_comerciante = true
 	global.tem_tela_aberta = true
 }
-if obj_controlador_evento.evento_coleta and obj_controlador_evento.evento_hoje == "coleta" and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 200 {
+if obj_controlador_evento.evento_coleta and obj_controlador_evento.evento_hoje == "coleta" and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 200 and !obj_controlador_evento.esperando_davi {
 	obj_controlador_evento.sair_bunker = true
+	global.tem_tela_aberta = true
+}
+if obj_controlador_evento.evento_hoje == "mala" and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 200 {
+	obj_controlador_evento.mala_question = true
 	global.tem_tela_aberta = true
 }

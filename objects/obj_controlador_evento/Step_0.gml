@@ -1,106 +1,13 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-switch evento_hoje {
-	case "comerciante":
-		evento_comerciante = true
-		break
-	case "baratas": //inseticida
-		evento_baratas = true
-		break
-	case "canos": //tem que trazer agua da casa
-		evento_canos = true
-		break
-	case "rachaduras": //argamassa
-		evento_rachaduras =  true
-		break
-	case "infiltracao": //martelo (quebrar o piso), fita isolante (consertar vazamento), argamassa (fechar buraco)
-		evento_infiltracao = true
-		break
-	case "termostato": //
-		break
-	case "chuva acida": //nao pode sair do bunker
-		break
-	case "ventilacao": //chave de fenda (abrir dutos), fita isolante
-		evento_ventilacao = true
-		break
-	case "mofo": // agua sanitaria
-		break
-	case "radiacao": //contador geiger para indicar o local do vazamento, argamassa para cobrir
-		break
-	case "barata":
-		barata = true
-		break
-	case "capivara":
-		capivara = true
-		break
-	case "delinquentes":
-		delinquentes = true
-		break
-	case "cardume":
-		cardume = true
-		break
-	case "saque":
-		saque = true
-		break
-	case "sequestro":
-		sequestro = true
-		break
-	case "emma":
-		emma = true
-		break
-	case "kkk":
-		kkk = true
-		break
-	case "maniaco":
-		maniaco = true
-		break
-	case "mib":
-		mib = true
-		break
-	case "fredie":
-		fredie = true
-	case "gripe":
-		gripe = true
-		break
-	case "enxaqueca":
-		enxaqueca = true
-		break
-	case "idoso":
-		idoso = true
-		break
-	case "coleta":
-		evento_coleta = true
-		break
-	case "desidratacao":
-		desidratacao = true
-		break
-	case "mala":
-		mala = true
-		break
-	case "leptospirose":
-		leptospirose = true
-		break
-	case "doenca_gata":
-		doenca_gata = true
-		break
-	case "eletricidade":
-		eletricidade = true
-		break
-	case "disenteria":
-		disenteria = true
-		break
-	case "escorbuto":
-		escorbuto = true
-		break
-	case "familia_feliz":
-		familia_feliz = true
-		break
-	case "depressao":
-		depressao = true
-		break
-	case "cogumelos":
-		cogumelos = true
-		break
+if mala {
+	if mala_aux {
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mala)
+		mala_aux = false
+	}
+	if evento_hoje != "mala" {
+		mala = false
+	}
 }
 
 if evento_coleta {
@@ -127,6 +34,7 @@ if evento_coleta {
 				break
 		}
 		vez_coleta++
+		mudar_coleta = false
 	}
 }
 
@@ -416,18 +324,18 @@ if evento_baratas {
 	if !instanciou_baratas {
 		instance_create_layer(553, 590, "Instances", obj_baratas, {})
 		instance_create_layer(680, 560, "Instances", obj_baratas, {})
-		instance_create_layer(681, 322, "Instances", obj_baratas, {})
+		instance_create_layer(681, 342, "Instances", obj_baratas, {})
 		instance_create_layer(914, 359, "Instances", obj_baratas, {})
 		instance_create_layer(1144, 345, "Instances", obj_baratas, {})
 		instanciou_baratas = true
-		dia_baratas = obj_diario.dia
 		obj_personagem.atributos.sanidade -= 10
-		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.baratas)
+		if instance_exists(obj_davi) {
+			obj_davi.atributos.sanidade -= 10
+		}
 	}
-	if obj_diario.dia != dia_baratas and !dia_baratas_aux  and morreu_inseticida < 5 {
-		instanciou_baratas = false
-		dia_baratas_aux = true
-		evento_baratas = false
+	if !baratas_aux {
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.baratas)
+		baratas_aux = true
 	}
 }
 

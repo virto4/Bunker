@@ -28,12 +28,6 @@ if tem_fala {
 	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
 	if mostrar {
-		if instance_exists(obj_davi) {
-			obj_davi.sao = true
-			obj_davi.aumento_sanidade = 5
-		}
-		obj_personagem.sao = true
-		obj_personagem.aumento_sanidade = 5
 		if current_time > tempo_fala {
 			if char_index < string_length(msg) {
 				char_index++
@@ -58,6 +52,12 @@ if tem_fala {
 			if char_index < string_length(msg) {
 				char_index = string_length(msg)
 			} else {
+				if instance_exists(obj_davi) {
+					obj_davi.sao = true
+					obj_davi.aumento_sanidade = 5
+				}
+				obj_personagem.sao = true
+				obj_personagem.aumento_sanidade = 5
 				variable_struct_set(obj_cursor.interagir, "meredith", false)
 				tem_fala = false
 				mostrar = false

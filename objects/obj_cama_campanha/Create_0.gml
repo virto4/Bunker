@@ -19,15 +19,32 @@ sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
 nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
 
 function passar_dia() {
+	obj_controlador_evento.evento()
 	obj_personagem.passagem_dia = true
 	if room == rm_bunker {
+		if obj_controlador_evento.evento_baratas and obj_controlador_evento.morreu_inseticida < 5 {
+			if !instance_exists(obj_baratas) {
+				obj_controlador_evento.instanciou_baratas = false
+				obj_controlador_evento.morreu_inseticida = 0
+			} else {
+				obj_personagem.atributos.sanidade -= 10
+				if instance_exists(obj_davi) {
+					obj_davi.atributos.sanidade -= 10
+				}
+			}
+		} else if obj_controlador_evento.evento_baratas {
+			obj_controlador_evento.evento_hoje = 0
+			obj_controlador_evento.morreu_inseticida = 0
+			obj_controlador_evento.evento_baratas = false
+			obj_controlador_evento.barata_aux = false
+		}
 		if obj_controlador_evento.esperando_davi {
 			obj_controlador_evento.davi_coletou = true
 		}
 		if obj_controlador_evento.evento_hoje == "comerciante" {
 			obj_controlador_evento.mudar_vez = true
 		}
-		if obj_controlador_evento.evento_hoje == "coleta" {
+		if obj_controlador_evento.evento_hoje == "coleta" and !obj_controlador_evento.esperando_davi {
 			obj_controlador_evento.mudar_coleta = true
 		}
 	}

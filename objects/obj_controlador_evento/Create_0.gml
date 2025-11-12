@@ -11,6 +11,10 @@ function embaralhar(vetor) {
 	}
 	return vetor
 }
+mala_question = false
+mala_interface = false
+mala_interface_aux = false
+
 escureceu = false
 mudar = false
 clareou = false
@@ -30,7 +34,7 @@ tirar_coleta = false
 sair_bunker = false
 evento_coleta = false
 coleta_aux = false
-mudar_coleta = false
+mudar_coleta = true
 vez_coleta = 1
 coleta_atual = []
 itens_coleta = {
@@ -99,6 +103,7 @@ evento_canos = false
 evento_hoje = 0 //irei trabalhar com todos os eventos no inicio para fins de teste
 
 instanciou_baratas = false
+baratas_aux = false
 dia_baratas = 0
 dia_baratas_aux = false
 morreu_inseticida = 0 //conta quantas baratas morreram para o inseticida. devem ser 5 para o evento passar
@@ -190,7 +195,8 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	dia1: "coleta", //adicionar aqui o evento que está testando
+	
+	dia1: "mala", //adicionar aqui o evento que está testando
 	dia3: eventos_inicio[0],
 	dia6: eventos_inicio[1],
 	dia8: eventos_inicio[2],
@@ -267,4 +273,108 @@ fim_data = {
 	dia92: eventos_fim[10],
 	dia94: eventos_fim[11],
 	dia96: eventos_fim[12],
+}
+
+function evento() {
+	switch evento_hoje {
+		case "comerciante":
+			evento_comerciante = true
+			break
+		case "baratas": //inseticida
+			evento_baratas = true
+			break
+		case "canos": //tem que trazer agua da casa
+			evento_canos = true
+			break
+		case "rachaduras": //argamassa
+			evento_rachaduras =  true
+			break
+		case "infiltracao": //martelo (quebrar o piso), fita isolante (consertar vazamento), argamassa (fechar buraco)
+			evento_infiltracao = true
+			break
+		case "termostato": //
+			break
+		case "ventilacao": //chave de fenda (abrir dutos), fita isolante
+			evento_ventilacao = true
+			break
+		case "mofo": // agua sanitaria
+			break
+		case "radiacao": //contador geiger para indicar o local do vazamento, argamassa para cobrir
+			break
+		case "barata":
+			barata = true
+			break
+		case "capivara":
+			capivara = true
+			break
+		case "delinquentes":
+			delinquentes = true
+			break
+		case "cardume":
+			cardume = true
+			break
+		case "saque":
+			saque = true
+			break
+		case "sequestro":
+			sequestro = true
+			break
+		case "emma":
+			emma = true
+			break
+		case "kkk":
+			kkk = true
+			break
+		case "maniaco":
+			maniaco = true
+			break
+		case "mib":
+			mib = true
+			break
+		case "fredie":
+			fredie = true
+		case "gripe":
+			gripe = true
+			break
+		case "enxaqueca":
+			enxaqueca = true
+			break
+		case "idoso":
+			idoso = true
+			break
+		case "coleta":
+			evento_coleta = true
+			break
+		case "desidratacao":
+			desidratacao = true
+			break
+		case "mala":
+			mala = true
+			mala_aux = true
+			break
+		case "leptospirose":
+			leptospirose = true
+			break
+		case "doenca_gata":
+			doenca_gata = true
+			break
+		case "eletricidade":
+			eletricidade = true
+			break
+		case "disenteria":
+			disenteria = true
+			break
+		case "escorbuto":
+			escorbuto = true
+			break
+		case "familia_feliz":
+			familia_feliz = true
+			break
+		case "depressao":
+			depressao = true
+			break
+		case "cogumelos":
+			cogumelos = true
+			break
+	}
 }

@@ -192,5 +192,6 @@ switch dia {
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia96
 		break
 	default:
+		obj_controlador_evento.evento_hoje = 0
 		ds_list_replace(paginas_escritas, dia + 1, "Nada de mais hoje.")
 }

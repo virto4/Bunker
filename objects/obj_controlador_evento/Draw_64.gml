@@ -1,8 +1,52 @@
+if mala_question {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	if scale < 5 {
+		scale += 0.5
+	} else {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text_ext(210, 760, "Você percebeu que deixaram uma mala misteriosa do lado de fora do Bunker. Gostaria de se arrsicar para ver o que tem dentro dela? Você não sabe se é bom ou ruim.", 30, 1520)
+		var mx = device_mouse_x_to_gui(0)
+		var my = device_mouse_y_to_gui(0)
+		if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			if mouse_check_button_pressed(mb_left) {
+				tirar_mala = true
+				mala_interface_aux = true
+			}
+		} else {
+			primeiro = false
+		}
+		draw_text(300, 940, "Sim")
+		if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+			draw_rectangle_color(1600 - largura_nao, 920, 1640, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610 - largura_nao, 930, 1630, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if !terceiro {
+				terceiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			if mouse_check_button_pressed(mb_left) {
+				tirar_mala = true
+				mala_question = false
+			}
+		} else {
+			terceiro = false
+		}
+		draw_text(1620 - largura_nao, 940, "Não")
+	}
+}
+
 if sair_bunker {
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
 	if scale < 5 {
 		scale += 0.5
-	} else if instance_exists(obj_mapa) and (instance_exists(obj_traje_davi) or instance_exists(obj_traje_roger)) {
+	} else if (instance_exists(obj_mapa) and (instance_exists(obj_traje_davi) or instance_exists(obj_traje_roger))) or (variable_struct_get(obj_personagem.qtde_itens1, "obj_mapa") > 0 and (variable_struct_get(obj_personagem.qtde_itens1, "obj_traje_davi") > 0 or variable_struct_get(obj_personagem.qtde_itens1, "obj_traje_roger") > 0)) {
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		draw_text_ext(210, 760, "Você tem a opção de enviar alguém para fora do Bunker em uma arriscada missão para coletar itens; a pessoa escolhida voltará amanhã, podendo ou não apresentar sequelas. Porém, você só pode fazer isso munido de um traje anti-radiação e o mapa para se localizar. Esses itens não são consumíveis. Quem você envia?", 30, 1520)
@@ -66,6 +110,40 @@ if sair_bunker {
 	}
 }
 
+if tirar_mala {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	if scale > 0 {
+		scale -= 0.5
+	} else {
+		tirar_coleta = false
+		if mala_interface_aux {
+			mala_interface = true
+		} else {
+			global.tem_tela_aberta = false
+		}
+	}
+}
+
+if mala_interface {
+	draw_sprite(spr_mala, 0, 960, 540)
+	draw_sprite(spr_voltar, 0, 1800, 50)
+	
+	var width_sair = sprite_get_width(spr_voltar) / 2
+	var height_sair = sprite_get_height(spr_voltar) / 2 
+	var tx_sair = 1800
+	var ty_sair = 50
+
+	var mx = device_mouse_x_to_gui(0);
+	var my = device_mouse_y_to_gui(0);
+
+	if mouse_check_button_pressed(mb_left) {
+		if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
+			mala_interface = false
+			global.tem_tela_aberta = false
+		}
+	}
+}
+
 if tirar_coleta {
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
 	if scale > 0 {
@@ -88,13 +166,97 @@ if davi_sai {
 		}
 	} else if escureceu and !clareou {
 		esperando_davi = true
-		instance_destroy(obj_mapa)
-		if instance_exists(obj_traje_davi) {
-			instance_destroy(obj_traje_davi)
-			traje_utilizado = obj_traje_davi
+		if instance_exists(obj_mapa) {
+			instance_destroy(obj_mapa)
 		} else {
-			instance_destroy(obj_traje_roger)
-			traje_utilizado = obj_traje_roger
+			var slotn = -1
+			if obj_personagem.slot1 == obj_mapa {
+				slotn = obj_personagem.slot1_n
+			} else if obj_personagem.slot2 == obj_mapa {
+				slotn = obj_personagem.slot2_n
+			} else if obj_personagem.slot3 == obj_mapa {
+				slotn = obj_personagem.slot3_n
+			} else if obj_personagem.slot4 == obj_mapa {
+				slotn = obj_personagem.slot4_n
+			} else if obj_personagem.slot5 == obj_mapa {
+				slotn = obj_personagem.slot5_n
+			} 
+			if obj_personagem.slot1_n == slotn {
+				obj_personagem.slot1 = noone
+				obj_personagem.slot1_novo = false
+			} 
+			if obj_personagem.slot2_n == slotn {
+				obj_personagem.slot2 = noone
+				obj_personagem.slot2_novo = false
+			} 
+			if obj_personagem.slot3_n == slotn {
+				obj_personagem.slot3 = noone
+				obj_personagem.slot3_novo = false
+			} 
+			if obj_personagem.slot4_n == slotn {
+				obj_personagem.slot4 = noone
+				obj_personagem.slot4_novo = false
+			} 
+			if obj_personagem.slot5_n == slotn {
+				obj_personagem.slot5 = noone
+				obj_personagem.slot5_novo = false
+			}
+		}
+		
+		var slotn = -1
+		if obj_personagem.slot1 == obj_traje_davi {
+			slotn = obj_personagem.slot1_n
+		} else if obj_personagem.slot2 == obj_traje_davi {
+			slotn = obj_personagem.slot2_n
+		} else if obj_personagem.slot3 == obj_traje_davi {
+			slotn = obj_personagem.slot3_n
+		} else if obj_personagem.slot4 == obj_traje_davi {
+			slotn = obj_personagem.slot4_n
+		} else if obj_personagem.slot5 == obj_traje_davi {
+			slotn = obj_personagem.slot5_n
+		} 
+		if slotn == -1 {
+			if obj_personagem.slot1 == obj_traje_roger {
+				slotn = obj_personagem.slot1_n
+			} else if obj_personagem.slot2 == obj_traje_roger {
+				slotn = obj_personagem.slot2_n
+			} else if obj_personagem.slot3 == obj_traje_roger {
+				slotn = obj_personagem.slot3_n
+			} else if obj_personagem.slot4 == obj_traje_roger {
+				slotn = obj_personagem.slot4_n
+			} else if obj_personagem.slot5 == obj_traje_roger {
+				slotn = obj_personagem.slot5_n
+			} 
+		}
+		if slotn == -1 {
+			if instance_exists(obj_traje_davi) {
+				instance_destroy(obj_traje_davi)
+				traje_utilizado = obj_traje_davi
+			} else {
+				instance_destroy(obj_traje_roger)
+				traje_utilizado = obj_traje_roger
+			}
+		} else {
+			if obj_personagem.slot1_n == slotn {
+				obj_personagem.slot1 = noone
+				obj_personagem.slot1_novo = false
+			} 
+			if obj_personagem.slot2_n == slotn {
+				obj_personagem.slot2 = noone
+				obj_personagem.slot2_novo = false
+			} 
+			if obj_personagem.slot3_n == slotn {
+				obj_personagem.slot3 = noone
+				obj_personagem.slot3_novo = false
+			} 
+			if obj_personagem.slot4_n == slotn {
+				obj_personagem.slot4 = noone
+				obj_personagem.slot4_novo = false
+			} 
+			if obj_personagem.slot5_n == slotn {
+				obj_personagem.slot5 = noone
+				obj_personagem.slot5_novo = false
+			}
 		}
 		instance_deactivate_object(obj_davi)
 		tempo_davi = current_time / 1000 + 1
@@ -113,7 +275,7 @@ if davi_sai {
 }
 
 if davi_coletou {
-	if obj_personagem.passagem_dia and !obj_personagem.animacao_dia and escureceu {
+	if obj_personagem.passagem_dia and !obj_personagem.animacao_dia and obj_personagem.escureceu {
 		instance_activate_object(obj_davi)
 		var posicoes = global.posicoes.obj_mapa
 		var x_= variable_struct_get(posicoes, "x")
@@ -286,7 +448,7 @@ function acerto_de_contas(objeto_vendido, objeto_comprado) {
 	if slotn != -1 {
 		if obj_personagem.slot1_n == slotn {
 			obj_personagem.slot1 = noone
-			obj_freezer.slot1_novo = false
+			obj_personagem.slot1_novo = false
 		} 
 		if obj_personagem.slot2_n == slotn {
 			obj_personagem.slot2 = noone

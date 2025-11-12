@@ -564,7 +564,8 @@ function desenhar_hotbar(slot, slot_novo, slotx) {
 }
 var desenha = true
 if room == rm_bunker {
-	if obj_escada.clicou {
+	
+	if obj_escada.clicou and desenha {
 		desenha = false
 	}
 	if obj_controlador_evento.sair_bunker or obj_controlador_evento.davi_sai or (obj_controlador_evento.davi_coletou and !obj_personagem.passagem_dia) or obj_controlador_evento.roger_sai and desenha {

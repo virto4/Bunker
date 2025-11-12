@@ -338,6 +338,7 @@
     {"name":"spr_lixeira","order":53,"path":"sprites/spr_lixeira/spr_lixeira.yy",},
     {"name":"spr_logo","order":9,"path":"sprites/spr_logo/spr_logo.yy",},
     {"name":"spr_machado","order":7,"path":"sprites/spr_machado/spr_machado.yy",},
+    {"name":"spr_mala","order":33,"path":"sprites/spr_mala/spr_mala.yy",},
     {"name":"spr_mapa","order":20,"path":"sprites/spr_mapa/spr_mapa.yy",},
     {"name":"spr_martelo","order":1,"path":"sprites/spr_martelo/spr_martelo.yy",},
     {"name":"spr_meredith_down","order":3,"path":"sprites/spr_meredith_down/spr_meredith_down.yy",},

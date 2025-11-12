@@ -44,10 +44,6 @@ if interagir and mostrar {
 	if pode_conversar {
 		obj_conquistas.conversou++
 	}
-	sao = true
-	aumento_sanidade = 5
-	obj_personagem.sao = true
-	obj_personagem.aumento_sanidade = 5
 	if !respondeu {
 		msg = variable_struct_get(falas[fala_dia][fala_atual], "fala")
 	} else {
@@ -159,6 +155,10 @@ if interagir and mostrar {
 			fala_atual++
 			char_index = 0
 		} else if !especial and pode_pular {
+			sao = true
+			aumento_sanidade = 5
+			obj_personagem.sao = true
+			obj_personagem.aumento_sanidade = 5
 			audio_stop_sound(snd_dialogo_escrito);
 			variable_struct_set(obj_cursor.interagir, "davi", false)
 			interagir = false
