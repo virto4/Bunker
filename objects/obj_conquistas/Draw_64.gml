@@ -29,18 +29,26 @@ function quebrar_texto(texto, largura_maxima) {
 if room_get_name(room) = "rm_conquistas" {
 	if position_meeting(mouse_x, mouse_y, obj_conquistas) {
 		var _filho = instance_position(mouse_x, mouse_y, obj_conquistas)
-		draw_sprite(spr_descricao, 0, mouse_x + sprite_get_width(spr_cursor_padrao), mouse_y + sprite_get_height(spr_cursor_padrao))
-		draw_set_font(fnt_descricoes)
+		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		if _filho != noone {
-			var _titulo = quebrar_texto(_filho.titulo + "", 280)
-			var _descricao = quebrar_texto(_filho.descricao + "", 280)
-			for (var _i = 0; _i < array_length(_titulo); _i++) {
-			    draw_text(mouse_x + sprite_get_width(spr_cursor_padrao) + 30, mouse_y + sprite_get_height(spr_cursor_padrao) + 30 + _i * string_height("A"), _titulo[_i]);
+			var _titulo = _filho.titulo
+			var _descricao = _filho.descricao
+			var altura =  (array_length(quebrar_texto(_descricao, 400)) + 1) * string_height("A") * 1.2 + 20
+			var largura = 0
+			if string_width(_titulo) > string_width(_descricao) {
+				largura = string_width(_titulo)
+			} else {
+				largura = string_width(_descricao)
 			}
-			for (var _i = 0; _i < array_length(_descricao); _i++) {
-			    draw_text(mouse_x + sprite_get_width(spr_cursor_padrao) + 30, mouse_y + sprite_get_height(spr_cursor_padrao) + 85 + _i * string_height("A"), _descricao[_i]);
+			if largura > 410 {
+				largura = 400
 			}
+			draw_rectangle_color(mouse_x + 70, mouse_y + 65, mouse_x + 70 + largura + 10, mouse_y + 65 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(mouse_x + 75, mouse_y + 70, mouse_x + 65 + largura + 10, mouse_y + 70 + string_height("A") * 1.2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			draw_rectangle_color(mouse_x + 75, mouse_y + 75 + string_height("A") * 1.2, mouse_x + 65 + largura + 10, mouse_y + 60 + altura, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			draw_text(mouse_x + 80, mouse_y + 80, _titulo)
+			draw_text_ext(mouse_x + 80, mouse_y + 80 + string_height("A") * 1.2, _descricao, string_height("A") * 1.2, 400)
 		}
 	}
 } else {

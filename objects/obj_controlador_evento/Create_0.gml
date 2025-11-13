@@ -11,9 +11,30 @@ function embaralhar(vetor) {
 	}
 	return vetor
 }
+gripe = false
+gripe_aux = true
+
+tirar_mala = false
 mala_question = false
 mala_interface = false
 mala_interface_aux = false
+mudar_mala = true
+vez_mala = 1
+mala_atual = []
+
+mala_posicoes = [
+	[700, 600],
+	[1100, 800],
+	[830, 700],
+	[1150, 700]
+] //certifique-se que todos os sprites sao 32 x 32
+mala_itens = {
+	mala1: [[obj_agua, 10, false], [obj_arroz, 2, false], [obj_analgesico, 1, false]],
+	mala2: [[obj_acucar, 2, false]],
+	mala3: [[obj_pilha, 1, false], [obj_municao, 2, false]],
+	mala4: [[obj_curativo, 4, false], [obj_batata, 2, false]],
+	mala5: [[obj_cerveja, 1, false]]
+}
 
 escureceu = false
 mudar = false
@@ -83,6 +104,7 @@ altura_nenhum = string_height("Nenhum")
 
 sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
 nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
+nao2 = [[1610 - largura_nao, 930], [1630, 950 + altura_nao]]
 
 roger = [[290, 930], [310 + largura_roger, 950 + altura_roger]]
 davi = [[950 - largura_davi / 2, 930], [970 + largura_davi / 2, 950 + altura_davi]]
@@ -125,16 +147,6 @@ alcoolatra = false
 mib = false
 fredie = false
 
-gripe = false
-enxaqueca = false
-desidratacao = false
-leptospirose = false
-doenca_gata = false
-disenteria = false
-escorbuto = false
-depressao = false
-cogumelos = false
-
 barata_aux = true
 capivara_aux = true
 delinquentes_aux = true
@@ -147,16 +159,6 @@ kkk_aux = true
 alcoolatra_aux = true
 mib_aux = true
 fredie_aux = true
-
-gripe_aux = true
-enxaqueca_aux = true
-desidratacao_aux = true
-leptospirose_aux = true
-doenca_gata_aux = true
-disenteria_aux = true
-escorbuto_aux = true
-depressao_aux = true
-cogumelos_aux = true
 
 idoso = false
 idoso_aux = true
@@ -195,8 +197,7 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	
-	dia1: "mala", //adicionar aqui o evento que está testando
+	dia1: "gripe", //adicionar aqui o evento que está testando
 	dia3: eventos_inicio[0],
 	dia6: eventos_inicio[1],
 	dia8: eventos_inicio[2],
@@ -275,6 +276,10 @@ fim_data = {
 	dia96: eventos_fim[12],
 }
 
+if room == rm_bunker {
+	evento_hoje = inicio_data.dia1
+	evento()
+}
 function evento() {
 	switch evento_hoje {
 		case "comerciante":

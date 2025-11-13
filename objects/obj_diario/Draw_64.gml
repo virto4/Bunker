@@ -61,28 +61,10 @@ if clicou and image_index == image_number - 1{
 	
 	
 	if pagina == 0 {
-		var _sprite_humor
-		switch obj_personagem.atributos.humor {
-			case "EXTASIADO":
-				_sprite_humor = spr_hiperativo
-				break
-			case "APAVORADO":
-				_sprite_humor = spr_apavorado
-				break
-			case "COLÉRICO":
-				_sprite_humor = spr_furioso
-				break
-			case "DEPRIMIDO":
-				_sprite_humor = spr_deprimido
-				break
-			case "NEUTRO":
-				_sprite_humor = spr_neutro
-				break
-		}
-		
+		draw_sprite(spr_doenca, 0, 430, 420)//mesmo da saude
 		draw_sprite(spr_sede_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 280)
 		draw_sprite(spr_fome_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 200)
-		draw_sprite(spr_saude_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 120)
+		draw_sprite(spr_saude_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 120)//
 		draw_sprite(spr_sanidade_cheio, 0, 1920 / 2 - 300, 1080 / 2 - 40)
 		draw_sprite(spr_sagacidade_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 40)
 		draw_sprite(spr_forca_cheio, 0, 1920 / 2 - 300, 1080 / 2 + 120)
@@ -98,29 +80,12 @@ if clicou and image_index == image_number - 1{
 		draw_sprite_part(spr_resistencia_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.resistencia / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 200 - 25)
 		draw_sprite_part(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 280 - 25)
 		
-		var _a = 1080 / 2 - 280
+		var _a = 540 - 280
 		var vet = ["Sede", "Fome", "Saúde", "Sanidade", "Sagacidade", "Força", "Resistência", "Fortuna"]
 		var vet2 = ["Diminui 25 por dia", "Diminui 7 por dia", "Diminui por doenças ou batalhas","Diminui 9 no primeiro mês, 15 no segundo e 21 no terceiro", "Chance de dar golpes críticos ou errados", "Quantidade base de dano causado", "Quantidade de dano resistência ao dano sofrido", "Define os saques de uma batalha"]
 		
 		if instance_exists(obj_davi) {
-			switch obj_davi.atributos.humor {
-				case "EXTASIADO":
-					_sprite_humor = spr_hiperativo
-					break
-				case "APAVORADO":
-					_sprite_humor = spr_apavorado
-					break
-				case "COLÉRICO":
-					_sprite_humor = spr_furioso
-					break
-				case "DEPRIMIDO":
-					_sprite_humor = spr_deprimido
-					break
-				case "NEUTRO":
-					_sprite_humor = spr_neutro
-					break
-			}
-		
+			draw_sprite(spr_doenca, 0, 1490, 420)//mesmo da saude
 			draw_sprite_ext(spr_sede_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 280, -1, 1, 0, c_white, 1)
 			draw_sprite_ext(spr_fome_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 200, -1, 1, 0, c_white, 1)
 			draw_sprite_ext(spr_saude_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 120, -1, 1, 0, c_white, 1)
@@ -139,25 +104,103 @@ if clicou and image_index == image_number - 1{
 			draw_sprite_part_ext(spr_resistencia_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.resistencia / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 200 - 25, -1, 1, c_white, 1)
 			draw_sprite_part_ext(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_davi.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 + 300 + 200, 1080 / 2 + 280 - 25, -1, 1, c_white, 1)
 			
-			draw_set_font(fnt_descricoes)
+			draw_set_font(fnt_dialogos)
+			draw_set_color(c_black)
+			var mx = device_mouse_x_to_gui(0)
+			var my = device_mouse_y_to_gui(0)
 			for (var i = 0; i < 8; i++) {
-				if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1060, _a + 80 * i - 25, 1660, _a + 80 * i + 25) {
-					draw_sprite(spr_descricao, 0, device_mouse_x_to_gui(0) + 50, device_mouse_y_to_gui(0) + 50)
-					draw_text(device_mouse_x_to_gui(0) + 85, device_mouse_y_to_gui(0) + 80, vet[i])
-					for (var j = 0; j < array_length(quebrar_texto(vet2[i], 280)); j++) {
-						draw_text(device_mouse_x_to_gui(0) + 85, device_mouse_y_to_gui(0) + 132 + j * string_height("A") + 4, quebrar_texto(vet2[i], 280)[j])
+				var altura =  (array_length(quebrar_texto(vet2[i], 400)) + 1) * string_height("A") * 1.2 + 20
+				if point_in_rectangle(mx, my, 1060, _a + 80 * i - 25, 1460, _a + 80 * i + 25) {
+					draw_rectangle_color(mx + 70, my + 65, mx + 70 + 420, my + 65 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+					draw_rectangle_color(mx + 75, my + 70, mx + 65 + 420, my + 70 + string_height("A") * 1.2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+					draw_rectangle_color(mx + 75, my + 75 + string_height("A") * 1.2, mx + 65 + 420, my + 60 + altura, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+					draw_text(mx + 85, my + 80, vet[i])
+					draw_text_ext(mx + 85, my + 80 + string_height("A") * 1.2, vet2[i], string_height("A") * 1.2, 400)
+				}
+			}
+			var altura = 0 //colocar aqui o numero de linhas
+			var largura = string_width("Doenças de Davi")
+			var saudavel = true
+			for (var i = 0; i < array_length(struct_get_names(obj_davi.doencas)); i++) {
+				var doenca = variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])
+				if doenca[0] {
+					saudavel = false
+					altura++
+					if string_width(doenca[1]) + string_width(struct_get_names(obj_davi.doencas)[i]) > largura {
+						largura = string_width(struct_get_names(obj_davi.doencas)[i]) +  string_width(": ") + string_width(doenca[1])
+					}
+				}
+			}
+			altura *= 50 
+			if altura == 0 {
+				altura = 50
+			}
+			var qtde = 0
+			if point_in_rectangle(mx, my, 1490 - 25, 420 - 25, 1490 + 25, 420 + 25) {
+				draw_rectangle_color(mx - largura - 20, my + 20, mx - 5, my + 85 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+				draw_rectangle_color(mx - largura - 15, my + 25, mx - 10, my + 75, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+				draw_rectangle_color(mx - largura - 15, my + 80, mx - 10, my + 80 + altura, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+				draw_text(mx - largura - 10, my + 30, "Doenças de Davi")
+				if saudavel {
+					draw_text(mx - largura - 10, my + 85, "Saudável")
+				} else {
+					for (var i = 0; i < array_length(struct_get_names(obj_davi.doencas)); i++) {
+						var doenca = variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])
+						if doenca[0] {
+							draw_text(mx - largura - 10, my + 80 + 50 * qtde, struct_get_names(obj_davi.doencas)[i] + ": " + string(doenca[1]))
+							qtde++
+						}
 					}
 				}
 			}
 		}
-		
-		draw_set_font(fnt_descricoes)
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		var mx = device_mouse_x_to_gui(0)
+		var my = device_mouse_y_to_gui(0)
 		for (var i = 0; i < 8; i++) {
-			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 460, _a + 80 * i - 25, 860, _a + 80 * i + 25) {
-				draw_sprite(spr_descricao, 0, device_mouse_x_to_gui(0) + 50, device_mouse_y_to_gui(0) + 50)
-				draw_text(device_mouse_x_to_gui(0) + 85, device_mouse_y_to_gui(0) + 80, vet[i])
-				for (var j = 0; j < array_length(quebrar_texto(vet2[i], 280)); j++) {
-					draw_text(device_mouse_x_to_gui(0) + 85, device_mouse_y_to_gui(0) + 132 + j * string_height("A") + 4, quebrar_texto(vet2[i], 280)[j])
+			var altura =  (array_length(quebrar_texto(vet2[i], 400)) + 1) * string_height("A") * 1.2 + 20
+			if point_in_rectangle(mx, my, 460, _a + 80 * i - 25, 860, _a + 80 * i + 25) {
+				draw_rectangle_color(mx + 70, my + 65, mx + 70 + 420, my + 65 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+				draw_rectangle_color(mx + 75, my + 70, mx + 65 + 420, my + 70 + string_height("A") * 1.2, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+				draw_rectangle_color(mx + 75, my + 75 + string_height("A") * 1.2, mx + 65 + 420, my + 60 + altura, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+				draw_text(mx + 85, my + 80, vet[i])
+				draw_text_ext(mx + 85, my + 80 + string_height("A") * 1.2, vet2[i], string_height("A") * 1.2, 400)
+			}
+		}
+		
+		var altura = 0 //colocar aqui o numero de linhas
+		var largura = string_width("Doenças de Roger")
+		var saudavel = true
+		for (var i = 0; i < array_length(struct_get_names(obj_personagem.doencas)); i++) {
+			var doenca = variable_struct_get(obj_personagem.doencas, struct_get_names(obj_davi.doencas)[i])
+			if doenca[0] {
+				saudavel = false
+				altura++
+				if string_width(doenca[1]) + string_width(struct_get_names(obj_personagem.doencas)[i]) > largura {
+				largura = string_width(struct_get_names(obj_personagem.doencas)[i]) +  string_width(": ") + string_width(doenca[1])
+				}
+			}
+		}
+		altura *= 50 
+		if altura == 0 {
+			altura = 50
+		}
+		var qtde = 0
+		if point_in_rectangle(mx, my, 430 - 25, 420 - 25, 430 + 25, 420 + 25) {
+			draw_rectangle_color(mx + 5, my + 20, mx + 20 + largura, my + 85 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(mx + 10, my + 25, mx + 15 + largura, my + 75, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			draw_rectangle_color(mx + 10, my + 80, mx + 15 + largura, my + 80 + altura, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			draw_text(mx + 15, my + 30, "Doenças de Roger")
+			if saudavel {
+				draw_text(mx + 15, my + 85, "Saudável")
+			} else {
+				for (var i = 0; i < array_length(struct_get_names(obj_personagem.doencas)); i++) {
+					var doenca = variable_struct_get(obj_personagem.doencas, struct_get_names(obj_personagem.doencas)[i])
+					if doenca[0] {
+						draw_text(mx + 15, my + 80 + 50 * qtde, struct_get_names(obj_personagem.doencas)[i] + ": " + string(doenca[1]))
+						qtde++
+					}
 				}
 			}
 		}

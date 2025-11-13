@@ -19,12 +19,13 @@ if mala_question {
 			if mouse_check_button_pressed(mb_left) {
 				tirar_mala = true
 				mala_interface_aux = true
+				mala_question = false
 			}
 		} else {
 			primeiro = false
 		}
 		draw_text(300, 940, "Sim")
-		if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+		if point_in_rectangle(mx, my, nao2[0][0], nao2[0][1], nao2[1][0], nao2[1][1]) {
 			draw_rectangle_color(1600 - largura_nao, 920, 1640, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(1610 - largura_nao, 930, 1630, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if !terceiro {
@@ -34,11 +35,108 @@ if mala_question {
 			if mouse_check_button_pressed(mb_left) {
 				tirar_mala = true
 				mala_question = false
+				mala_interface_aux = false
 			}
 		} else {
 			terceiro = false
 		}
 		draw_text(1620 - largura_nao, 940, "Não")
+	}
+}
+
+if tirar_mala {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
+	if scale > 0 {
+		scale -= 0.5
+	} else {
+		tirar_mala = false
+		if mala_interface_aux {
+			mala_interface = true
+		} else {
+			mala_interface_aux = false
+			global.tem_tela_aberta = false
+		}
+	}
+}
+
+if mala_interface {
+	draw_sprite(spr_mala, 0, 960, 540)
+	draw_sprite(spr_voltar, 0, 1800, 50)
+	
+	var width_sair = sprite_get_width(spr_voltar) / 2
+	var height_sair = sprite_get_height(spr_voltar) / 2 
+	var tx_sair = 1800
+	var ty_sair = 50
+
+	var mx = device_mouse_x_to_gui(0);
+	var my = device_mouse_y_to_gui(0);
+	
+	if mouse_check_button_pressed(mb_left) {
+		if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
+			mala_interface = false
+			global.tem_tela_aberta = false
+		}
+	}
+	var pegou_objeto = noone
+	for (var i = 0; i < array_length(mala_atual); i++) {
+		var nao_instancia = false
+		for (var j = 0; j < array_length(obj_personagem.itens_nao_consumiveis); j++) {
+			if obj_personagem.itens_nao_consumiveis[j] == mala_atual[i][0] {
+				if variable_instance_get(obj_personagem.qtde_itens1, object_get_name(mala_atual[i][0])) >= 1 {
+					nao_instancia = true
+					break
+				}
+			}
+		}
+		if nao_instancia {
+			continue
+		}
+		if mala_atual[i][2] {
+			continue
+		}
+		var objeto = mala_atual[i][0]
+		var quantia = mala_atual[i][1]
+		var posicao_x = mala_posicoes[i][0]
+		var posicao_y = mala_posicoes[i][1]
+		draw_sprite_ext(object_get_sprite(objeto), 0, posicao_x, posicao_y, 96 / sprite_get_height(object_get_sprite(objeto)), 96 / sprite_get_height(object_get_sprite(objeto)), 0, c_white, 1)
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		if quantia != 1 {
+			draw_text(posicao_x + 20, posicao_y + 20, string(quantia))
+		}
+		if point_in_rectangle(mx, my, posicao_x - 48, posicao_y - 48, posicao_x + 48, posicao_y + 48) {
+			if mouse_check_button_pressed(mb_left) {
+				pegou_objeto = objeto
+				mala_atual[i][2] = true
+				for (var k = 0; k < mala_atual[i][1]; k++) {
+					var is_alimento = false
+					for (var j = 0; j < array_length(global.alimentos); j++) {
+						if global.alimentos[j] == mala_atual[i][0] {
+							is_alimento = true
+							break
+						}
+					}
+					if is_alimento {
+						for (var j = 0; j < array_length(obj_freezer.quantidades); j++) {
+							if obj_freezer.quantidades[j][0] == mala_atual[i][0] {
+								obj_freezer.quantidades[j][1]++
+							}
+						}
+					} else {
+						var object = mala_atual[i][0]
+						if !instance_exists(object) {
+							var pos = variable_struct_get(global.posicoes, object_get_name(object))
+							var ax = variable_struct_get(pos, "x")
+							var ay = variable_struct_get(pos, "y")
+							instance_create_layer(ax, ay, layer_get_id("Instances"), object, {})
+						} else {
+							object.qtde_itens += 1	
+						}
+					}
+					variable_struct_set(obj_personagem.qtde_itens1, object_get_name(mala_atual[i][0]), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(mala_atual[i][0])) + 1)
+				}
+			}
+		}
 	}
 }
 
@@ -106,40 +204,6 @@ if sair_bunker {
 		if mouse_check_button_pressed(mb_left) {
 			tirar_coleta = true
 			sair_bunker = false
-		}
-	}
-}
-
-if tirar_mala {
-	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
-	if scale > 0 {
-		scale -= 0.5
-	} else {
-		tirar_coleta = false
-		if mala_interface_aux {
-			mala_interface = true
-		} else {
-			global.tem_tela_aberta = false
-		}
-	}
-}
-
-if mala_interface {
-	draw_sprite(spr_mala, 0, 960, 540)
-	draw_sprite(spr_voltar, 0, 1800, 50)
-	
-	var width_sair = sprite_get_width(spr_voltar) / 2
-	var height_sair = sprite_get_height(spr_voltar) / 2 
-	var tx_sair = 1800
-	var ty_sair = 50
-
-	var mx = device_mouse_x_to_gui(0);
-	var my = device_mouse_y_to_gui(0);
-
-	if mouse_check_button_pressed(mb_left) {
-		if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
-			mala_interface = false
-			global.tem_tela_aberta = false
 		}
 	}
 }
@@ -293,6 +357,18 @@ if davi_coletou {
 			instance_create_layer(x_, y_, "Instances", obj_traje_davi, {})
 		}
 		for (var i = 0; i < array_length(coleta_atual) and considerar_loots; i++) {
+			var nao_instancia = false
+			for (var j = 0; j < array_length(obj_personagem.itens_nao_consumiveis); j++) {
+				if obj_personagem.itens_nao_consumiveis[j] == coleta_atual[i][0] {
+					if variable_instance_get(obj_personagem.qtde_itens1, object_get_name(coleta_atual[i][0])) >= 1 {
+						nao_instancia = true
+						break
+					}
+				}
+			}
+			if nao_instancia {
+				continue
+			}
 			for (var k = 0; k < coleta_atual[i][1]; k++) {
 				var is_alimento = false
 				for (var j = 0; j < array_length(global.alimentos); j++) {

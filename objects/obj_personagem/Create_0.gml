@@ -19,13 +19,17 @@ coisas para melhorar sanidade:
 -jogar cartas ou domino=+10
 -vencer batalhas=+10
 -ouvir radio=+5
-
-coisas que pioram sanidade:
--morte davi=-10
--morte meredith=-5
 */
 if room == rm_bunker {
 	audio_stop_sound(snd_floresta)
+}
+
+doencas = {
+	Gripe: [true, "Passa naturalmente em 4 dias ou imediatamente com aspirina."],
+	Enxaqueca: [true, "Curada com aspirina."],
+	Leptospirose: [true, "Curada com antibióticos."],
+	Escorbuto: [true, "Curada com vitamina C (repolho tem muita vitamina C)."],
+	Disenteria: [true, "Curada com antibiótico."],
 }
 
 vermelho = false

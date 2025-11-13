@@ -1,5 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+doencas = {
+	Gripe: [false, "Passa naturalmente em 4 dias; pode ser resolvido imediatamente com aspiria."],
+	Enxaqueca: [false, "Curada com aspirina."],
+	Leptospirose: [false, "Curada com antibióticos."],
+	Escorbuto: [false, "Curada com vitamina C (repolho tem muita vitamina C)."],
+	Disenteria: [false, "Curada com antibiótico."],
+}
 if room == rm_bunker {
 	interagir = true
 	comecou_dia = true

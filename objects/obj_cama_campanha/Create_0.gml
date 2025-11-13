@@ -22,6 +22,10 @@ function passar_dia() {
 	obj_controlador_evento.evento()
 	obj_personagem.passagem_dia = true
 	if room == rm_bunker {
+		if obj_controlador_evento.mala {
+			obj_controlador_evento.mudar_mala = true
+			obj_controlador_evento.mala_aux = true
+		}
 		if obj_controlador_evento.evento_baratas and obj_controlador_evento.morreu_inseticida < 5 {
 			if !instance_exists(obj_baratas) {
 				obj_controlador_evento.instanciou_baratas = false
@@ -40,6 +44,9 @@ function passar_dia() {
 		}
 		if obj_controlador_evento.esperando_davi {
 			obj_controlador_evento.davi_coletou = true
+		}
+		if obj_controlador_evento.evento_hoje = "mala" {
+			obj_controlador_evento.mudar_mala = true
 		}
 		if obj_controlador_evento.evento_hoje == "comerciante" {
 			obj_controlador_evento.mudar_vez = true

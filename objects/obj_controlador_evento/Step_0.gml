@@ -1,5 +1,13 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if gripe {
+	if gripe_aux {
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.gripe)
+		gripe_aux = false
+	}
+	
+}
+
 if mala {
 	if mala_aux {
 		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mala)
@@ -7,6 +15,27 @@ if mala {
 	}
 	if evento_hoje != "mala" {
 		mala = false
+	}
+	if mudar_mala {
+		switch vez_mala {
+			case 1:
+				mala_atual = mala_itens.mala1
+				break
+			case 2:
+				mala_atual = mala_itens.mala2
+				break
+			case 3:
+				mala_atual = mala_itens.mala3
+				break
+			case 4:
+				mala_atual = mala_itens.mala4
+				break
+			case 5:
+				mala_atual = mala_itens.mala5
+				break
+		}
+		vez_mala++
+		mudar_mala = false
 	}
 }
 
@@ -60,91 +89,6 @@ if evento_comerciante {
 		mudar_vez = false
 	}
 }
-
-if evento_canos and canos {
-	canos = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.canos)
-}
-
-if crianca and crianca_aux {
-	crianca_aux = false
-}
-
-if cogumelos and cogumelos_aux {
-	cogumelos_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.cogumelos)
-}
-
-if depressao and depressao_aux {
-	depressao_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.depressao)
-}
-
-if comerciante and comerciante_aux {
-	comerciante_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.comerciante)
-}
-
-if familia_feliz and familia_feliz_aux {
-	familia_feliz_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.familia_feliz)
-}
-
-if escorbuto and escorbuto_aux {
-	escorbuto_aux = false 
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.escorbuto)
-}
-
-if disenteria and disenteria_aux {
-	disenteria_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.disenteria)
-}
-
-if termostato and termostato_aux {
-	termostato_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.termostato)
-}
-
-if eletricidade and eletricidade_aux {
-	eletricidade_aux = false 
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.eletricidade)
-}
-
-if doenca_gata and doenca_gata_aux {
-	doenca_gata_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.doenca_gata)
-}
-
-if leptospirose and leptospirose_aux {
-	leptospirose_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.leptospirose)
-}
-
-if mala and mala_aux {
-	mala_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mala)
-}
-
-if desidratacao and desidratacao_aux {
-	desidratacao_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.desidratacao)
-}
-
-if idoso and idoso_aux {
-	idoso_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.idoso)
-}
-
-if enxaqueca and enxaqueca_aux {
-	enxaqueca_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.enxaqueca)
-}
-
-if gripe and gripe_aux {
-	gripe_aux = false
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.gripe)
-}
-
 if barata and barata_aux {
 	barata_aux = false
 	evento_inimigo = true

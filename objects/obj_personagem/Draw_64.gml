@@ -564,7 +564,9 @@ function desenhar_hotbar(slot, slot_novo, slotx) {
 }
 var desenha = true
 if room == rm_bunker {
-	
+	if obj_controlador_evento.mala_question or obj_controlador_evento.mala_interface and desenha {
+		desenha = false
+	}
 	if obj_escada.clicou and desenha {
 		desenha = false
 	}

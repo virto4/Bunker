@@ -11,7 +11,7 @@ if obj_controlador_evento.evento_coleta and obj_controlador_evento.evento_hoje =
 	obj_controlador_evento.sair_bunker = true
 	global.tem_tela_aberta = true
 }
-if obj_controlador_evento.evento_hoje == "mala" and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 200 {
+if obj_controlador_evento.mala and obj_controlador_evento.evento_hoje == "mala" and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 200 {
 	obj_controlador_evento.mala_question = true
 	global.tem_tela_aberta = true
 }
