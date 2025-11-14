@@ -1,11 +1,58 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if doenca_gata and instance_exists(obj_meredith){
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.doenca_gata)
+	remedio_gata = true
+	doenca_gata = false
+}
+if evento_hoje != "doenca_gata" {
+	remedio_gata = false
+}
+
 if gripe {
-	if gripe_aux {
-		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.gripe)
-		gripe_aux = false
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.gripe)
+	if instance_exists(obj_davi) {
+		if obj_personagem.ativada {
+			obj_davi.doencas.Gripe[0] = true
+		}
 	}
-	
+	obj_personagem.doencas.Gripe[0] = true
+}
+
+if escorbuto {
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.escorbuto)
+	obj_personagem.doencas.Gripe[0] = true
+}
+
+if disenteria {
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.disenteria)
+	if instance_exists(obj_davi) {
+		if obj_personagem.ativada {
+			obj_davi.doencas.Disenteria[0] = true
+		}
+	}
+	obj_personagem.doencas.Disenteria[0] = true
+}
+
+if leptospirose {
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.leptospirose)
+	if instance_exists(obj_davi) {
+		if obj_personagem.ativada {
+			obj_davi.doencas.Leptospirose[0] = true
+		}
+	}
+	obj_personagem.doencas.Leptospirose[0] = true
+}
+
+if enxaqueca {
+	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.enxaqueca)
+	if instance_exists(obj_davi) {
+		if obj_personagem.ativada {
+			obj_davi.doencas.Enxaqueca[0] = true
+		}
+	}
+	obj_personagem.doencas.Enxaqueca[0] = true
+	gripe_aux = false
 }
 
 if mala {
@@ -274,7 +321,9 @@ if evento_baratas {
 		instanciou_baratas = true
 		obj_personagem.atributos.sanidade -= 10
 		if instance_exists(obj_davi) {
-			obj_davi.atributos.sanidade -= 10
+			if obj_personagem.ativada {
+				obj_davi.atributos.sanidade -= 10
+			}
 		}
 	}
 	if !baratas_aux {

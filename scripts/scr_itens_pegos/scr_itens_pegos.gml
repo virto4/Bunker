@@ -3,6 +3,7 @@
 itens_pegos = ds_list_create()
 
 posicoes = {
+	"obj_chumbo": {"x": 388, "y": 664},
 	"obj_mapa": {"x": 386, "y": 244},
 	"obj_traje_davi": {"x": 1230, "y": 441},
 	"obj_traje_roger": {"x": 1162, "y": 441},
@@ -51,6 +52,7 @@ casa = [
 ]
 
 qtde_slots = {
+	"obj_chumbo": 1,
 	"obj_mapa": 1,
 	"obj_traje_davi": 2,
 	"obj_traje_roger": 2,
@@ -108,6 +110,7 @@ alimentos = [obj_arroz_frango, obj_cookie, obj_bolo_quatro_quartos, obj_bolo_cho
 ferramentas = [obj_chave_fenda, obj_argamassa, obj_martelo, obj_fita_isolante]
 
 nomes = {
+	"obj_chumbo": "Chumbo",
 	"obj_mapa": "Mapa",
 	"obj_traje_roger": "Traje Anti-Radiação",
 	"obj_traje_davi": "Traje Anti-Radiação",
@@ -160,6 +163,7 @@ nomes = {
 }
 
 descricoes = {
+	"obj_chumbo": "Usado para concertar vazamentos de radiação.",
 	"obj_mapa": "Usado para explorar mundo afora nos eventos de coleta de itens.",
 	"obj_traje_roger": "Usado para proteger-se quando for sair do Bunker.",
 	"obj_traje_davi": "Usado para proteger-se quando for sair do Bunker.",

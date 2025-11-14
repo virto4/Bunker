@@ -84,7 +84,7 @@ if clicou and image_index == image_number - 1{
 		var vet = ["Sede", "Fome", "Saúde", "Sanidade", "Sagacidade", "Força", "Resistência", "Fortuna"]
 		var vet2 = ["Diminui 25 por dia", "Diminui 7 por dia", "Diminui por doenças ou batalhas","Diminui 9 no primeiro mês, 15 no segundo e 21 no terceiro", "Chance de dar golpes críticos ou errados", "Quantidade base de dano causado", "Quantidade de dano resistência ao dano sofrido", "Define os saques de uma batalha"]
 		
-		if instance_exists(obj_davi) {
+		if instance_exists(obj_davi) and obj_personagem.ativada {
 			draw_sprite(spr_doenca, 0, 1490, 420)//mesmo da saude
 			draw_sprite_ext(spr_sede_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 280, -1, 1, 0, c_white, 1)
 			draw_sprite_ext(spr_fome_cheio, 0, 1920 / 2 + 300, 1080 / 2 - 200, -1, 1, 0, c_white, 1)

@@ -109,6 +109,7 @@
     {"name":"inst_41A8E636","path":"rooms/rm_casa/rm_casa.yy",},
     {"name":"inst_23DDFDD2","path":"rooms/rm_casa/rm_casa.yy",},
     {"name":"inst_31B5D074","path":"rooms/rm_casa/rm_casa.yy",},
+    {"name":"inst_11B1F652","path":"rooms/rm_casa/rm_casa.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -216,6 +217,7 @@
         {"$GMRInstance":"v4","%Name":"inst_41A8E636","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_41A8E636","objectId":{"name":"obj_traje_davi","path":"objects/obj_traje_davi/obj_traje_davi.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":245.0,"y":140.0,},
         {"$GMRInstance":"v4","%Name":"inst_23DDFDD2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_23DDFDD2","objectId":{"name":"obj_mapa","path":"objects/obj_mapa/obj_mapa.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1370.0,"y":534.0,},
         {"$GMRInstance":"v4","%Name":"inst_31B5D074","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_31B5D074","objectId":{"name":"obj_traje_roger","path":"objects/obj_traje_roger/obj_traje_roger.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":312.0,"y":140.0,},
+        {"$GMRInstance":"v4","%Name":"inst_11B1F652","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_11B1F652","objectId":{"name":"obj_chumbo","path":"objects/obj_chumbo/obj_chumbo.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":422.0,"y":991.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Fundo","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Fundo","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"spr_fundo","path":"sprites/spr_fundo/spr_fundo.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

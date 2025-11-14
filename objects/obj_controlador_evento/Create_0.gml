@@ -13,6 +13,10 @@ function embaralhar(vetor) {
 }
 gripe = false
 gripe_aux = true
+escorbuto = false
+disenteria = false
+leptospirose = false
+enxaqueca = false
 
 tirar_mala = false
 mala_question = false
@@ -179,6 +183,9 @@ crianca = false
 crianca_aux = true
 canos = true
 
+doenca_gata = false
+remedio_gata = false
+
 eventos_inicio = [
 	"comerciante",
 	"capivara",
@@ -197,7 +204,7 @@ eventos_inicio = [
 ]
 
 inicio_data = {
-	dia1: "gripe", //adicionar aqui o evento que está testando
+	dia1: "doenca_gata", //adicionar aqui o evento que está testando
 	dia3: eventos_inicio[0],
 	dia6: eventos_inicio[1],
 	dia8: eventos_inicio[2],
@@ -297,8 +304,6 @@ function evento() {
 		case "infiltracao": //martelo (quebrar o piso), fita isolante (consertar vazamento), argamassa (fechar buraco)
 			evento_infiltracao = true
 			break
-		case "termostato": //
-			break
 		case "ventilacao": //chave de fenda (abrir dutos), fita isolante
 			evento_ventilacao = true
 			break
@@ -349,9 +354,6 @@ function evento() {
 			break
 		case "coleta":
 			evento_coleta = true
-			break
-		case "desidratacao":
-			desidratacao = true
 			break
 		case "mala":
 			mala = true

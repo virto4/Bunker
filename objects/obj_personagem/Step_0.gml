@@ -8,6 +8,51 @@ if instance_exists(obj_diario) {
 	}
 }
 
+if room == rm_bunker and !global.tem_tela_aberta {
+	var hoje_tem = false
+	for (var i = 0; i < array_length(datas_vazamento); i++) {
+		if obj_diario.dia == datas_vazamento[i] {
+			hoje = posicoes_vazamento[i]
+			hoje_tem = true
+		}
+	}
+	if item_selecionado == obj_contador_geiger {
+		if aux {
+			aux = false
+			tempo_geiger = current_time + intervalo * 1000
+		}
+		if tempo_geiger < current_time {
+			tempo_geiger = current_time + intervalo * 1000
+			audio_play_sound(snd_contador_geiger, 1, false)
+		}
+		if !hoje_tem {
+			intervalo = 1
+		} else {
+			var distancia = point_distance(hoje[0], hoje[1], obj_personagem.x, obj_personagem.y + 50)
+			if distancia < 100 {
+				intervalo = 0.10
+			} else if distancia > 100 {
+				intervalo = distancia * 0.10 / 100
+			}
+		}
+	} else {
+		aux = true
+	}
+	if item_selecionado == obj_chumbo and !global.tem_tela_aberta {
+		if point_distance(hoje[0], hoje[1], obj_personagem.x, obj_personagem.y + 50) < 100 {
+			if mouse_check_button_pressed(mb_left) {
+				question_chumbo = true
+			}
+		}
+	}
+}
+/*
+num raio de 100px - intervalo = 0.15
+num raio de x - intervalo de y
+y = x * 0.15 / 100
+
+*/
+
 if room == rm_bunker and audio_is_playing(snd_geladeira_ronco) {
 	audio_stop_sound(snd_geladeira_ronco)
 }
@@ -354,7 +399,40 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == 
 				is_remedio = true
 			}
 		}
+		if doencas.Gripe[0] {
+			if obj_personagem.item_selecionado == obj_aspirina {
+				remedio = true
+				global.tem_tela_aberta = true
+			}
+		}
 		
+		if doencas.Disenteria[0] {
+			if obj_personagem.item_selecionado == obj_antibiotico {
+				remedio = true
+				global.tem_tela_aberta = true	
+			}
+		}
+		
+		if doencas.Enxaqueca[0] {
+			if obj_personagem.item_selecionado == obj_aspirina {
+				remedio = true
+				global.tem_tela_aberta = true	
+			}
+		}
+		
+		if doencas.Escorbuto[0] {
+			if obj_personagem.item_selecionado == obj_chucrute {
+				remedio = true
+				global.tem_tela_aberta = true	
+			}
+		}
+		
+		if doencas.Leptospirose[0] {
+			if obj_personagem.item_selecionado == obj_antibiotico {
+				remedio = true
+				global.tem_tela_aberta = true	
+			}
+		}
 		var is_agua = false
 		if item_selecionado == obj_agua {
 			is_agua = true
@@ -362,10 +440,6 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == 
 		
 		if is_alimento {
 			alimento = true
-			global.tem_tela_aberta = true
-		}
-		if is_remedio {
-			remedio = true
 			global.tem_tela_aberta = true
 		}
 		if is_agua {
@@ -495,6 +569,35 @@ if remedio and room == rm_bunker {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
+			if doencas.Gripe {
+				if obj_personagem.item_selecionado == obj_aspirina {
+					doencas.Gripe[0] = false
+				}
+			}
+		
+			if doencas.Disenteria {
+				if obj_personagem.item_selecionado == obj_antibiotico {
+					doencas.Disenteria[0] = false
+				}
+			}
+		
+			if doencas.Enxaqueca {
+				if obj_personagem.item_selecionado == obj_aspirina {
+					doencas.Enxaqueca[0] = false
+				}
+			}
+		
+			if doencas.Escorbuto {
+				if obj_personagem.item_selecionado == obj_chucrute {
+					doencas.Escorbuto[0] = false
+				}
+			}
+		
+			if doencas.Leptospirose {
+				if obj_personagem.item_selecionado == obj_antibiotico {
+					doencas.Leptospirose[0] = false
+				}
+			}
 			tirar = true
 			if obj_personagem.slot_selecionado == 1 {
 				obj_personagem.slot1 = acerto_de_contas(obj_personagem.slot1)
@@ -507,6 +610,8 @@ if remedio and room == rm_bunker {
 			} else {
 				obj_personagem.slot5= acerto_de_contas(obj_personagem.slot5)
 			}
+			aumento_saude = 100 - atributos.saude 
+			atributos.saude = 100
 			tomou_remedio = true
 			remedio = false
 			global.tem_tela_aberta = false

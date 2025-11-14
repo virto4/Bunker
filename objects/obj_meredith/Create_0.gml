@@ -1,10 +1,16 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-
+question = false
 fala_scale = 0
 etapa = false
 etapa2 = false
-
+largura_sim = string_width("Sim")
+altura_sim = string_height("Sim")
+largura_nao = string_width("Não")
+altura_nao = string_height("Não")
+primeiro = false
+segundo = false
+deu_remedio = false
 image_speed = 0
 tempo = current_time / 1000
 lambendo = true

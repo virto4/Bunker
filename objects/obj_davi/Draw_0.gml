@@ -29,6 +29,20 @@ if bebeu_agua {
 	}
 }
 
+if tomou_remedio {
+	y_alimentou = y - sprite_height / 2 + 20 + y_alimentou2
+	y_alimentou2 -= 0.5
+	draw_set_font(fnt_dialogos)
+	draw_set_color(#FF3714)
+	var width = string_width("+ " + string(aumento_saude))
+	var height = string_height("+ " + string(aumento_saude))
+	draw_text(x - sprite_width / 2 + (sprite_width - width) / 2, y_alimentou, "+ " + string(aumento_saude))
+	if y - sprite_height / 2 - 20 >= y_alimentou {
+		tomou_remedio = false
+		y_alimentou2 = 0
+	}
+}
+
 if sao {
 	y_alimentou = y - sprite_height / 2 + 20 + y_alimentou2
 	y_alimentou2 -= 0.5

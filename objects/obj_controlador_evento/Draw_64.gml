@@ -322,6 +322,7 @@ if davi_sai {
 				obj_personagem.slot5_novo = false
 			}
 		}
+		obj_personagem.ativada = false
 		instance_deactivate_object(obj_davi)
 		tempo_davi = current_time / 1000 + 1
 		clareou = true
@@ -340,6 +341,7 @@ if davi_sai {
 
 if davi_coletou {
 	if obj_personagem.passagem_dia and !obj_personagem.animacao_dia and obj_personagem.escureceu {
+		obj_personagem.ativada = true
 		instance_activate_object(obj_davi)
 		var posicoes = global.posicoes.obj_mapa
 		var x_= variable_struct_get(posicoes, "x")

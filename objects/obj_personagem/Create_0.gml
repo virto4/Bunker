@@ -20,16 +20,33 @@ coisas para melhorar sanidade:
 -vencer batalhas=+10
 -ouvir radio=+5
 */
+datas_vazamento = [1, 10, 20, 25, 37, 47, 55, 71, 77, 87]
+posicoes_vazamento = [
+	[700, 300], [1100, 300], [1300, 500], [350, 600], [250, 300], [700, 600], [450, 500], 
+	[700, 300], [1100, 300], [1300, 500]
+]
+hoje = []
+intervalo = 1
+tempo_geiger = current_time + intervalo * 1000
+aux = true
+question_chumbo = false
+etapa_chumbo = false
+scale_chumbo = false
+tirar_chumbo = false
+
+morte_meredith = false
+ativada = true
 if room == rm_bunker {
 	audio_stop_sound(snd_floresta)
 }
+dias_gripe = 0
 
 doencas = {
-	Gripe: [true, "Passa naturalmente em 4 dias ou imediatamente com aspirina."],
-	Enxaqueca: [true, "Curada com aspirina."],
-	Leptospirose: [true, "Curada com antibióticos."],
-	Escorbuto: [true, "Curada com vitamina C (repolho tem muita vitamina C)."],
-	Disenteria: [true, "Curada com antibiótico."],
+	Gripe: [false, "Passa naturalmente em 4 dias ou imediatamente com aspirina.", 5],
+	Enxaqueca: [false, "Curada com aspirina.", 5],
+	Leptospirose: [false, "Curada com antibióticos.", 10],
+	Escorbuto: [false, "Curada com vitamina C (repolho tem muita vitamina C).", 10],
+	Disenteria: [false, "Curada com antibiótico.", 5],
 }
 
 vermelho = false
@@ -47,6 +64,7 @@ y_alimentou2 = 0
 sao = false
 sao_aux = false
 aumento_sanidade = 0
+
 
 morte_davi = false
 msg_davi = ""
@@ -244,6 +262,7 @@ view_width_base = camera_get_view_width(view_camera[0]);
 view_height_base = camera_get_view_height(view_camera[0]);
 
 qtde_itens1 = {
+	"obj_chumbo": 0,
 	"obj_mapa": 0,
 	"obj_traje_davi": 0,
 	"obj_traje_roger": 0,
@@ -341,6 +360,9 @@ if room_get_name(room) == "rm_casa" {
 } else if room_get_name(room) == "rm_bunker" and ds_list_size(global.itens_pegos) > 0 {
 	for (i = 0; i < ds_list_size(global.itens_pegos); i++) {
 		switch (ds_list_find_value(global.itens_pegos, i)) {
+			case obj_chumbo:
+				mudar_fase("obj_chumbo", obj_chumbo)
+				break
 			case obj_espanador:
 				mudar_fase("obj_espanador", obj_espanador)
 				break

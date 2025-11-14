@@ -1,4 +1,177 @@
 //200 - 400 - 1800
+if question_chumbo {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale_chumbo, scale_chumbo, 0, c_white, 1)
+	if scale_chumbo < 5 {
+		scale_chumbo += 0.5
+	} else {
+		var mx = device_mouse_x_to_gui(0)
+		var my = device_mouse_y_to_gui(0)
+		draw_set_color(c_black)
+		draw_set_font(fnt_dialogos)
+		draw_text_ext(210, 760, "Você deseja gastar uma unidade de Chumbo para eliminar esse vazamento de radiação?", 40, 1520)
+		if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+			if mouse_check_button_pressed(mb_left) {
+				tirar_chumbo = true
+			}
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			
+		} else {
+			primeiro = false
+		}
+		draw_text(300, 940, "Sim")
+		if  point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+			if mouse_check_button_pressed(mb_left) {
+				tirar_chumbo = true
+				question_chumbo = false
+			}
+			if !segundo {
+				segundo = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		} else {
+			segundo = false
+		}
+		draw_text(1620, 940, "Não")
+	}
+}
+
+if tirar_chumbo {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale_chumbo, scale_chumbo, 0, c_white, 1)
+	if scale_chumbo > 0 {
+		scale_chumbo -= 0.5
+	} else {
+		tirar_chumbo = false
+		global.tem_tela_aberta = false
+	}
+}
+
+if room == rm_bunker {
+	if !vermelho {
+		draw_circle_color(50, 50, 50, c_red, c_red,false)
+	}
+	draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
+	if mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta {
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 50 - 48, 50 - 48, 50 + 48, 50 + 48) {
+			instrucoes = true
+			vermelho = true
+			global.tem_tela_aberta = true
+		}
+	}
+	
+	var _mes = 0
+	switch obj_calendario.mes_atual {
+		case 7:	
+			_mes = "Julho"
+			break
+		case 8:
+			_mes = "Agosto"
+			break
+		case 9:	
+			_mes = "Setembro"
+			break
+		case 10:
+			_mes = "Outubro"
+			break
+		case 11:
+			_mes = "Novembro"
+			break
+		case 12:
+			_mes = "Dezembro"
+			break
+	}
+}
+
+if morte_meredith and !passagem_dia {
+	global.tem_tela_aberta = true
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
+	if !etapa2_morte and alpha_morte < 1 {
+		if alpha_morte < 1 {
+			alpha_morte += 0.05
+		}
+	} else if !etapa2_morte {
+		if !pode_tocar {
+			audio_stop_all()
+			pode_tocar = true
+		}
+		if !audio_is_playing(snd_marcha_funebre) {
+			audio_play_sound(snd_marcha_funebre, 1, true)
+		}
+		if !aux1 {
+			aux1 = true
+			tempo_over = current_time / 1000 + 1.5
+		}
+		draw_set_font(fnt_alagard)
+		draw_set_color(c_white)
+		var _txt = "Meredith morreu"
+		var msg_meredith = "Meredith sucumbiu devido à ingestão de compostos químicos inapropriados à sua espécie"
+		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+		draw_set_font(fnt_dialogos)
+		if tempo_over < current_time / 1000 {
+			draw_text(960 - string_width(msg_meredith) / 2, 660, msg_meredith)
+			if pode_comecarb {
+				tempo_over2 = current_time / 1000 + 1.5
+				pode_comecarb = false
+			}
+		}
+		if tempo_over2 < current_time / 1000 and !pode_comecarb {
+			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+			if pode_comecarc {
+				tempo_over3 = current_time / 1000 + 1.5
+				pode_comecarc = false
+			}
+		}
+		if tempo_over3 < current_time / 1000 and !pode_comecarc {
+			var msg_tela_inicial = "Voltar para o jogo"
+			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+			var yinicial = 860 - 5
+			var yfinal = 860 + string_height(msg_tela_inicial) + 5
+			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+				cor_botao = #527F7F
+				if mouse_check_button_pressed(mb_left) {
+					audio_stop_sound(snd_marcha_funebre)
+					etapa2_morte = true
+					instance_destroy(obj_meredith)
+				}
+			} else {
+				cor_botao = c_white
+			}
+		}
+	} else if etapa2_morte {
+		if alpha_morte > 0 {
+			alpha_morte -= 0.05
+		} else {
+			global.tem_tela_aberta = false
+			morte_meredith = false
+			msg_davi = ""
+			etapa2_morte = false
+			alpha_morte = 0
+			aux1 = false
+			aux2 = false
+			tempo_over = 0
+			pode_comecarb = true
+			pode_comecarc = true
+			tempo_over2 = 0
+			tempo_over3 = 0
+			pode_tocar = false
+			cor_botao = c_white
+		}
+	}
+}
+
+
 if instrucoes {
 	draw_sprite(spr_voltar, 0, 1800, 50)
 	var width_sair = sprite_get_width(spr_voltar) / 2
@@ -38,42 +211,6 @@ if instrucoes {
 	draw_rectangle_color(400, 100, 1800, 980, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 	draw_rectangle_color(405, 105, 1795, 975, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 	draw_text_ext(420, 120, escrita, 60, 1380)
-}
-
-if room == rm_bunker {
-	if !vermelho {
-		draw_circle_color(50, 50, 50, c_red, c_red,false)
-	}
-	draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
-	if mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta {
-		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 50 - 48, 50 - 48, 50 + 48, 50 + 48) {
-			instrucoes = true
-			vermelho = true
-			global.tem_tela_aberta = true
-		}
-	}
-	
-	var _mes = 0
-	switch obj_calendario.mes_atual {
-		case 7:	
-			_mes = "Julho"
-			break
-		case 8:
-			_mes = "Agosto"
-			break
-		case 9:	
-			_mes = "Setembro"
-			break
-		case 10:
-			_mes = "Outubro"
-			break
-		case 11:
-			_mes = "Novembro"
-			break
-		case 12:
-			_mes = "Dezembro"
-			break
-	}
 }
 
 if morte_davi {
@@ -404,6 +541,11 @@ if passagem_dia  {
 		}
 	} else if !animacao_dia {
 		if time and !mudou_data {
+			if instance_exists(obj_meredith) {
+				if obj_meredith.deu_remedio {
+					morte_meredith = true
+				}
+			}
 			//aqui vai todas as coisas que acontecem quando um dia passa
 			audio_play_sound(snd_paginas, 1, false)
 			obj_calendario.mudou_dia = true
@@ -413,6 +555,23 @@ if passagem_dia  {
 			if obj_controlador_evento.evento_canos {
 				atributos.sede -= 25
 			}
+			if doencas.Gripe[0] {
+				dias_gripe++
+			}
+			if dias_gripe == 4 {
+				doencas.Gripe[0] = false
+				if instance_exists(obj_davi) {
+					if ativada {
+						obj_davi.doencas.Gripe[0] = false
+					}
+				}
+				dias_gripe = 0
+			}
+			for (var i = 0; i < array_length(struct_get_names(doencas)); i++) {
+				if variable_struct_get(doencas, struct_get_names(doencas)[i])[0] {
+					saude -= struct_get_names(doencas)[i][2]
+				}
+			}
 			if obj_diario.dia < 33 {
 				atributos.sanidade -= 9
 			} else if obj_diario.dia < 66 {
@@ -421,16 +580,23 @@ if passagem_dia  {
 				atributos.sanidade -= 21
 			}
 			if instance_exists(obj_davi) {
-			 	obj_davi.atributos.fome -= 7
-				if obj_controlador_evento.evento_canos {
-					obj_davi.atributos.sede -= 25
-				}
-				if obj_diario.dia < 33 {
-					obj_davi.atributos.sanidade -= 9
-				} else if obj_diario.dia < 66 {
-					obj_davi.atributos.sanidade -= 15
-				} else {
-					obj_davi.atributos.sanidade -= 21
+				if ativada {
+					for (var i = 0; i < array_length(struct_get_names(obj_davi.doencas)); i++) {
+						if variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])[0] {
+							obj_davi.saude -= struct_get_names(obj_davi.doencas)[i][2]
+						}
+					}
+				 	obj_davi.atributos.fome -= 7
+					if obj_controlador_evento.evento_canos {
+						obj_davi.atributos.sede -= 25
+					}
+					if obj_diario.dia < 33 {
+						obj_davi.atributos.sanidade -= 9
+					} else if obj_diario.dia < 66 {
+						obj_davi.atributos.sanidade -= 15
+					} else {
+						obj_davi.atributos.sanidade -= 21
+					}
 				}
 			}
 		}
@@ -564,6 +730,14 @@ function desenhar_hotbar(slot, slot_novo, slotx) {
 }
 var desenha = true
 if room == rm_bunker {
+	if morte_meredith and desenha {
+		desenha = false
+	}
+	if instance_exists(obj_meredith) {
+		if obj_meredith.question and desenha {
+			desenha = false
+		}
+	}
 	if obj_controlador_evento.mala_question or obj_controlador_evento.mala_interface and desenha {
 		desenha = false
 	}
@@ -576,8 +750,13 @@ if room == rm_bunker {
 }
 
 if instance_exists(obj_davi) {
-	if (obj_davi.remedio or obj_davi.beber_agua or obj_davi.alimento) and desenha {
-		desenha = false
+	if ativada {
+		if obj_davi.mostrar {
+			desenha = false
+		}
+		if (obj_davi.remedio or obj_davi.beber_agua or obj_davi.alimento) and desenha {
+			desenha = false
+		}
 	}
 }
 
@@ -676,12 +855,6 @@ if instance_exists(obj_baralho) and desenha {
 
 if instance_exists(obj_radio) and desenha {
 	if obj_radio.clicou {
-		desenha = false
-	}
-}
-
-if instance_exists(obj_davi) and desenha {
-	if obj_davi.mostrar {
 		desenha = false
 	}
 }

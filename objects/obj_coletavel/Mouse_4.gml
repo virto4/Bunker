@@ -23,6 +23,15 @@ if instance_exists(obj_ferramentas) {
 }
 
 if object_index == obj_meredith and !global.tem_tela_aberta {
+	if room == rm_bunker {
+		if obj_controlador_evento.remedio_gata {
+			for (var i = 0; i < array_length(global.remedios); i++) {
+				if obj_personagem.item_selecionado == global.remedios[i] {
+					obj_meredith.question = true
+				}
+			}
+		}
+	}
 	var a = irandom(1)
 	obj_meredith.audio = 0
 	if a == 1 {
@@ -76,7 +85,7 @@ if object_index == obj_domino and room == rm_bunker and !global.tem_tela_aberta 
 	nao = true	
 	global.tem_tela_aberta = true
 	if !obj_domino.jogou_hoje {
-		if instance_exists(obj_davi) {
+		if instance_exists(obj_davi) and obj_personagem.ativada {
 			audio_stop_all()
 			audio_play_sound(snd_jazz, 1, true)
 			obj_domino.comecou = true
@@ -93,7 +102,7 @@ if object_index == obj_baralho and room == rm_bunker and !global.tem_tela_aberta
 	nao = true
 	global.tem_tela_aberta = true
 	if !obj_baralho.jogou_hoje {
-		if instance_exists(obj_davi) {
+		if instance_exists(obj_davi) and obj_personagem.ativada {
 			audio_stop_all()
 			audio_play_sound(snd_jazz, 1, true)
 			obj_baralho.clicou = true

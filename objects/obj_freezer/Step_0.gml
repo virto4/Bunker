@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 if clicou {
 	global.tem_tela_aberta = true
-	audio_play_sound(snd_geladeira_ronco, 1, true)
+	audio_play_sound(snd_freezer_ronco, 1, true)
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
 	if mouse_check_button_pressed(mb_left) {
@@ -14,7 +14,7 @@ if clicou {
 			clicou = false
 			global.tela_hotbar = false
 			global.tem_tela_aberta = false
-			audio_stop_sound(snd_geladeira_ronco)
+			audio_stop_sound(snd_freezer_ronco)
 			if !audio_is_playing(snd_geladeira_abrindo) and !audio_is_playing(snd_geladeira_fechando) {
 				audio_play_sound(snd_geladeira_fechando, 1, false)
 			}
