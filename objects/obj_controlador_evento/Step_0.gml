@@ -1,5 +1,23 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if cogumelos {
+	cogumelos = false
+	if !(instance_exists(obj_cogumelo_roxo) or instance_exists(obj_cogumelo_verde) or instance_exists(obj_cogumelo_vermelho)) {
+		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.cogumelos)
+		for (var i = 0; i < array_length(cogumelos_posicoes); i++) {
+			var cogumelo_tipo = irandom(2) 
+			if cogumelo_tipo == 0 {
+				cogumelo_tipo = obj_cogumelo_roxo
+			} else if cogumelo_tipo == 1 {
+				cogumelo_tipo = obj_cogumelo_verde
+			} else {
+				cogumelo_tipo = obj_cogumelo_vermelho
+			}
+			instance_create_layer(cogumelos_posicoes[i][0], cogumelos_posicoes[i][1], "Instances", cogumelo_tipo)
+		}
+	}
+}
+
 if doenca_gata and instance_exists(obj_meredith){
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.doenca_gata)
 	remedio_gata = true

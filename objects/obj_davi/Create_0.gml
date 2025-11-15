@@ -1,11 +1,13 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+perdeu_vida = 0
 doencas = {
 	Gripe: [false, "Passa naturalmente em 4 dias ou imediatamente com aspirina.", 5],
 	Enxaqueca: [false, "Curada com aspirina.", 5],
 	Leptospirose: [false, "Curada com antibióticos.", 10],
 	Escorbuto: [false, "Curada com vitamina C (repolho tem muita vitamina C).", 10],
 	Disenteria: [false, "Curada com antibiótico.", 5],
+	Radiacao: [false, "Tem algum vazamento no Bunker. Concerte.", 10] 
 }
 if room == rm_bunker {
 	interagir = true

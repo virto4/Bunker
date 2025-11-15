@@ -977,11 +977,17 @@ if clicou and !derrotou {
 			obj_conquistas.batalhas++
 			escureceu2 = true
 			if !seguir {
+				if obj_personagem.saude < 100 {
+					curativo_roger = true
+				}
 				obj_personagem.atributos.forca = round(obj_personagem.atributos.forca * 1.09)
 				obj_personagem.atributos.resistencia = round(obj_personagem.atributos.resistencia * 1.09)
 				obj_personagem.atributos.sagacidade = round(obj_personagem.atributos.sagacidade * 1.09)
 				obj_personagem.atributos.fortuna = round(obj_personagem.atributos.fortuna * 1.09)
 				if instance_exists(obj_davi) {
+					if obj_davi.saude < 100 {
+						curativo_davi = true
+					}
 					obj_davi.atributos.forca = round(obj_davi.atributos.forca * 1.09)
 					obj_davi.atributos.resistencia = round(obj_davi.atributos.resistencia * 1.09)
 					obj_davi.atributos.sagacidade = round(obj_davi.atributos.sagacidade * 1.09)

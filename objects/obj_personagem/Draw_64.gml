@@ -12,7 +12,57 @@ if question_chumbo {
 		draw_text_ext(210, 760, "Você deseja gastar uma unidade de Chumbo para eliminar esse vazamento de radiação?", 40, 1520)
 		if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 			if mouse_check_button_pressed(mb_left) {
+				variable_struct_set(qtde_itens1, "obj_chumbo", variable_struct_get(qtde_itens1, "obj_chumbo") - 1)
+				var slot_n = 0
+				switch slot_selecionado {
+					case 1:
+						slot_n = slot1_n
+						break
+					case 2: 
+						slot_n = slot2_n
+						break
+					case 3:
+						slot_n = slot3_n
+						break
+					case 4:
+						slot_n = slot4_n
+						break
+					case 5:
+						slot_n = slot5_n
+						break
+				}
+				
+				if slot1_n == slot_n {
+					slot1 = noone
+					slot1_novo = false
+				} 
+				if slot2_n == slot_n {
+					slot2 = noone
+					slot2_novo = false
+				} 
+				if slot3_n == slot_n {
+					slot3 = noone
+					slot3_novo = false
+				} 
+				if slot4_n == slot_n {
+					slot4 = noone
+					slot4_novo = false
+				} 
+				if slot5_n == slot_n {
+					slot5 = noone
+					slot5_novo = false
+				}
 				tirar_chumbo = true
+				question_chumbo = false
+				novo = true
+				hoje_tem = false
+				if instance_exists(obj_davi) and ativada {
+					obj_davi.doencas.Radiacao[0] = false
+					obj_davi.atributos.saude = 100
+				}
+				doencas.Radiacao[0] = false
+				atributos.saude = 100
+				resolveu = true
 			}
 			if !primeiro {
 				primeiro = true
@@ -547,6 +597,7 @@ if passagem_dia  {
 				}
 			}
 			//aqui vai todas as coisas que acontecem quando um dia passa
+			resolveu = false
 			audio_play_sound(snd_paginas, 1, false)
 			obj_calendario.mudou_dia = true
 			obj_diario.dia += 1
@@ -730,7 +781,13 @@ function desenhar_hotbar(slot, slot_novo, slotx) {
 }
 var desenha = true
 if room == rm_bunker {
+	if obj_controlador_evento.clicou_cogumelo and desenha {
+		desenha = false
+	}
 	if morte_meredith and desenha {
+		desenha = false
+	}
+	if question_chumbo and desenha {
 		desenha = false
 	}
 	if instance_exists(obj_meredith) {
@@ -751,7 +808,7 @@ if room == rm_bunker {
 
 if instance_exists(obj_davi) {
 	if ativada {
-		if obj_davi.mostrar {
+		if obj_davi.mostrar and desenha {
 			desenha = false
 		}
 		if (obj_davi.remedio or obj_davi.beber_agua or obj_davi.alimento) and desenha {
@@ -783,13 +840,19 @@ if room == rm_bunker {
 if ganhou_jogo and desenha {
 	desenha = false
 }
-
+var alguma_cama_clicada = false;
 if instance_exists(obj_cama_campanha) {
-	if obj_cama_campanha.clicou and desenha {
-		desenha = false
+	with (obj_cama_campanha) {
+	    if (clicou) {
+	        alguma_cama_clicada = true;
+	        break;
+	    }
+	}
+
+	if (alguma_cama_clicada) and desenha {
+	    desenha = false;
 	}
 }
-
 if room == rm_bunker {
 	if obj_escada.question and desenha {
 		desenha = false
@@ -822,7 +885,7 @@ if morte_davi and desenha {
 	desenha = false
 }
 
-if game_over {
+if game_over and desenha {
 	desenha = false
 }
 

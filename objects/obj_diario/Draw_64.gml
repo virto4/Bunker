@@ -127,7 +127,11 @@ if clicou and image_index == image_number - 1{
 					saudavel = false
 					altura++
 					if string_width(doenca[1]) + string_width(struct_get_names(obj_davi.doencas)[i]) > largura {
-						largura = string_width(struct_get_names(obj_davi.doencas)[i]) +  string_width(": ") + string_width(doenca[1])
+						var nome = struct_get_names(obj_personagem.doencas)[i]
+						if nome == "Radiacao" {
+							nome = "Envanenamento por radiação"
+						}
+						largura = string_width(nome) +  string_width(": ") + string_width(doenca[1])
 					}
 				}
 			}
@@ -147,7 +151,11 @@ if clicou and image_index == image_number - 1{
 					for (var i = 0; i < array_length(struct_get_names(obj_davi.doencas)); i++) {
 						var doenca = variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])
 						if doenca[0] {
-							draw_text(mx - largura - 10, my + 80 + 50 * qtde, struct_get_names(obj_davi.doencas)[i] + ": " + string(doenca[1]))
+							var nome = struct_get_names(obj_davi.doencas)[i]
+							if nome == "Radiacao" {
+								nome = "Envanenamento por radiação"
+							}
+							draw_text(mx - largura - 10, my + 80 + 50 * qtde, nome + ": " + string(doenca[1]))
 							qtde++
 						}
 					}
@@ -178,7 +186,11 @@ if clicou and image_index == image_number - 1{
 				saudavel = false
 				altura++
 				if string_width(doenca[1]) + string_width(struct_get_names(obj_personagem.doencas)[i]) > largura {
-				largura = string_width(struct_get_names(obj_personagem.doencas)[i]) +  string_width(": ") + string_width(doenca[1])
+					var nome = struct_get_names(obj_personagem.doencas)[i]
+					if nome == "Radiacao" {
+						nome = "Envanenamento por radiação"
+					}
+					largura = string_width(nome) +  string_width(": ") + string_width(doenca[1])
 				}
 			}
 		}
@@ -198,7 +210,11 @@ if clicou and image_index == image_number - 1{
 				for (var i = 0; i < array_length(struct_get_names(obj_personagem.doencas)); i++) {
 					var doenca = variable_struct_get(obj_personagem.doencas, struct_get_names(obj_personagem.doencas)[i])
 					if doenca[0] {
-						draw_text(mx + 15, my + 80 + 50 * qtde, struct_get_names(obj_personagem.doencas)[i] + ": " + string(doenca[1]))
+						var nome = struct_get_names(obj_personagem.doencas)[i]
+						if nome == "Radiacao" {
+							nome = "Envanenamento por radiação"
+						}
+						draw_text(mx + 15, my + 80 + 50 * qtde, nome + ": " + string(doenca[1]))
 						qtde++
 					}
 				}

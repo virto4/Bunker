@@ -9,11 +9,15 @@ if instance_exists(obj_diario) {
 }
 
 if room == rm_bunker and !global.tem_tela_aberta {
-	var hoje_tem = false
-	for (var i = 0; i < array_length(datas_vazamento); i++) {
+	for (var i = 0; i < array_length(datas_vazamento) and novo and !resolveu; i++) {
 		if obj_diario.dia == datas_vazamento[i] {
 			hoje = posicoes_vazamento[i]
 			hoje_tem = true
+			novo = false
+			doencas.Radiacao[0] = true
+			if instance_exists(obj_davi) and ativada {
+				obj_davi.doencas.Radiacao[0] = true
+			}
 		}
 	}
 	if item_selecionado == obj_contador_geiger {
@@ -34,12 +38,13 @@ if room == rm_bunker and !global.tem_tela_aberta {
 			} else if distancia > 100 {
 				intervalo = distancia * 0.10 / 100
 			}
+			show_debug_message("Distancia: " + string(distancia))
 		}
 	} else {
 		aux = true
 	}
-	if item_selecionado == obj_chumbo and !global.tem_tela_aberta {
-		if point_distance(hoje[0], hoje[1], obj_personagem.x, obj_personagem.y + 50) < 100 {
+	if item_selecionado == obj_chumbo and !global.tem_tela_aberta and hoje_tem and point_distance(hoje[0], hoje[1], obj_personagem.x, obj_personagem.y + 50) < 100 {
+		if point_in_circle(mouse_x, mouse_y, hoje[0], hoje[1], 100) {
 			if mouse_check_button_pressed(mb_left) {
 				question_chumbo = true
 			}
@@ -392,13 +397,16 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == 
 				is_alimento = true
 			}
 		}
-
-		var is_remedio = false
-		for (var i = 0; i < array_length(global.remedios); i++) {
-			if global.remedios[i] == obj_personagem.item_selecionado {
-				is_remedio = true
+		
+		if room == rm_bunker {
+			if obj_escada.curativo_roger {
+				if obj_personagem.item_selecionado == obj_curativo {
+					remedio = true
+					global.tem_tela_aberta = true
+				}
 			}
 		}
+		
 		if doencas.Gripe[0] {
 			if obj_personagem.item_selecionado == obj_aspirina {
 				remedio = true
@@ -437,7 +445,6 @@ if (mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta and room == 
 		if item_selecionado == obj_agua {
 			is_agua = true
 		}
-		
 		if is_alimento {
 			alimento = true
 			global.tem_tela_aberta = true
@@ -569,6 +576,14 @@ if remedio and room == rm_bunker {
 	if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 		mouse_sim = true
 		if mouse_check_button_pressed(mb_left) {
+			if room == rm_bunker {
+				if obj_escada.curativo_roger {
+					if obj_personagem.item_selecionado == obj_curativo {
+						obj_escada.curativo_roger = false
+					}
+				}
+			}
+			
 			if doencas.Gripe {
 				if obj_personagem.item_selecionado == obj_aspirina {
 					doencas.Gripe[0] = false

@@ -20,10 +20,9 @@ coisas para melhorar sanidade:
 -vencer batalhas=+10
 -ouvir radio=+5
 */
-datas_vazamento = [1, 10, 20, 25, 37, 47, 55, 71, 77, 87]
+datas_vazamento = [3, 10, 20, 25, 37, 47]
 posicoes_vazamento = [
-	[700, 300], [1100, 300], [1300, 500], [350, 600], [250, 300], [700, 600], [450, 500], 
-	[700, 300], [1100, 300], [1300, 500]
+	[700, 300], [1100, 300], [1300, 500], [350, 600], [250, 300], [700, 600]
 ]
 hoje = []
 intervalo = 1
@@ -33,6 +32,10 @@ question_chumbo = false
 etapa_chumbo = false
 scale_chumbo = false
 tirar_chumbo = false
+novo = true
+hoje_tem = false
+resolveu = false
+perdeu_vida = 0
 
 morte_meredith = false
 ativada = true
@@ -47,6 +50,7 @@ doencas = {
 	Leptospirose: [false, "Curada com antibióticos.", 10],
 	Escorbuto: [false, "Curada com vitamina C (repolho tem muita vitamina C).", 10],
 	Disenteria: [false, "Curada com antibiótico.", 5],
+	Radiacao: [false, "Tem algum vazamento no Bunker. Concerte.", 10] 
 }
 
 vermelho = false
@@ -54,7 +58,7 @@ escrita = ""
 instrucoes_fala = {
 	Eventos: "Todo dia, alguma coisa nova acontece no Bunker. Esses acontecimentos são escritos no diário marrom no canto inferior esquerdo da sala. Virando as páginas do livro, você encontra instruções sobre o que fazer. Os eventos podem ser: reparos estruturais (problemas com a ventilação, infiltrações...), doenças (gripes, fraturas; resolvidas com remédios), inimigos (aparecem sempre an escada, que é a entrada do Bunker, e querem te matar ou saquear) e gerais (exploração do mapa, comerciantes...)",
 	Atributos: "Saúde: piora em batalhas ou doenças; curada por habilidades na batalha ou remédios no Bunker. Sanidade: piora a cada dia e deve ser reposta com alguma das seguintes atividades: ouvir rádio, conversar com Davi, conversar com a gata, jogar cartas ou dominó ou vencer batalhas. Ela piora mais se Meredith ou Davi não estiverem no Bunker. Fome: você deve comer periodicamente. As comidas podem ser ingeridas sozinhas (algumas delas) ou devem ser cozinhadas, e, para isso, você deve adquirir a receita ao assistir o programa de rádio sobre cozinha; Sede: a sede não diminui no começo. Somente quando houver o evento dos canos que enferrujam é que você terá de repor os níveis de água dos personagens. Esses são os atributos principais. Há também os secundários: Força (dano causado), Reistência (limitação ao dano sofrido), Sagacidade (chance de crítico ou erro) e Fortuna (definição dos loots da batalha), que são utilizados na batalhas e podem ser alterados pelo Humor.",
-	Dia_a_dia: "A cada dia que passa, você precisa realizar o seguinte ritual: abrir o diário para conferir os atributos na primeira página, e, em seguida, ver os eventos do dia e os que ainda não foram concluidos. Depois, resolva os eventos pendentes e controle os níveis dos atributos principais (Sede, Fome, Sanidade e Saúde) dos personagens para não morrer.",
+	"Dia a dia": "A cada dia que passa, você precisa realizar o seguinte ritual: abrir o diário para conferir os atributos na primeira página, e, em seguida, ver os eventos do dia e os que ainda não foram concluidos. Depois, resolva os eventos pendentes e controle os níveis dos atributos principais (Sede, Fome, Sanidade e Saúde) dos personagens para não morrer. Também é importante verificar vazamentos de radiação com o contador Geiger e repará-los com faixas de chumbo.",
 	Batalhas: "Numa batalha, você precisa decidir uma arma e uma habilidade para cada jogador. A arma auxilia o dano que será causado, sendo a seguinte a ordem de eficiência das armas: 1 - metralhadora; 2 - pistola; 3 - machado; 4 - picareta. 5 - punhos. Já as habilidades podem servir para: dar um ataque, podendo ser simples ou causar dano extra; se curar; alterar seu humor. As habilidades são desevolvidas ao assistir o programa de rádio sobre sobrevivência.",
 	Humores: "Extasiado: +força +resistência -sagacidade +fortuna); Deprimido: -força +resistência +sagacidade -fortuna; Apavorado: +força -resistência +sagacidade -fortuna; Colérico: +força - resistência -sagacidade +fortuna"
 }
@@ -438,12 +442,6 @@ if room_get_name(room) == "rm_casa" {
 				array_push(armas_pegas, obj_pistola)
 				mudar_fase("obj_pistola", obj_pistola);
 				break;
-			case obj_analgesico:
-				mudar_fase("obj_analgesico", obj_analgesico);
-				break;
-			case obj_ansiolitico:
-				mudar_fase("obj_ansiolitico", obj_ansiolitico);
-				break;
 			case obj_antibiotico:
 				mudar_fase("obj_antibiotico", obj_antibiotico);
 				break;
@@ -462,9 +460,6 @@ if room_get_name(room) == "rm_casa" {
 			case obj_domino:
 				mudar_fase("obj_domino", obj_domino);
 				break;
-			case obj_saco_lixo:
-				mudar_fase("obj_saco_lixo", obj_saco_lixo);
-				break;
 			case obj_tv:
 				mudar_fase("obj_tv", obj_tv);
 				break;
@@ -474,9 +469,6 @@ if room_get_name(room) == "rm_casa" {
 			case obj_ferramentas:
 				mudar_fase("obj_ferramentas", obj_ferramentas);
 				break;
-			case obj_agua_sanitaria:
-			mudar_fase("obj_agua_sanitaria", obj_agua_sanitaria)
-				break
 			case obj_meredith:
 				mudar_fase("obj_meredith", obj_meredith)
 				break
@@ -550,10 +542,10 @@ aumento_saude = 0
 
 
 function casa(slot, slot_novo, slot_n) {
-	if !audio_is_playing(snd_menu_out) {
-		audio_play_sound(snd_menu_out, 1, false)
-	}
 	if slot != noone {
+		if !audio_is_playing(snd_menu_out) {
+			audio_play_sound(snd_menu_out, 1, false)
+		}
 		var is_consumivel = false
 		for (var i = 0; i < array_length(itens_nao_consumiveis); i++) {
 			if slot == itens_nao_consumiveis[i] {

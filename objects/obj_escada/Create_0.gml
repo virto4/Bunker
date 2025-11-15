@@ -1,5 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+curativo_roger = false
+curativo_davi = false
 mes = 0
 vermelho = false
 escrita = ""

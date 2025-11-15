@@ -23,8 +23,7 @@ function ingredientes(lista_ingredientes) {
 		} else {
 			alfa = 0.5
 		}
-		draw_sprite_ext(lista_ingredientes[i][0], 0, mx + sprite_get_width(spr_cursor_padrao) + 60 + n * 70, 
-						 my + sprite_get_height(spr_cursor_padrao) + 110, 2, 2, 0, c_white, alfa)
+		draw_sprite_ext(lista_ingredientes[i][0], 0, mx + sprite_get_width(spr_cursor_padrao) + 60 + n * 70, my + sprite_get_height(spr_cursor_padrao) + 140, 2, 2, 0, c_white, alfa)
 		n++
 	}
 }
@@ -42,48 +41,66 @@ if clicou {
 	desenhar(obj_salada, spr_salada, salada, posicoes[7])
 	var mx = device_mouse_x_to_gui(0)
 	var my = device_mouse_y_to_gui(0)
-	draw_set_font(fnt_descricoes)
+	draw_set_font(fnt_dialogos)
 	draw_set_color(c_black)
+	var largura = mx + sprite_get_width(spr_cursor_padrao)
+	var altura = my + sprite_get_height(spr_cursor_padrao) + 20
 	
 	if mx < posicoes[0][0] + 64 and mx > posicoes[0][0] - 64 and my < posicoes[0][1] + 64 and my > posicoes[0][1] - 64 and ds_list_find_index(receitas, obj_bolo_chocolate) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Bolo de chocolate")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Bolo de chocolate")
 		ingredientes([[spr_acucar, obj_acucar], [spr_ovo, obj_ovo], [spr_chocolate, obj_chocolate], [spr_farinha, obj_farinha]])
 	}
 	if mx < posicoes[1][0] + 64 and mx > posicoes[1][0] - 64 and my < posicoes[1][1] + 64 and my > posicoes[1][1] - 64 and ds_list_find_index(receitas, obj_bolo_quatro_quartos) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Bolo quatro quartos")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Bolo quatro quartos")
 		ingredientes([[spr_acucar, obj_acucar], [spr_ovo, obj_ovo], [spr_farinha, obj_farinha]])
 	}
 	if mx < posicoes[2][0] + 64 and mx > posicoes[2][0] - 64 and my < posicoes[2][1] + 64 and my > posicoes[2][1] - 64 and ds_list_find_index(receitas, obj_cookie) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Cookie")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Cookie")
 		ingredientes([[spr_acucar, obj_acucar], [spr_ovo, obj_ovo], [spr_chocolate, obj_chocolate], [spr_farinha, obj_farinha]])
 	}
 	if mx < posicoes[3][0] + 64 and mx > posicoes[3][0] - 64 and my < posicoes[3][1] + 64 and my > posicoes[3][1] - 64 and ds_list_find_index(receitas, obj_chucrute) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Chucrute")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Chucrute")
 		ingredientes([[spr_repolho, obj_repolho]])
 	}
 	if mx < posicoes[4][0] + 64 and mx > posicoes[4][0] - 64 and my < posicoes[4][1] + 64 and my > posicoes[4][1] - 64 and ds_list_find_index(receitas, obj_arroz_frango) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Arroz com frango")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Arroz com frango")
 		ingredientes([[spr_arroz, obj_arroz], [spr_frango, obj_frango]])
 	}
 	if mx < posicoes[5][0] + 64 and mx > posicoes[5][0] - 64 and my < posicoes[5][1] + 64 and my > posicoes[5][1] - 64 and ds_list_find_index(receitas, obj_escondidinho) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Escondidinho")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Escondidinho")
 		ingredientes([[spr_batata, obj_batata], [spr_frango, obj_frango]])
 	}
 	if mx < posicoes[6][0] + 64 and mx > posicoes[6][0] - 64 and my < posicoes[6][1] + 64 and my > posicoes[6][1] - 64 and ds_list_find_index(receitas, obj_ovo_mexido) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Ovos mexidos")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Ovos mexidos")
 		ingredientes([[spr_ovo, obj_ovo]])
 		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 66, my + sprite_get_height(spr_cursor_padrao) + 110, 3)
 	}
 	if mx < posicoes[7][0] + 64 and mx > posicoes[7][0] - 64 and my < posicoes[7][1] + 64 and my > posicoes[7][1] - 64 and ds_list_find_index(receitas, obj_salada) != -1 {
-		draw_sprite(spr_descricao, 0, mx + sprite_get_width(spr_cursor_padrao), my + sprite_get_height(spr_cursor_padrao))
-		draw_text(mx + sprite_get_width(spr_cursor_padrao) + 30, my + sprite_get_height(spr_cursor_padrao) + 30, "Salada Ceasar")
+		draw_rectangle_colour(largura + 20, altura + 20, largura + 360, altura + 190, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_colour(largura + 25, altura + 25, largura + 355, altura + 35 + string_height("A"), #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_rectangle_colour(largura + 25, altura + string_height("A") + 40, largura + 355, altura + 185, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+		draw_text(largura + 30, altura + 30, "Salada Ceasar")
 		ingredientes([[spr_alface, obj_alface], [spr_frango, obj_frango]])
 	}
 }

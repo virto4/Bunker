@@ -1,5 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+/*
+roxo - cura toda a vida
+verde - cura toda a fome
+veermelho - tira 50 de vida
+*/
 function embaralhar(vetor) {
 	var i = array_length(vetor) - 1
 	while i >= 0 {
@@ -11,6 +16,25 @@ function embaralhar(vetor) {
 	}
 	return vetor
 }
+instancia_clicada = noone
+cogumelos = false
+cogumelos_posicoes = [
+	[240, 270],
+	[230, 660],
+	[700, 300],
+	[1200, 320],
+	[990, 700],
+	[700, 500]
+]
+clicou_cogumelo = false
+primeiro = false
+segundo = false
+terceiro = false
+quarto = false
+tirar = false
+scale_cogumelo = 0
+destruir = false
+
 gripe = false
 gripe_aux = true
 escorbuto = false
@@ -33,8 +57,8 @@ mala_posicoes = [
 	[1150, 700]
 ] //certifique-se que todos os sprites sao 32 x 32
 mala_itens = {
-	mala1: [[obj_agua, 10, false], [obj_arroz, 2, false], [obj_analgesico, 1, false]],
-	mala2: [[obj_acucar, 2, false]],
+	mala1: [[obj_agua, 10, false], [obj_arroz, 2, false], [obj_antibiotico, 1, false]],
+	mala2: [[obj_acucar, 2, false], [obj_chumbo, 4, false]],
 	mala3: [[obj_pilha, 1, false], [obj_municao, 2, false]],
 	mala4: [[obj_curativo, 4, false], [obj_batata, 2, false]],
 	mala5: [[obj_cerveja, 1, false]]
@@ -63,11 +87,11 @@ mudar_coleta = true
 vez_coleta = 1
 coleta_atual = []
 itens_coleta = {
-	saida1: [[obj_agua, 10], [obj_repolho, 1], [obj_analgesico, 2]],
+	saida1: [[obj_agua, 10], [obj_repolho, 1], [obj_aspirina, 2]],
 	saida2: [[obj_curativo, 5], [obj_municao, 4]],
-	saida3: [[obj_escondidinho, 2], [obj_ansiolitico, 2]],
-	saida4: [[obj_pilha, 1], [obj_agua_sanitaria, 1]],
-	saida5: [[obj_saco_lixo, 5], [obj_curativo, 2]]
+	saida3: [[obj_escondidinho, 2], [obj_chumbo, 4]],
+	saida4: [[obj_pilha, 1], [obj_ovo, 3]],
+	saida5: [[obj_cookie, 5], [obj_curativo, 2]]
 }
 
 itens_comerciante = []
@@ -77,12 +101,12 @@ despedida = false
 vez_comerciante =  1
 mudar_vez = true
 trocas = {
-	comerciante1: [obj_inseticida, obj_bolo_chocolate, obj_salada, obj_agua_sanitaria, obj_alface, obj_chocolate],
-	jogador1: [obj_pilha, obj_chocolate, obj_frango, obj_saco_lixo, obj_salada, obj_farinha],
-	comerciante2: [obj_radio, obj_saco_lixo, obj_analgesico, obj_antibiotico, obj_cookie, obj_farinha],
+	comerciante1: [obj_inseticida, obj_bolo_chocolate, obj_salada, obj_chumbo, obj_alface, obj_chocolate],
+	jogador1: [obj_pilha, obj_chocolate, obj_frango, obj_mapa, obj_salada, obj_farinha],
+	comerciante2: [obj_radio, obj_chumbo, obj_antibiotico, obj_antibiotico, obj_cookie, obj_farinha],
 	jogador2: [obj_tv, obj_escondidinho, obj_curativo, obj_curativo, obj_farinha, obj_chocolate],
-	comerciante3: [obj_domino, obj_ansiolitico, obj_chucrute, obj_repolho, obj_escondidinho, obj_ovo_mexido],
-	jogador3: [obj_municao, obj_cerveja, obj_agua, obj_alface, obj_batata, obj_saco_lixo],
+	comerciante3: [obj_domino, obj_curativo, obj_chucrute, obj_repolho, obj_escondidinho, obj_ovo_mexido],
+	jogador3: [obj_municao, obj_cerveja, obj_agua, obj_alface, obj_batata, obj_ovo],
 }
 evento_comerciante = false
 comerciante_aux = false
@@ -186,107 +210,95 @@ canos = true
 doenca_gata = false
 remedio_gata = false
 
-eventos_inicio = [
-	"comerciante",
-	"capivara",
+eventos_inicio = embaralhar([
 	"gripe",
 	"enxaqueca",
 	"baratas",
 	"canos",
-	"idoso",
+	"freddie",
 	"coleta",
-	"desidratacao",
+	"coleta",
+	"comerciante",
+	"mala",
 	"mala",
 	"capivara",
-	"barata", //ok
-	"leptospirose", //é só meter um diálogo e fazer o personagem ter que trazer agua de casa
-	"freddie",//ok
-]
+	"barata"
+])
 
 inicio_data = {
-	dia1: "doenca_gata", //adicionar aqui o evento que está testando
-	dia3: eventos_inicio[0],
-	dia6: eventos_inicio[1],
-	dia8: eventos_inicio[2],
-	dia10: eventos_inicio[3],
-	dia13: eventos_inicio[4],
-	dia15: eventos_inicio[5],
-	dia18: eventos_inicio[6],
-	dia21: eventos_inicio[7],
-	dia23: eventos_inicio[8],
-	dia26: eventos_inicio[9],
-	dia28: eventos_inicio[10],
-	dia30: eventos_inicio[11],
+	dia2: eventos_inicio[0],
+	dia3: eventos_inicio[1],
+	dia4: eventos_inicio[2],
+	dia6: eventos_inicio[3],
+	dia7: eventos_inicio[4],
+	dia9: eventos_inicio[5],
+	dia10: eventos_inicio[6],
+	dia11: eventos_inicio[7],
+	dia13: eventos_inicio[8],
+	dia14: eventos_inicio[9],
+	dia15: eventos_inicio[10],
+	dia16: eventos_inicio[11],
 }
 
 eventos_meio = embaralhar ([
-	"comerciante",
 	"doenca_gata",
-	"eletricidade",
+	"emma",
 	"rachadura",
 	"infiltracao",
-	"chuva acida",
-	"termostato",
+	"leptospirose",
 	"coleta",
+	"mala",
 	"mala",
 	"cardume",
 	"saque",
-	"emma",
 	"comerciante",
-	"baratas"
+	"comerciante"
 ])
 meio_data = {
-	dia33: eventos_meio[0],
-	dia36: eventos_meio[1],
-	dia38: eventos_meio[2],
-	dia41: eventos_meio[3],
-	dia43: eventos_meio[4],
-	dia45: eventos_meio[5],
-	dia48: eventos_meio[6],
-	dia50: eventos_meio[8],
-	dia53: eventos_meio[9],
-	dia56: eventos_meio[10],
-	dia58: eventos_meio[11],
-	dia62: eventos_meio[12]
+	dia18: eventos_meio[0],
+	dia19: eventos_meio[1],
+	dia21: eventos_meio[2],
+	dia22: eventos_meio[3],
+	dia24: eventos_meio[4],
+	dia25: eventos_meio[5],
+	dia26: eventos_meio[6],
+	dia28: eventos_meio[7],
+	dia29: eventos_meio[8],
+	dia30: eventos_meio[9],
+	dia33: eventos_meio[10],
+	dia34: eventos_meio[11],
 }
 
 eventos_fim = embaralhar([
-	"comerciante",
 	"disenteria",
 	"escorbuto",
 	"ventilacao",
-	"familia_feliz",
-	"depressao",
-	"mofo",
+	"delinquentes",
+	"comerciante",
+	"comerciante",
+	"cogumelos",
+	"coleta",
 	"coleta",
 	"mala",
 	"mib",
-	"delinquentes",
-	"cogumelos",
-	"crianca",
-	"radiacao"
+	"doenca_gata"
 ])
 
 fim_data = {
-	dia66: eventos_fim[0],
-	dia70: eventos_fim[1],
-	dia73: eventos_fim[2],
-	dia76: eventos_fim[3],
-	dia77: eventos_fim[4],
-	dia79: eventos_fim[5],
-	dia82: eventos_fim[6],
-	dia84: eventos_fim[7],
-	dia86: eventos_fim[8],
-	dia88: eventos_fim[9],
-	dia92: eventos_fim[10],
-	dia94: eventos_fim[11],
-	dia96: eventos_fim[12],
+	dia36: eventos_fim[0],
+	dia37: eventos_fim[1],
+	dia38: eventos_fim[2],
+	dia39: eventos_fim[3],
+	dia40: eventos_fim[4],
+	dia41: eventos_fim[5],
+	dia43: eventos_fim[6],
+	dia44: eventos_fim[7],
+	dia45: eventos_fim[8],
+	dia46: eventos_fim[9],
+	dia48: eventos_fim[10],
+	dia49: eventos_fim[11],
 }
 
-if room == rm_bunker {
-	evento_hoje = inicio_data.dia1
-	evento()
-}
 function evento() {
 	switch evento_hoje {
 		case "comerciante":
@@ -306,10 +318,6 @@ function evento() {
 			break
 		case "ventilacao": //chave de fenda (abrir dutos), fita isolante
 			evento_ventilacao = true
-			break
-		case "mofo": // agua sanitaria
-			break
-		case "radiacao": //contador geiger para indicar o local do vazamento, argamassa para cobrir
 			break
 		case "barata":
 			barata = true
@@ -349,9 +357,6 @@ function evento() {
 		case "enxaqueca":
 			enxaqueca = true
 			break
-		case "idoso":
-			idoso = true
-			break
 		case "coleta":
 			evento_coleta = true
 			break
@@ -365,20 +370,11 @@ function evento() {
 		case "doenca_gata":
 			doenca_gata = true
 			break
-		case "eletricidade":
-			eletricidade = true
-			break
 		case "disenteria":
 			disenteria = true
 			break
 		case "escorbuto":
 			escorbuto = true
-			break
-		case "familia_feliz":
-			familia_feliz = true
-			break
-		case "depressao":
-			depressao = true
 			break
 		case "cogumelos":
 			cogumelos = true

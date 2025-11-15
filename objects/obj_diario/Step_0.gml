@@ -78,118 +78,114 @@ switch dia {
 		ds_list_replace(obj_diario.paginas_escritas, 0, obj_diario.paginas.atributos)
 		ds_list_replace(obj_diario.paginas_escritas, 1, obj_diario.paginas.atributos2)
 		ds_list_replace(paginas_escritas, dia + 1, "Nada de mais hoje.")
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia1
+		break
+	case 2:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia2
 		break
 	case 3:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia3
 		break
+	case 4:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia4
+		break
 	case 6:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia6
 		break
-	case 8:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia8
+	case 7:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia7
+		break
+	case 9:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia9
 		break
 	case 10:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia10
 		break
+	case 11:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia11
+		break
 	case 13:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia13
+		break
+	case 14:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia14
 		break
 	case 15:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia15
 		break
+	case 16:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia16
+		break
 	case 18:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia18
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia18
+		break
+	case 19:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia19
 		break
 	case 21:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia21
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia21
 		break
-	case 23:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia23
+	case 22:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia22
+		break
+	case 24:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia24
+		break
+	case 25:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia25
 		break
 	case 26:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia26
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia26
 		break
 	case 28:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia28
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia28
+		break
+	case 29:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia29
 		break
 	case 30:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.inicio_data.dia30
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia30
 		break
 	case 33:
 		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia33
 		break
+	case 34:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia34
+		break
 	case 36:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia36
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia36
+		break
+	case 37:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia37
 		break
 	case 38:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia38
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia38
+		break
+	case 39:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia39
+		break
+	case 40:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia40
 		break
 	case 41:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia41
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia41
 		break
 	case 43:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia43
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia43
+		break
+	case 44:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia44
 		break
 	case 45:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia45
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia45
+		break
+	case 46:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia46
 		break
 	case 48:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia48
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia48
 		break
-	case 50:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia50
-		break
-	case 53:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia53
-		break
-	case 56:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia56
-		break
-	case 58:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia58
-		break
-	case 62:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia62
-		break
-	case 66:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia66
-		break
-	case 70:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia70
-		break
-	case 73:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia73
-		break
-	case 76:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia76
-		break
-	case 77:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia77
-		break
-	case 79:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia79
-		break
-	case 82:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia82
-		break
-	case 84:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia84
-		break
-	case 86:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia86
-		break
-	case 88:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia88
-		break
-	case 92:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia92
-		break
-	case 94:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia94
-		break
-	case 96:
-		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia96
+	case 49:
+		obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia49
 		break
 	default:
 		obj_controlador_evento.evento_hoje = 0

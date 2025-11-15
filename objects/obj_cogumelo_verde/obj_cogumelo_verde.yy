@@ -1,19 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_analgesico",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_cogumelo_verde",
+  "eventList":[],
   "managed":true,
-  "name":"obj_analgesico",
+  "name":"obj_cogumelo_verde",
   "overriddenProperties":[],
   "parent":{
-    "name":"remedios",
-    "path":"folders/Objetos/itens/remedios.yy",
+    "name":"eventos",
+    "path":"folders/Objetos/eventos.yy",
   },
   "parentObjectId":{
-    "name":"obj_coletavel",
-    "path":"objects/obj_coletavel/obj_coletavel.yy",
+    "name":"obj_cogumelo_pai",
+    "path":"objects/obj_cogumelo_pai/obj_cogumelo_pai.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -33,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_analgesico",
-    "path":"sprites/spr_analgesico/spr_analgesico.yy",
+    "name":"spr_cogumelos_verde",
+    "path":"sprites/spr_cogumelos_verde/spr_cogumelos_verde.yy",
   },
   "spriteMaskId":null,
   "visible":true,
