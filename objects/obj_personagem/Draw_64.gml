@@ -623,9 +623,9 @@ if passagem_dia  {
 					saude -= struct_get_names(doencas)[i][2]
 				}
 			}
-			if obj_diario.dia < 33 {
+			if obj_diario.dia < 16 {
 				atributos.sanidade -= 9
-			} else if obj_diario.dia < 66 {
+			} else if obj_diario.dia < 32 {
 				atributos.sanidade -= 15
 			} else {
 				atributos.sanidade -= 21

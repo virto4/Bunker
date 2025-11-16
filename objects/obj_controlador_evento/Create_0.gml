@@ -57,11 +57,11 @@ mala_posicoes = [
 	[1150, 700]
 ] //certifique-se que todos os sprites sao 32 x 32
 mala_itens = {
-	mala1: [[obj_agua, 10, false], [obj_arroz, 2, false], [obj_antibiotico, 1, false]],
-	mala2: [[obj_acucar, 2, false], [obj_chumbo, 4, false]],
-	mala3: [[obj_pilha, 1, false], [obj_municao, 2, false]],
+	mala1: [[obj_agua, 3, false], [obj_arroz, 2, false], [obj_antibiotico, 1, false]],
+	mala2: [[obj_acucar, 2, false], [obj_chumbo, 4, false], [obj_municao, 3, false]],
+	mala3: [[obj_pilha, 1, false], [obj_municao, 6, false]],
 	mala4: [[obj_curativo, 4, false], [obj_batata, 2, false]],
-	mala5: [[obj_cerveja, 1, false]]
+	mala5: [[obj_cerveja, 1, false], [obj_agua, 2, false]]
 }
 
 escureceu = false
@@ -87,7 +87,7 @@ mudar_coleta = true
 vez_coleta = 1
 coleta_atual = []
 itens_coleta = {
-	saida1: [[obj_agua, 10], [obj_repolho, 1], [obj_aspirina, 2]],
+	saida1: [[obj_agua, 5], [obj_repolho, 1], [obj_aspirina, 2]],
 	saida2: [[obj_curativo, 5], [obj_municao, 4]],
 	saida3: [[obj_escondidinho, 2], [obj_chumbo, 4]],
 	saida4: [[obj_pilha, 1], [obj_ovo, 3]],
@@ -101,12 +101,16 @@ despedida = false
 vez_comerciante =  1
 mudar_vez = true
 trocas = {
-	comerciante1: [obj_inseticida, obj_bolo_chocolate, obj_salada, obj_chumbo, obj_alface, obj_chocolate],
+	comerciante1: [obj_inseticida, obj_bolo_chocolate, obj_arroz_frango, obj_chumbo, obj_alface, obj_chocolate],
 	jogador1: [obj_pilha, obj_chocolate, obj_frango, obj_mapa, obj_salada, obj_farinha],
 	comerciante2: [obj_radio, obj_chumbo, obj_antibiotico, obj_antibiotico, obj_cookie, obj_farinha],
 	jogador2: [obj_tv, obj_escondidinho, obj_curativo, obj_curativo, obj_farinha, obj_chocolate],
 	comerciante3: [obj_domino, obj_curativo, obj_chucrute, obj_repolho, obj_escondidinho, obj_ovo_mexido],
 	jogador3: [obj_municao, obj_cerveja, obj_agua, obj_alface, obj_batata, obj_ovo],
+	comerciante4: [obj_inseticida, obj_bolo_chocolate, obj_arroz_frango, obj_chumbo, obj_alface, obj_chocolate],
+	jogador4: [obj_pilha, obj_chocolate, obj_frango, obj_mapa, obj_salada, obj_farinha],
+	comerciante5: [obj_domino, obj_curativo, obj_chucrute, obj_repolho, obj_escondidinho, obj_ovo_mexido],
+	jogador5: [obj_municao, obj_cerveja, obj_agua, obj_alface, obj_batata, obj_ovo],
 }
 evento_comerciante = false
 comerciante_aux = false
@@ -214,12 +218,12 @@ eventos_inicio = embaralhar([
 	"gripe",
 	"enxaqueca",
 	"baratas",
-	"canos",
+	"doenca_gata",
 	"freddie",
 	"coleta",
 	"coleta",
 	"comerciante",
-	"mala",
+	"comerciante",
 	"mala",
 	"capivara",
 	"barata"
@@ -275,13 +279,13 @@ eventos_fim = embaralhar([
 	"ventilacao",
 	"delinquentes",
 	"comerciante",
-	"comerciante",
+	"mala",
 	"cogumelos",
 	"coleta",
 	"coleta",
 	"mala",
 	"mib",
-	"doenca_gata"
+	"canos"
 ])
 
 fim_data = {

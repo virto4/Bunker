@@ -32,8 +32,8 @@ if clicou and !jogou_hoje {
 				}
 				obj_personagem.sao = true
 				obj_personagem.aumento_sanidade = 10
+				jogou_hoje = true
 			}
-			jogou_hoje = true
 			clicou = false
 			global.tem_tela_aberta = false
 			sua_vez = true

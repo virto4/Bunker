@@ -23,7 +23,6 @@ if clicou and !jogou_hoje {
 	if mouse_check_button_pressed(mb_left) {
 		if mx > tx_sair - width_sair && mx < tx_sair + width_sair &&
 		my > ty_sair - height_sair && my < ty_sair + height_sair {
-			jogou_hoje = true
 			clicou = false
 			global.tem_tela_aberta = false
 			primeira_peca = true
@@ -37,6 +36,7 @@ if clicou and !jogou_hoje {
 				}
 				obj_personagem.sao = true
 				obj_personagem.aumento_sanidade = 10
+				jogou_hoje = true
 			}
 		}
 	}

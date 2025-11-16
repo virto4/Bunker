@@ -12,10 +12,10 @@ if instance_exists(obj_davi) and obj_personagem.ativada {
 }
 
 if instance_exists(obj_diario) {
-	if obj_diario.dia == 33 and !pilha_aux1 {
+	if obj_diario.dia == 19 and !pilha_aux1 {
 		pilhas = true
 		pilha_aux1 = true
-	} else if obj_diario.dia == 66 and !pilha_aux2 {
+	} else if obj_diario.dia == 38 and !pilha_aux2 {
 		pilhas = true
 		pilha_aux2 = true
 	}
@@ -91,42 +91,42 @@ if entrou and instance_exists(obj_calendario) and clicou {
 		}
         programacao = cozinha[cozinha_id];
 		programa = "Cozinha Improvisada"
-		if cozinha_id % 8 == 0 {
+		if cozinha_id % 8 == 1 {
 			ovo_mexido = true
 		} else {
 			ovo_mexido = false
 		}
-		if cozinha_id % 8 == 1 {
+		if cozinha_id % 8 == 2 {
 			salada = true
 		} else {
 			salada = false
 		}
-		if cozinha_id % 8 == 2 {
+		if cozinha_id % 8 == 3 {
 			bolo_chocolate = true
 		} else {
 			bolo_chocolate = false
 		}
-		if cozinha_id % 8 == 3 {
+		if cozinha_id % 8 == 4 {
 			bolo_quatro_quartos = true
 		} else {
 			bolo_quatro_quartos = false
 		}
-		if cozinha_id % 8 == 4 {
+		if cozinha_id % 8 == 5 {
 			chucrute = true
 		} else {
 			chucrute = false
 		}
-		if cozinha_id % 8 == 5 {
+		if cozinha_id % 8 == 6 {
 			cookie = true
 		} else {
 			cookie = false
 		}
-		if cozinha_id % 8 == 6 {
+		if cozinha_id % 8 == 7 {
 			escondidinho = true
 		} else {
 			escondidinho = false
 		}
-		if cozinha_id % 8 == 7 {
+		if cozinha_id % 8 == 0 {
 			arroz_frango = true
 		} else {
 			arroz_frango = false

@@ -119,6 +119,7 @@ noticias = [
 
 cozinha_id = 0
 cozinha = [
+	["Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
 	["Bom dia telespectadores! Estamos aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
 	"Hoje, vamos cozinhar um ovo mexido! Primeiro, separe 3 ovos de galinha.", "Em seguida coloque no fogo baixo e mexa, retirando e recolocando no fogo várias vezes até o ovo fica pronto.",
 	"E está pronto! Viu como é fácil? Muito obrigado por assistir e até a próxima."],
@@ -131,34 +132,6 @@ cozinha = [
 	["Bom dia, boa tarde, boa noite! Sou Kelly e vamos discutir sobre uma comida bastante polêmica: chucrute!", "Essa iguaria alemã é RIQUÍSSIMA em vitamina C, o que os impedia de sofrer escorbuto e outras doenças na época das Navegações.", "Utilize com sabedoria!"],
 	["Bom dia, povo! Hoje vamos aprender um clássico da culinária mundial: os biscoitos!", "A receita é praticamente igual a brownie de chocolate: misture ovos, muita manteiga e açúcar, após isso, a farinha, o fermento e as gotículas de chocolate e está feito!", "Aproveite e tenha um dia classe A1!"],
 	["Gente, prestem atenção! A receita de hoje é D-I-V-I-N-A!", "Escondidinho! Simples, rápido e fácil: uma camada de carne entre 2 de batata! Fica maravilhoso, sério, experimentem!"],
-	["Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
-	
-	["[REPRISE] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
-	"[Reprise] Hoje, vamos cozinhar um ovo mexido! Primeiro, separe 3 ovos de galinha.", "[Reprise] Em seguida coloque no fogo baixo e mexa, retirando e recolocando no fogo várias vezes até o ovo fica pronto."],
-	["[REPRISE] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
-	"Primeiramente, corte pedaços de pão amanhecido e frite. Cozinhe o frango e desfie. Corte as folhas do alface. Misture tudo e está pronto! Desejo uma boa semana a todos e até a próxima edição!"],
-	["[REPRISE] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
-	["[REPRISE] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
-	"[REPRISE] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
-	
-	["[REPRISE] Bom dia, boa tarde, boa noite! Sou Kelly e vamos discutir sobre uma comida bastante polêmica: chucrute!", "Essa iguaria alemã é RIQUÍSSIMA em vitamina C, o que os impedia de sofrer escorbuto e outras doenças na época das Navegações.", "Utilize com sabedoria!"],
-	["[REPRISE] Bom dia, povo! Hoje vamos aprender um clássico da culinária mundial: os biscoitos!", "A receita é praticamente igual a brownie de chocolate: misture ovos, muita manteiga e açúcar, após isso, a farinha, o fermento e as gotículas de chocolate e está feito!", "Aproveite e tenha um dia classe A1!"],
-	["[REPRISE] Gente, prestem atenção! A receita de hoje é D-I-V-I-N-A!", "Escondidinho! Simples, rápido e fácil: uma camada de carne entre 2 de batata! Fica maravilhoso, sério, experimentem!"],
-	["[REPRISE] Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
-
-	["[REPRISE] Bom dia telespectadores! Meu nome é Kelly e estou aqui para apresentar meu programa 'Cozinha Improvisada', no qual revelo-lhes segredos e técnicas culinárias diversas!",
-	"[Reprise] Hoje, vamos cozinhar um ovo mexido! Primeiro, separe 3 ovos de galinha.", "[Reprise] Em seguida coloque no fogo baixo e mexa, retirando e recolocando no fogo várias vezes até o ovo fica pronto."],
-	["[REPRISE] Ora, ora, se não é dia de mais um episódio de 'Cozinha Improvisada!'", "[Reprise] Hoje, aprenderemos salada Caesar! um tipo de salada com croutons de pão, frango desfiado e alface!",
-	"Primeiramente, corte pedaços de pão amanhecido e frite. Cozinhe o frango e desfie. Corte as folhas do alface. Misture tudo e está pronto! Desejo uma boa semana a todos e até a próxima edição!"],
-	["[REPRISE] Bem vindos de volta! Hoje vamos aprender bolo de chocolate. É simples assim: misture ovos e açúcar; adicione o chocolate derretido e misture; por fim, mistura a farinha e asse. Está pronto! Até a próxima!"],
-	["[REPRISE] Bom dia, boa tarde, boa noite! Hoje vamos aprender uma receita simples e prática, que qualquer pessoa consegue fazer: bolo quatro quartos!",
-	"[REPRISE] Basta misturar 4 ingredientes em proporções iguais: manteiga, ovos, açúcar e farinha. Asse e se delicie!"],
-	
-	["[REPRISE] Bom dia, boa tarde, boa noite! Sou Kelly e vamos discutir sobre uma comida bastante polêmica: chucrute!", "Essa iguaria alemã é RIQUÍSSIMA em vitamina C, o que os impedia de sofrer escorbuto e outras doenças na época das Navegações.", "Utilize com sabedoria!"],
-	["[REPRISE] Bom dia, povo! Hoje vamos aprender um clássico da culinária mundial: os biscoitos!", "A receita é praticamente igual a brownie de chocolate: misture ovos, muita manteiga e açúcar, após isso, a farinha, o fermento e as gotículas de chocolate e está feito!", "Aproveite e tenha um dia classe A1!"],
-	["[REPRISE] Gente, prestem atenção! A receita de hoje é D-I-V-I-N-A!", "Escondidinho! Simples, rápido e fácil: uma camada de carne entre 2 de batata! Fica maravilhoso, sério, experimentem!"],
-	["[REPRISE] Hoje a receita é para aqueles que gostam de praticidade: strogonoff! Molho de frango servido com arroz. Simples, fácil e a iguaria dos jovens que moram sozinhos!"],
-
 ]
 ovo_mexido = false
 bolo_chocolate = false
