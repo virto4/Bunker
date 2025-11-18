@@ -166,22 +166,25 @@ if sair_bunker {
 			primeiro = false
 		}
 		draw_text(300, 940, "Roger")
-		if point_in_rectangle(mx, my, davi[0][0], davi[0][1], davi[1][0], davi[1][1]) {
-			draw_rectangle_color(940 - largura_davi / 2, 920, 980 + largura_davi / 2, 960 + altura_davi, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-			draw_rectangle_color(950 - largura_davi / 2, 930, 970 + largura_davi / 2, 950 + altura_davi, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
-			if !segundo {
-				segundo = true
-				audio_play_sound(snd_menu_mouse, 1, false)
+		if instance_exists(obj_davi) {
+			if point_in_rectangle(mx, my, davi[0][0], davi[0][1], davi[1][0], davi[1][1]) {
+				draw_rectangle_color(940 - largura_davi / 2, 920, 980 + largura_davi / 2, 960 + altura_davi, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+				draw_rectangle_color(950 - largura_davi / 2, 930, 970 + largura_davi / 2, 950 + altura_davi, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+				if !segundo {
+					segundo = true
+					audio_play_sound(snd_menu_mouse, 1, false)
+				}
+				if mouse_check_button_pressed(mb_left) {
+					tirar_coleta = true
+					sair_bunker = false
+					davi_sai = true
+				}
+			} else {
+				segundo = false
 			}
-			if mouse_check_button_pressed(mb_left) {
-				tirar_coleta = true
-				sair_bunker = false
-				davi_sai = true
-			}
-		} else {
-			segundo = false
+		
+			draw_text(960 - largura_davi / 2, 940, "Davi")
 		}
-		draw_text(960 - largura_davi / 2, 940, "Davi")
 		if point_in_rectangle(mx, my, nenhum[0][0], nenhum[0][1], nenhum[1][0], nenhum[1][1]) {
 			draw_rectangle_color(1600 - largura_nenhum, 920, 1640, 960 + altura_nenhum, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(1610 - largura_nenhum, 930, 1630, 950 + altura_nenhum, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)

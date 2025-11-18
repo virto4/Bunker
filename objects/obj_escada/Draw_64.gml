@@ -10,34 +10,29 @@ if question {
 		var my = device_mouse_y_to_gui(0)
 		draw_set_color(c_black)
 		draw_set_font(fnt_dialogos)
-		draw_text(220, 800, "Você deseja enfrentar um inimigo desconhecido?")
-		if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+		draw_text_ext(220, 800, "Você ouve pancadas do lado de fora do bunker... Tem algo ou alguém querendo invadir; você precisa lutar para defender o que é seu.", 50, 1520)
+		var lutar = "Lutar"
+		var posicao = [960 - string_width(lutar) / 2, 930, 960 + string_width(lutar) / 2, 950 + string_height(lutar)]
+		if point_in_rectangle(mx, my, posicao[0], posicao[1], posicao[2], posicao[3]) {
 			if !mouse_aux1 {
 				mouse_aux1 = true
 				audio_play_sound(snd_menu_mouse, 1, false)
 			}
-			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			draw_rectangle_color(posicao[0] - 10, posicao[1] - 10, posicao[2] + 10, posicao[3] + 10, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(posicao[0] - 5, posicao[1] - 5, posicao[2] + 5, posicao[3] + 5, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
+				if instance_exists(obj_davi) {
+					vida_davi_original = obj_davi.atributos.saude
+				}
+				vida_roger_original = obj_personagem.atributos.saude
+				balas_metra_original = tiros_metra
+				balas_pistola_original = tiros_pistola
 				question = false
 				etapa2 = true
 				escureceu = true
 			}
-		} else if point_in_rectangle(mx, my, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
-			if !mouse_aux2 {
-				mouse_aux2 = true
-				audio_play_sound(snd_menu_mouse, 1, false)
-			}
-			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
-			if mouse_check_button_pressed(mb_left) {
-				question = false
-				etapa2 = true
-				global.tem_tela_aberta = false
-			}
 		}
-		draw_text(300, 940, "Sim")
-		draw_text(1620, 940, "Não")
+		draw_text(960 - string_width(lutar) / 2, 940, "Lutar")
 	}
 }
 
@@ -74,18 +69,29 @@ function recarrega(obj, arma) {
 					obj_municao.qtde_itens--
 					if obj_municao.qtde_itens <= 0 {
 						instance_destroy(obj_municao)
+						municoes_casa_original++
 					}
 				} else {
 					if obj_personagem.slot1 == obj_municao {
 						obj_personagem.slot1 = noone
+						municoes_casa_original++
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") - 1)
 					} else if obj_personagem.slot2 == obj_municao {
 						obj_personagem.slot2 = noone
+						municoes_casa_original++
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") - 1)
 					} else if obj_personagem.slot3 == obj_municao {
 						obj_personagem.slot3 = noone
+						municoes_casa_original++
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") - 1)
 					} else if obj_personagem.slot4 == obj_municao {
 						obj_personagem.slot4 = noone
+						municoes_casa_original++
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") - 1)
 					} else {
 						obj_personagem.slot5 = noone
+						municoes_casa_original++
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") - 1)
 					}
 				}
 			}
@@ -461,10 +467,11 @@ if clicou and !derrotou {
 	draw_rectangle_color(960 - 128, 863, 960 + 128, 943, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(960 - 128 + 5, 863 + 5, 960 + 128 - 5, 943 - 5, cor_atacar, cor_atacar, cor_atacar, cor_atacar, false)
 	draw_text(960 - 128 + (256 - string_width("Atacar")) / 2, 863 + (80 - string_height("Atacar")) / 2, "Atacar")
-	draw_rectangle_color(960 - 128, 963, 960 + 128, 1043, c_black, c_black, c_black, c_black, false)
-	draw_rectangle_color(960 - 128 + 5, 963 + 5, 960 + 128 - 5, 1043 - 5, cor_correr, cor_correr, cor_correr, cor_correr, false)
-	draw_text(960 - 128 + (256 - string_width("Correr")) / 2, 963 + (80 - string_height("Correr")) / 2, "Correr")
-	
+	if correr {
+		draw_rectangle_color(960 - 128, 963, 960 + 128, 1043, c_black, c_black, c_black, c_black, false)
+		draw_rectangle_color(960 - 128 + 5, 963 + 5, 960 + 128 - 5, 1043 - 5, cor_correr, cor_correr, cor_correr, cor_correr, false)
+		draw_text(960 - 128 + (256 - string_width("Correr")) / 2, 963 + (80 - string_height("Correr")) / 2, "Correr")
+	}
 	if critico2 {
 		draw_set_font(fnt_dialogos)
 		draw_set_color(#990A0E)
@@ -1087,7 +1094,7 @@ if clicou and !derrotou {
 	}
 }
 
-if obj_personagem.atributos.saude <= 0 {
+if obj_personagem.atributos.saude <= 0 and clicou {
 	global.tem_tela_aberta = true
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
 	if alpha_morte < 1 {
@@ -1096,7 +1103,8 @@ if obj_personagem.atributos.saude <= 0 {
 		} 
 	} else { 
 		obj_personagem.game_over = true
-		obj_personagem.msg_game_over = "Você desfaleceu enqanto lutava pela soberania do bunker"
+		obj_personagem.msg_game_over = "Você desfaleceu enquanto lutava pela soberania do bunker"
+		obj_personagem.morrer_lutando = true
 	}
 }
 
@@ -1157,7 +1165,8 @@ if morte_davi and clicou {
 				cor_botao = #527F7F
 				if mouse_check_button_pressed(mb_left) {
 					etapa2_morte = true
-					instance_destroy(obj_davi)
+					instance_deactivate_object(obj_davi)
+					obj_personagem.ativada = false
 				}
 			} else {
 				cor_botao = c_white
@@ -1230,18 +1239,16 @@ if escureceu3 {
 		if alpha_morte < 1 {
 			alpha_morte += 0.05
 		} else {
+			correr = false
 			audio_stop_sound(musicas[musica])
 			derrotou = true
 			global.tem_tela_aberta = false
 			clicou = false
 			escureceu_aux = true
-			if inimigo.vida == 0 {
-				if instance_exists(obj_davi) {
-					obj_davi.sao = true
-					obj_davi.aumento_sanidade = 10
-				}
-				obj_personagem.sao = true
-				obj_personagem.aumento_sanidade = 10
+			if !obj_personagem.ativada {
+				ativada = true
+				instance_activate_object(obj_davi)
+				instance_destroy(obj_davi)
 			}
 		}
 	} else {

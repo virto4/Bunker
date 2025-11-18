@@ -7,7 +7,7 @@ if room == rm_bunker {
 		is_dia = true
 	}
 }
-if !passagem_dia and !is_dia { //para que ele só morra depois que o dia passar
+if !passagem_dia and !is_dia and room == rm_bunker { //para que ele só morra depois que o dia passar
 	pode_conversar = true
 	if atributos.sede <= 0 {
 		obj_personagem.morte_davi = true
@@ -21,7 +21,7 @@ if !passagem_dia and !is_dia { //para que ele só morra depois que o dia passar
 		obj_personagem.morte_davi = true
 		obj_personagem.msg_davi = "Davi se perdeu em desvario e cometeu suicídio"
 	}
-	if atributos.saude <= 0 {
+	if atributos.saude <= 0 and !obj_escada.clicou {
 		obj_personagem.morte_davi = true
 		obj_personagem.msg_davi = "Davi morreu da doença que lhe acometeu"
 	}

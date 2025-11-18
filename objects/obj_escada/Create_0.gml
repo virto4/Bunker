@@ -1,5 +1,16 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+vida_davi_original = 0
+vida_roger_original = 0
+balas_pistola_original = 0
+balas_metra_original = 0
+municoes_original = 0
+davi_morreu_definitivo = false
+
+
+correr = false
+
 curativo_roger = false
 curativo_davi = false
 mes = 0

@@ -181,7 +181,7 @@ if clicou and image_index == image_number - 1{
 		var largura = string_width("Doenças de Roger")
 		var saudavel = true
 		for (var i = 0; i < array_length(struct_get_names(obj_personagem.doencas)); i++) {
-			var doenca = variable_struct_get(obj_personagem.doencas, struct_get_names(obj_davi.doencas)[i])
+			var doenca = variable_struct_get(obj_personagem.doencas, struct_get_names(obj_personagem.doencas)[i])
 			if doenca[0] {
 				saudavel = false
 				altura++

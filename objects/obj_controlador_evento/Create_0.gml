@@ -38,9 +38,13 @@ destruir = false
 gripe = false
 gripe_aux = true
 escorbuto = false
+escorbuto_aux = true
 disenteria = false
+disenteria_aux = true
 leptospirose = false
+leptospirose_aux = true
 enxaqueca = false
+enxaqueca_eux = true
 
 tirar_mala = false
 mala_question = false
@@ -301,6 +305,11 @@ fim_data = {
 	dia46: eventos_fim[9],
 	dia48: eventos_fim[10],
 	dia49: eventos_fim[11],
+}
+
+if room == rm_bunker {
+	obj_diario.amanhecer()
+	evento()
 }
 
 function evento() {

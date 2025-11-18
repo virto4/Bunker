@@ -20,6 +20,10 @@ coisas para melhorar sanidade:
 -vencer batalhas=+10
 -ouvir radio=+5
 */
+tempo_over4 = false
+aux3 = true
+cor_botao2 = c_white
+morrer_lutando = false
 datas_vazamento = [3, 10, 20, 25, 37, 47]
 posicoes_vazamento = [
 	[700, 300], [1100, 300], [1300, 500], [350, 600], [250, 300], [700, 600]

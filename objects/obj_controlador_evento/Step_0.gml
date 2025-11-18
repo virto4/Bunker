@@ -27,7 +27,8 @@ if evento_hoje != "doenca_gata" {
 	remedio_gata = false
 }
 
-if gripe {
+if gripe and gripe_aux {
+	gripe_aux = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.gripe)
 	if instance_exists(obj_davi) {
 		if obj_personagem.ativada {
@@ -37,12 +38,14 @@ if gripe {
 	obj_personagem.doencas.Gripe[0] = true
 }
 
-if escorbuto {
+if escorbuto and escorbuto_aux {
+	escorbuto_aux = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.escorbuto)
 	obj_personagem.doencas.Gripe[0] = true
 }
 
-if disenteria {
+if disenteria and disenteria_aux {
+	disenteria_aux = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.disenteria)
 	if instance_exists(obj_davi) {
 		if obj_personagem.ativada {
@@ -52,7 +55,8 @@ if disenteria {
 	obj_personagem.doencas.Disenteria[0] = true
 }
 
-if leptospirose {
+if leptospirose and leptospirose_aux {
+	leptospirose_aux = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.leptospirose)
 	if instance_exists(obj_davi) {
 		if obj_personagem.ativada {
@@ -62,7 +66,8 @@ if leptospirose {
 	obj_personagem.doencas.Leptospirose[0] = true
 }
 
-if enxaqueca {
+if enxaqueca and enxaqueca_eux {
+	enxaqueca_eux = false
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.enxaqueca)
 	if instance_exists(obj_davi) {
 		if obj_personagem.ativada {
@@ -70,7 +75,6 @@ if enxaqueca {
 		}
 	}
 	obj_personagem.doencas.Enxaqueca[0] = true
-	gripe_aux = false
 }
 
 if mala {
@@ -280,7 +284,7 @@ if maniaco and maniaco_aux {
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
-if kkk  and kkk_aux {
+if kkk and kkk_aux {
 	kkk_aux = false
 	evento_inimigo = true
 	obj_escada.inimigo.forca = 90
@@ -309,6 +313,7 @@ if alcoolatra and alcoolatra_aux {
 }
 
 if mib and mib_aux {
+	obj_escada.correr = true
 	mib_aux = false
 	evento_inimigo = true
 	obj_escada.inimigo.forca = 90

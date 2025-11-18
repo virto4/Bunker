@@ -1,7 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 depth = -y
-
+if !global.tem_tela_aberta and !obj_personagem.passagem_dia and obj_controlador_evento.evento_inimigo and !derrotou {
+	question = true
+}
 if room == rm_bunker {
 	switch obj_calendario.mes_atual {
 		case 7:	
@@ -34,7 +36,7 @@ if clicou and !derrotou {
 		cor_atacar = #990A0E
 	}
 	
-	if point_in_rectangle(mx, my, 960 - 128, 963, 960 + 128, 1043) and !morte_roger and !morte_davi and !batalha {
+	if point_in_rectangle(mx, my, 960 - 128, 963, 960 + 128, 1043) and !morte_roger and !morte_davi and !batalha and correr {
 		cor_correr = #B25A0B
 		if mouse_check_button_pressed(mb_left) and !instrucoes {
 			if !inimigo.fugir {

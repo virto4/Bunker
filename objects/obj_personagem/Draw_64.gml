@@ -466,11 +466,11 @@ if direita_coletavel {
 		draw_sprite_part_ext(spr_dialogo, 0, 310, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
 		draw_text(170, 640, variable_struct_get(global.nomes, object_get_name(obj_personagem.objeto)))
 		draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
-		var maior = sprite_get_height(object_get_sprite(objeto))
-		if sprite_get_width(object_get_sprite(objeto)) > sprite_get_height(object_get_sprite(objeto)) {
-			maior = sprite_get_width(object_get_sprite(objeto))
+		var maior = sprite_get_height(object_get_sprite(obj_personagem.objeto))
+		if sprite_get_width(object_get_sprite(obj_personagem.objeto)) > sprite_get_height(object_get_sprite(obj_personagem.objeto)) {
+			maior = sprite_get_width(object_get_sprite(obj_personagem.objeto))
 		}
-		draw_sprite_ext(object_get_sprite(objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
+		draw_sprite_ext(object_get_sprite(obj_personagem.objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
 		if mouse_check_button_pressed(mb_left) {
 			direita_coletavel = false
 			global.tem_tela_aberta = false
@@ -562,9 +562,17 @@ if game_over {
 			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
 			var yinicial = 860 - 5
 			var yfinal = 860 + string_height(msg_tela_inicial) + 5
+			if morrer_lutando {
+				xinicial = 480 - string_width(msg_tela_inicial) / 2 - 5
+				xfinal = 480 + string_width(msg_tela_inicial) / 2 + 5
+			}
 			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
 			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
-			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+			draw_text(xinicial + 5, 860, msg_tela_inicial)
+			if aux3 {
+				tempo_over4 = current_time / 1000 + 1.5
+				aux3 = false
+			}
 			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
 				cor_botao = #527F7F
 				if mouse_check_button_pressed(mb_left) {
@@ -573,6 +581,63 @@ if game_over {
 				}
 			} else {
 				cor_botao = c_white
+			}
+		}
+		if tempo_over4 < current_time / 1000 and !aux3 and morrer_lutando {
+			var msg_tela_inicial = "Voltar para a batalha"
+			var xinicial = 1440 - string_width(msg_tela_inicial) / 2 - 5
+			var xfinal = 1440 + string_width(msg_tela_inicial) / 2 + 5
+			var yinicial = 860 - 5
+			var yfinal = 860 + string_height(msg_tela_inicial) + 5
+			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao2, cor_botao2, cor_botao2, cor_botao2, false)
+			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+			draw_text(1440 - string_width(msg_tela_inicial) / 2 + 5, 860, msg_tela_inicial)
+			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+				cor_botao2 = #527F7F
+				if mouse_check_button_pressed(mb_left) {
+					obj_escada.escureceu = true
+					if !ativada {
+						instance_activate_object(obj_davi)
+						ativada = true
+					}
+					if instance_exists(obj_davi) {
+						obj_davi.atributos.saude = obj_escada.vida_davi_original
+					}
+					atributos.saude = obj_escada.vida_roger_original
+					obj_escada.tiros_metra = obj_escada.balas_metra_original
+					obj_escada.tiros_pistola = obj_escada.balas_pistola_original
+					obj_escada.inimigo.vida = obj_escada.inimigo.total_vida
+					for (var i = 0; i < obj_escada.municoes_original; i++) {
+						if instance_exists(obj_municao) {
+							obj_municao.qtde_itens++
+						} else {
+							var objeto = variable_struct_get(global.posicoes, "obj_municao")
+							var xis = variable_struct_get(objeto, "x")
+							var ipsilon = variable_struct_get(objeto, "y")
+							instance_create_layer(xis, ipsilon, "Instances", obj_municao)
+						}
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") + 1)
+					}
+					morrer_lutando = false
+					obj_escada.escureceu = true
+					audio_stop_sound(snd_marcha_funebre)
+					
+					game_over = false
+					msg_game_over = ""
+					alpha_over = 0
+					inicio = false
+					tempo_over = 0
+					aux1 = true
+					bbb = false
+					tempo_over2 = 0
+					aux2 = true
+					tempo_over3 = 0
+					cor_botao = c_white
+					tempo_over4 = false
+					aux3 = true
+				}
+			} else {
+				cor_botao2 = c_white
 			}
 		}
 	}
@@ -600,7 +665,6 @@ if passagem_dia  {
 			resolveu = false
 			audio_play_sound(snd_paginas, 1, false)
 			obj_calendario.mudou_dia = true
-			obj_diario.dia += 1
 			mudou_data = true
 			atributos.fome -= 7
 			if obj_controlador_evento.evento_canos {
@@ -620,7 +684,7 @@ if passagem_dia  {
 			}
 			for (var i = 0; i < array_length(struct_get_names(doencas)); i++) {
 				if variable_struct_get(doencas, struct_get_names(doencas)[i])[0] {
-					saude -= struct_get_names(doencas)[i][2]
+					atributos.saude -= variable_struct_get(doencas, struct_get_names(doencas)[i])[2]
 				}
 			}
 			if obj_diario.dia < 16 {
@@ -634,7 +698,7 @@ if passagem_dia  {
 				if ativada {
 					for (var i = 0; i < array_length(struct_get_names(obj_davi.doencas)); i++) {
 						if variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])[0] {
-							obj_davi.saude -= struct_get_names(obj_davi.doencas)[i][2]
+							obj_davi.saude -= variable_struct_get(doenca, struct_get_names(obj_davi.doencas)[i])[2]
 						}
 					}
 				 	obj_davi.atributos.fome -= 7

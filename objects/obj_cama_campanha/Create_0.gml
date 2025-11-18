@@ -19,6 +19,8 @@ sim = [[290, 930], [310 + largura_sim, 950 + altura_sim]]
 nao = [[1610, 930], [1630 + largura_nao, 950 + altura_nao]]
 
 function passar_dia() {
+	obj_diario.dia += 1
+	obj_diario.amanhecer()
 	obj_controlador_evento.evento()
 	obj_personagem.passagem_dia = true
 	if room == rm_bunker {
