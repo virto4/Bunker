@@ -583,31 +583,31 @@ if remedio and room == rm_bunker {
 				}
 			}
 			
-			if doencas.Gripe {
+			if doencas.Gripe[0] {
 				if obj_personagem.item_selecionado == obj_aspirina {
 					doencas.Gripe[0] = false
 				}
 			}
 		
-			if doencas.Disenteria {
+			if doencas.Disenteria[0] {
 				if obj_personagem.item_selecionado == obj_antibiotico {
 					doencas.Disenteria[0] = false
 				}
 			}
 		
-			if doencas.Enxaqueca {
+			if doencas.Enxaqueca[0] {
 				if obj_personagem.item_selecionado == obj_aspirina {
 					doencas.Enxaqueca[0] = false
 				}
 			}
 		
-			if doencas.Escorbuto {
+			if doencas.Escorbuto[0] {
 				if obj_personagem.item_selecionado == obj_chucrute {
 					doencas.Escorbuto[0] = false
 				}
 			}
 		
-			if doencas.Leptospirose {
+			if doencas.Leptospirose[0] {
 				if obj_personagem.item_selecionado == obj_antibiotico {
 					doencas.Leptospirose[0] = false
 				}
