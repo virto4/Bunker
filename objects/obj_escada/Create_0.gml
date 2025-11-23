@@ -1,5 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+retrato_davi = spr_davi_down
+retrato_roger = spr_roger_neutro
+davi_subimage = 0
+roger_subimage = 0
+inimigo_subimage = 0
+morte_subimage = 0
+tempo_subimage = current_time * 1000 + 1
 
 vida_davi_original = 0
 vida_roger_original = 0
@@ -159,7 +166,9 @@ inimigo = {
 	forca: 40,
 	resistencia: 30,
 	sagacidade: 80,
-	fugir: true
+	fugir: true,
+	retrato: noone,
+	morte: noone
 }
 
 armas = {
@@ -224,11 +233,13 @@ function iniciar_batalha() {
 	arma_roger = noone
 	obj_personagem.mudou_humor = true
 	obj_personagem.atributos.humor = obj_personagem.humores[0]
+	retrato_roger = spr_roger_neutro
 	
 	if instance_exists(obj_davi) {
 		largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
 		obj_davi.mudou_humor = true
 		obj_davi.atributos.humor = obj_davi.humores[0]
+		retrato_davi = spr_davi_down //mudar !!!!!!
 	}
 	
 	golpe_morte_tempo1 = false

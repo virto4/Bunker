@@ -164,11 +164,13 @@ if barata and barata_aux {
 	obj_escada.inimigo.forca = 40
 	obj_escada.inimigo.nome = "Barata do fim do mundo"
 	obj_escada.inimigo.resistencia = 20
-	obj_escada.inimigo.total_vida = 10
-	obj_escada.inimigo.vida = 10
+	obj_escada.inimigo.total_vida = 100
+	obj_escada.inimigo.vida = 100
 	obj_escada.inimigo.sagacidade = 35
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_barata
+	obj_escada.inimigo.morte = spr_barata_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.barata)
 }
 
@@ -183,6 +185,8 @@ if capivara and capivara_aux {
 	obj_escada.inimigo.sagacidade = 20
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_capivara
+	obj_escada.inimigo.morte = spr_capivara_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
@@ -197,6 +201,8 @@ if delinquentes and delinquentes_aux {
 	obj_escada.inimigo.sagacidade = 40
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_delinquentes
+	obj_escada.inimigo.morte = spr_delinquentes_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.delinquentes)
 }
 
@@ -211,6 +217,8 @@ if cardume and cardume_aux {
 	obj_escada.inimigo.sagacidade = 50
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_cardume
+	obj_escada.inimigo.morte = spr_cardume_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.cardume)
 }
 
@@ -225,6 +233,8 @@ if sequestro and sequestro_aux {
 	obj_escada.inimigo.sagacidade = 65
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_sequestradores
+	obj_escada.inimigo.morte = spr_sequestradores_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
@@ -239,6 +249,8 @@ if saque {
 	obj_escada.inimigo.sagacidade = 70
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_saqueadores
+	obj_escada.inimigo.morte = spr_saqueadores_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.saque)
 }
 
@@ -253,6 +265,8 @@ if emma and emma_aux {
 	obj_escada.inimigo.sagacidade = 90
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_emma
+	obj_escada.inimigo.morte = spr_emma_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.emma)
 }
 
@@ -267,6 +281,8 @@ if fredie and fredie_aux {
 	obj_escada.inimigo.sagacidade = 50
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_freddie
+	obj_escada.inimigo.morte = spr_freddie_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.freddie)
 }
 
@@ -281,6 +297,8 @@ if maniaco and maniaco_aux {
 	obj_escada.inimigo.sagacidade = 20
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_maniaco
+	obj_escada.inimigo.morte = spr_maniaco_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
@@ -295,6 +313,8 @@ if kkk and kkk_aux {
 	obj_escada.inimigo.sagacidade = 70
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_kkk
+	obj_escada.inimigo.morte = spr_kkk_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
@@ -309,6 +329,8 @@ if alcoolatra and alcoolatra_aux {
 	obj_escada.inimigo.sagacidade = 65
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_alcoolatra
+	obj_escada.inimigo.morte = spr_alcoolatra_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
@@ -324,6 +346,8 @@ if mib and mib_aux {
 	obj_escada.inimigo.sagacidade = 70
 	obj_escada.inimigo.fugir = true
 	obj_escada.derrotou = false
+	obj_escada.inimigo.retrato = spr_mib
+	obj_escada.inimigo.morte = spr_mib_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.mib)
 }
 

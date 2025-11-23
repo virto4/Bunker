@@ -119,6 +119,29 @@ if clicou and !derrotou {
 			}
 		}
 	}
+	if tempo_subimage < current_time * 1000 {
+		tempo_subimage = current_time * 1000 + 1
+		 if inimigo.vida > 0 {
+	        // Inimigo vivo - animação cíclica normal
+	        inimigo_subimage++
+	        if inimigo_subimage > sprite_get_number(inimigo.retrato) - 1 {
+	            inimigo_subimage = 0
+	        }
+	    } else {
+			morte_subimage++
+			if morte_subimage > sprite_get_number(inimigo.morte) - 1 {
+				morte_subimage = sprite_get_number(inimigo.morte) - 1
+			}
+	    }
+		davi_subimage++
+		roger_subimage++
+		if davi_subimage > sprite_get_number(retrato_davi) - 1 {
+			davi_subimage = 0
+		}
+		if roger_subimage > sprite_get_number(retrato_roger) - 1 {
+			roger_subimage = 0
+		}
+	}
 	
 	draw_rectangle_color(0, 0, 1920, 1080, #15404C, #002733, #00332E, #1A664F, false)
 	draw_set_font(fnt_dialogos)
@@ -126,7 +149,13 @@ if clicou and !derrotou {
 	
 	draw_rectangle_color(x_inimigo - 128, y_inimigo - 256 - 30, x_inimigo + 128, y_inimigo - 256 - 10, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(x_inimigo - 128 + 5, y_inimigo - 256 - 25, x_inimigo - 128 + 5 + largura_inimigo, y_inimigo - 256 - 15, c_red, c_red, c_red, c_red, false)
-	draw_sprite_ext(spr_retrato2, 0, 960, 540, 1, 1, 0, c_white, 1)
+	draw_sprite_ext(spr_retrato, 0, 960, 540, 2, 2, 0, c_white, 1)
+	if inimigo.vida <= 0 {
+		draw_sprite_ext(inimigo.morte, morte_subimage, 960, 540, 8, 8, 0, c_white, 1)
+	} else {
+		draw_sprite_ext(inimigo.retrato, inimigo_subimage, 960, 540, 8, 8, 0, c_white, 1)
+	}
+	draw_sprite_ext(spr_retrato_borda, 0, 960, 540, 2, 2, 0, c_white, 1)
 	draw_text(960 - string_width(inimigo.nome) / 2, 540 + 256 + 10, inimigo.nome)
 	
 	var mx = device_mouse_x_to_gui(0)
@@ -137,9 +166,12 @@ if clicou and !derrotou {
 	draw_rectangle_color(x_roger - 128, y_roger - 128 - 30, x_roger + 128, y_roger - 128 - 10, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(x_roger - 128 + 5, y_roger - 128 - 25,x_roger - 128 + 5 + largura_roger, y_roger - 128 - 15, c_red, c_red, c_red, c_red, false)
 	draw_sprite_ext(spr_retrato, 0, 172, 894, 1, 1, 0, c_white, 1)
+	draw_sprite_ext(retrato_roger, roger_subimage, x_roger, y_roger, 4, 4, 0, c_white, 1)
+	draw_sprite_ext(spr_retrato_borda, 0, x_roger, y_roger, 1, 1, 0, c_white, 1)
+	
 	draw_circle_color(390, 894, 40, c_black, c_black, false)
 	draw_circle_color(390, 894, 38, cor_circulo2, cor_circulo2, false)
-	
+
 	draw_rectangle_color(x_roger - 128, y_roger - 128 - 50 - string_height(humor), x_roger + 128, y_roger - 128 - 40, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(x_roger - 128 + 5, y_roger - 128 - 45 - string_height(humor), x_roger + 128 - 5, y_roger - 128 - 45, c_white, c_white, c_white, c_white, false)
 	draw_text(x_roger - 128 + (256 - string_width(humor)) / 2, y_roger - 128 - 45 - string_height(humor), humor)
@@ -320,6 +352,8 @@ if clicou and !derrotou {
 		draw_rectangle_color(x_davi - 128, y_davi - 128 - 30, x_davi + 128, y_davi - 128 - 10, c_black, c_black, c_black, c_black, false)
 		draw_rectangle_color(x_davi - 128 + 5, y_davi - 128 - 25, x_davi - 128 + 5 +largura_davi, y_davi - 128 - 15, c_red, c_red, c_red, c_red, false)
 		draw_sprite_ext(spr_retrato, 0, 1742, 894, 1, 1, 0, c_white, 1)
+		draw_sprite_ext(retrato_davi, davi_subimage, x_davi, y_davi, 4, 4, 0, c_white, 1)
+		draw_sprite_ext(spr_retrato_borda, 0, x_davi, y_davi, 1, 1, 0, c_white, 1)
 		draw_text(1742 - string_width("Davi") / 2, 894 + 128 + 10, "Davi")
 		draw_circle_color(1524, 894, 40, c_black, c_black, false)
 		draw_circle_color(1524, 894, 38, cor_circulo1, cor_circulo1, false)
@@ -581,6 +615,7 @@ if clicou and !derrotou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica NEUTRO"
+							retrato_roger = spr_roger_neutro
 							atacou = false
 							obj_personagem.mudou_humor = true
 							break
@@ -589,6 +624,7 @@ if clicou and !derrotou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica DEPRIMIDO"
+							retrato_roger = spr_roger_deprimido
 							atacou = false
 							obj_personagem.mudou_humor = true
 							break
@@ -597,6 +633,7 @@ if clicou and !derrotou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica COLÉRICO"
+							retrato_roger = spr_roger_colerico
 							atacou = false
 							obj_personagem.mudou_humor = true
 							break
@@ -623,6 +660,7 @@ if clicou and !derrotou {
 							mensagem = true
 							tempo = current_time / 1000 + 3
 							codigo = "Roger fica EXTASIADO"
+							retrato_roger = spr_roger_extasiado
 							obj_personagem.mudou_humor = true
 							atacou = false
 							break
@@ -984,7 +1022,7 @@ if clicou and !derrotou {
 			obj_conquistas.batalhas++
 			escureceu2 = true
 			if !seguir {
-				if obj_personagem.saude < 100 {
+				if obj_personagem.atributos.saude < 100 {
 					curativo_roger = true
 				}
 				obj_personagem.atributos.forca = round(obj_personagem.atributos.forca * 1.09)
@@ -992,7 +1030,7 @@ if clicou and !derrotou {
 				obj_personagem.atributos.sagacidade = round(obj_personagem.atributos.sagacidade * 1.09)
 				obj_personagem.atributos.fortuna = round(obj_personagem.atributos.fortuna * 1.09)
 				if instance_exists(obj_davi) {
-					if obj_davi.saude < 100 {
+					if obj_davi.atributos.saude < 100 {
 						curativo_davi = true
 					}
 					obj_davi.atributos.forca = round(obj_davi.atributos.forca * 1.09)
@@ -1079,14 +1117,25 @@ if clicou and !derrotou {
 			for (var i = 0; i < array_length(loots); i++) {
 				texto += variable_struct_get(global.nomes, loots[i]) + "; "
 			}
+			if inimigo.nome == "Homens do governo" {
+				obj_personagem.final_secreto = true
+				texto += " Além disso, você coletou um item secreto e especial... algo que te dá um endereço de um esconderijo. Algum dia, você saberá o que significa."
+			}
 		} else {
-			texto = "Você não conseguiu coletar nada"
+			if inimigo.nome == "Homens do governo" {
+				obj_personagem.final_secreto = true
+				texto = "Você coletou um item secreto e especial... algo que te dá um endereço de um esconderijo. Algum dia, você saberá o que significa."
+			} else {
+				texto = "Você não conseguiu coletar nada"
+			}
 		}
 		var linhas = quebrar_texto(texto, 1520)
 		for (var i = 0; i < array_length(linhas); i++) {
 			draw_text(200, 760 + i * string_height("A") + 5, linhas[i])
 		}
 		if mouse_check_button_pressed(mb_left) {
+			inimigo_subimage = 0
+			morte_subimage = 0
 			final = false
 			etapa2 = true
 			global.tem_tela_aberta = false
