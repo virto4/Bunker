@@ -120,7 +120,7 @@ if clicou and !derrotou {
 		}
 	}
 	if tempo_subimage < current_time * 1000 {
-		tempo_subimage = current_time * 1000 + 1
+		tempo_subimage = current_time * 1000 + 3
 		 if inimigo.vida > 0 {
 	        // Inimigo vivo - animação cíclica normal
 	        inimigo_subimage++
@@ -776,6 +776,7 @@ if clicou and !derrotou {
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica NEUTRO"
 							obj_davi.mudou_humor = true
+							retrato_davi = spr_davi_neutro
 							break
 						case "Pensamentos intrusivos":
 							obj_davi.atributos.humor = obj_davi.humores[3]
@@ -784,6 +785,7 @@ if clicou and !derrotou {
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica DEPRIMIDO"
 							obj_davi.mudou_humor = true
+							retrato_davi = spr_davi_deprimido
 							break
 						case "Pensamentos intrusivos 2":
 							obj_davi.atributos.humor = obj_davi.humores[2]
@@ -792,6 +794,7 @@ if clicou and !derrotou {
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica COLÉRICO"
 							obj_davi.mudou_humor = true
+							retrato_davi = spr_davi_colerico
 							break
 						case "Curandeiro aprendiz":
 							obj_davi.atributos.saude *= 1.33
@@ -818,6 +821,7 @@ if clicou and !derrotou {
 							tempo = current_time / 1000 + 3
 							codigo = "Davi fica EXTASIADO"
 							obj_davi.mudou_humor = true
+							retrato_davi = spr_davi_extasiado
 							break
 						case "Concentração":
 							ataque *= 1.2

@@ -1,12 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-retrato_davi = spr_davi_down
+retrato_davi = spr_davi_neutro
 retrato_roger = spr_roger_neutro
 davi_subimage = 0
 roger_subimage = 0
 inimigo_subimage = 0
 morte_subimage = 0
-tempo_subimage = current_time * 1000 + 1
+tempo_subimage = current_time * 1000 + 3
 
 vida_davi_original = 0
 vida_roger_original = 0
@@ -239,7 +239,7 @@ function iniciar_batalha() {
 		largura_davi = (246 * obj_davi.atributos.saude / 100 < 0 ) ? 0 : 246 * obj_davi.atributos.saude / 100
 		obj_davi.mudou_humor = true
 		obj_davi.atributos.humor = obj_davi.humores[0]
-		retrato_davi = spr_davi_down //mudar !!!!!!
+		retrato_davi = spr_davi_neutro //mudar !!!!!!
 	}
 	
 	golpe_morte_tempo1 = false

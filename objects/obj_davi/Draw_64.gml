@@ -18,7 +18,7 @@ var my = device_mouse_y_to_gui(0)
 
 if !global.tem_tela_aberta {
 	if interagir {
-		if point_in_rectangle(mouse_x, mouse_y, x - 28, y - 110, x + 32, y + 86) {
+		if point_in_rectangle(mouse_x, mouse_y, x - 28, y - 50, x + 32, y + 96) {
 			variable_struct_set(obj_cursor.interagir, "davi", true)
 			if mouse_check_button_pressed(mb_left) {
 				etapa = true
@@ -146,7 +146,7 @@ if interagir and mostrar {
 	//draw_sprite_ext(spr_dialogo, 0, 170 + largura / 2, 665, (largura + 10) / 320, 1.3, 0, c_white, 1)
 	draw_text(170, 640, falas[fala_dia][fala_atual].personagem)
 	draw_sprite_ext(spr_retrato, 0, 1632, 552, 1, 1, 0, c_white, 1)
-	draw_sprite_ext(variable_struct_get(falas[fala_dia][fala_atual], "retrato"), 0, 1632, 552, 1, 1, 0, c_white, 1)
+	draw_sprite_ext(variable_struct_get(falas[fala_dia][fala_atual], "retrato"), 0, 1632, 552, 4, 4, 0, c_white, 1)
 	if mouse_check_button_pressed(mb_left) and aux {
 		if char_index < string_length(msg) {
 			char_index = string_length(msg)

@@ -38,7 +38,6 @@ if room == rm_bunker and !global.tem_tela_aberta {
 			} else if distancia > 100 {
 				intervalo = distancia * 0.10 / 100
 			}
-			show_debug_message("Distancia: " + string(distancia))
 		}
 	} else {
 		aux = true

@@ -1,4 +1,37 @@
 //200 - 400 - 1800
+
+if room == rm_bunker and item_selecionado == obj_contador_geiger {
+	entrou_geiger = true
+	draw_sprite_ext(spr_interface_geiger, frame_geiger, 480, y_geiger, 4, 4, 0, c_white, 1)
+	if y_geiger > 952 {
+		y_geiger--
+	}
+	if !hoje_tem {
+		frame_geiger = sprite_get_number(spr_interface_geiger) - 1
+	} else {
+		var distancia = point_distance(hoje[0], hoje[1], obj_personagem.x, obj_personagem.y + 50)
+		if distancia < 100 {
+			frame_geiger = 0
+		} else if distancia < 1000 {
+			frame_geiger = floor(distancia * 900 / sprite_get_number(spr_interface_geiger) - 1) 
+		} else {
+			frame_geiger = sprite_get_number(spr_interface_geiger) - 1
+		}
+	}
+	/*
+	image_number - 1 = 1000
+	frame_geiger = 
+	0 - 100
+	*/
+} else if entrou_geiger {
+	draw_sprite_ext(spr_interface_geiger, frame_geiger, 480, y_geiger, 4, 4, 0, c_white, 1)
+	if y_geiger < 1080 + 128 {
+		y_geiger++
+	} else {
+		entrou_geiger = false
+	}
+}
+
 if question_chumbo {
 	global.tem_tela_aberta = true
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale_chumbo, scale_chumbo, 0, c_white, 1)
@@ -698,7 +731,7 @@ if passagem_dia  {
 				if ativada {
 					for (var i = 0; i < array_length(struct_get_names(obj_davi.doencas)); i++) {
 						if variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])[0] {
-							obj_davi.saude -= variable_struct_get(doenca, struct_get_names(obj_davi.doencas)[i])[2]
+							obj_davi.atributos.saude -= variable_struct_get(obj_davi.doencas, struct_get_names(obj_davi.doencas)[i])[2]
 						}
 					}
 				 	obj_davi.atributos.fome -= 7

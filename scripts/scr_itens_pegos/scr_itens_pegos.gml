@@ -56,8 +56,8 @@ posicoes = {
 
 casa = [
 	["obj_mapa", 1370, 534],
-	["obj_traje_davi", 245, 140],
-	["obj_traje_roger", 312, 140],
+	["obj_traje_davi", 640, 198],
+	["obj_traje_roger", 596, 198],
     ["obj_radio", 548, 677],
     ["obj_machado", 1494, 785],
     ["obj_metralhadora", 308.5, 720],
