@@ -119,8 +119,8 @@ if clicou and !derrotou {
 			}
 		}
 	}
-	if tempo_subimage < current_time * 1000 {
-		tempo_subimage = current_time * 1000 + 3
+	if tempo_subimage < current_time  {
+		tempo_subimage = current_time  + 300
 		 if inimigo.vida > 0 {
 	        // Inimigo vivo - animação cíclica normal
 	        inimigo_subimage++

@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":378.13156,
+  "duration":541.04816,
   "exportDir":"",
   "name":"snd_adagio",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_adagio.wav",
+  "soundFile":"snd_adagio.mp3",
   "volume":1.0,
 }

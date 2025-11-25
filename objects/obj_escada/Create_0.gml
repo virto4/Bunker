@@ -6,7 +6,7 @@ davi_subimage = 0
 roger_subimage = 0
 inimigo_subimage = 0
 morte_subimage = 0
-tempo_subimage = current_time * 1000 + 3
+tempo_subimage = current_time / 1000
 
 vida_davi_original = 0
 vida_roger_original = 0

@@ -110,7 +110,7 @@ function andar(direcao) {
 
 function acerto_de_contas(slot) {
 	variable_struct_set(obj_personagem.qtde_itens1, object_get_name(slot), variable_struct_get(obj_personagem.qtde_itens1, object_get_name(slot)) - 1)
-	switch slot_selecionado {
+	switch obj_personagem.slot_selecionado {
 		case 1:
 			obj_personagem.casa(obj_personagem.slot1, obj_personagem.slot1_novo, obj_personagem.slot1_n)
 			obj_personagem.slot1 = noone

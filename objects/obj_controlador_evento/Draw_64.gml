@@ -418,6 +418,7 @@ if davi_coletou {
 			draw_text_ext(210, 760, texto, 30, 1520)
 			if mouse_check_button_pressed(mb_left) {
 				global.tem_tela_aberta = false
+				esperando_davi = false
 				considerar_loots = true
 				roger_sai = false
 				evento_coleta = false

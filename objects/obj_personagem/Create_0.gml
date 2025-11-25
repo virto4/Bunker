@@ -98,7 +98,7 @@ type_speed = 0.06
 current_text = ""
 char_index = 0
 ganhou_jogo = false
-dias_bunker = 100
+dias_bunker = 50
 final_secreto = false
 aux_final = true
 escureceu_final = false
@@ -364,7 +364,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 60
+	tempo_espera = 0
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true

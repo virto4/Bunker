@@ -234,7 +234,7 @@ eventos_inicio = embaralhar([
 ])
 
 inicio_data = {
-	dia2: eventos_inicio[0],
+	dia2: "coleta",
 	dia3: eventos_inicio[1],
 	dia4: eventos_inicio[2],
 	dia6: eventos_inicio[3],
@@ -391,6 +391,9 @@ function evento() {
 			break
 		case "cogumelos":
 			cogumelos = true
+			break
+		case "alcoolatra":
+			alcoolatra = true
 			break
 	}
 }

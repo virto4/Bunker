@@ -44,7 +44,7 @@ mouse_aux2 = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 1900,
+	saude: 100,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
