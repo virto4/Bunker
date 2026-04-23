@@ -469,16 +469,16 @@ if beber_agua and room == rm_bunker {
 				atributos.sede += valor_agua 
 				aumento_sede = valor_agua
 			}
-			if slot_selecionado == 1 {
-				slot1 = acerto_de_contas(slot1)
-			} else if slot_selecionado == 2 {
-				slot2 = acerto_de_contas(slot2)
-			} else if slot_selecionado == 3 {
-				slot3 = acerto_de_contas(slot3)
-			} else if slot_selecionado == 4 {
-				slot4 = acerto_de_contas(slot4)
+			if obj_personagem.slot_selecionado == 1 {
+				obj_personagem.consumir(obj_personagem.slot1, obj_personagem.slot1_n, obj_personagem.slot1_novo)
+			} else if obj_personagem.slot_selecionado == 2 {
+				obj_personagem.consumir(obj_personagem.slot2, obj_personagem.slot2_n, obj_personagem.slot2_novo)
+			} else if obj_personagem.slot_selecionado == 3 {
+				obj_personagem.consumir(obj_personagem.slot3, obj_personagem.slot3_n, obj_personagem.slot3_novo)
+			} else if obj_personagem.slot_selecionado == 4 {
+				obj_personagem.consumir(obj_personagem.slot4, obj_personagem.slot4_n, obj_personagem.slot4_novo)
 			} else {
-				slot5 = acerto_de_contas(slot5) 
+				obj_personagem.consumir(obj_personagem.slot5, obj_personagem.slot5_n, obj_personagem.slot5_novo)
 			}
 			bebeu_agua = true
 			beber_agua = false
@@ -515,15 +515,15 @@ if alimento and room == rm_bunker {
 				aumento_fome = variable_struct_get(global.fome, obj_personagem.item_selecionado)
 			}
 			if obj_personagem.slot_selecionado == 1 {
-				obj_personagem.slot1 = acerto_de_contas(obj_personagem.slot1)
+				consumir(obj_personagem.slot1, slot1_n, slot1_novo)
 			} else if obj_personagem.slot_selecionado == 2 {
-				obj_personagem.slot2 = acerto_de_contas(obj_personagem.slot2)
+				consumir(obj_personagem.slot2, slot2_n, slot2_novo)
 			} else if obj_personagem.slot_selecionado == 3 {
-				obj_personagem.slot3 = acerto_de_contas(obj_personagem.slot3)
+				consumir(obj_personagem.slot3, slot3_n, slot3_novo)
 			} else if obj_personagem.slot_selecionado == 4 {
-				obj_personagem.slot4 = acerto_de_contas(obj_personagem.slot4)
+				consumir(obj_personagem.slot4, slot4_n, slot4_novo)
 			} else {
-				obj_personagem.slot5= acerto_de_contas(obj_personagem.slot5)
+				consumir(obj_personagem.slot5, slot5_n, slot5_novo)
 			}
 			alimento = false
 			alimentou = true
@@ -614,15 +614,15 @@ if remedio and room == rm_bunker {
 			}
 			tirar = true
 			if obj_personagem.slot_selecionado == 1 {
-				obj_personagem.slot1 = acerto_de_contas(obj_personagem.slot1)
+				consumir(obj_personagem.slot1, slot1_n, slot1_novo)
 			} else if obj_personagem.slot_selecionado == 2 {
-				obj_personagem.slot2 = acerto_de_contas(obj_personagem.slot2)
+				consumir(obj_personagem.slot2, slot2_n, slot2_novo)
 			} else if obj_personagem.slot_selecionado == 3 {
-				obj_personagem.slot3 = acerto_de_contas(obj_personagem.slot3)
+				consumir(obj_personagem.slot3, slot3_n, slot3_novo)
 			} else if obj_personagem.slot_selecionado == 4 {
-				obj_personagem.slot4 = acerto_de_contas(obj_personagem.slot4)
+				consumir(obj_personagem.slot4, slot4_n, slot4_novo)
 			} else {
-				obj_personagem.slot5= acerto_de_contas(obj_personagem.slot5)
+				consumir(obj_personagem.slot5, slot5_n, slot5_novo)
 			}
 			aumento_saude = 100 - atributos.saude 
 			atributos.saude = 100

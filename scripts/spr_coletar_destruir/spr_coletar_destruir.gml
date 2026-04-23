@@ -33,19 +33,20 @@ function coletar_destruir(slot) {
 		obj_conquistas.ganhou_conquista = true
 	}
 	if obj_personagem.slots_disponiveis {
-		if room_get_name(room) == "rm_casa" {
+		if room == rm_casa {
 			for (var _j = 0; _j < array_length(obj_personagem.itens_nao_consumiveis); _j++) {
 				if slot == obj_personagem.itens_nao_consumiveis[_j] {
 					instance_destroy(slot)
 				}
 			}
 		} else if !obj_freezer.clicou {
-			slot.qtde_itens-- //vai diminuindo a contagem de itens conforme o jogador os pega
-			if slot.qtde_itens == 0 {
-				instance_destroy(slot)
+			var podenao = false
+			if instance_exists(obj_ferramentas) {
+				if obj_ferramentas.pressionou {
+					podenao = true
+				}
 			}
-		} else if instance_exists(obj_ferramentas) {
-			if obj_ferramentas.pressionou {
+			if !podenao {
 				slot.qtde_itens-- //vai diminuindo a contagem de itens conforme o jogador os pega
 				if slot.qtde_itens == 0 {
 					instance_destroy(slot)

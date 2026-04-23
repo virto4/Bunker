@@ -14,7 +14,7 @@ if object_index == obj_tv and room == rm_bunker and !global.tem_tela_aberta {
 }
 
 if instance_exists(obj_ferramentas) {
-	if object_index == obj_ferramentas and room == rm_bunker and !obj_ferramentas.pressionou and !global.tem_tela_aberta and point_distance(x, y, obj_personagem.x, obj_personagem.y) <= 100 {
+	if object_index == obj_ferramentas and room == rm_bunker and !obj_ferramentas.pressionou and !global.tem_tela_aberta {
 		nao = true
 		obj_ferramentas.pressionou = true
 		global.tem_tela_aberta = true

@@ -2,11 +2,11 @@
 // Você pode escrever seu código neste editor
 depth = -y
 
-if point_in_rectangle(x, y, obj_personagem.x - 40, obj_personagem.y, obj_personagem.x + 40, obj_personagem.y + 90) and y < 320 {
+if point_in_rectangle(x, y, obj_personagem.x - 40, obj_personagem.y, obj_personagem.x + 40, obj_personagem.y + 62) and y < 320 {
 	depth = obj_personagem.depth + 1
 }
 if instance_exists(obj_davi) and obj_personagem.ativada {
-	if point_in_rectangle(x, y, obj_davi.x - 40, obj_davi.y, obj_davi.x + 40, obj_davi.y + 90) and y < 320 {
+	if point_in_rectangle(x, y, obj_davi.x - 40, obj_davi.y, obj_davi.x + 40, obj_davi.y + 62) and y < 320 {
 		depth = obj_davi.depth + 1
 	}
 }
@@ -23,12 +23,6 @@ if clicou and !jogou_hoje {
 	if mouse_check_button_pressed(mb_left) {
 		if mx > tx_sair - width_sair && mx < tx_sair + width_sair &&
 		my > ty_sair - height_sair && my < ty_sair + height_sair {
-			clicou = false
-			global.tem_tela_aberta = false
-			primeira_peca = true
-			maismais = false
-			ganhou = false
-			audio_stop_sound(snd_jazz)
 			if ganhou {
 				if instance_exists(obj_davi) {
 					obj_davi.sao = true
@@ -38,6 +32,12 @@ if clicou and !jogou_hoje {
 				obj_personagem.aumento_sanidade = 10
 				jogou_hoje = true
 			}
+			clicou = false
+			global.tem_tela_aberta = false
+			primeira_peca = true
+			maismais = false
+			ganhou = false
+			audio_stop_sound(snd_jazz)
 		}
 	}
 	if comecou {

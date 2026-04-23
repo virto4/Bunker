@@ -863,19 +863,6 @@ var _slotx3=960
 var _slotx4=1056
 var _slotx5=1152
 
-function desenhar_hotbar(slot, slot_novo, slotx) {
-	var width = sprite_get_width(object_get_sprite(slot))
-	var heigth = sprite_get_height(object_get_sprite(slot))
-	var maior = width
-	if width < heigth {
-		maior = heigth
-	}
-	if !slot_novo {
-		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
-	} else {
-		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_black, 1)
-	}
-}
 var desenha = true
 if room == rm_bunker {
 	if obj_controlador_evento.clicou_cogumelo and desenha {
@@ -1058,6 +1045,20 @@ if desenha {
 	}
 	if slot5 != noone {
 		desenhar_hotbar(slot5, slot5_novo, _slotx5)
+	}
+}
+
+function desenhar_hotbar(slot, slot_novo, slotx) {
+	var width = sprite_get_width(object_get_sprite(slot))
+	var heigth = sprite_get_height(object_get_sprite(slot))
+	var maior = width
+	if width < heigth {
+		maior = heigth
+	}
+	if !slot_novo {
+		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_white, 1)
+	} else {
+		draw_sprite_ext(object_get_sprite(slot), 0, slotx, 1020, 64 / maior, 64 / maior, 0, c_black, 1)
 	}
 }
 /*

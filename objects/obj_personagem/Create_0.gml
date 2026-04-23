@@ -668,3 +668,49 @@ function casa(slot, slot_novo, slot_n) {
 		}
 	}
 }
+
+function consumir(slot, slotn, slotnovo) {
+	if slot != noone {
+		if !audio_is_playing(snd_menu_out) {
+			audio_play_sound(snd_menu_out, 1, false)
+		}
+		variable_struct_set(qtde_itens1, object_get_name(slot), variable_struct_get(qtde_itens1, object_get_name(slot)) - 1)
+		switch slot_selecionado {
+			case 1:
+				slot1 = noone
+				break
+			case 2:
+				slot2 = noone
+				break
+			case 3:
+				slot3 = noone
+				break
+			case 4:
+				slot4 = noone
+				break
+			case 5:
+				slot5 = noone
+				break
+		}
+		if slot1_n == slotn {
+			slot1 = noone
+			slot1_novo = false
+		} 
+		if slot2_n == slot2_n {
+			slot2 = noone
+			slot2_novo = false
+		} 
+		if slot3_n == slotn {
+			slot3 = noone
+			slot3_novo = false
+		} 
+		if slot4_n == slotn {
+			slot4 = noone
+			slot4_novo = false
+		} 
+		if slot5_n == slotn {
+			slot5 = noone
+			slot5_novo = false
+		}
+	}
+}

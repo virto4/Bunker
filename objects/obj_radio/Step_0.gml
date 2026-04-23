@@ -190,7 +190,7 @@ if clicou and !pilhas {
 					indice_atual = 0
 					global.tem_tela_aberta = false
 					etapa2 = true
-					if !assistiu_hoje {
+					if !assistiu_hoje and programacao != noone {
 						assistiu_hoje = true
 						if instance_exists(obj_davi) {
 							obj_davi.sao = true

@@ -30,7 +30,7 @@
   ],
   "name":"spr_roger_right",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"inimigos_e_personagens",
     "path":"folders/Sprites/inimigos_e_personagens.yy",
@@ -106,7 +106,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":96,
-    "yorigin":96,
+    "yorigin":130,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
