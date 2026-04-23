@@ -1,0 +1,52 @@
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
+jogou_hoje = false
+qtde_itens = 1
+scale = 0
+nao_pode = false
+tirar = false
+clicou = false
+pecas = []
+pecas_jogador = []
+pecas_adversario = []
+pecas_tela = []
+index = 0
+comecou = false
+monte = []
+pecas_mesa = []
+largura = 0
+vez_davi = false
+calculo_davi = false
+tempo = 0
+cor_peca = #CCCCCC
+prim = 0
+ult = 0
+primeira_peca = true
+alpha = 0
+maismais = false
+reverse = false
+cor1 = #092E4C
+cor2 = #084C48
+davi_pulou = false
+davi_pulou_comeco = false
+davi_pulou_fim = false
+alpha2 = 0
+timer = 0
+ganhou = false
+
+for (var i = 0; i < 7; i++) {
+	for (var j = i; j < 7; j++) {
+		array_push(pecas, [i, j])
+	}
+}
+function embaralhar(_array) {
+	var i = array_length(_array) - 1;
+	while (i > 0) {
+		var j = random_range(0, i + 1);
+		var temp = _array[i];
+		_array[i] = _array[j];
+		_array[j] = temp;
+		i -= 1;
+	}
+	return _array;
+}
