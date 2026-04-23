@@ -120,7 +120,7 @@ if clicou and !derrotou {
 		}
 	}
 	if tempo_subimage < current_time  {
-		tempo_subimage = current_time  + 300
+		tempo_subimage = current_time  + 200
 		 if inimigo.vida > 0 {
 	        // Inimigo vivo - animação cíclica normal
 	        inimigo_subimage++
@@ -694,6 +694,8 @@ if clicou and !derrotou {
 								case obj_picareta:
 									audio_play_sound(snd_picareta, 1, false)
 									break
+								case obj_punhos:
+									audio_play_sound(snd_punhos, 1, false)
 							}
 						}
 						
@@ -853,6 +855,8 @@ if clicou and !derrotou {
 								case obj_picareta:
 									audio_play_sound(snd_picareta, 1, false)
 									break
+								case obj_punhos:
+									audio_play_sound(snd_punhos, 1, false)
 							}
 						}
 						
@@ -1273,15 +1277,16 @@ if escureceu2 {
 				audio_stop_sound(musicas[musica])
 			}
 			clicou = false
-			derrotou = true 
-			final = true 
 			escureceu_aux = true
 		}
 	} else {
 		if alpha_morte > 0 {
 			alpha_morte -= 0.05
 		} else {
+			derrotou = true 
+			final = true 
 			escureceu2 = false
+			escureceu_aux = false
 		}
 	}
 }
@@ -1309,6 +1314,7 @@ if escureceu3 {
 			alpha_morte -= 0.05
 		} else {
 			escureceu3 = false
+			escureceu_aux = false
 		}
 	}
 }

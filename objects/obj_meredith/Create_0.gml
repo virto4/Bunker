@@ -10,7 +10,7 @@ largura_nao = string_width("Não")
 altura_nao = string_height("Não")
 primeiro = false
 segundo = false
-deu_remedio = false
+deu_remedio = true
 image_speed = 0
 tempo = current_time / 1000
 lambendo = true
@@ -28,7 +28,7 @@ if room == rm_bunker {
 	sprite_index = spr_meredith_sleep
 }
 
-msg = "Miau, maiu."
+msg = "Miau, miau."
 
 if room == rm_bunker {
 	tem_fala = true

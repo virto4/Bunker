@@ -61,32 +61,6 @@ if room == rm_bunker and audio_is_playing(snd_geladeira_ronco) {
 	audio_stop_sound(snd_geladeira_ronco)
 }
 
-var is_dia = false
-if room == rm_bunker {
-	if obj_diario.dia == dias_bunker + 1 {
-		is_dia = true
-	}
-}
-
-if !passagem_dia and !is_dia { //para que ele só morra depois que o dia passar
-	if atributos.sede <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem morreu desidratado"
-	} 
-	if atributos.fome <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem morreu faminto"
-	}
-	if atributos.sanidade <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem se perdeu em desvario e cometeu suicídio"
-	}
-	if atributos.saude <= 0 {
-		game_over = true
-		msg_game_over = "Seu personagem morreu da doença que lhe acometeu"
-	}
-}
-
 if mudou_humor {
 	if atributos.humor == "NEUTRO" {
 		atributos.forca = forca_padrao

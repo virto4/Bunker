@@ -218,7 +218,8 @@ canos = true
 doenca_gata = false
 remedio_gata = false
 
-eventos_inicio = embaralhar([
+eventos_inicio = [
+	"capivara",
 	"gripe",
 	"enxaqueca",
 	"baratas",
@@ -229,12 +230,11 @@ eventos_inicio = embaralhar([
 	"comerciante",
 	"comerciante",
 	"mala",
-	"capivara",
 	"barata"
-])
+]
 
 inicio_data = {
-	dia2: "coleta",
+	dia2: eventos_inicio[0],
 	dia3: eventos_inicio[1],
 	dia4: eventos_inicio[2],
 	dia6: eventos_inicio[3],
@@ -258,7 +258,6 @@ eventos_meio = embaralhar ([
 	"mala",
 	"mala",
 	"cardume",
-	"saque",
 	"comerciante",
 	"comerciante"
 ])
@@ -274,14 +273,12 @@ meio_data = {
 	dia29: eventos_meio[8],
 	dia30: eventos_meio[9],
 	dia33: eventos_meio[10],
-	dia34: eventos_meio[11],
 }
 
 eventos_fim = embaralhar([
 	"disenteria",
 	"escorbuto",
 	"ventilacao",
-	"delinquentes",
 	"comerciante",
 	"mala",
 	"cogumelos",
@@ -304,7 +301,6 @@ fim_data = {
 	dia45: eventos_fim[8],
 	dia46: eventos_fim[9],
 	dia48: eventos_fim[10],
-	dia49: eventos_fim[11],
 }
 
 if room == rm_bunker {
@@ -338,17 +334,8 @@ function evento() {
 		case "capivara":
 			capivara = true
 			break
-		case "delinquentes":
-			delinquentes = true
-			break
 		case "cardume":
 			cardume = true
-			break
-		case "saque":
-			saque = true
-			break
-		case "sequestro":
-			sequestro = true
 			break
 		case "emma":
 			emma = true

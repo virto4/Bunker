@@ -190,22 +190,6 @@ if capivara and capivara_aux {
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
 }
 
-if delinquentes and delinquentes_aux {
-	delinquentes_aux = false
-	evento_inimigo = true
-	obj_escada.inimigo.forca = 50
-	obj_escada.inimigo.nome = "Trupe de delinquentes"
-	obj_escada.inimigo.resistencia = 20
-	obj_escada.inimigo.total_vida = 300
-	obj_escada.inimigo.vida = 300
-	obj_escada.inimigo.sagacidade = 40
-	obj_escada.inimigo.fugir = true
-	obj_escada.derrotou = false
-	obj_escada.inimigo.retrato = spr_delinquentes
-	obj_escada.inimigo.morte = spr_delinquentes_morte
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.delinquentes)
-}
-
 if cardume and cardume_aux {
 	cardume_aux = false
 	evento_inimigo = true
@@ -220,38 +204,6 @@ if cardume and cardume_aux {
 	obj_escada.inimigo.retrato = spr_cardume
 	obj_escada.inimigo.morte = spr_cardume_morte
 	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.cardume)
-}
-
-if sequestro and sequestro_aux {
-	sequestro_aux = false
-	evento_inimigo = true
-	obj_escada.inimigo.forca = 45
-	obj_escada.inimigo.nome = "Sequestradores"
-	obj_escada.inimigo.resistencia = 50
-	obj_escada.inimigo.total_vida = 500
-	obj_escada.inimigo.vida = 500
-	obj_escada.inimigo.sagacidade = 65
-	obj_escada.inimigo.fugir = true
-	obj_escada.derrotou = false
-	obj_escada.inimigo.retrato = spr_sequestradores
-	obj_escada.inimigo.morte = spr_sequestradores_morte
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.capivara)
-}
-
-if saque {
-	saque = false
-	evento_inimigo = true
-	obj_escada.inimigo.forca = 70
-	obj_escada.inimigo.nome = "Saqueadores"
-	obj_escada.inimigo.resistencia = 70
-	obj_escada.inimigo.total_vida = 500
-	obj_escada.inimigo.vida = 500
-	obj_escada.inimigo.sagacidade = 70
-	obj_escada.inimigo.fugir = true
-	obj_escada.derrotou = false
-	obj_escada.inimigo.retrato = spr_saqueadores
-	obj_escada.inimigo.morte = spr_saqueadores_morte
-	ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.saque)
 }
 
 if emma and emma_aux {

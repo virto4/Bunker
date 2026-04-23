@@ -135,7 +135,7 @@ if tirar_chumbo {
 		global.tem_tela_aberta = false
 	}
 }
-
+var _mes = 0
 if room == rm_bunker {
 	if !vermelho {
 		draw_circle_color(50, 50, 50, c_red, c_red,false)
@@ -149,7 +149,6 @@ if room == rm_bunker {
 		}
 	}
 	
-	var _mes = 0
 	switch obj_calendario.mes_atual {
 		case 7:	
 			_mes = "Julho"
@@ -172,207 +171,155 @@ if room == rm_bunker {
 	}
 }
 
-if morte_meredith and !passagem_dia {
+if morte_meredith {
 	global.tem_tela_aberta = true
-	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
-	if !etapa2_morte and alpha_morte < 1 {
-		if alpha_morte < 1 {
-			alpha_morte += 0.05
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 1)
+	if !pode_tocar and !audio_is_playing(snd_marcha_funebre) {
+		audio_stop_all()
+		pode_tocar = true
+	}
+	if !audio_is_playing(snd_marcha_funebre) {
+		audio_play_sound(snd_marcha_funebre, 1, true)
+	}
+	if !aux1 {
+		aux1 = true
+		tempo_over = current_time / 1000 + 1.5
+	}
+	draw_set_font(fnt_alagard)
+	draw_set_color(c_white)
+	var _txt = "Meredith morreu"
+	var msg_meredith = "Meredith sucumbiu devido à ingestão de compostos químicos inapropriados à sua espécie"
+	draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+	draw_set_font(fnt_dialogos)
+	if tempo_over < current_time / 1000 {
+		draw_text(960 - string_width(msg_meredith) / 2, 660, msg_meredith)
+		if pode_comecarb {
+			tempo_over2 = current_time / 1000 + 1.5
+			pode_comecarb = false
 		}
-	} else if !etapa2_morte {
-		if !pode_tocar {
-			audio_stop_all()
-			pode_tocar = true
+	}
+	if tempo_over2 < current_time / 1000 and !pode_comecarb {
+		var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+		draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+		if pode_comecarc {
+			tempo_over3 = current_time / 1000 + 1.5
+			pode_comecarc = false
 		}
-		if !audio_is_playing(snd_marcha_funebre) {
-			audio_play_sound(snd_marcha_funebre, 1, true)
-		}
-		if !aux1 {
-			aux1 = true
-			tempo_over = current_time / 1000 + 1.5
-		}
-		draw_set_font(fnt_alagard)
-		draw_set_color(c_white)
-		var _txt = "Meredith morreu"
-		var msg_meredith = "Meredith sucumbiu devido à ingestão de compostos químicos inapropriados à sua espécie"
-		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
-		draw_set_font(fnt_dialogos)
-		if tempo_over < current_time / 1000 {
-			draw_text(960 - string_width(msg_meredith) / 2, 660, msg_meredith)
-			if pode_comecarb {
-				tempo_over2 = current_time / 1000 + 1.5
-				pode_comecarb = false
+	}
+	if tempo_over3 < current_time / 1000 and !pode_comecarc {
+		var msg_tela_inicial = "Voltar para o jogo"
+		var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+		var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+		var yinicial = 860 - 5
+		var yfinal = 860 + string_height(msg_tela_inicial) + 5
+		draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+		draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+		draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+			cor_botao = #527F7F
+			if mouse_check_button_pressed(mb_left) {
+				etapa2_morte = true
+				instance_destroy(obj_meredith)
 			}
-		}
-		if tempo_over2 < current_time / 1000 and !pode_comecarb {
-			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
-			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
-			if pode_comecarc {
-				tempo_over3 = current_time / 1000 + 1.5
-				pode_comecarc = false
-			}
-		}
-		if tempo_over3 < current_time / 1000 and !pode_comecarc {
-			var msg_tela_inicial = "Voltar para o jogo"
-			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
-			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
-			var yinicial = 860 - 5
-			var yfinal = 860 + string_height(msg_tela_inicial) + 5
-			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
-			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
-			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
-			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
-				cor_botao = #527F7F
-				if mouse_check_button_pressed(mb_left) {
-					audio_stop_sound(snd_marcha_funebre)
-					etapa2_morte = true
-					instance_destroy(obj_meredith)
-				}
-			} else {
-				cor_botao = c_white
-			}
-		}
-	} else if etapa2_morte {
-		if alpha_morte > 0 {
-			alpha_morte -= 0.05
 		} else {
-			global.tem_tela_aberta = false
-			morte_meredith = false
-			msg_davi = ""
-			etapa2_morte = false
-			alpha_morte = 0
-			aux1 = false
-			aux2 = false
-			tempo_over = 0
-			pode_comecarb = true
-			pode_comecarc = true
-			tempo_over2 = 0
-			tempo_over3 = 0
-			pode_tocar = false
 			cor_botao = c_white
 		}
 	}
-}
-
-
-if instrucoes {
-	draw_sprite(spr_voltar, 0, 1800, 50)
-	var width_sair = sprite_get_width(spr_voltar) / 2
-	var height_sair = sprite_get_height(spr_voltar) / 2 
-	var tx_sair = 1800
-	var ty_sair = 50
-
-	var mx = device_mouse_x_to_gui(0);
-	var my = device_mouse_y_to_gui(0);
-	
-	if mouse_check_button_pressed(mb_left) {
-		if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
-			instrucoes = false
-			global.tem_tela_aberta = false
-			escrita = ""
-		}
-	}
-	var vetor = variable_struct_get_names(instrucoes_fala)
-	for (var i = 0; i < array_length(vetor); i++) {
-		var cor_menu = #E5CE72
-		draw_set_font(fnt_dialogos)
-		draw_set_color(c_black)
-		var largura = string_width(vetor[i])
-		var altura = string_height(vetor[i])
-		if point_in_rectangle(mx, my, (200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura) {
-			cor_menu = #E5C444
-			if mouse_check_button_pressed(mb_left) {
-				escrita = variable_struct_get(instrucoes_fala, vetor[i])
+	if etapa2_morte {
+		morte_meredith = false
+		etapa2_morte = false
+		alpha_morte = 0
+		aux1 = false
+		aux2 = false
+		tempo_over = 0
+		pode_comecarb = true
+		pode_comecarc = true
+		tempo_over2 = 0
+		tempo_over3 = 0
+		pode_tocar = false
+		cor_botao = c_white
+		obituario = true
+		for (m = 0; m < array_length(morreram); m++) {
+			if morreram[m] == obj_meredith {
+				array_delete(morreram, m, 1)
 			}
-		} else {
-			cor_menu = #E5CE72
 		}
-		draw_rectangle_color((200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-		draw_rectangle_color((200 - largura) / 2 - 5, 380 + 80 * i - 5, (200 + largura) / 2 + 5, 380 + 80 * i + 5 + altura, cor_menu, cor_menu, cor_menu, cor_menu, false)
-		draw_text((200 - largura) / 2, 380 + 80 * i, vetor[i])
 	}
-	draw_rectangle_color(400, 100, 1800, 980, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-	draw_rectangle_color(405, 105, 1795, 975, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
-	draw_text_ext(420, 120, escrita, 60, 1380)
 }
 
 if morte_davi {
 	global.tem_tela_aberta = true
-	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_morte)
-	if !etapa2_morte and alpha_morte < 1 {
-		if alpha_morte < 1 {
-			alpha_morte += 0.05
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 1)
+	if !pode_tocar and !audio_is_playing(snd_marcha_funebre) {
+		audio_stop_all()
+		pode_tocar = true
+	}
+	if !audio_is_playing(snd_marcha_funebre) {
+		audio_play_sound(snd_marcha_funebre, 1, true)
+	}
+	if !aux1 {
+		aux1 = true
+		tempo_over = current_time / 1000 + 1.5
+	}
+	draw_set_font(fnt_alagard)
+	draw_set_color(c_white)
+	var _txt = "Davi morreu"
+	draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+	draw_set_font(fnt_dialogos)
+	if tempo_over < current_time / 1000 {
+		draw_text(960 - string_width(msg_davi) / 2, 660, msg_davi)
+		if pode_comecarb {
+			tempo_over2 = current_time / 1000 + 1.5
+			pode_comecarb = false
 		}
-	} else if !etapa2_morte {
-		if !pode_tocar {
-			audio_stop_all()
-			pode_tocar = true
+	}
+	if tempo_over2 < current_time / 1000 and !pode_comecarb {
+		var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+		draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+		if pode_comecarc {
+			tempo_over3 = current_time / 1000 + 1.5
+			pode_comecarc = false
 		}
-		if !audio_is_playing(snd_marcha_funebre) {
-			audio_play_sound(snd_marcha_funebre, 1, true)
-		}
-		if !aux1 {
-			aux1 = true
-			tempo_over = current_time / 1000 + 1.5
-		}
-		draw_set_font(fnt_alagard)
-		draw_set_color(c_white)
-		var _txt = "Davi morreu"
-		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
-		draw_set_font(fnt_dialogos)
-		if tempo_over < current_time / 1000 {
-			draw_text(960 - string_width(msg_davi) / 2, 660, msg_davi)
-			if pode_comecarb {
-				tempo_over2 = current_time / 1000 + 1.5
-				pode_comecarb = false
+	}
+	if tempo_over3 < current_time / 1000 and !pode_comecarc {
+		var msg_tela_inicial = "Voltar para o jogo"
+		var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+		var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+		var yinicial = 860 - 5
+		var yfinal = 860 + string_height(msg_tela_inicial) + 5
+		draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+		draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+		draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+			cor_botao = #527F7F
+			if mouse_check_button_pressed(mb_left) {
+				audio_stop_sound(snd_marcha_funebre)
+				etapa2_morte = true
+				instance_destroy(obj_davi)
 			}
-		}
-		if tempo_over2 < current_time / 1000 and !pode_comecarb {
-			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
-			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
-			if pode_comecarc {
-				tempo_over3 = current_time / 1000 + 1.5
-				pode_comecarc = false
-			}
-		}
-		if tempo_over3 < current_time / 1000 and !pode_comecarc {
-			var msg_tela_inicial = "Voltar para o jogo"
-			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
-			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
-			var yinicial = 860 - 5
-			var yfinal = 860 + string_height(msg_tela_inicial) + 5
-			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
-			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
-			draw_text(960 - string_width(msg_tela_inicial) / 2, 860, msg_tela_inicial)
-			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
-				cor_botao = #527F7F
-				if mouse_check_button_pressed(mb_left) {
-					audio_stop_sound(snd_marcha_funebre)
-					etapa2_morte = true
-					instance_destroy(obj_davi)
-				}
-			} else {
-				cor_botao = c_white
-			}
-		}
-	} else if etapa2_morte {
-		if alpha_morte > 0 {
-			alpha_morte -= 0.05
 		} else {
-			global.tem_tela_aberta = false
-			morte_davi = false
-			msg_davi = ""
-			etapa2_morte = false
-			alpha_morte = 0
-			aux1 = false
-			aux2 = false
-			tempo_over = 0
-			pode_comecarb = true
-			pode_comecarc = true
-			tempo_over2 = 0
-			tempo_over3 = 0
-			pode_tocar = false
 			cor_botao = c_white
+		}
+	} 
+	if etapa2_morte {
+		morte_davi = false
+		msg_davi = ""
+		etapa2_morte = false
+		alpha_morte = 0
+		aux1 = false
+		aux2 = false
+		tempo_over = 0
+		pode_comecarb = true
+		pode_comecarc = true
+		tempo_over2 = 0
+		tempo_over3 = 0
+		pode_tocar = false
+		cor_botao = c_white
+		obituario = true
+		for (m = 0; m < array_length(morreram); m++) {
+			if morreram[m] == obj_davi {
+				array_delete(morreram, m, 1)
+			}
 		}
 	}
 }
@@ -444,20 +391,20 @@ if ganhou_jogo {
 			if tempo_over < current_time / 1000 and bbb {
 				var msg = "Você zerou o jogo. Obrigado!"
 				draw_text(960 - string_width(msg) / 2, 660, msg)
-				if aux1 {
+				if !aux1 {
 					tempo_over2 = current_time / 1000 + 1.5
-					aux1 = false
+					aux1 = true
 				}
 			}
-			if tempo_over2 < current_time / 1000 and !aux1 {
+			if tempo_over2 < current_time / 1000 and aux1 {
 				var devs = "Desenvolvedores: Vitor Marian (Programador) e João Marlon Meneghelli (Designer)"
 				draw_text(960 - string_width(devs) / 2, 760, devs)
-				if aux2 {
+				if !aux2 {
 					tempo_over3 = current_time / 1000 + 1.5
-					aux2 = false
+					aux2 = true
 				}
 			}
-			if tempo_over3 < current_time / 1000 and !aux2 {
+			if tempo_over3 < current_time / 1000 and aux2 {
 				var msg_tela_inicial = "Voltar para tela inicial"
 				var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
 				var xfinal = xinicial + string_width(msg_tela_inicial) + 5
@@ -478,6 +425,47 @@ if ganhou_jogo {
 			}
 		}
 	}
+}
+
+if instrucoes {
+	draw_sprite(spr_voltar, 0, 1800, 50)
+	var width_sair = sprite_get_width(spr_voltar) / 2
+	var height_sair = sprite_get_height(spr_voltar) / 2 
+	var tx_sair = 1800
+	var ty_sair = 50
+
+	var mx = device_mouse_x_to_gui(0);
+	var my = device_mouse_y_to_gui(0);
+	
+	if mouse_check_button_pressed(mb_left) {
+		if mx > tx_sair - width_sair && mx < tx_sair + width_sair && my > ty_sair - height_sair && my < ty_sair + height_sair {
+			instrucoes = false
+			global.tem_tela_aberta = false
+			escrita = ""
+		}
+	}
+	var vetor = variable_struct_get_names(instrucoes_fala)
+	for (var i = 0; i < array_length(vetor); i++) {
+		var cor_menu = #E5CE72
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		var largura = string_width(vetor[i])
+		var altura = string_height(vetor[i])
+		if point_in_rectangle(mx, my, (200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura) {
+			cor_menu = #E5C444
+			if mouse_check_button_pressed(mb_left) {
+				escrita = variable_struct_get(instrucoes_fala, vetor[i])
+			}
+		} else {
+			cor_menu = #E5CE72
+		}
+		draw_rectangle_color((200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+		draw_rectangle_color((200 - largura) / 2 - 5, 380 + 80 * i - 5, (200 + largura) / 2 + 5, 380 + 80 * i + 5 + altura, cor_menu, cor_menu, cor_menu, cor_menu, false)
+		draw_text((200 - largura) / 2, 380 + 80 * i, vetor[i])
+	}
+	draw_rectangle_color(400, 100, 1800, 980, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+	draw_rectangle_color(405, 105, 1795, 975, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+	draw_text_ext(420, 120, escrita, 60, 1380)
 }
 
 if direita_coletavel {
@@ -506,7 +494,6 @@ if direita_coletavel {
 		draw_sprite_ext(object_get_sprite(obj_personagem.objeto), 0, 1632, 552, 128 / maior, 128 / maior, 0, c_white, 1)
 		if mouse_check_button_pressed(mb_left) {
 			direita_coletavel = false
-			global.tem_tela_aberta = false
 			tirar_direita = true
 		}
 	}
@@ -518,6 +505,7 @@ if tirar_direita {
 		scale_direita -= 0.5
 	} else if scale_direita == 0 {
 		tirar_direita = false
+		global.tem_tela_aberta = false
 	}
 }
 
@@ -553,7 +541,7 @@ if tirar_jogo {
 	}
 }
 if game_over {
-	if !pode_tocar {
+	if !pode_tocar and !audio_is_playing(snd_marcha_funebre)  {
 		audio_stop_all()
 		pode_tocar = true
 	}
@@ -561,122 +549,117 @@ if game_over {
 		audio_play_sound(snd_marcha_funebre, 1, true)
 	}
 	global.tem_tela_aberta = true
-	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_over)
-	if alpha_over < 1 {
-		alpha_over += 1.5 * delta_time / 1000000
-	} else {
-		if !bbb {
-			bbb = true
-			tempo_over = current_time / 1000 + 1.5
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 1)
+	if !bbb {
+		bbb = true
+		tempo_over = current_time / 1000 + 1.5
+	}
+	draw_set_font(fnt_alagard)
+	draw_set_color(c_white)
+	var _txt = "Fim de Jogo"
+	draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
+	draw_set_font(fnt_dialogos)
+	if tempo_over < current_time / 1000 {
+		draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
+		if !aux1 {
+			tempo_over2 = current_time / 1000 + 1.5
+			aux1 = true
 		}
-		draw_set_font(fnt_alagard)
-		draw_set_color(c_white)
-		var _txt = "Fim de Jogo"
-		draw_text(960 - string_width(_txt) / 2, 540 - string_height(_txt), _txt)
-		draw_set_font(fnt_dialogos)
-		if tempo_over < current_time / 1000 {
-			draw_text(960 - string_width(msg_game_over) / 2, 660, msg_game_over)
-			if aux1 {
-				tempo_over2 = current_time / 1000 + 1.5
+	}
+	if tempo_over2 < current_time / 1000 and aux1 {
+		var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+		draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+		if !aux2 {
+			tempo_over3 = current_time / 1000 + 1.5
+			aux2 = true
+		}
+	}
+	if tempo_over3 < current_time / 1000 and aux2 {
+		var msg_tela_inicial = "Voltar para tela inicial"
+		var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
+		var xfinal = xinicial + string_width(msg_tela_inicial) + 5
+		var yinicial = 860 - 5
+		var yfinal = 860 + string_height(msg_tela_inicial) + 5
+		if morrer_lutando {
+			xinicial = 480 - string_width(msg_tela_inicial) / 2 - 5
+			xfinal = 480 + string_width(msg_tela_inicial) / 2 + 5
+		}
+		draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
+		draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+		draw_text(xinicial + 5, 860, msg_tela_inicial)
+		if !aux3 {
+			tempo_over4 = current_time / 1000 + 1.5
+			aux3 = true
+		}
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+			cor_botao = #527F7F
+			if mouse_check_button_pressed(mb_left) {
+				room_goto(rm_tela_inicial)
+				audio_stop_sound(snd_marcha_funebre)
+			}
+		} else {
+			cor_botao = c_white
+		}
+	}
+	if tempo_over4 < current_time / 1000 and aux3 and morrer_lutando {
+		var msg_tela_inicial = "Voltar para a batalha"
+		var xinicial = 1440 - string_width(msg_tela_inicial) / 2 - 5
+		var xfinal = 1440 + string_width(msg_tela_inicial) / 2 + 5
+		var yinicial = 860 - 5
+		var yfinal = 860 + string_height(msg_tela_inicial) + 5
+		draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao2, cor_botao2, cor_botao2, cor_botao2, false)
+		draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
+		draw_text(1440 - string_width(msg_tela_inicial) / 2 + 5, 860, msg_tela_inicial)
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
+			cor_botao2 = #527F7F
+			if mouse_check_button_pressed(mb_left) {
+				obj_escada.escureceu = true
+				if !ativada {
+					instance_activate_object(obj_davi)
+					ativada = true
+				}
+				if instance_exists(obj_davi) {
+					obj_davi.atributos.saude = obj_escada.vida_davi_original
+				}
+				atributos.saude = obj_escada.vida_roger_original
+				obj_escada.tiros_metra = obj_escada.balas_metra_original
+				obj_escada.tiros_pistola = obj_escada.balas_pistola_original
+				obj_escada.inimigo.vida = obj_escada.inimigo.total_vida
+				for (var i = 0; i < obj_escada.municoes_original; i++) {
+					if instance_exists(obj_municao) {
+						obj_municao.qtde_itens++
+					} else {
+					var objeto = variable_struct_get(global.posicoes, "obj_municao")
+						var xis = variable_struct_get(objeto, "x")
+						var ipsilon = variable_struct_get(objeto, "y")
+						instance_create_layer(xis, ipsilon, "Instances", obj_municao)
+					}
+						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") + 1)
+				}
+				morrer_lutando = false
+				obj_escada.escureceu = true
+				audio_stop_sound(snd_marcha_funebre)			
+				game_over = false
+				msg_game_over = ""
+				alpha_over = 0
+				inicio = false
+				tempo_over = 0
 				aux1 = false
-			}
-		}
-		if tempo_over2 < current_time / 1000 and !aux1 {
-			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
-			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
-			if aux2 {
-				tempo_over3 = current_time / 1000 + 1.5
+				bbb = false
+				tempo_over2 = 0
 				aux2 = false
-			}
-		}
-		if tempo_over3 < current_time / 1000 and !aux2 {
-			var msg_tela_inicial = "Voltar para tela inicial"
-			var xinicial = 960 - string_width(msg_tela_inicial) / 2 - 5
-			var xfinal = xinicial + string_width(msg_tela_inicial) + 5
-			var yinicial = 860 - 5
-			var yfinal = 860 + string_height(msg_tela_inicial) + 5
-			if morrer_lutando {
-				xinicial = 480 - string_width(msg_tela_inicial) / 2 - 5
-				xfinal = 480 + string_width(msg_tela_inicial) / 2 + 5
-			}
-			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao, cor_botao, cor_botao, cor_botao, false)
-			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
-			draw_text(xinicial + 5, 860, msg_tela_inicial)
-			if aux3 {
-				tempo_over4 = current_time / 1000 + 1.5
+				tempo_over3 = 0
+				cor_botao = c_white
+				tempo_over4 = false
 				aux3 = false
 			}
-			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
-				cor_botao = #527F7F
-				if mouse_check_button_pressed(mb_left) {
-					room_goto(rm_tela_inicial)
-					audio_stop_sound(snd_marcha_funebre)
-				}
-			} else {
-				cor_botao = c_white
-			}
-		}
-		if tempo_over4 < current_time / 1000 and !aux3 and morrer_lutando {
-			var msg_tela_inicial = "Voltar para a batalha"
-			var xinicial = 1440 - string_width(msg_tela_inicial) / 2 - 5
-			var xfinal = 1440 + string_width(msg_tela_inicial) / 2 + 5
-			var yinicial = 860 - 5
-			var yfinal = 860 + string_height(msg_tela_inicial) + 5
-			draw_rectangle_color(xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5, cor_botao2, cor_botao2, cor_botao2, cor_botao2, false)
-			draw_rectangle_color(xinicial, yinicial, xfinal, yfinal, c_black, c_black, c_black, c_black, false)
-			draw_text(1440 - string_width(msg_tela_inicial) / 2 + 5, 860, msg_tela_inicial)
-			if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
-				cor_botao2 = #527F7F
-				if mouse_check_button_pressed(mb_left) {
-					obj_escada.escureceu = true
-					if !ativada {
-						instance_activate_object(obj_davi)
-						ativada = true
-					}
-					if instance_exists(obj_davi) {
-						obj_davi.atributos.saude = obj_escada.vida_davi_original
-					}
-					atributos.saude = obj_escada.vida_roger_original
-					obj_escada.tiros_metra = obj_escada.balas_metra_original
-					obj_escada.tiros_pistola = obj_escada.balas_pistola_original
-					obj_escada.inimigo.vida = obj_escada.inimigo.total_vida
-					for (var i = 0; i < obj_escada.municoes_original; i++) {
-						if instance_exists(obj_municao) {
-							obj_municao.qtde_itens++
-						} else {
-							var objeto = variable_struct_get(global.posicoes, "obj_municao")
-							var xis = variable_struct_get(objeto, "x")
-							var ipsilon = variable_struct_get(objeto, "y")
-							instance_create_layer(xis, ipsilon, "Instances", obj_municao)
-						}
-						variable_struct_set(obj_personagem.qtde_itens1, "obj_municao", variable_struct_get(obj_personagem.qtde_itens1, "obj_municao") + 1)
-					}
-					morrer_lutando = false
-					obj_escada.escureceu = true
-					audio_stop_sound(snd_marcha_funebre)
-					
-					game_over = false
-					msg_game_over = ""
-					alpha_over = 0
-					inicio = false
-					tempo_over = 0
-					aux1 = true
-					bbb = false
-					tempo_over2 = 0
-					aux2 = true
-					tempo_over3 = 0
-					cor_botao = c_white
-					tempo_over4 = false
-					aux3 = true
-				}
-			} else {
-				cor_botao2 = c_white
-			}
+		} else {
+			cor_botao2 = c_white
 		}
 	}
 }
 
-if passagem_dia  {
+if passagem_dia {
 	global.tem_tela_aberta = true
 	draw_set_color(c_black)
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_dia)
@@ -689,11 +672,6 @@ if passagem_dia  {
 		}
 	} else if !animacao_dia {
 		if time and !mudou_data {
-			if instance_exists(obj_meredith) {
-				if obj_meredith.deu_remedio {
-					morte_meredith = true
-				}
-			}
 			//aqui vai todas as coisas que acontecem quando um dia passa
 			resolveu = false
 			audio_play_sound(snd_paginas, 1, false)
@@ -754,16 +732,35 @@ if passagem_dia  {
 			aaa = true
 		} else if time3 < current_time / 1000 and aaa {
 			animacao_dia = true
+			var is_dia = false
+			if room == rm_bunker {
+				if obj_diario.dia == dias_bunker + 1 {
+					is_dia = true
+				}
+			}
+			if !is_dia and array_length(alguem_morreu()) { //detecta se alguem morreu (o gato ou os personagens)
+				morreram = alguem_morreu()
+				obituario = true
+				passagem_dia = false
+				escureceu = false
+				animacao_dia = false
+				time = false
+				time2 = 0
+				time3 = 0
+				clareou = false
+				aaa = false
+				mudou_data = false
+			}
 		}
 		var texto = string(obj_calendario.dia_atual) + " de " + string(_mes)
 		draw_set_color(c_white)
 		draw_set_font(fnt_alagard)
 		draw_text(960 - string_width(texto) / 2, 540, texto)
 	} else if !clareou {
-		global.tem_tela_aberta = false
 		if alpha_dia > 0 {
 			alpha_dia -= 1.5 * delta_time / 1000000
 		} else {
+			global.tem_tela_aberta = false
 			passagem_dia = false
 			alpha_dia = 0
 			escureceu = false
@@ -774,6 +771,42 @@ if passagem_dia  {
 			clareou = false
 			aaa = false
 			mudou_data = false
+		}
+	}
+}
+
+if obituario {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_dia)
+	var proximo1 = false
+	var proximo2 = false
+	var clarear = false
+	if !array_contains(morreram, obj_meredith) {
+		proximo1 = true
+	} else {
+		morte_meredith = true
+		obituario = false
+	} 
+	if !array_contains(morreram, obj_davi) and proximo1 {
+		proximo2 = true
+	} else if proximo1 {
+		morte_davi = true
+		obituario = false
+	}
+	if array_contains(morreram, obj_personagem) and proximo1 and proximo2 {
+		game_over = true
+		obituario = false
+	}
+	if array_length(morreram) == 0 {
+		clarear = true
+	}
+	if clarear {
+		if alpha_dia > 0 {
+			alpha_dia -= 1.5 * delta_time / 1000000
+		} else {
+			global.tem_tela_aberta = false
+			alpha_dia = 0
+			clarear = false
+			obituario = false
 		}
 	}
 }

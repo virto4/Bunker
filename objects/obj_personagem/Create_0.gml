@@ -20,6 +20,48 @@ coisas para melhorar sanidade:
 -vencer batalhas=+10
 -ouvir radio=+5
 */
+
+function verificar_vida2() { //para que ele só morra depois que o dia passar
+	if atributos.sede <= 0 {
+		msg_game_over = "Seu personagem morreu desidratado"
+		return true
+	} 
+	if atributos.fome <= 0 {
+		msg_game_over = "Seu personagem morreu faminto"
+		return true
+	}
+	if atributos.sanidade <= 0 {
+		msg_game_over = "Seu personagem se perdeu em desvario e cometeu suicídio"
+		return true
+	}
+	if atributos.saude <= 0 {
+		msg_game_over = "Seu personagem morreu da doença que lhe acometeu"
+		return true
+	}
+}
+morreram = []
+function alguem_morreu() {
+	mortes = []
+	if instance_exists(obj_meredith) {
+		if obj_meredith.deu_remedio {
+			array_push(mortes, obj_meredith)
+		}
+	}
+	if instance_exists(obj_davi) and ativada {
+		if obj_davi.verificar_vida() {
+			array_push(mortes, obj_davi)
+		}
+	}
+	if verificar_vida2() {
+		array_push(mortes, obj_personagem)
+	}
+	return mortes
+}
+
+obituario = false
+
+pode_morrer = false
+//prioridade na morte: primeiro Meredith, segundo Davi, terceiro Roger
 frame_geiger = sprite_get_number(spr_interface_geiger) - 1
 entrou_geiger = false
 y_geiger =  1080 + 128
@@ -153,10 +195,8 @@ msg_game_over = ""
 alpha_over = 0
 inicio = false
 tempo_over = 0
-aux1 = true
 bbb = false
 tempo_over2 = 0
-aux2 = true
 tempo_over3 = 0
 cor_botao = c_white
 

@@ -44,7 +44,7 @@ mouse_aux2 = false
 humores = ["NEUTRO", "EXTASIADO", "COLÉRICO", "DEPRIMIDO", "APAVORADO"]
 
 atributos = {
-	saude: 100,
+	saude: 1,
 	fome: 100,
 	sede: 100,
 	sanidade: 100,
@@ -256,3 +256,22 @@ char_index = 0
 current_text = ""
 type_speed = 0.06
 fala_atual = 0
+
+function verificar_vida() { //para que ele só morra depois que o dia passar
+	if atributos.sede <= 0 {
+		obj_personagem.msg_davi = "Davi morreu desidratado"
+		return true
+	} 
+	if atributos.fome <= 0 {
+		obj_personagem.msg_davi = "Davi morreu faminto"
+		return true
+	}
+	if atributos.sanidade <= 0 {
+		obj_personagem.msg_davi = "Davi se perdeu em desvario e cometeu suicídio"
+		return true
+	}
+	if atributos.saude <= 0 and !obj_escada.clicou {
+		obj_personagem.msg_davi = "Davi morreu da doença que lhe acometeu"
+		return true
+	}
+}

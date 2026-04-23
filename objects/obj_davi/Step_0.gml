@@ -9,22 +9,6 @@ if room == rm_bunker {
 }
 if !passagem_dia and !is_dia and room == rm_bunker { //para que ele só morra depois que o dia passar
 	pode_conversar = true
-	if atributos.sede <= 0 {
-		obj_personagem.morte_davi = true
-		obj_personagem.msg_davi = "Davi morreu desidratado"
-	} 
-	if atributos.fome <= 0 {
-		obj_personagem.morte_davi = true
-		obj_personagem.msg_davi = "Davi morreu faminto"
-	}
-	if atributos.sanidade <= 0 {
-		obj_personagem.morte_davi = true
-		obj_personagem.msg_davi = "Davi se perdeu em desvario e cometeu suicídio"
-	}
-	if atributos.saude <= 0 and !obj_escada.clicou {
-		obj_personagem.morte_davi = true
-		obj_personagem.msg_davi = "Davi morreu da doença que lhe acometeu"
-	}
 }
 if mudou_humor {
 	if atributos.humor == "NEUTRO" {
