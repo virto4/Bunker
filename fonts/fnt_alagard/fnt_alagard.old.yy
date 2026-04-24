@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"Alagard",
+  "%Name":"fnt_alagard",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":56,
@@ -120,7 +120,7 @@
   "last":0,
   "lineHeight":69,
   "maintainGms1Font":false,
-  "name":"Alagard",
+  "name":"fnt_alagard",
   "parent":{
     "name":"Fontes",
     "path":"folders/Fontes.yy",
