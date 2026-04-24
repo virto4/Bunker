@@ -51,13 +51,16 @@ function lamber() {
 	sprite_index = spr_meredith_idle
 }
 
+if room == rm_bunker {
+	if obj_diario.dia != dia_bunker {
+		comecou_dia = true
+		dia_bunker = obj_diario.dia
+		terminou = 0
+	}
+}
+
 if !global.tem_tela_aberta {
 	if room == rm_bunker {
-		if obj_diario.dia != dia_bunker {
-			comecou_dia = true
-			dia_bunker = obj_diario.dia
-			terminou = 0
-		}
 		if obj_diario.dia % 3 == 0 {
 			if comecou_dia {
 				comecou_dia = false

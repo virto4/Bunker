@@ -16,7 +16,10 @@ if !clicou {
 		xvoltando = false
 	}
 } else {
+	draw_set_color(c_black)
 	draw_circle(x, y - 5, 20, false)
+	draw_set_color(#487F7D)
+	draw_circle(x, y - 5, 18, false)
 	draw_sprite(ferramentas, 0, x, y - 5)
 	draw_rectangle_color(x - 20, y - 5 + 25, x + 20, y + 5 + 25, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(x -  20 + 2, y - 5 + 25 + 2, x + largura - 20 + 2, y + 5 + 25 - 2, #487F7D, #487F7D, #487F7D, #487F7D, false)

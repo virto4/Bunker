@@ -178,7 +178,7 @@ if pode_comecar and !opcoes and !global.tem_tela_aberta {
 		if image_xscale == -1 {
 			image_xscale = 1
 		}
-		sprite_index = spr_roger_DEFINITIVO
+		sprite_index = spr_roger_up
 	} else {
 		image_speed = 1
 	}

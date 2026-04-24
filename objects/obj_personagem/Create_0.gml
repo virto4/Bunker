@@ -66,7 +66,7 @@ frame_geiger = sprite_get_number(spr_interface_geiger) - 1
 entrou_geiger = false
 y_geiger =  1080 + 128
 tempo_over4 = false
-aux3 = true
+aux3 = false
 cor_botao2 = c_white
 morrer_lutando = false
 datas_vazamento = [1, 10, 20, 25, 37, 47]
@@ -752,5 +752,64 @@ function consumir(slot, slotn, slotnovo) {
 			slot5 = noone
 			slot5_novo = false
 		}
+	}
+}
+
+function passar_dia() {
+	obj_diario.dia += 1
+	obj_diario.amanhecer()
+	obj_controlador_evento.evento()
+	if room == rm_bunker {
+		if obj_controlador_evento.mala {
+			obj_controlador_evento.mudar_mala = true
+			obj_controlador_evento.mala_aux = true
+		}
+		if obj_controlador_evento.evento_baratas and obj_controlador_evento.morreu_inseticida < 5 {
+			if !instance_exists(obj_baratas) {
+				obj_controlador_evento.instanciou_baratas = false
+				obj_controlador_evento.morreu_inseticida = 0
+			} else {
+				obj_personagem.atributos.sanidade -= 10
+				if instance_exists(obj_davi) and obj_personagem.ativada {
+					obj_davi.atributos.sanidade -= 10
+				}
+			}
+		} else if obj_controlador_evento.evento_baratas {
+			obj_controlador_evento.evento_hoje = 0
+			obj_controlador_evento.morreu_inseticida = 0
+			obj_controlador_evento.evento_baratas = false
+			obj_controlador_evento.barata_aux = false
+		}
+		if obj_controlador_evento.esperando_davi {
+			obj_controlador_evento.davi_coletou = true
+		}
+		if obj_controlador_evento.evento_hoje = "mala" {
+			obj_controlador_evento.mudar_mala = true
+		}
+		if obj_controlador_evento.evento_hoje == "comerciante" {
+			obj_controlador_evento.mudar_vez = true
+		}
+		if obj_controlador_evento.evento_hoje == "coleta" and !obj_controlador_evento.esperando_davi {
+			obj_controlador_evento.mudar_coleta = true
+		}
+	}
+	if instance_exists(obj_radio) {
+		obj_radio.entrou = true
+		obj_radio.programacao = noone
+		obj_radio.assistiu_hoje = false
+	}
+	if instance_exists(obj_davi) {
+		obj_davi.interagir = true
+		obj_davi.comecou_dia = true
+	}
+	if instance_exists(obj_meredith) {
+		obj_meredith.tem_fala = true
+		obj_meredith.comecou_dia = true
+	}
+	if instance_exists(obj_domino) {
+		obj_domino.jogou_hoje = false
+	}
+	if instance_exists(obj_baralho) {
+		obj_baralho.jogou_hoje = false
 	}
 }

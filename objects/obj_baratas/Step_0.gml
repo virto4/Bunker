@@ -44,26 +44,26 @@ if !global.tem_tela_aberta and !morreu {
 } 
 
 if !global.tem_tela_aberta and morreu {
-	sprite_index = spr_baratas_morta
 	image_alpha = alpha
 	if current_time > tempo + 1000 * delta_time / 1000000 {
 		alpha -= 0.05
 		tempo = current_time
 	}
+	if aux_part {
+		var layer_id = layer_create(depth, "Particulas")
+		sistema = part_system_create_layer(layer_id, false)
+		emissor = part_emitter_create(sistema)
+		aux_part = false
+	}
 	if !morreu_esmagada {
-		part_emitter_region(sistema, emissor, x - 18, x + 18, y - 25, y +25, ps_shape_ellipse, ps_distr_linear)
-		part_emitter_burst(sistema, emissor, particula, 3)
+		lancar_particulas(x, y, sistema, particula)
 	} else {
-	//	part_emitter_region(sistema, emissor, x - 3, x + 3, y - 3, y + 3, ps_shape_ellipse, ps_distr_gaussian)
-	//	part_emitter_burst(sistema, emissor, particula2, 10)
-		//repeat(30) {
-		    var px = x + random_range(-8, 8);
-		    var py = y + random_range(-8, 8);
-		    part_particles_create(sistema, px, py, particula2, 1);
-		//}
+		lancar_particulas(x, y, sistema, particula2)
 	}
 	
 	if alpha == 0 {
+		lancar_part1 = false
+		lancar_part2 = false
 		instance_destroy()
 	}
 }

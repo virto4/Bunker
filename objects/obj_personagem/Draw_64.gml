@@ -594,8 +594,8 @@ if game_over {
 		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xinicial - 5, yinicial - 5, xfinal + 5, yfinal + 5) {
 			cor_botao = #527F7F
 			if mouse_check_button_pressed(mb_left) {
+				audio_stop_all()
 				room_goto(rm_tela_inicial)
-				audio_stop_sound(snd_marcha_funebre)
 			}
 		} else {
 			cor_botao = c_white
@@ -677,6 +677,7 @@ if passagem_dia {
 			audio_play_sound(snd_paginas, 1, false)
 			obj_calendario.mudou_dia = true
 			mudou_data = true
+			passar_dia()
 			atributos.fome -= 7
 			if obj_controlador_evento.evento_canos {
 				atributos.sede -= 25

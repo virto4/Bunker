@@ -143,9 +143,6 @@ function amanhecer() {
 		case 33:
 			obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia33
 			break
-		case 34:
-			obj_controlador_evento.evento_hoje = obj_controlador_evento.meio_data.dia34
-			break
 		case 36:
 			obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia36
 			break
@@ -178,9 +175,6 @@ function amanhecer() {
 			break
 		case 48:
 			obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia48
-			break
-		case 49:
-			obj_controlador_evento.evento_hoje = obj_controlador_evento.fim_data.dia49
 			break
 		default:
 			obj_controlador_evento.evento_hoje = 0

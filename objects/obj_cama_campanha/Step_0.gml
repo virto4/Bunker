@@ -20,7 +20,7 @@ if clicou {
 			tirar = true
 			clicou = false
 			global.tem_tela_aberta = false
-			passar_dia()
+			obj_personagem.passagem_dia = true
 		}
 	} else {
 		primeiro = false

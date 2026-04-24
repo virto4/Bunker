@@ -8,13 +8,18 @@ inimigo_subimage = 0
 morte_subimage = 0
 tempo_subimage = current_time / 1000
 
+atacou = true
+inimigo_piscar = 1
+roger_piscar = 1
+davi_piscar = 1
+tempo_piscar = 0
+
 vida_davi_original = 0
 vida_roger_original = 0
 balas_pistola_original = 0
 balas_metra_original = 0
 municoes_original = 0
 davi_morreu_definitivo = false
-
 
 correr = false
 

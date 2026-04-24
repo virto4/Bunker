@@ -121,13 +121,15 @@ function acerto_de_contas(slot) {
 if global.tem_tela_aberta {
 	audio_stop_sound(snd_passos_davi)
 }
-
-if !global.tem_tela_aberta and room == rm_bunker {
+if room == rm_bunker {
 	if obj_diario.dia != dia_bunker {
 		comecou_dia = true
 		dia_bunker = obj_diario.dia
 		terminou = 0
-		}
+	}
+}
+
+if !global.tem_tela_aberta and room == rm_bunker {
 	switch obj_diario.dia % 5 {
 		case 0:
 			if comecou_dia {

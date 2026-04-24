@@ -119,8 +119,8 @@ if clicou and !derrotou {
 			}
 		}
 	}
-	if tempo_subimage < current_time  {
-		tempo_subimage = current_time  + 200
+	if tempo_subimage < current_time / 1000 {
+		tempo_subimage = current_time / 1000 + 0.2
 		 if inimigo.vida > 0 {
 	        // Inimigo vivo - animação cíclica normal
 	        inimigo_subimage++
@@ -153,7 +153,7 @@ if clicou and !derrotou {
 	if inimigo.vida <= 0 {
 		draw_sprite_ext(inimigo.morte, morte_subimage, 960, 540, 8, 8, 0, c_white, 1)
 	} else {
-		draw_sprite_ext(inimigo.retrato, inimigo_subimage, 960, 540, 8, 8, 0, c_white, 1)
+		draw_sprite_ext(inimigo.retrato, inimigo_subimage, 960, 540, 8, 8, 0, c_white, inimigo_piscar)
 	}
 	draw_sprite_ext(spr_retrato_borda, 0, 960, 540, 2, 2, 0, c_white, 1)
 	draw_text(960 - string_width(inimigo.nome) / 2, 540 + 256 + 10, inimigo.nome)
@@ -166,7 +166,7 @@ if clicou and !derrotou {
 	draw_rectangle_color(x_roger - 128, y_roger - 128 - 30, x_roger + 128, y_roger - 128 - 10, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_color(x_roger - 128 + 5, y_roger - 128 - 25,x_roger - 128 + 5 + largura_roger, y_roger - 128 - 15, c_red, c_red, c_red, c_red, false)
 	draw_sprite_ext(spr_retrato, 0, 172, 894, 1, 1, 0, c_white, 1)
-	draw_sprite_ext(retrato_roger, roger_subimage, x_roger, y_roger, 4, 4, 0, c_white, 1)
+	draw_sprite_ext(retrato_roger, roger_subimage, x_roger, y_roger, 4, 4, 0, c_white, roger_piscar)
 	draw_sprite_ext(spr_retrato_borda, 0, x_roger, y_roger, 1, 1, 0, c_white, 1)
 	
 	draw_circle_color(390, 894, 40, c_black, c_black, false)
@@ -352,7 +352,7 @@ if clicou and !derrotou {
 		draw_rectangle_color(x_davi - 128, y_davi - 128 - 30, x_davi + 128, y_davi - 128 - 10, c_black, c_black, c_black, c_black, false)
 		draw_rectangle_color(x_davi - 128 + 5, y_davi - 128 - 25, x_davi - 128 + 5 +largura_davi, y_davi - 128 - 15, c_red, c_red, c_red, c_red, false)
 		draw_sprite_ext(spr_retrato, 0, 1742, 894, 1, 1, 0, c_white, 1)
-		draw_sprite_ext(retrato_davi, davi_subimage, x_davi, y_davi, 4, 4, 0, c_white, 1)
+		draw_sprite_ext(retrato_davi, davi_subimage, x_davi, y_davi, 4, 4, 0, c_white, davi_piscar)
 		draw_sprite_ext(spr_retrato_borda, 0, x_davi, y_davi, 1, 1, 0, c_white, 1)
 		draw_text(1742 - string_width("Davi") / 2, 894 + 128 + 10, "Davi")
 		draw_circle_color(1524, 894, 40, c_black, c_black, false)
@@ -542,21 +542,34 @@ if clicou and !derrotou {
 	
 	function vida(personagem, numero) {
 		var _x = 0
+		draw_set_font(fnt_alagard)
 		if personagem == "Roger" {
 			_x = x_roger - 128 + (256 - string_width(numero)) / 2
 			_y = y_roger
 			draw_set_color(#9E0B0F)
 			draw_text(_x, _y, string(numero))
+			if tempo_piscar < current_time / 1000 {
+				roger_piscar = 1 - roger_piscar
+				tempo_piscar = current_time / 1000 + 0.2
+			}
 		} else if personagem == "Davi" {
 			_x = x_davi - 128 + (256 - string_width(numero)) / 2
 			draw_set_color(#9E0B0F)
 			_y = y_davi
 			draw_text(_x, _y, string(numero))
+			if tempo_piscar < current_time / 1000 {
+				davi_piscar = 1 - davi_piscar
+				tempo_piscar = current_time / 1000 + 0.2
+			}
 		} else {
 			_x = x_inimigo - 128 + (256 - string_width(numero)) / 2
 			draw_set_color(#9E0B0F)
 			_y = y_inimigo
 			draw_text(_x, _y, string(numero))
+			if tempo_piscar < current_time / 1000 {
+				inimigo_piscar = 1 - inimigo_piscar
+				tempo_piscar = current_time / 1000 + 0.2
+			}
 		}
 	}
 	
@@ -564,8 +577,8 @@ if clicou and !derrotou {
 		if batalha {
 			var ataque = 1
 			var defesa = 1
-			var atacou = true
 			if executar {
+				atacou = true
 				atirou = true
 				if sua_vez == 0 {
 					if instance_exists(obj_davi) {
@@ -839,7 +852,6 @@ if clicou and !derrotou {
 							break
 					}
 					if atacou {
-						
 						if !davi_som {
 							davi_som = true
 							switch arma_davi {
@@ -975,6 +987,10 @@ if clicou and !derrotou {
 					tempo_turno = current_time / 1000 + 3
 					executar = true
 				}
+				tempo_piscar = 0
+				inimigo_piscar = 1
+				roger_piscar = 1
+				davi_piscar = 1
 				errou2 = false
 				critico2 = false
 			}

@@ -219,10 +219,10 @@ doenca_gata = false
 remedio_gata = false
 
 eventos_inicio = [
+	"baratas",
 	"capivara",
 	"gripe",
 	"enxaqueca",
-	"baratas",
 	"doenca_gata",
 	"freddie",
 	"coleta",
@@ -251,7 +251,7 @@ inicio_data = {
 eventos_meio = embaralhar ([
 	"doenca_gata",
 	"emma",
-	"rachadura",
+	"rachaduras",
 	"infiltracao",
 	"leptospirose",
 	"coleta",
