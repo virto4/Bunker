@@ -16,11 +16,12 @@ image_speed = 0
 
 paginas = {
 	numero: 120,
+	primeiro_dia: "",
 	atributos: "Meus atributos: ",
 	atributos2: "Atributos de Davi: ",
 	gripe: "Hoje amanheci meio gripado. Meus pulmões não são mais como antigamente... Se tiver uma aspirina aí vai ajudar.",
 	enxaqueca: "Minha cabeça dói. Estou com uma enxaqueca das brabas. Preciso de aspirina.",
-	baratas: "A casa está cheia de insetos nojentos! Preciso de inseticida, senão eles não vão embora. Posso até tentar matá-los com pisadas, mas eles se reproduzem antes e voltam mais fortes! Só a dedetização resolve.",
+	baratas: "A casa está cheia de insetos nojentos! Preciso de inseticida, senão eles não vão embora. Posso até tentar matá-los com pisadas, mas eles se reproduzem antes e voltam mais fortes! Só a dedetização resolve. Além disso, a cada dia que elas ficam aqui perco mais e mais minha Sanidade!",
 	canos: "A água está contaminada com radiação; Se continuarmos tomando dela vamos morrer cedo. De agora em diante, temos que tomar água de outras fontes.",
 	coleta: "Hoje, se tivermos trajes contra a radiação e o mapa, podemos sair para coletar itens fora do Bunker. Isso pode ser arriscado, mas podemos conseguir itens importantes.",
 	mala: "Apareceu esta mala na frente do bunker... será que abro? A mala está do lado de fora, basta ir até a escada.",

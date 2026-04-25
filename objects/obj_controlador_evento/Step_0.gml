@@ -139,23 +139,30 @@ if evento_coleta {
 if evento_comerciante {
 	if evento_hoje != "comerciante" {
 		evento_comerciante = false
-	}
-	if !comerciante_aux {
-		comerciante_aux = true
-		ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.comerciante)
-	}
-	if mudar_vez {
-		if vez_comerciante == 1 {
-			itens_comerciante = trocas.comerciante1
-			itens_jogador = trocas.jogador1
-		} else if vez_comerciante == 2 {
-			itens_comerciante = trocas.comerciante2
-			itens_jogador = trocas.jogador2
-		} else if vez_comerciante == 3 {
-			itens_comerciante = trocas.comerciante3
-			itens_jogador = trocas.jogador3
+	} else {
+		if !comerciante_aux {
+			comerciante_aux = true
+			ds_list_replace(obj_diario.paginas_escritas, obj_diario.dia + 1, obj_diario.paginas.comerciante)
 		}
-		mudar_vez = false
+		if mudar_vez {
+			if vez_comerciante == 1 {
+				itens_comerciante = trocas.comerciante1
+				itens_jogador = trocas.jogador1
+			} else if vez_comerciante == 2 {
+				itens_comerciante = trocas.comerciante2
+				itens_jogador = trocas.jogador2
+			} else if vez_comerciante == 3 {
+				itens_comerciante = trocas.comerciante3
+				itens_jogador = trocas.jogador3
+			} else if vez_comerciante == 4 {
+				itens_comerciante = trocas.comerciante4
+				itens_jogador = trocas.jogador4
+			} else if vez_comerciante == 5 {
+				itens_comerciante = trocas.comerciante5
+				itens_jogador = trocas.jogador5
+			}
+			mudar_vez = false
+		}
 	}
 }
 if barata and barata_aux {

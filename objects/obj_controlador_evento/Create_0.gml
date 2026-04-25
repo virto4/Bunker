@@ -102,13 +102,16 @@ itens_comerciante = []
 itens_jogador = []
 tirar_final = false
 despedida = false
-vez_comerciante =  1
+despedida1 = false
+interacao1 = true
+vez_comerciante =  0
 mudar_vez = true
+fechar = false
 trocas = {
 	comerciante1: [obj_inseticida, obj_bolo_chocolate, obj_arroz_frango, obj_chumbo, obj_alface, obj_chocolate],
 	jogador1: [obj_pilha, obj_chocolate, obj_frango, obj_mapa, obj_salada, obj_farinha],
-	comerciante2: [obj_radio, obj_chumbo, obj_antibiotico, obj_antibiotico, obj_cookie, obj_farinha],
-	jogador2: [obj_tv, obj_escondidinho, obj_curativo, obj_curativo, obj_farinha, obj_chocolate],
+	comerciante2: [obj_radio, obj_chumbo, obj_antibiotico, obj_aspirina, obj_cookie, obj_farinha],
+	jogador2: [obj_tv, obj_escondidinho, obj_curativo, obj_antibiotico, obj_farinha, obj_chocolate],
 	comerciante3: [obj_domino, obj_curativo, obj_chucrute, obj_repolho, obj_escondidinho, obj_ovo_mexido],
 	jogador3: [obj_municao, obj_cerveja, obj_agua, obj_alface, obj_batata, obj_ovo],
 	comerciante4: [obj_inseticida, obj_bolo_chocolate, obj_arroz_frango, obj_chumbo, obj_alface, obj_chocolate],
@@ -219,7 +222,9 @@ doenca_gata = false
 remedio_gata = false
 
 eventos_inicio = [
-	"baratas",
+	"comerciante",
+	"comerciante",
+	//"baratas",
 	"capivara",
 	"gripe",
 	"enxaqueca",
@@ -227,7 +232,7 @@ eventos_inicio = [
 	"freddie",
 	"coleta",
 	"coleta",
-	"comerciante",
+	//"comerciante",
 	"comerciante",
 	"mala",
 	"barata"
@@ -312,6 +317,10 @@ function evento() {
 	switch evento_hoje {
 		case "comerciante":
 			evento_comerciante = true
+			mudar_vez = true
+			comerciante_aux = false
+			vez_comerciante++
+			interacao1 = true
 			break
 		case "baratas": //inseticida
 			evento_baratas = true

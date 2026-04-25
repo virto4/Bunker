@@ -69,9 +69,9 @@ tempo_over4 = false
 aux3 = false
 cor_botao2 = c_white
 morrer_lutando = false
-datas_vazamento = [1, 10, 20, 25, 37, 47]
+datas_vazamento = [1, 15, 22, 37, 44]
 posicoes_vazamento = [
-	[700, 300], [1100, 300], [1300, 500], [350, 600], [250, 300], [700, 600]
+	 [1100, 300], [1300, 500], [250, 650], [250, 300], [700, 600]
 ]
 hoje = []
 intervalo = 1
@@ -107,7 +107,7 @@ escrita = ""
 instrucoes_fala = {
 	Eventos: "Todo dia, alguma coisa nova acontece no Bunker. Esses acontecimentos são escritos no diário marrom no canto inferior esquerdo da sala. Virando as páginas do livro, você encontra instruções sobre o que fazer. Os eventos podem ser: reparos estruturais (problemas com a ventilação, infiltrações...), doenças (gripes, fraturas; resolvidas com remédios), inimigos (aparecem sempre na escada, que é a entrada do Bunker, e querem te matar ou saquear) e gerais (exploração do mapa, comerciantes...)",
 	Atributos: "Saúde: piora em batalhas ou doenças; curada por habilidades na batalha ou remédios no Bunker. Sanidade: piora a cada dia e deve ser reposta com alguma das seguintes atividades: ouvir rádio, conversar com Davi, conversar com a gata, jogar cartas ou dominó. Fome: você deve comer periodicamente. As comidas podem ser ingeridas sozinhas (algumas delas) ou devem ser cozinhadas, e, para isso, você deve adquirir a receita ao assistir o programa de rádio sobre cozinha; Sede: a sede não diminui no começo. Somente quando houver o evento dos canos que enferrujam é que você terá de repor os níveis de água dos personagens. Esses são os atributos principais. Há também os secundários: Força (dano causado), Reistência (limitação ao dano sofrido), Sagacidade (chance de crítico ou erro) e Fortuna (definição dos loots da batalha), que são utilizados na batalhas e podem ser alterados pelo Humor.",
-	"Dia a dia": "A cada dia que passa, você precisa realizar o seguinte ritual: abrir o diário para conferir os atributos na primeira página, e, em seguida, ver os eventos do dia e os que ainda não foram concluidos. Depois, resolva os eventos pendentes e controle os níveis dos atributos principais (Sede, Fome, Sanidade e Saúde) dos personagens para não morrer. Também é importante verificar vazamentos de radiação com o contador Geiger e repará-los com faixas de chumbo.",
+	"Dia a dia": "A cada dia que passa, você precisa realizar o seguinte ritual: abrir o diário para conferir os atributos na primeira página, e, em seguida, ver os eventos do dia e os que ainda não foram concluidos. Depois, resolva os eventos pendentes e controle os níveis dos atributos principais (Sede, Fome, Sanidade e Saúde) dos personagens para não morrer. Também é importante verificar vazamentos de radiação com o contador Geiger e repará-los com faixas de chumbo (eles aparecem regularmente e não dão sinais claros de sua presença até que seja tarde demais).",
 	Batalhas: "Numa batalha, você precisa decidir uma arma e uma habilidade para cada jogador. A arma auxilia o dano que será causado, sendo a seguinte a ordem de eficiência das armas: 1 - metralhadora; 2 - pistola; 3 - machado; 4 - picareta. 5 - punhos. Já as habilidades podem servir para: dar um ataque, podendo ser simples ou causar dano extra; se curar; alterar seu humor. As habilidades são desevolvidas ao assistir o programa de rádio sobre sobrevivência.",
 	Humor: "Extasiado: +força +resistência -sagacidade +fortuna); Deprimido: -força +resistência +sagacidade -fortuna; Apavorado: +força -resistência +sagacidade -fortuna; Colérico: +força - resistência -sagacidade +fortuna"
 }
@@ -785,9 +785,6 @@ function passar_dia() {
 		}
 		if obj_controlador_evento.evento_hoje = "mala" {
 			obj_controlador_evento.mudar_mala = true
-		}
-		if obj_controlador_evento.evento_hoje == "comerciante" {
-			obj_controlador_evento.mudar_vez = true
 		}
 		if obj_controlador_evento.evento_hoje == "coleta" and !obj_controlador_evento.esperando_davi {
 			obj_controlador_evento.mudar_coleta = true

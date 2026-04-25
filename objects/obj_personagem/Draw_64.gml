@@ -4,7 +4,7 @@ if room == rm_bunker and item_selecionado == obj_contador_geiger {
 	entrou_geiger = true
 	draw_sprite_ext(spr_interface_geiger, frame_geiger, 480, y_geiger, 4, 4, 0, c_white, 1)
 	if y_geiger > 952 {
-		y_geiger--
+		y_geiger -= 3 
 	}
 	if !hoje_tem {
 		frame_geiger = sprite_get_number(spr_interface_geiger) - 1
@@ -13,20 +13,19 @@ if room == rm_bunker and item_selecionado == obj_contador_geiger {
 		if distancia < 100 {
 			frame_geiger = 0
 		} else if distancia < 1000 {
-			frame_geiger = floor(distancia * 900 / sprite_get_number(spr_interface_geiger) - 1) 
+			frame_geiger = floor((distancia - 122) / 22) 
 		} else {
 			frame_geiger = sprite_get_number(spr_interface_geiger) - 1
 		}
 	}
 	/*
-	image_number - 1 = 1000
-	frame_geiger = 
-	0 - 100
+	distancia -- frame
+	(1000 - d) / (d - 100) = (51 - x) / (x - 1)--> x = (d - 122) / 22
 	*/
 } else if entrou_geiger {
 	draw_sprite_ext(spr_interface_geiger, frame_geiger, 480, y_geiger, 4, 4, 0, c_white, 1)
 	if y_geiger < 1080 + 128 {
-		y_geiger++
+		y_geiger += 3
 	} else {
 		entrou_geiger = false
 	}
@@ -1018,7 +1017,7 @@ if (tutorial_ask or direita_coletavel) and desenha {
 }
 
 if room == rm_bunker and desenha {
-	if obj_controlador_evento.interagir_comerciante or obj_controlador_evento.interagir2 or obj_controlador_evento.despedida {
+	if obj_controlador_evento.interagir_comerciante or obj_controlador_evento.interagir2 or obj_controlador_evento.despedida or obj_controlador_evento.despedida1 {
 		desenha = false
 	}
 }

@@ -574,6 +574,28 @@ function acerto_de_contas(objeto_vendido, objeto_comprado) {
 	}
 }
 
+if despedida1 {
+	draw_sprite_ext(spr_dialogo, 0, 960, 880, 5, 5, 0, c_white, 1)
+	interacao1 = false
+	draw_set_font(fnt_dialogos)
+	draw_set_color(c_black)
+	var largura = string_width("Comerciante")
+	var altura = 640 - (78 - string_height("A")) / 2
+	draw_sprite_part_ext(spr_dialogo, 0, 0, 0, 10, 60, 160, altura, 1.3, 1.3, c_white, 1)
+	var xis = 0
+	for (var i = 0; i < largura / 10; i++) {
+		draw_sprite_part_ext(spr_dialogo, 0, 10, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
+		xis += 10
+	}
+	draw_sprite_part_ext(spr_dialogo, 0, 310, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
+	draw_text(170, 640, "Comerciante")
+	draw_text_ext(210, 760, "Tudo bem. Partirei somente à noite, caso mude de ideia.", 30, 1520)
+	if mouse_check_button_pressed(mb_left) {
+		sair = true
+		despedida1 = false
+		fechar = true
+	}
+}
 
 if interagir_comerciante {
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
@@ -592,7 +614,11 @@ if interagir_comerciante {
 		}
 		draw_sprite_part_ext(spr_dialogo, 0, 310, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
 		draw_text(170, 640, "Comerciante")
-		draw_text_ext(210, 760, "Bom dia, habitantes dessa humilde residência. Sou um velho latoeiro que circunda por essas bandas trocando coisas que podem ser úteis. Funciona assim: ofereço alguns itens meus em troca de alguns seus. Vamos fazer negócios?", 30, 1520)
+		if interacao1 {
+			draw_text_ext(210, 760, "Bom dia, habitantes dessa humilde residência. Sou um velho latoeiro que circunda por essas bandas trocando coisas que podem ser úteis. Funciona assim: ofereço alguns itens meus em troca de alguns seus. Vamos fazer negócios?", 30, 1520)
+		} else {
+			draw_text_ext(210, 760, "Bem vindo de volta! Deseja mais alguma coisa?", 30, 1520)
+		}
 		var mx = device_mouse_x_to_gui(0)
 		var my = device_mouse_y_to_gui(0)
 		if point_in_rectangle(mx, my, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
@@ -619,9 +645,8 @@ if interagir_comerciante {
 				audio_play_sound(snd_menu_mouse, 1, false)
 			}
 			if mouse_check_button_pressed(mb_left) {
-				sair = true
 				interagir_comerciante = false
-				global.tem_tela_aberta = false
+				despedida1 = true
 			}
 		} else {
 			segundo = false
@@ -637,6 +662,11 @@ if sair {
 	} else {
 		sair = false
 	}
+}
+
+if !sair and fechar {
+	global.tem_tela_aberta = false
+	fechar = false
 }
 
 if !sair and interagir2 {
@@ -707,7 +737,9 @@ if !sair and interagir2 {
 		draw_line_width_colour(560, 840, 1360, 840, 10, #7F5E25, #7F5E25)
 	}
 }
+
 if despedida {
+	interacao1 = false
 	draw_sprite_ext(spr_dialogo, 0, 960, 880, scale, scale, 0, c_white, 1)
 	if scale < 5 and !tirar_final {
 		scale += 0.5
@@ -723,7 +755,7 @@ if despedida {
 			xis += 10
 		}
 		draw_sprite_part_ext(spr_dialogo, 0, 310, 0, 10, 60, 170 + xis, altura, 1.3, 1.3, c_white, 1)
-		draw_text_ext(210, 760, "Foi um prazer falar com você, até uma próxima vez!", 30, 1520)
+		draw_text_ext(210, 760, "Foi um prazer falar com você, ficarei aqui até hoje à noite, caso queira algo mais.", 30, 1520)
 		draw_text(170, 640, "Comerciante")
 		if mouse_check_button_pressed(mb_left) {
 			tirar_final = true
@@ -735,7 +767,6 @@ if despedida {
 			tirar_final = false
 			despedida = false
 			global.tem_tela_aberta = false
-			evento_comerciante = false
 		}
 	}
 }
