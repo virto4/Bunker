@@ -6,9 +6,4 @@ if point_distance(x, y, obj_personagem.x, obj_personagem.y) < 100 and !is_aberta
 	obj_personagem.porta = true
 	abrindo = true
 	tempo = current_time / 1000000
-	if obj_personagem.colidiu_porta_aux {
-		pode_abrir = false
-	} else {
-		pode_abrir = true
-	}
 }
