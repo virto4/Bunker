@@ -144,16 +144,34 @@ var _cima, _baixo, _pulo, _esquerda, _direita
 	_baixo = keyboard_check(inputs.baixo)
 	_pulo = keyboard_check_pressed(inputs.pulo)
 
-if _esquerda or _direita or _cima or _baixo and !global.tem_tela_aberta {
-	   if (!audio_is_playing(snd_passos_roger)) {
-        audio_play_sound(snd_passos_roger, 1, true);
-    }
+if (_esquerda or _direita or _cima or _baixo) and !global.tem_tela_aberta {
+	if (!audio_is_playing(snd_passos_roger)) {
+		audio_play_sound(snd_passos_roger, 1, true);
+	}
+	var lancar = true
+	if place_meeting(x + 30, y + 60, obj_colidivel) {
+		lancar = false
+	} else if place_meeting(x - 15, y + 60, obj_colidivel) {
+		lancar = false
+	} else if place_meeting(x, y + 35, obj_colidivel) {
+		lancar = false
+	} else if place_meeting(x, y + 65, obj_colidivel) {
+		lancar = false
+	} else if apertou_pulo {
+		lancar = false
+	}
+	if lancar {
+		var part_x = random_range(-12, 12) + x
+		var part_y = random_range(-12, 12) + y + 60
+		var layer_id = layer_create(depth, "Particulas")
+		sistema = part_system_create_layer(layer_id, false)
+		part_particles_create(sistema, part_x, part_y, part_passos, 5);
+	}
 } else {
 	 audio_stop_sound(snd_passos_roger);
 }
 
 if pode_comecar and !opcoes and !global.tem_tela_aberta {
-
 	if !global.tem_tela_aberta and keyboard_check_pressed(vk_escape) {
 		global.tem_tela_aberta = true
 		opcoes = true

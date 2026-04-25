@@ -176,6 +176,7 @@ if room_get_name(room) == "rm_tela_inicial" {
 			alpha_conquistas += 0.03
 		} else {
 			room_goto(rm_tela_inicial)
+			global.nova_estrela = true
 		}
 	}
 }

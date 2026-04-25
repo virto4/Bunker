@@ -27,6 +27,59 @@ function quebrar_texto(texto, largura_maxima) {
 }
 
 if room_get_name(room) = "rm_conquistas" {
+	if global.nova_estrela {
+		global.criar_estrela()
+		global.estrela_cadente()
+		for (var i = 0; i < 150; i++) {
+		    var px = random(room_width);
+		    var py = random(room_height);
+		    part_particles_create(global.system, px, py, global.part, 1);
+		}
+		global.nova_estrela = false
+	}
+	if (random(1) < 0.3) {
+	    var px = random(room_width);
+	    var py = random(room_height);
+	    part_particles_create(global.system, px, py, global.part, 1);
+	}
+	// chance de spawn
+	if (random(1) < 0.0002) {
+    
+	    // posição inicial
+	    global.shooting_x = random(room_width);
+	    global.shooting_y = random_range(-10, 1000);
+    
+	    // direção e velocidade
+	    global.shooting_dir = random_range(0, 250);
+	    global.shooting_speed = random_range(1, 4);
+    
+	    global.shooting_active = true;
+	}
+	if (global.shooting_active) {
+    
+	    // movimento
+	    var vx = lengthdir_x(global.shooting_speed, global.shooting_dir);
+	    var vy = lengthdir_y(global.shooting_speed, global.shooting_dir);
+    
+	    global.shooting_x += vx;
+	    global.shooting_y += vy;
+    
+	    // partícula principal
+	    part_particles_create(global.system, global.shooting_x, global.shooting_y, global.cadente, 1);
+    
+	    // rastro (várias pequenas atrás)
+	    for (var i = 0; i < 3; i++) {
+	        part_particles_create(global.system,
+	            global.shooting_x + random_range(-2, 2),
+	            global.shooting_y + random_range(-2, 2),
+	            global.part_rastro, 1);
+	    }
+    
+	    // remove quando sair da tela
+	    if (global.shooting_y > room_height || global.shooting_x < 0) {
+	        global.shooting_active = false;
+	    }
+	}
 	if position_meeting(mouse_x, mouse_y, obj_conquistas) {
 		var _filho = instance_position(mouse_x, mouse_y, obj_conquistas)
 		draw_set_font(fnt_dialogos)

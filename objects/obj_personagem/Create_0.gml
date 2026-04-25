@@ -810,3 +810,16 @@ function passar_dia() {
 		obj_baralho.jogou_hoje = false
 	}
 }
+
+sistema = part_system_create()
+
+part_passos = part_type_create()
+
+part_type_shape(part_passos, pt_shape_pixel)
+part_type_size(part_passos, 0.6, 3, 0, 0) 	// tamanho pequeno (tipo pixel/estrela distante)
+part_type_color3(part_passos, #623A03, #99651E, #B27623) 	// cores levemente variadas (branco, azul claro)
+part_type_alpha3(part_passos, 0.9, 0.5, 0) 	// efeito de "piscar"
+part_type_life(part_passos, 30, 50) 	// vida longa
+part_type_speed(part_passos, 0, 0, 0, 0) 	// praticamente parada
+part_type_direction(part_passos, 0, 360, 0, 0)
+part_type_gravity(part_passos, 0, 0)
