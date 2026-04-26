@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_parede",
+  "%Name":"obj_parede_cozinha",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_parede",
+  "name":"obj_parede_cozinha",
   "overriddenProperties":[],
   "parent":{
     "name":"outros",
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_parede",
-    "path":"sprites/spr_parede/spr_parede.yy",
+    "name":"spr_parede_cozinha",
+    "path":"sprites/spr_parede_cozinha/spr_parede_cozinha.yy",
   },
   "spriteMaskId":null,
   "visible":true,

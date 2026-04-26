@@ -1,18 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_chao_lateral",
-  "eventList":[],
+  "%Name":"obj_parede_roger",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_chao_lateral",
+  "name":"obj_parede_roger",
   "overriddenProperties":[],
   "parent":{
     "name":"outros",
     "path":"folders/Objetos/outros.yy",
   },
-  "parentObjectId":{
-    "name":"obj_colidivel",
-    "path":"objects/obj_colidivel/obj_colidivel.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_lateral",
-    "path":"sprites/spr_lateral/spr_lateral.yy",
+    "name":"spr_parede_roger",
+    "path":"sprites/spr_parede_roger/spr_parede_roger.yy",
   },
   "spriteMaskId":null,
   "visible":true,

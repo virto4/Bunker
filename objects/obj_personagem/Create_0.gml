@@ -20,6 +20,13 @@ coisas para melhorar sanidade:
 -vencer batalhas=+10
 -ouvir radio=+5
 */
+banheiro = false
+banheiro_scale = 0
+tirar_banheiro = false
+usar = false
+usar1 = false
+usar2 = false
+alpha_banheiro = 0
 
 function verificar_vida2() { //para que ele só morra depois que o dia passar
 	if atributos.sede <= 0 {

@@ -1202,3 +1202,75 @@ if tirar {
 		tirar = false
 	}
 }
+
+var mousex = device_mouse_x_to_gui(0)
+var mousey = device_mouse_y_to_gui(0)
+if room == rm_bunker {
+	if point_in_rectangle(mousex, mousey, 1010, 450, 1250, 730) and point_distance(x, y, 1140, 620) <= 250 and !banheiro {
+		if mouse_check_button_pressed(mb_left) {
+			banheiro = true
+		}
+	}
+}
+
+if banheiro {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
+	if banheiro_scale < 5 {
+		banheiro_scale += 0.5 * delta_time / 1000000
+	} else if banheiro_scale >= 5 {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text(220, 800, "Você deseja usar o banheiro?")
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		if point_in_rectangle(mousex, mousey, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if mouse_check_button_pressed(mb_left) {
+				usar = true
+				banheiro = false
+				tirar_banheiro = true
+			}
+		} else {
+			primeiro = false
+		}
+		draw_text(300, 940, "Sim")
+		if point_in_rectangle(mousex, mousey, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+			if !segundo {
+				segundo = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if mouse_check_button_pressed(mb_left) {
+				tirar_banheiro = true
+				banheiro = false
+			}
+		} else {
+			segundo = false
+		}
+		draw_text(1620, 940, "Não")
+	}
+}
+
+if tirar_banheiro {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
+	if banheiro_scale > 0 {
+		banheiro_scale -= 0.5 * delta_time / 1000000
+	} else if banheiro_scale == 0 {
+		tirar_banheiro = false
+	}
+}
+
+if usar and !tirar_banheiro {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_banheiro)
+	if alpha_banheiro < 1 {
+		alpha_banheiro +=  0.02 * delta_time / 1000000
+	} else {
+		
+	}
+}
