@@ -162,12 +162,14 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				}
 			} else if terminou == 2 {
 				audio_stop_sound(snd_passos_davi);
-				sprite_index = spr_davi_idle_down
+				sprite_index = spr_davi_idle_right
+				image_xscale = -1
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 30
 				}
 				if current_time / 1000 >= tempo {
+					image_xscale = 1
 					terminou = 3
 					frames = 0
 				}
@@ -185,6 +187,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 			break
 		case 1:
 			if comecou_dia {
+				image_xscale = 1
 				comecou_dia = false
 				x = 250
 				y = 270
@@ -295,7 +298,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 					terminou = 10
 				}
 			} else if terminou == 10 {
-				sprite_index = spr_davi_idle_down
+				sprite_index = spr_davi_idle_up
 				//fica parado o resto
 			}
 			break
@@ -382,7 +385,8 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				}
 			} else if terminou == 2 {
 				audio_stop_sound(snd_passos_davi);
-				sprite_index = spr_davi_idle_down
+				sprite_index = spr_davi_idle_right
+				image_xscale = -1
 				if frames == 0 {
 					frames = 1
 					tempo = current_time / 1000 + 20
@@ -390,6 +394,7 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				if current_time / 1000 >= tempo {
 					terminou = 3
 					frames = 0
+					image_xscale = 1
 				}
 			} else if terminou == 3 {
 				andar("baixo")
@@ -413,7 +418,8 @@ if !global.tem_tela_aberta and room == rm_bunker {
 				}
 			} else if terminou == 5 {
 				audio_stop_sound(snd_passos_davi);
-				sprite_index = spr_davi_idle_down
+				sprite_index = spr_davi_idle_right
+				image_xscale = -1
 				//fica parado ou dorme
 			}
 	}

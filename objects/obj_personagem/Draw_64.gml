@@ -1,5 +1,71 @@
 //200 - 400 - 1800
 
+var mousex = device_mouse_x_to_gui(0)
+var mousey = device_mouse_y_to_gui(0)
+
+if room == rm_casa {
+	if point_distance(x, y, 1100, 1040) < 250 and !global.tem_tela_aberta and point_in_rectangle(mouse_x, mouse_y, 1026, 1023, 1180, 1055) and !tutorial {
+		if mouse_check_button_pressed(mb_left) {
+			sair_casa = true
+			global.tem_tela_aberta = true
+		}
+	}
+}
+
+if morreu_casa2 {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_casa)
+	if alpha_casa < 1 {
+		alpha_casa += 0.02
+	} else {
+		morreu_casa = false
+		game_over = true
+		msg_game_over = "Você decidiu sair de casa e não conseguiu chegar ao Bunker a tempo."
+	}
+}
+
+if sair_casa { //vou usar a variavel banheiro pois nao quero fazer outra 
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
+	if banheiro_scale < 5 {
+		banheiro_scale += 0.5
+	} else if banheiro_scale >= 5 {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_text(220, 800, "Você deseja sair de casa?")
+		if point_in_rectangle(mousex, mousey, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
+			if !primeiro {
+				primeiro = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if mouse_check_button_pressed(mb_left) {
+				sair_casa = false
+				morreu_casa = true
+				tirar_banheiro = true
+			}
+		} else {
+			primeiro = false
+		}
+		draw_text(300, 940, "Sim")
+		if point_in_rectangle(mousex, mousey, nao[0][0], nao[0][1], nao[1][0], nao[1][1]) {
+			if !segundo {
+				segundo = true
+				audio_play_sound(snd_menu_mouse, 1, false)
+			}
+			draw_rectangle_color(1600, 920, 1640 + largura_nao, 960 + altura_nao, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
+			draw_rectangle_color(1610, 930, 1630 + largura_nao, 950 + altura_nao, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
+			if mouse_check_button_pressed(mb_left) {
+				tirar_banheiro = true
+				sair_casa = false
+				sm = true
+			}
+		} else {
+			segundo = false
+		}
+		draw_text(1620, 940, "Não")
+	}
+}
+
 if room == rm_bunker and item_selecionado == obj_contador_geiger {
 	entrou_geiger = true
 	draw_sprite_ext(spr_interface_geiger, frame_geiger, 480, y_geiger, 4, 4, 0, c_white, 1)
@@ -566,8 +632,13 @@ if game_over {
 		}
 	}
 	if tempo_over2 < current_time / 1000 and aux1 {
-		var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
-		draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+		if room == rm_casa {
+			var data_morte = "Data da morte: 16 de Julho"
+			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+		} else {
+			var data_morte = "Data da morte: " + string(obj_calendario.dia_atual) + " de " + string(_mes)
+			draw_text(960 - string_width(data_morte) / 2, 760, data_morte)
+		}
 		if !aux2 {
 			tempo_over3 = current_time / 1000 + 1.5
 			aux2 = true
@@ -811,7 +882,7 @@ if obituario {
 	}
 }
 
-if pode_comecar and !tutorial {
+if pode_comecar and !tutorial and !game_over {
 	draw_set_color(c_white)
 	if room_get_name(room) == "rm_casa" {
 		draw_set_font(fnt_alagard)
@@ -897,6 +968,11 @@ var _slotx4=1056
 var _slotx5=1152
 
 var desenha = true
+if room == rm_casa {
+	if desenha and (morreu_casa2 or sair_casa) {
+		desenha = false
+	}
+}
 if room == rm_bunker {
 	if obj_controlador_evento.clicou_cogumelo and desenha {
 		desenha = false
@@ -1206,9 +1282,6 @@ if tirar {
 	}
 }
 
-var mousex = device_mouse_x_to_gui(0)
-var mousey = device_mouse_y_to_gui(0)
-
 if room == rm_bunker {
 	if place_meeting(mouse_x, mouse_y, obj_cortina) and point_distance(x, y, 1140, 620) <= 200 and !banheiro and !global.tem_tela_aberta {
 		if mouse_check_button_pressed(mb_left) {
@@ -1290,6 +1363,14 @@ if tirar_banheiro {
 		banheiro_scale -= 0.5
 	} else if banheiro_scale == 0 {
 		tirar_banheiro = false
+		if sm {
+			sm = false
+			global.tem_tela_aberta = false
+		}
+		if morreu_casa {
+			morreu_casa2 = true
+			morreu_casa = false
+		}
 		if usar2 or nao_usou {
 			nao_usou = false
 			usar2 = false

@@ -20,6 +20,14 @@ coisas para melhorar sanidade:
 -vencer batalhas=+10
 -ouvir radio=+5
 */
+
+global.tem_tela_aberta = false //caso a variavel esteja true, seta false no comeco
+sair_casa = false
+morreu_casa = false
+morreu_casa2 = false
+alpha_casa = 0
+sm = false
+
 banheiro = false
 banheiro_scale = 0
 tirar_banheiro = false
@@ -397,6 +405,7 @@ inputs = {
 	pulo		: vk_space,
 }
 
+ultimo_apertado = inputs.baixo
 opcoes = false
 
 armas_pegas = []
@@ -416,7 +425,7 @@ objeto = noone
 
 if room_get_name(room) == "rm_casa" {
 	tempo_decorrido = 0
-	tempo_espera = 1
+	tempo_espera = 60
 	tempo_escrito = tempo_espera - tempo_decorrido
 	tutorial_ask = true
 	global.tem_tela_aberta = true

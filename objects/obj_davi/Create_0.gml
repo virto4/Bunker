@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
 perdeu_vida = 0
 doencas = {
 	Gripe: [false, "Passa naturalmente em 4 dias ou imediatamente com aspirina.", 5],

@@ -121,7 +121,31 @@ if global.tem_tela_aberta {
 	image_speed = 1
 }
 
-sprite_index = spr_roger_idle_down
+switch ultimo_apertado {
+	case inputs.esquerda:
+		image_xscale = -1
+		image_speed = 1
+		sprite_index = spr_roger_idle_right
+		break
+	case inputs.direita:
+		if image_xscale == -1 {
+			image_xscale = 1
+		}
+		sprite_index = spr_roger_idle_right
+		break
+	case inputs.baixo:
+		if image_xscale == -1 {
+			image_xscale = 1
+		}
+		sprite_index = spr_roger_idle_down
+		break
+	case inputs.cima:
+		if image_xscale == -1 {
+			image_xscale = 1
+		}
+		sprite_index = spr_roger_idle_up
+		break
+}
 
 if !apertou_pulo {
 	depth = -y
@@ -176,29 +200,37 @@ if pode_comecar and !opcoes and !global.tem_tela_aberta {
 		global.tem_tela_aberta = true
 		opcoes = true
 	}
-	if _esquerda {
-		sprite_index = spr_roger_right
-		image_xscale = -1
-		image_speed = 1
-	} else if _direita {
-		if image_xscale == -1 {
-			image_xscale = 1
+	if !apertou_pulo {
+		if (_esquerda and _direita) or (_cima and _baixo) {
+			//deixa no sprite da ultima tecla apertada
+		} else if _esquerda {
+			sprite_index = spr_roger_right
+			image_xscale = -1
+			image_speed = 1
+			ultimo_apertado = inputs.esquerda
+		} else if _direita {
+			if image_xscale == -1 {
+				image_xscale = 1
+			}
+			sprite_index = spr_roger_right
+			image_speed = 1
+			ultimo_apertado = inputs.direita
+		} else if _baixo {
+			if image_xscale == -1 {
+				image_xscale = 1
+			}
+			sprite_index = spr_roger_down
+			image_speed = 1
+			ultimo_apertado = inputs.baixo
+		} else if _cima {
+			if image_xscale == -1 {
+				image_xscale = 1
+			}
+			sprite_index = spr_roger_up
+			ultimo_apertado = inputs.cima
+		} else {
+			image_speed = 1
 		}
-		sprite_index = spr_roger_right
-		image_speed = 1
-	} else if _baixo {
-		if image_xscale == -1 {
-			image_xscale = 1
-		}
-		sprite_index = spr_roger_down
-		image_speed = 1
-	} else if _cima {
-		if image_xscale == -1 {
-			image_xscale = 1
-		}
-		sprite_index = spr_roger_up
-	} else {
-		image_speed = 1
 	}
 
 	if _pulo and !apertou_pulo {
