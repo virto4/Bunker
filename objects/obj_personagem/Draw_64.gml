@@ -901,6 +901,9 @@ if room == rm_bunker {
 	if obj_controlador_evento.clicou_cogumelo and desenha {
 		desenha = false
 	}
+	if esconder_hotbar and desenha {
+		desenha = false
+	}
 	if morte_meredith and desenha {
 		desenha = false
 	}
@@ -1205,10 +1208,17 @@ if tirar {
 
 var mousex = device_mouse_x_to_gui(0)
 var mousey = device_mouse_y_to_gui(0)
+
 if room == rm_bunker {
-	if point_in_rectangle(mousex, mousey, 1010, 450, 1250, 730) and point_distance(x, y, 1140, 620) <= 250 and !banheiro {
+	if place_meeting(mouse_x, mouse_y, obj_cortina) and point_distance(x, y, 1140, 620) <= 200 and !banheiro and !global.tem_tela_aberta {
 		if mouse_check_button_pressed(mb_left) {
-			banheiro = true
+			global.tem_tela_aberta = true
+			esconder_hotbar = true
+			if usou_hoje {
+				msg_usou = true
+			} else {
+				banheiro = true
+			}
 		}
 	}
 }
@@ -1216,13 +1226,11 @@ if room == rm_bunker {
 if banheiro {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
 	if banheiro_scale < 5 {
-		banheiro_scale += 0.5 * delta_time / 1000000
+		banheiro_scale += 0.5
 	} else if banheiro_scale >= 5 {
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		draw_text(220, 800, "Você deseja usar o banheiro?")
-		draw_set_font(fnt_dialogos)
-		draw_set_color(c_black)
 		if point_in_rectangle(mousex, mousey, sim[0][0], sim[0][1], sim[1][0], sim[1][1]) {
 			if !primeiro {
 				primeiro = true
@@ -1231,6 +1239,7 @@ if banheiro {
 			draw_rectangle_color(280, 920, 320 + largura_sim, 960 + altura_sim, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
 			draw_rectangle_color(290, 930, 310 + largura_sim, 950 + altura_sim, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
 			if mouse_check_button_pressed(mb_left) {
+				usou_hoje = true
 				usar = true
 				banheiro = false
 				tirar_banheiro = true
@@ -1249,6 +1258,7 @@ if banheiro {
 			if mouse_check_button_pressed(mb_left) {
 				tirar_banheiro = true
 				banheiro = false
+				nao_usou = true
 			}
 		} else {
 			segundo = false
@@ -1257,20 +1267,71 @@ if banheiro {
 	}
 }
 
+if msg_usou {
+	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
+	if banheiro_scale < 5 {
+		banheiro_scale += 0.5
+	} else if banheiro_scale >= 5 {
+		draw_set_font(fnt_dialogos)
+		draw_set_color(c_black)
+		draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, 5, 5, 0, c_white, 1)
+		draw_text(220, 800, "Você não sente vontade de usar o banheiro.")
+		if mouse_check_button_pressed(mb_left) {
+			tirar_banheiro = true
+			msg_usou = false
+			usar2 = true
+		}
+	}
+}
+
 if tirar_banheiro {
 	draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
 	if banheiro_scale > 0 {
-		banheiro_scale -= 0.5 * delta_time / 1000000
+		banheiro_scale -= 0.5
 	} else if banheiro_scale == 0 {
 		tirar_banheiro = false
+		if usar2 or nao_usou {
+			nao_usou = false
+			usar2 = false
+			esconder_hotbar = false
+			global.tem_tela_aberta = false
+		}
 	}
 }
 
 if usar and !tirar_banheiro {
 	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_banheiro)
 	if alpha_banheiro < 1 {
-		alpha_banheiro +=  0.02 * delta_time / 1000000
+		alpha_banheiro +=  0.02
 	} else {
-		
+		if !dar_descarga {
+			dar_descarga = true
+			audio_play_sound(snd_descarga, 1, false)
+		} else if !audio_is_playing(snd_descarga) {
+			dar_descarga = false
+			usar = false
+			usar1 = true
+		}
+	}
+}
+
+if usar1 {
+	if alpha_banheiro > 0 {
+		draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, alpha_banheiro)
+		alpha_banheiro -=  0.02
+	} else {
+		draw_sprite_ext(spr_dialogo, 0, 1920 / 2, 880, banheiro_scale, banheiro_scale, 0, c_white, 1)
+		if banheiro_scale < 5 {
+			banheiro_scale += 0.5
+		} else if banheiro_scale == 5 {
+			draw_set_font(fnt_dialogos)
+			draw_set_color(c_black)
+			draw_text(220, 800, "Você se sente mais aliviado.")
+			if mouse_check_button_pressed(mb_left) {
+				tirar_banheiro = true
+				usar1 = false
+				usar2 = true
+			}
+		}
 	}
 }

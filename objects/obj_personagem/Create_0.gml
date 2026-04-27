@@ -27,6 +27,11 @@ usar = false
 usar1 = false
 usar2 = false
 alpha_banheiro = 0
+usou_hoje = false
+esconder_hotbar = false
+dar_descarga = false
+nao_usou = false
+msg_usou = false
 
 function verificar_vida2() { //para que ele só morra depois que o dia passar
 	if atributos.sede <= 0 {
@@ -767,6 +772,7 @@ function passar_dia() {
 	obj_diario.amanhecer()
 	obj_controlador_evento.evento()
 	if room == rm_bunker {
+		usou_hoje = false
 		if obj_controlador_evento.mala {
 			obj_controlador_evento.mudar_mala = true
 			obj_controlador_evento.mala_aux = true
