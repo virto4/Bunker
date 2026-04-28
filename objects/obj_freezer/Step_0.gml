@@ -1,6 +1,19 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if esc {
+	esc = false
+	clicou = false
+	global.tela_hotbar = false
+	global.tem_tela_aberta = false
+	audio_stop_sound(snd_freezer_ronco)
+	if !audio_is_playing(snd_geladeira_abrindo) and !audio_is_playing(snd_geladeira_fechando) {
+		audio_play_sound(snd_geladeira_fechando, 1, false)
+	}
+}
 if clicou {
+	if keyboard_check(vk_escape) {
+		esc = true
+	}
 	global.tem_tela_aberta = true
 	audio_play_sound(snd_freezer_ronco, 1, true)
 	var mx = device_mouse_x_to_gui(0)

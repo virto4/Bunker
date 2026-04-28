@@ -196,7 +196,7 @@ if (_esquerda or _direita or _cima or _baixo) and !global.tem_tela_aberta {
 }
 
 if pode_comecar and !opcoes and !global.tem_tela_aberta {
-	if !global.tem_tela_aberta and keyboard_check_pressed(vk_escape) {
+	if keyboard_check_pressed(vk_escape) {
 		global.tem_tela_aberta = true
 		opcoes = true
 	}
@@ -536,7 +536,7 @@ if alimento and room == rm_bunker {
 				aumento_fome = variable_struct_get(global.fome, object_get_name(obj_personagem.item_selecionado)) - (atributos.fome - 100)
 				atributos.fome = 100
 			} else {
-				aumento_fome = variable_struct_get(global.fome, obj_personagem.item_selecionado)
+				aumento_fome = variable_struct_get(global.fome, object_get_name(obj_personagem.item_selecionado))
 			}
 			if obj_personagem.slot_selecionado == 1 {
 				consumir(obj_personagem.slot1, slot1_n, slot1_novo)

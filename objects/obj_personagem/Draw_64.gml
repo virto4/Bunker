@@ -202,10 +202,12 @@ if tirar_chumbo {
 }
 var _mes = 0
 if room == rm_bunker {
-	if !vermelho {
-		draw_circle_color(50, 50, 50, c_red, c_red,false)
+	if !global.tem_tela_aberta {
+		if !vermelho {
+			draw_circle_color(50, 50, 50, c_red, c_red,false)
+		}
+		draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
 	}
-	draw_sprite_ext(spr_exclamacao, 0, 50, 50, 2, 2, 0, c_white, 1)
 	if mouse_check_button_pressed(mb_left) and !global.tem_tela_aberta {
 		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 50 - 48, 50 - 48, 50 + 48, 50 + 48) {
 			instrucoes = true
@@ -492,7 +494,22 @@ if ganhou_jogo {
 	}
 }
 
+if esc_instrucoes {
+	esc_instrucoes = false
+	instrucoes = false
+	global.tem_tela_aberta = false
+	escrita = ""
+	sel = -1
+	for (var i = 0; i < 5; i++) {
+		ticket_x[i] = 0
+	}
+}
+
 if instrucoes {
+	draw_sprite_ext(spr_mudar_casa, 0, 0, 0, 1, 1, 0, c_white, 0.4)
+	if keyboard_check(vk_escape) {
+		esc_instrucoes = true
+	}
 	draw_sprite(spr_voltar, 0, 1800, 50)
 	var width_sair = sprite_get_width(spr_voltar) / 2
 	var height_sair = sprite_get_height(spr_voltar) / 2 
@@ -507,30 +524,46 @@ if instrucoes {
 			instrucoes = false
 			global.tem_tela_aberta = false
 			escrita = ""
+			sel = -1
+			for (var i = 0; i < 5; i++) {
+				ticket_x[i] = 0
+			}
 		}
 	}
 	var vetor = variable_struct_get_names(instrucoes_fala)
 	for (var i = 0; i < array_length(vetor); i++) {
-		var cor_menu = #E5CE72
 		draw_set_font(fnt_dialogos)
 		draw_set_color(c_black)
 		var largura = string_width(vetor[i])
 		var altura = string_height(vetor[i])
-		if point_in_rectangle(mx, my, (200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura) {
-			cor_menu = #E5C444
+		if point_in_rectangle(mx, my, 200, 380 + 80 * i - 32, 400, 380 + 80 * i + 32) {
 			if mouse_check_button_pressed(mb_left) {
 				escrita = variable_struct_get(instrucoes_fala, vetor[i])
+				sel = i
 			}
-		} else {
-			cor_menu = #E5CE72
+			if ticket_x[i] > -32 {
+				ticket_x[i] -= 4
+			}
+		} else if i != sel {
+			if ticket_x[i] < 0 {
+				ticket_x[i] += 4
+			}
 		}
-		draw_rectangle_color((200 - largura) / 2 - 10, 380 + 80 * i - 10, (200 + largura) / 2 + 10, 380 + 80 * i + 10 + altura, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-		draw_rectangle_color((200 - largura) / 2 - 5, 380 + 80 * i - 5, (200 + largura) / 2 + 5, 380 + 80 * i + 5 + altura, cor_menu, cor_menu, cor_menu, cor_menu, false)
-		draw_text((200 - largura) / 2, 380 + 80 * i, vetor[i])
+		if i == sel {
+			draw_sprite(spr_ticket_claro, 0, 320 + ticket_x[i], 380 + 80 * i)
+		} else {
+			draw_sprite(spr_ticket, 0, 320 + ticket_x[i], 380 + 80 * i)
+		}
+		draw_set_color(c_black)
+		draw_text(300 + ticket_x[i] / 2 - largura / 2, 380 + 80 * i - (altura) / 2, vetor[i])
 	}
-	draw_rectangle_color(400, 100, 1800, 980, #7F5E25, #7F5E25, #7F5E25, #7F5E25, false)
-	draw_rectangle_color(405, 105, 1795, 975, #E5CE72, #E5CE72, #E5CE72, #E5CE72, false)
-	draw_text_ext(420, 120, escrita, 60, 1380)
+	draw_sprite(spr_instrucoes, 0, 1100, 540)
+	draw_text_ext(450, 150, escrita, 60, 1335)
+	if sel != -1 {
+		if ticket_x[sel] > -32 {
+			ticket_x[sel] -= 4
+		}
+	}
 }
 
 if direita_coletavel {

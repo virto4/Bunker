@@ -26,13 +26,13 @@ ds_list_add(itens_pegos,
     obj_espanador,
     obj_meredith,
     obj_davi
-);*/
+)*/
 
 posicoes = {
 	"obj_chumbo": {"x": 760, "y": 660},
 	"obj_mapa": {"x": 386, "y": 244},
-	"obj_traje_davi": {"x": 1230, "y": 441},
-	"obj_traje_roger": {"x": 1162, "y": 441},
+	"obj_traje_davi": {"x": 450, "y": 640},
+	"obj_traje_roger": {"x": 530, "y": 660},
 	"obj_municao": {"x": 800, "y": 640},
 	"obj_radio": {"x": 390, "y": 640},
 	"obj_pilha": {"x": 310, "y": 170},
@@ -47,7 +47,7 @@ posicoes = {
 	"obj_contador_geiger": {"x": 922.5, "y": 648},
 	"obj_domino": {"x": 854, "y": 642},
 	"obj_tv": {"x": 864, "y": 544},
-	"obj_inseticida": {"x":530, "y":645},
+	"obj_inseticida": {"x":600, "y":645},
 	"obj_ferramentas": {"x":670, "y":660},
 	"obj_espanador": {"x":350, "y":247},
 	"obj_meredith": {"x":775, "y":530},

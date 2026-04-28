@@ -1,6 +1,14 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+if esc {
+	desenhar = false
+	image_speed = -1
+	global.tem_tela_aberta = false
+	global.tela_hotbar = false
+	esc = false
+}
+
 if image_speed > 0 {
 	segundo = false
 	audio_stop_sound(snd_geladeira_ronco)
@@ -28,6 +36,9 @@ if image_speed > 0 {
 } else if image_index = image_number - 1 and image_speed = 0 {
 	audio_play_sound(snd_geladeira_ronco, 1, true)
 	desenhar = true
+	if keyboard_check(vk_escape) {
+		esc = true
+	}
 	if mouse_check_button_pressed(mb_left) {
 		var mx = device_mouse_x_to_gui(0)
 		var my = device_mouse_y_to_gui(0)

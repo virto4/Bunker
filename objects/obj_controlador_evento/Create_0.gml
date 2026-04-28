@@ -222,8 +222,7 @@ doenca_gata = false
 remedio_gata = false
 
 eventos_inicio = [
-	"comerciante",
-	"comerciante",
+	"ventilacao",
 	//"baratas",
 	"capivara",
 	"gripe",
@@ -232,7 +231,7 @@ eventos_inicio = [
 	"freddie",
 	"coleta",
 	"coleta",
-	//"comerciante",
+	"comerciante",
 	"comerciante",
 	"mala",
 	"barata"

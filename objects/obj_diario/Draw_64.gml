@@ -43,6 +43,7 @@ if clicou and image_index == image_number - 1{
 	draw_sprite(spr_voltar_diario, 0, 200, 1080 - 50)
 	draw_sprite(spr_avancar_diario, 0, 1920 - 200, 1080 - 50)
 	draw_sprite(spr_primeira_diario, 0, 1920 / 2 - 300, 1080 - 50)
+	draw_sprite(spr_ultima_diario, 0, 1920 / 2 + 300, 1080 - 50)
 	if display_mouse_get_x() * 1920 / 1366 > 1800 - _largura_x / 2 and display_mouse_get_x() * 1920 / 1366 < 1800 + _largura_x / 2 and display_mouse_get_y() * 1080 / 768 > 120 - _largura_x / 2 and display_mouse_get_y() *  1080 / 768 < 120 + _largura_x / 2 {
 		if mouse_check_button_pressed(mb_left) {
 			clicou = false	
@@ -77,8 +78,12 @@ if clicou and image_index == image_number - 1{
 		draw_sprite_part(spr_fortuna_var, 0, 0, 0, 48 + 345 * obj_personagem.atributos.fortuna / 100, sprite_get_height(spr_fortuna_cheio), 1920 / 2 - 300 - 200, 1080 / 2 + 280 - 25)
 		
 		var _a = 540 - 280
+		var txt_saude = "Você não precisa se preocupar com isso (por enquanto)"
+		if obj_controlador_evento.evento_canos {
+			txt_saude = "Diminui 25 por dia"
+		}
 		var vet = ["Sede", "Fome", "Saúde", "Sanidade", "Sagacidade", "Força", "Resistência", "Fortuna"]
-		var vet2 = ["Diminui 25 por dia", "Diminui 7 por dia", "Diminui por doenças ou batalhas","Diminui 9 no primeiro mês, 15 no segundo e 21 no terceiro", "Chance de dar golpes críticos ou errados", "Quantidade base de dano causado", "Quantidade de dano resistência ao dano sofrido", "Define os saques de uma batalha"]
+		var vet2 = [txt_saude, "Diminui 7 por dia", "Diminui por doenças ou batalhas","Diminui 9 no primeiro mês, 15 no segundo e 21 no terceiro", "Aumenta chance de crítico se alto e aumenta chance de erro se baixo", "Quantidade base de dano causado", "Quantidade base de resistência ao dano sofrido", "Define os saques de uma batalha"]
 		
 		if instance_exists(obj_davi) and obj_personagem.ativada {
 			draw_sprite(spr_doenca, 0, 1490, 420)//mesmo da saude

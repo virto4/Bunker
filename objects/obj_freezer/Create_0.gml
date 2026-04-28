@@ -2,7 +2,7 @@
 // Você pode escrever seu código neste editor
 clicou = false
 som_tocou = false
-
+esc = false
 posicoes = [
 	[obj_acucar, 290, 804], //0
 	[obj_agua, 500, 810], //1

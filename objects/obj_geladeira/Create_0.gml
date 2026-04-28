@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+esc = false
 image_speed = 0
 primeiro = false
 segundo = false

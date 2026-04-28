@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+esc = false
 qtde_itens = 1
 pressionou = false
 posicoes = [[486, 535], [798, 535], [1110, 535], [1422, 535]]

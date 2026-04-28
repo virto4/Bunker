@@ -1,7 +1,17 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 depth = -y
+
+if esc {
+	esc = false
+	clicou = false
+	global.tem_tela_aberta = false
+}
+
 if comecar and clicou {
+	if keyboard_check(vk_escape) {
+		esc = true
+	}
 	var width_sair = sprite_get_width(spr_voltar) / 2
 	var height_sair = sprite_get_height(spr_voltar) / 2 
 	var tx_sair = 1800

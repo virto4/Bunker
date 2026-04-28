@@ -1,5 +1,12 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+if esc {
+	esc = false
+	clicou = false
+	global.tem_tela_aberta = false
+	global.tela_hotbar = false
+}
+
 function destruir_slot(itens) {
 	for (var i = 0; i < array_length(itens); i++) {
 		var qtde = itens[i][1]
@@ -33,6 +40,9 @@ function destruir_slot(itens) {
 }
 
 if clicou {
+	if keyboard_check(vk_escape) {
+		esc = true
+	}
 	if mouse_check_button_pressed(mb_left) {
 		var width = sprite_get_width(spr_voltar) / 2
 		var height = sprite_get_height(spr_voltar) / 2

@@ -1,11 +1,14 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 depth = -y
+if esc {
+	clicou = false
+	global.tem_tela_aberta = false
+	esc = false
+}
 if keyboard_check_pressed(vk_escape) {
 	if clicou {
-		clicou = false
-		global.tem_tela_aberta = false
-		obj_personagem.opcoes = false
+		esc = true
 	}
 }
 
@@ -62,6 +65,20 @@ if (mouse_check_button_pressed(mb_left)) {
 	} else if (mx > tx_primeira - width_primeira && mx < tx_primeira + width_primeira &&
 		my > ty_primeira - height_primeira && my < ty_primeira + height_primeira) and pagina > 0 {
 		pagina = 0
+		audio_play_sound(snd_paginas, 1, false)
+	} else if point_in_rectangle(mx, my, 1920 / 2 + 300 - width_avancar, 1080 - 50 - height_avancar, 1920 / 2 + 300 + width_avancar, 1080 - 50 + height_avancar) {
+		var pos = 0
+		for (var i = 0; i < ds_list_size(paginas_escritas); i++) {
+			if ds_list_find_value(paginas_escritas, i) == "" {
+				pos = i
+				break
+			}
+		}
+		if pos % 2 == 0 {
+			pagina = (pos - 2) / 2
+		} else {
+			pagina = (pos - 1) / 2
+		}
 		audio_play_sound(snd_paginas, 1, false)
 	}
 }

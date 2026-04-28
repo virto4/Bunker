@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+esc = false
 qtde_itens = 1
 jogou_hoje = false
 clicou = false

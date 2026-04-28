@@ -1,18 +1,28 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-var width_sair = sprite_get_width(spr_voltar) / 2
-var height_sair = sprite_get_height(spr_voltar) / 2 
-var tx_sair = 1800
-var ty_sair = 50
+if esc {
+	clicou = false
+	global.tem_tela_aberta = false
+	esc = false
+}
+if clicou {
+	if keyboard_check(vk_escape) {
+		esc = true
+	}
+	var width_sair = sprite_get_width(spr_voltar) / 2
+	var height_sair = sprite_get_height(spr_voltar) / 2 
+	var tx_sair = 1800
+	var ty_sair = 50
 
-var mx = device_mouse_x_to_gui(0);
-var my = device_mouse_y_to_gui(0);
+	var mx = device_mouse_x_to_gui(0);
+	var my = device_mouse_y_to_gui(0);
 
-if mouse_check_button_pressed(mb_left) {
-	if mx > tx_sair - width_sair && mx < tx_sair + width_sair &&
-	my > ty_sair - height_sair && my < ty_sair + height_sair {
-		clicou = false
-		global.tem_tela_aberta = false
+	if mouse_check_button_pressed(mb_left) {
+		if mx > tx_sair - width_sair && mx < tx_sair + width_sair &&
+		my > ty_sair - height_sair && my < ty_sair + height_sair {
+			clicou = false
+			global.tem_tela_aberta = false
+		}
 	}
 }
 

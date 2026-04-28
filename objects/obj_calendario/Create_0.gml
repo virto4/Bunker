@@ -1,5 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+esc = false
 clicou = false
 dia_atual = 16
 mes_atual = 7

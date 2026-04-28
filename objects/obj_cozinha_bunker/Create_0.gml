@@ -20,3 +20,5 @@ arroz_frango = false
 salada = false
 
 entrou2 = false
+
+esc = false

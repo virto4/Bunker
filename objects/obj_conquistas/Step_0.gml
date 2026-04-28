@@ -14,11 +14,13 @@
 10- assista todos os programas de radio
 11-fique deprimido
 12-traga todas as armas
-13-Dupla dinâmica: deixe ambos os personagens hiperativos e vença batalhas.
+13-Dupla dinâmica: deixe ambos os personagens extasiados e vença batalhas.
 14-converse com davi 30 vezes
-15-eu sou inevittavel: chegue ao final secreto
+15-eu sou inevitavel: chegue ao final secreto
 
 */
+
+depth = -2000
 if global.conquistas.conquista2 and global.conquistas.conquista3 and global.conquistas.conquista4 and 
 	global.conquistas.conquista5 and global.conquistas.conquista6 and global.conquistas.conquista7 and
 	global.conquistas.conquista8 and global.conquistas.conquista9 and global.conquistas.conquista10 and
